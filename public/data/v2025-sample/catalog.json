@@ -1,0 +1,417 @@
+{
+  "schemaVersion": "1.0.0",
+  "dataVersion": "v2025-sample",
+  "generatedAt": "2026-06-30T12:00:00Z",
+  "data": {
+    "regions": [
+      {
+        "id": "RF1",
+        "slug": "rf1",
+        "name": "Região Funcional 1",
+        "order": 1
+      },
+      {
+        "id": "RF2",
+        "slug": "rf2",
+        "name": "Região Funcional 2",
+        "order": 2
+      },
+      {
+        "id": "RF3",
+        "slug": "rf3",
+        "name": "Região Funcional 3",
+        "order": 3
+      },
+      {
+        "id": "RF4",
+        "slug": "rf4",
+        "name": "Região Funcional 4",
+        "order": 4
+      },
+      {
+        "id": "RF5",
+        "slug": "rf5",
+        "name": "Região Funcional 5",
+        "order": 5
+      },
+      {
+        "id": "RF6",
+        "slug": "rf6",
+        "name": "Região Funcional 6",
+        "order": 6
+      },
+      {
+        "id": "RF7",
+        "slug": "rf7",
+        "name": "Região Funcional 7",
+        "order": 7
+      },
+      {
+        "id": "RF8",
+        "slug": "rf8",
+        "name": "Região Funcional 8",
+        "order": 8
+      },
+      {
+        "id": "RF9",
+        "slug": "rf9",
+        "name": "Região Funcional 9",
+        "order": 9
+      }
+    ],
+    "coredes": [
+      {
+        "id": "alto_da_serra_do_botucarai",
+        "name": "Alto da Serra do Botucaraí",
+        "regionId": "RF9"
+      },
+      {
+        "id": "alto_jacui",
+        "name": "Alto Jacuí",
+        "regionId": "RF8"
+      },
+      {
+        "id": "campanha",
+        "name": "Campanha",
+        "regionId": "RF6"
+      },
+      {
+        "id": "campos_de_cima_da_serra",
+        "name": "Campos de Cima da Serra",
+        "regionId": "RF3"
+      },
+      {
+        "id": "celeiro",
+        "name": "Celeiro",
+        "regionId": "RF7"
+      },
+      {
+        "id": "central",
+        "name": "Central",
+        "regionId": "RF8"
+      },
+      {
+        "id": "centro_sul",
+        "name": "Centro-Sul",
+        "regionId": "RF1"
+      },
+      {
+        "id": "fronteira_noroeste",
+        "name": "Fronteira Noroeste",
+        "regionId": "RF7"
+      },
+      {
+        "id": "fronteira_oeste",
+        "name": "Fronteira Oeste",
+        "regionId": "RF6"
+      },
+      {
+        "id": "hortensias",
+        "name": "Hortênsias",
+        "regionId": "RF3"
+      },
+      {
+        "id": "jacui_centro",
+        "name": "Jacuí Centro",
+        "regionId": "RF8"
+      },
+      {
+        "id": "litoral",
+        "name": "Litoral",
+        "regionId": "RF4"
+      },
+      {
+        "id": "medio_alto_uruguai",
+        "name": "Médio Alto Uruguai",
+        "regionId": "RF9"
+      },
+      {
+        "id": "metropolitano_delta_do_jacui",
+        "name": "Metropolitano Delta do Jacuí",
+        "regionId": "RF1"
+      },
+      {
+        "id": "missoes",
+        "name": "Missões",
+        "regionId": "RF7"
+      },
+      {
+        "id": "nordeste",
+        "name": "Nordeste",
+        "regionId": "RF9"
+      },
+      {
+        "id": "noroeste_colonial",
+        "name": "Noroeste Colonial",
+        "regionId": "RF7"
+      },
+      {
+        "id": "norte",
+        "name": "Norte",
+        "regionId": "RF9"
+      },
+      {
+        "id": "paranhana_encosta_da_serra",
+        "name": "Paranhana Encosta da Serra",
+        "regionId": "RF1"
+      },
+      {
+        "id": "producao",
+        "name": "Produção",
+        "regionId": "RF9"
+      },
+      {
+        "id": "rio_da_varzea",
+        "name": "Rio da Várzea",
+        "regionId": "RF9"
+      },
+      {
+        "id": "serra",
+        "name": "Serra",
+        "regionId": "RF3"
+      },
+      {
+        "id": "sul",
+        "name": "Sul",
+        "regionId": "RF5"
+      },
+      {
+        "id": "vale_do_cai",
+        "name": "Vale do Caí",
+        "regionId": "RF1"
+      },
+      {
+        "id": "vale_do_jaguari",
+        "name": "Vale do Jaguari",
+        "regionId": "RF8"
+      },
+      {
+        "id": "vale_do_rio_dos_sinos",
+        "name": "Vale do Rio dos Sinos",
+        "regionId": "RF1"
+      },
+      {
+        "id": "vale_do_rio_pardo",
+        "name": "Vale do Rio Pardo",
+        "regionId": "RF2"
+      },
+      {
+        "id": "vale_do_taquari",
+        "name": "Vale do Taquari",
+        "regionId": "RF2"
+      }
+    ],
+    "municipalities": [
+      {
+        "id": "4314423",
+        "name": "Picada Café",
+        "searchName": "picada cafe",
+        "regionId": "RF3",
+        "coredeId": "hortensias"
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "educacao",
+        "name": "Educação",
+        "order": 1
+      },
+      {
+        "id": "financas",
+        "name": "Finanças",
+        "order": 2
+      },
+      {
+        "id": "meio_ambiente",
+        "name": "Meio ambiente",
+        "order": 3
+      },
+      {
+        "id": "saude",
+        "name": "Saúde",
+        "order": 4
+      },
+      {
+        "id": "seguranca",
+        "name": "Segurança",
+        "order": 5
+      },
+      {
+        "id": "socioeconomico",
+        "name": "Socioeconômico",
+        "order": 6
+      }
+    ],
+    "indicators": [
+      {
+        "id": "adequacao_formacao_docente",
+        "dimensionId": "educacao",
+        "name": "Adequação da Formação Docente",
+        "shortName": "Formação docente",
+        "description": "Considera a proporção de docentes do ensino fundamental com formação adequada à área em que atuam.",
+        "unit": "%",
+        "format": "percent",
+        "decimalPlaces": 1,
+        "multiplier": 1,
+        "direction": "higher_is_better",
+        "order": 1
+      },
+      {
+        "id": "saeb_ensino_fundamental",
+        "dimensionId": "educacao",
+        "name": "Nota do SAEB — Ensino Fundamental",
+        "shortName": "SAEB fundamental",
+        "description": "Sintetiza o desempenho em Português e Matemática no SAEB, considerando os anos iniciais e finais do ensino fundamental.",
+        "unit": "pontos",
+        "format": "number",
+        "decimalPlaces": 1,
+        "multiplier": 1,
+        "direction": "higher_is_better",
+        "order": 2
+      },
+      {
+        "id": "taxa_cobertura_creche",
+        "dimensionId": "educacao",
+        "name": "Taxa de Cobertura de Creche",
+        "shortName": "Cobertura creche",
+        "description": "Expressa a cobertura de matrículas em creche na rede municipal.",
+        "unit": "%",
+        "format": "percent",
+        "decimalPlaces": 1,
+        "multiplier": 1,
+        "direction": "higher_is_better",
+        "order": 3
+      },
+      {
+        "id": "taxa_distorcao_fundamental",
+        "dimensionId": "educacao",
+        "name": "Taxa de Distorção Idade-Série — Ensino Fundamental",
+        "shortName": "Distorção fundamental",
+        "description": "Indica a proporção de estudantes do ensino fundamental com idade acima da esperada para a série.",
+        "unit": "%",
+        "format": "percent",
+        "decimalPlaces": 1,
+        "multiplier": 1,
+        "direction": "lower_is_better",
+        "order": 4
+      },
+      {
+        "id": "qt_acesso_infor",
+        "dimensionId": "educacao",
+        "name": "Acesso à Informação",
+        "shortName": "Acesso à informação",
+        "description": "Considera a disponibilidade de recursos de acesso à informação nas escolas, como infraestrutura associada à conectividade e ao uso de tecnologias.",
+        "unit": "%",
+        "format": "percent",
+        "decimalPlaces": 1,
+        "multiplier": 1,
+        "direction": "higher_is_better",
+        "order": 5
+      },
+      {
+        "id": "exec_orc_corrente",
+        "dimensionId": "financas",
+        "name": "Execução Orçamentária Corrente",
+        "shortName": "Execução orçamentária",
+        "description": "Relaciona as despesas correntes às receitas correntes, indicando o nível de comprometimento do orçamento.",
+        "unit": "%",
+        "format": "percent",
+        "decimalPlaces": 1,
+        "multiplier": 1,
+        "direction": "lower_is_better",
+        "order": 1
+      },
+      {
+        "id": "autonomia_fiscal",
+        "dimensionId": "financas",
+        "name": "Autonomia Fiscal",
+        "shortName": "Autonomia fiscal",
+        "description": "Avalia a capacidade do município de financiar suas atividades com receitas próprias.",
+        "unit": "%",
+        "format": "percent",
+        "decimalPlaces": 1,
+        "multiplier": 1,
+        "direction": "higher_is_better",
+        "order": 2
+      },
+      {
+        "id": "endividamento",
+        "dimensionId": "financas",
+        "name": "Endividamento",
+        "shortName": "Endividamento",
+        "description": "Expressa o peso da dívida consolidada líquida sobre a receita corrente líquida.",
+        "unit": "%",
+        "format": "percent",
+        "decimalPlaces": 1,
+        "multiplier": 1,
+        "direction": "lower_is_better",
+        "order": 3
+      },
+      {
+        "id": "despesas_pessoal",
+        "dimensionId": "financas",
+        "name": "Despesas com Pessoal",
+        "shortName": "Despesas pessoal",
+        "description": "Indica a participação das despesas com pessoal na receita corrente líquida do município.",
+        "unit": "%",
+        "format": "percent",
+        "decimalPlaces": 1,
+        "multiplier": 1,
+        "direction": "lower_is_better",
+        "order": 4
+      },
+      {
+        "id": "investimento",
+        "dimensionId": "financas",
+        "name": "Investimento",
+        "shortName": "Investimento",
+        "description": "Representa a parcela da receita corrente líquida destinada a investimentos e despesas de capital.",
+        "unit": "%",
+        "format": "percent",
+        "decimalPlaces": 1,
+        "multiplier": 1,
+        "direction": "higher_is_better",
+        "order": 5
+      },
+      {
+        "id": "disponibilidade_caixa",
+        "dimensionId": "financas",
+        "name": "Disponibilidade de Caixa",
+        "shortName": "Disponibilidade caixa",
+        "description": "Compara a disponibilidade líquida de caixa com a receita corrente líquida.",
+        "unit": "%",
+        "format": "percent",
+        "decimalPlaces": 1,
+        "multiplier": 1,
+        "direction": "higher_is_better",
+        "order": 6
+      },
+      {
+        "id": "geracao_de_caixa",
+        "dimensionId": "financas",
+        "name": "Geração de Caixa",
+        "shortName": "Geração de caixa",
+        "description": "Mostra a variação da disponibilidade líquida de caixa em relação ao ano anterior.",
+        "unit": "%",
+        "format": "percent",
+        "decimalPlaces": 1,
+        "multiplier": 1,
+        "direction": "higher_is_better",
+        "order": 7
+      },
+      {
+        "id": "restos_a_pagar",
+        "dimensionId": "financas",
+        "name": "Restos a Pagar",
+        "shortName": "Restos a pagar",
+        "description": "Relaciona o saldo de restos a pagar à receita corrente líquida.",
+        "unit": "%",
+        "format": "percent",
+        "decimalPlaces": 1,
+        "multiplier": 1,
+        "direction": "lower_is_better",
+        "order": 8
+      }
+    ]
+  }
+}

@@ -94,3 +94,41 @@ button { color: inherit; }
 .loading-state span { height: 20px; border-radius: 6px; background: #edf1f4; animation: pulse 1.4s ease-in-out infinite alternate; }
 @keyframes pulse { to { opacity: .45; } }
 @media (prefers-reduced-motion: reduce) { *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; } }
+
+/* Hero regional (lista de regiões) */
+.region-hero { position: relative; display: flex; align-items: center; gap: 18px; padding: 22px 26px; border: 1px solid var(--color-border); border-radius: var(--radius-md); background: #fff; box-shadow: var(--shadow-panel); overflow: hidden; }
+.region-hero__copy { z-index: 1; max-width: 620px; }
+.region-hero__copy h1 { margin: 0 0 6px; font-size: 26px; letter-spacing: -.02em; color: var(--color-text); }
+.region-hero__copy p { margin: 0; color: var(--color-muted); font-size: 13px; line-height: 1.5; }
+.region-hero__icon { flex: 0 0 56px; width: 56px; height: 56px; display: grid; place-items: center; border-radius: 50%; background: var(--color-gold-soft); color: var(--color-gold); margin-left: auto; }
+.panel-body { margin-top: 16px; }
+
+/* Lista compacta de regiões (linhas) */
+.region-explore-list { display: grid; gap: 5px; margin-top: 16px; }
+.region-explore-card { display: grid; grid-template-columns: 82px 110px 100px minmax(0, 1fr) auto; gap: 12px; align-items: center; min-height: 44px; padding: 7px 12px; border: 1px solid #e5ebef; border-radius: 8px; background: #fff; text-decoration: none; color: var(--color-text); transition: background-color .15s ease, border-color .15s ease, box-shadow .15s ease; }
+.region-explore-card:hover { background: #fbfdfd; border-color: #d6e2e8; box-shadow: 0 4px 12px rgba(16, 37, 66, .055); }
+.region-explore-col { min-width: 0; }
+.region-explore-col--badge { display: flex; align-items: center; justify-content: center; }
+.region-explore-col--metric { display: grid; align-content: center; }
+.region-explore-col--coredes { display: grid; align-content: center; min-width: 0; }
+.region-explore-col--cta { display: flex; justify-content: flex-end; }
+.region-explore-badge { display: inline-flex; align-items: center; justify-content: center; min-width: 48px; height: 26px; padding: 0 10px; border-radius: 999px; background: var(--color-gold); color: #fff; font-weight: 900; font-size: .78rem; line-height: 1; }
+.region-explore-metric-value { color: #102542; font-size: 1.12rem; font-weight: 900; line-height: 1; }
+.region-explore-metric-label { margin-top: 2px; color: var(--color-muted); font-size: .66rem; font-weight: 700; line-height: 1.1; }
+.region-explore-coredes-label { margin-bottom: 2px; color: var(--color-muted); font-size: .58rem; font-weight: 900; text-transform: uppercase; letter-spacing: .04em; line-height: 1; }
+.region-explore-coredes-text { color: var(--color-text); font-size: .72rem; font-weight: 500; line-height: 1.15; }
+.region-explore-cta { display: inline-flex; align-items: center; gap: 6px; min-height: 30px; padding: 0 12px; border: 1px solid #ecd2a4; border-radius: 7px; color: var(--color-gold-dark); background: var(--color-gold-soft); font-weight: 800; font-size: .72rem; white-space: nowrap; }
+.region-explore-card:hover .region-explore-cta { border-color: var(--color-gold); background: #fff; }
+
+/* Estado de erro */
+.error-state { position: relative; display: flex; align-items: center; gap: 22px; padding: 22px 28px; border: 1px solid rgba(217, 47, 58, .35); border-radius: var(--radius-md); background: #fff; box-shadow: var(--shadow-panel); }
+.error-state__icon { flex: 0 0 58px; width: 58px; height: 58px; display: grid; place-items: center; border-radius: 50%; background: #fdecec; color: #d92f3a; }
+.error-state__copy { min-width: 0; }
+.error-state__copy h2 { margin: 0 0 5px; font-size: 22px; letter-spacing: -.02em; color: var(--color-text); }
+.error-state__copy p { margin: 0; color: var(--color-muted); font-size: 13px; line-height: 1.45; }
+.error-state__retry { margin-left: auto; align-self: center; height: 40px; padding: 0 16px; border: 1px solid var(--color-gold); border-radius: var(--radius-sm); background: var(--color-gold-soft); color: var(--color-gold-dark); font-size: 13px; font-weight: 750; cursor: pointer; }
+
+/* Notas de página (Home e filtros) */
+.page-note { margin: 0; color: var(--color-muted); font-size: 13px; }
+.page-note--error { color: #d92f3a; }
+.filter-field__error { grid-column: 1 / -1; margin: 0; color: #d92f3a; font-size: 12.5px; }

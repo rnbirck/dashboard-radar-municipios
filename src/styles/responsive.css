@@ -42,3 +42,15 @@
   .objective-card, .entry-card { padding: 17px; }
   .empty-state { display: grid; gap: 14px; }
 }
+
+@media (max-width: 760px) {
+  .region-hero { flex-wrap: wrap; gap: 12px; padding: 18px; }
+  .region-hero__icon { margin-left: 0; }
+  .region-explore-card { grid-template-columns: 1fr; gap: 6px 12px; padding: 12px; min-height: 0; }
+  .region-explore-col--badge { justify-content: flex-start; }
+  .region-explore-col--metric { grid-auto-flow: column; justify-content: flex-start; align-items: baseline; gap: 8px; }
+  .region-explore-metric-label { margin-top: 0; }
+  .region-explore-col--cta { justify-content: flex-start; }
+  .error-state { flex-wrap: wrap; gap: 14px; }
+  .error-state__retry { margin-left: 0; }
+}

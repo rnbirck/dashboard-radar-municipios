@@ -1,15 +1,82 @@
 import { ArrowRight, BarChart3, Building2, CalendarDays, Map, Network, TrendingUp } from 'lucide-react'
+import { useEffect, useMemo, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { MetricCard } from '../../components/ui/MetricCard'
+import { formatInteger, missingValue } from '../../data/formatters'
+import { clearManifestCache, DataFetchError, loadManifest } from '../../data/repository'
+import type { DashboardManifest } from '../../types/domain'
 
-const metrics = [
-  { icon: Building2, value: '497', label: 'municípios', note: 'do Rio Grande do Sul' },
-  { icon: Map, value: '9', label: 'regiões funcionais', note: 'de planejamento' },
-  { icon: Network, value: '28', label: 'Coredes', note: 'Conselhos Regionais de Desenvolvimento' },
-  { icon: CalendarDays, value: '2021–2025', label: 'série histórica', note: '5 anos de dados disponíveis', accent: true },
-]
+
+function seriesLabel(manifest: DashboardManifest): string {
+  const { start, end } = manifest.yearRange
+  if (start === end) return String(start)
+  return `${start}\u2013${end}`
+}
 
 export function HomePage() {
+  const [manifest, setManifest] = useState<DashboardManifest | null>(null)
+  const [error, setError] = useState(false)
+
+  useEffect(() => {
+    let cancelled = false
+    void loadManifest()
+      .then((result) => {
+        if (!cancelled) {
+          setManifest(result)
+          setError(false)
+        }
+      })
+      .catch((cause) => {
+        if (cancelled) return
+        setError(true)
+        if (cause instanceof DataFetchError) {
+          clearManifestCache()
+        }
+      })
+    return () => {
+      cancelled = true
+    }
+  }, [])
+
+  const metrics = useMemo(() => {
+    const t = manifest?.totals
+    return [
+      {
+        icon: Building2,
+        value: t ? formatInteger(t.municipalities) : missingValue(),
+        label: 'municípios',
+        note: 'do Rio Grande do Sul',
+      },
+      {
+        icon: Map,
+        value: t ? formatInteger(t.regions) : missingValue(),
+        label: 'regiões funcionais',
+        note: 'de planejamento',
+      },
+      {
+        icon: Network,
+        value: t ? formatInteger(t.coredes) : missingValue(),
+        label: 'Coredes',
+        note: 'Conselhos Regionais de Desenvolvimento',
+      },
+      manifest
+        ? {
+            icon: CalendarDays,
+            value: seriesLabel(manifest),
+            label: 'série histórica',
+            note: `${manifest.availableYears.length} ano${manifest.availableYears.length > 1 ? 's' : ''} de dados disponíveis`,
+            accent: true,
+          }
+        : {
+            icon: CalendarDays,
+            value: missingValue(),
+            label: 'série histórica',
+            note: 'anos de dados disponíveis',
+            accent: true,
+          },
+    ]
+  }, [manifest])
+
   return (
     <div className="home-page">
       <section className="home-hero">
@@ -23,6 +90,10 @@ export function HomePage() {
       <section className="metric-grid" aria-label="Resumo do painel">
         {metrics.map((metric) => <MetricCard key={metric.label} {...metric} />)}
       </section>
+
+      {error ? (
+        <p className="page-note page-note--error" role="alert">Não foi possível carregar os totais do painel. Tente novamente.</p>
+      ) : null}
 
       <section className="home-section">
         <h2>Objetivo do painel</h2>

@@ -1,0 +1,46 @@
+{
+  "schemaVersion": "1.0.0",
+  "activeDataVersion": "v2025-sample",
+  "generatedAt": "2026-06-30T12:00:00Z",
+  "defaultYear": 2025,
+  "availableYears": [
+    2021,
+    2022,
+    2023,
+    2024,
+    2025
+  ],
+  "yearRange": {
+    "start": 2021,
+    "end": 2025
+  },
+  "totals": {
+    "municipalities": 497,
+    "regions": 9,
+    "coredes": 28
+  },
+  "files": {
+    "catalog": "catalog.json",
+    "regionsPattern": "regions/{year}.json",
+    "regionalRankingPattern": "rankings/{year}/{region}.json",
+    "municipalitySummaryPattern": "municipalities/{municipalityId}/summary.json",
+    "municipalityDimensionPattern": "municipalities/{municipalityId}/{dimension}.json"
+  },
+  "sample": {
+    "isSample": true,
+    "coveredRegionIds": [
+      "RF1",
+      "RF2",
+      "RF3",
+      "RF4",
+      "RF5",
+      "RF6",
+      "RF7",
+      "RF8",
+      "RF9"
+    ],
+    "detailedMunicipalityIds": [
+      "4314423"
+    ]
+  }
+}
