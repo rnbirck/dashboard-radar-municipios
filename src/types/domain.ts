@@ -240,8 +240,12 @@ export type MunicipalityIndicatorSeries = {
 
 export type MunicipalityDimensionData = {
   municipalityId: string
+  municipalityName: string
   regionId: string
+  regionName: string
+  corede: string
   dimensionId: DimensionId
+  dimensionName: string
   availableYears: number[]
   dimensionHistory: DimensionYearValue[]
   indicators: MunicipalityIndicatorSeries[]
