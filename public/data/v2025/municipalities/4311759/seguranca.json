@@ -1,0 +1,510 @@
+{
+  "schemaVersion": "1.0.0",
+  "dataVersion": "v2025",
+  "generatedAt": "2026-07-03T19:39:40+00:00Z",
+  "data": {
+    "municipalityId": "4311759",
+    "municipalityName": "Manoel Viana",
+    "regionId": "RF6",
+    "regionName": "Região Funcional 6",
+    "corede": "Fronteira Oeste",
+    "dimensionId": "seguranca",
+    "dimensionName": "Segurança",
+    "availableYears": [
+      2021,
+      2022,
+      2023,
+      2024,
+      2025
+    ],
+    "dimensionHistory": [
+      {
+        "year": 2021,
+        "score": 8.79972650704358,
+        "rank": 1,
+        "totalMunicipalitiesInRegion": 20
+      },
+      {
+        "year": 2022,
+        "score": 8.40314157940811,
+        "rank": 4,
+        "totalMunicipalitiesInRegion": 20
+      },
+      {
+        "year": 2023,
+        "score": 8.73192044080651,
+        "rank": 1,
+        "totalMunicipalitiesInRegion": 20
+      },
+      {
+        "year": 2024,
+        "score": 7.59852373316252,
+        "rank": 9,
+        "totalMunicipalitiesInRegion": 20
+      },
+      {
+        "year": 2025,
+        "score": 6.76393861508882,
+        "rank": 16,
+        "totalMunicipalitiesInRegion": 20
+      }
+    ],
+    "indicators": [
+      {
+        "indicatorId": "delitos_com_armas_por_10mil_hab",
+        "values": [
+          {
+            "year": 2021,
+            "score": 3.65394324640369,
+            "rank": 17,
+            "untiedRank": null,
+            "originalValue": 9.97008973080758,
+            "valueUsedForScore": -9.97008973080758,
+            "isImputed": false,
+            "regionalMedianScore": 7.333565821579571,
+            "regionalMedianOriginalValue": 6.20129816883372,
+            "regionalMedianSampleSize": 20
+          },
+          {
+            "year": 2022,
+            "score": 7.20404680437605,
+            "rank": 8,
+            "untiedRank": null,
+            "originalValue": 4.29922613929493,
+            "valueUsedForScore": -4.29922613929493,
+            "isImputed": false,
+            "regionalMedianScore": 6.862302062668094,
+            "regionalMedianOriginalValue": 4.73197322510546,
+            "regionalMedianSampleSize": 20
+          },
+          {
+            "year": 2023,
+            "score": 7.08133414370248,
+            "rank": 5,
+            "untiedRank": null,
+            "originalValue": 4.32588320115357,
+            "valueUsedForScore": -4.32588320115357,
+            "isImputed": false,
+            "regionalMedianScore": 5.715413356178665,
+            "regionalMedianOriginalValue": 6.026424768174725,
+            "regionalMedianSampleSize": 20
+          },
+          {
+            "year": 2024,
+            "score": 8.4836747168822,
+            "rank": 5,
+            "untiedRank": null,
+            "originalValue": 4.33714037877693,
+            "valueUsedForScore": -4.33714037877693,
+            "isImputed": false,
+            "regionalMedianScore": 7.583029239553024,
+            "regionalMedianOriginalValue": 5.3213986612915,
+            "regionalMedianSampleSize": 20
+          },
+          {
+            "year": 2025,
+            "score": 9.33407812163853,
+            "rank": 2,
+            "untiedRank": null,
+            "originalValue": 4.33839479392625,
+            "valueUsedForScore": -4.33839479392625,
+            "isImputed": false,
+            "regionalMedianScore": 7.523388743844871,
+            "regionalMedianOriginalValue": 6.56109797218516,
+            "regionalMedianSampleSize": 20
+          }
+        ]
+      },
+      {
+        "indicatorId": "furtos_por_10mil_hab",
+        "values": [
+          {
+            "year": 2021,
+            "score": 10.0,
+            "rank": 1,
+            "untiedRank": null,
+            "originalValue": 37.0317618572853,
+            "valueUsedForScore": -37.0317618572853,
+            "isImputed": false,
+            "regionalMedianScore": 7.02632523317143,
+            "regionalMedianOriginalValue": 95.15795372572865,
+            "regionalMedianSampleSize": 20
+          },
+          {
+            "year": 2022,
+            "score": 9.63213475797818,
+            "rank": 2,
+            "untiedRank": null,
+            "originalValue": 53.0237890513041,
+            "valueUsedForScore": -53.0237890513041,
+            "isImputed": false,
+            "regionalMedianScore": 7.03753598013361,
+            "regionalMedianOriginalValue": 84.29347149718745,
+            "regionalMedianSampleSize": 20
+          },
+          {
+            "year": 2023,
+            "score": 9.99183150747968,
+            "rank": 2,
+            "untiedRank": null,
+            "originalValue": 49.0266762797404,
+            "valueUsedForScore": -49.0266762797404,
+            "isImputed": false,
+            "regionalMedianScore": 6.981911992740381,
+            "regionalMedianOriginalValue": 88.1648395857273,
+            "regionalMedianSampleSize": 20
+          },
+          {
+            "year": 2024,
+            "score": 9.62893270897081,
+            "rank": 3,
+            "untiedRank": null,
+            "originalValue": 54.9371114645077,
+            "valueUsedForScore": -54.9371114645077,
+            "isImputed": false,
+            "regionalMedianScore": 8.65543584463645,
+            "regionalMedianOriginalValue": 75.4263486508668,
+            "regionalMedianSampleSize": 20
+          },
+          {
+            "year": 2025,
+            "score": 8.69417601706526,
+            "rank": 2,
+            "untiedRank": null,
+            "originalValue": 50.6146059291396,
+            "valueUsedForScore": -50.6146059291396,
+            "isImputed": false,
+            "regionalMedianScore": 7.017642952889185,
+            "regionalMedianOriginalValue": 74.90025950909799,
+            "regionalMedianSampleSize": 20
+          }
+        ]
+      },
+      {
+        "indicatorId": "homicidio_doloso_por_10mil_hab",
+        "values": [
+          {
+            "year": 2021,
+            "score": 10.0,
+            "rank": 1,
+            "untiedRank": null,
+            "originalValue": 0.0,
+            "valueUsedForScore": 0.0,
+            "isImputed": false,
+            "regionalMedianScore": 8.40422997457672,
+            "regionalMedianOriginalValue": 0.6396955971427309,
+            "regionalMedianSampleSize": 20
+          },
+          {
+            "year": 2022,
+            "score": 10.0,
+            "rank": 1,
+            "untiedRank": null,
+            "originalValue": 0.0,
+            "valueUsedForScore": 0.0,
+            "isImputed": false,
+            "regionalMedianScore": 8.24530322633958,
+            "regionalMedianOriginalValue": 0.698403356926355,
+            "regionalMedianSampleSize": 20
+          },
+          {
+            "year": 2023,
+            "score": 10.0,
+            "rank": 1,
+            "untiedRank": null,
+            "originalValue": 0.0,
+            "valueUsedForScore": 0.0,
+            "isImputed": false,
+            "regionalMedianScore": 8.77333232890398,
+            "regionalMedianOriginalValue": 0.452379114120702,
+            "regionalMedianSampleSize": 20
+          },
+          {
+            "year": 2024,
+            "score": 10.0,
+            "rank": 1,
+            "untiedRank": null,
+            "originalValue": 0.0,
+            "valueUsedForScore": 0.0,
+            "isImputed": false,
+            "regionalMedianScore": 7.00899462647099,
+            "regionalMedianOriginalValue": 0.9540277162012355,
+            "regionalMedianSampleSize": 20
+          },
+          {
+            "year": 2025,
+            "score": 3.73689437699221,
+            "rank": 18,
+            "untiedRank": null,
+            "originalValue": 1.44613159797542,
+            "valueUsedForScore": -1.44613159797542,
+            "isImputed": false,
+            "regionalMedianScore": 8.76039889787461,
+            "regionalMedianOriginalValue": 0.3739136226331205,
+            "regionalMedianSampleSize": 20
+          }
+        ]
+      },
+      {
+        "indicatorId": "roubos_por_10mil_hab",
+        "values": [
+          {
+            "year": 2021,
+            "score": 10.0,
+            "rank": 1,
+            "untiedRank": null,
+            "originalValue": 0.0,
+            "valueUsedForScore": 0.0,
+            "isImputed": false,
+            "regionalMedianScore": 7.539466627089765,
+            "regionalMedianOriginalValue": 5.948861350534955,
+            "regionalMedianSampleSize": 20
+          },
+          {
+            "year": 2022,
+            "score": 9.48519494975297,
+            "rank": 4,
+            "untiedRank": null,
+            "originalValue": 1.43307537976498,
+            "valueUsedForScore": -1.43307537976498,
+            "isImputed": false,
+            "regionalMedianScore": 7.6009370033052654,
+            "regionalMedianOriginalValue": 5.82440905996955,
+            "regionalMedianSampleSize": 20
+          },
+          {
+            "year": 2023,
+            "score": 10.0,
+            "rank": 1,
+            "untiedRank": null,
+            "originalValue": 0.0,
+            "valueUsedForScore": 0.0,
+            "isImputed": false,
+            "regionalMedianScore": 8.514275875838734,
+            "regionalMedianOriginalValue": 7.393825954085685,
+            "regionalMedianSampleSize": 20
+          },
+          {
+            "year": 2024,
+            "score": 10.0,
+            "rank": 1,
+            "untiedRank": null,
+            "originalValue": 0.0,
+            "valueUsedForScore": 0.0,
+            "isImputed": false,
+            "regionalMedianScore": 8.501747987032795,
+            "regionalMedianOriginalValue": 4.619170716298025,
+            "regionalMedianSampleSize": 20
+          },
+          {
+            "year": 2025,
+            "score": 10.0,
+            "rank": 1,
+            "untiedRank": null,
+            "originalValue": 0.0,
+            "valueUsedForScore": 0.0,
+            "isImputed": false,
+            "regionalMedianScore": 8.336341648500385,
+            "regionalMedianOriginalValue": 3.22144987027069,
+            "regionalMedianSampleSize": 20
+          }
+        ]
+      },
+      {
+        "indicatorId": "roubos_furtos_veiculos_por_10mil_veiculos",
+        "values": [
+          {
+            "year": 2021,
+            "score": 10.0,
+            "rank": 1,
+            "untiedRank": null,
+            "originalValue": 0.0,
+            "valueUsedForScore": 0.0,
+            "isImputed": false,
+            "regionalMedianScore": 7.512657522130761,
+            "regionalMedianOriginalValue": 4.073053093741115,
+            "regionalMedianSampleSize": 20
+          },
+          {
+            "year": 2022,
+            "score": 10.0,
+            "rank": 1,
+            "untiedRank": null,
+            "originalValue": 0.0,
+            "valueUsedForScore": 0.0,
+            "isImputed": false,
+            "regionalMedianScore": 7.5267258396731,
+            "regionalMedianOriginalValue": 3.7508191882378803,
+            "regionalMedianSampleSize": 20
+          },
+          {
+            "year": 2023,
+            "score": 6.80004454771896,
+            "rank": 13,
+            "untiedRank": null,
+            "originalValue": 6.62105495475612,
+            "valueUsedForScore": -6.62105495475612,
+            "isImputed": false,
+            "regionalMedianScore": 7.19957748419796,
+            "regionalMedianOriginalValue": 6.072184542263465,
+            "regionalMedianSampleSize": 20
+          },
+          {
+            "year": 2024,
+            "score": 7.07119202736971,
+            "rank": 14,
+            "untiedRank": null,
+            "originalValue": 4.29184549356223,
+            "valueUsedForScore": -4.29184549356223,
+            "isImputed": false,
+            "regionalMedianScore": 8.836707275459176,
+            "regionalMedianOriginalValue": 2.063905021340695,
+            "regionalMedianSampleSize": 20
+          },
+          {
+            "year": 2025,
+            "score": 8.19099070122391,
+            "rank": 7,
+            "untiedRank": null,
+            "originalValue": 2.09292591042277,
+            "valueUsedForScore": -2.09292591042277,
+            "isImputed": false,
+            "regionalMedianScore": 7.243612186764365,
+            "regionalMedianOriginalValue": 3.0760088879721152,
+            "regionalMedianSampleSize": 20
+          }
+        ]
+      },
+      {
+        "indicatorId": "estupro_por_10mil_mulheres",
+        "values": [
+          {
+            "year": 2021,
+            "score": 10.0,
+            "rank": 1,
+            "untiedRank": null,
+            "originalValue": 0.0,
+            "valueUsedForScore": 0.0,
+            "isImputed": false,
+            "regionalMedianScore": 6.49990195748385,
+            "regionalMedianOriginalValue": 3.765483160342745,
+            "regionalMedianSampleSize": 20
+          },
+          {
+            "year": 2022,
+            "score": 5.60343812902154,
+            "rank": 17,
+            "untiedRank": null,
+            "originalValue": 8.59598853868195,
+            "valueUsedForScore": -8.59598853868195,
+            "isImputed": false,
+            "regionalMedianScore": 8.510019586514126,
+            "regionalMedianOriginalValue": 3.359073004863005,
+            "regionalMedianSampleSize": 20
+          },
+          {
+            "year": 2023,
+            "score": 8.92421723907186,
+            "rank": 5,
+            "untiedRank": null,
+            "originalValue": 2.88350634371396,
+            "valueUsedForScore": -2.88350634371396,
+            "isImputed": false,
+            "regionalMedianScore": 7.923408144227495,
+            "regionalMedianOriginalValue": 4.10781374319658,
+            "regionalMedianSampleSize": 20
+          },
+          {
+            "year": 2024,
+            "score": 5.21825834301735,
+            "rank": 15,
+            "untiedRank": null,
+            "originalValue": 5.77367205542725,
+            "valueUsedForScore": -5.77367205542725,
+            "isImputed": false,
+            "regionalMedianScore": 7.572150931555054,
+            "regionalMedianOriginalValue": 3.7142268168561903,
+            "regionalMedianSampleSize": 20
+          },
+          {
+            "year": 2025,
+            "score": 2.0,
+            "rank": 19,
+            "untiedRank": null,
+            "originalValue": 8.65800865800866,
+            "valueUsedForScore": -8.65800865800866,
+            "isImputed": false,
+            "regionalMedianScore": 7.8390496131714045,
+            "regionalMedianOriginalValue": 3.408173748815755,
+            "regionalMedianSampleSize": 20
+          }
+        ]
+      },
+      {
+        "indicatorId": "ameaca_por_10mil_mulheres",
+        "values": [
+          {
+            "year": 2021,
+            "score": 5.59259572780025,
+            "rank": 17,
+            "untiedRank": null,
+            "originalValue": 62.7316794981466,
+            "valueUsedForScore": -62.7316794981466,
+            "isImputed": false,
+            "regionalMedianScore": 7.674860246194135,
+            "regionalMedianOriginalValue": 52.36702152501355,
+            "regionalMedianSampleSize": 20
+          },
+          {
+            "year": 2022,
+            "score": 4.24429946237118,
+            "rank": 17,
+            "untiedRank": null,
+            "originalValue": 51.5759312320917,
+            "valueUsedForScore": -51.5759312320917,
+            "isImputed": false,
+            "regionalMedianScore": 7.23920145118504,
+            "regionalMedianOriginalValue": 40.97568859652435,
+            "regionalMedianSampleSize": 20
+          },
+          {
+            "year": 2023,
+            "score": 7.39302960469383,
+            "rank": 8,
+            "untiedRank": null,
+            "originalValue": 43.2525951557093,
+            "valueUsedForScore": -43.2525951557093,
+            "isImputed": false,
+            "regionalMedianScore": 6.55306448346943,
+            "regionalMedianOriginalValue": 49.8058695869046,
+            "regionalMedianSampleSize": 20
+          },
+          {
+            "year": 2024,
+            "score": 1.0,
+            "rank": 20,
+            "untiedRank": null,
+            "originalValue": 75.0577367205543,
+            "valueUsedForScore": -75.0577367205543,
+            "isImputed": false,
+            "regionalMedianScore": 7.4811323909355405,
+            "regionalMedianOriginalValue": 41.83518834157475,
+            "regionalMedianSampleSize": 20
+          },
+          {
+            "year": 2025,
+            "score": 1.0,
+            "rank": 20,
+            "untiedRank": null,
+            "originalValue": 69.2640692640693,
+            "valueUsedForScore": -69.2640692640693,
+            "isImputed": false,
+            "regionalMedianScore": 6.983928142272285,
+            "regionalMedianOriginalValue": 46.87394217687745,
+            "regionalMedianSampleSize": 20
+          }
+        ]
+      }
+    ]
+  }
+}

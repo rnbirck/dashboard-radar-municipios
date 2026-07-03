@@ -1,6 +1,7 @@
 import { Building2, CircleHelp, Home, Map, Menu, Users, X } from 'lucide-react'
 import { useState } from 'react'
 import { NavLink } from 'react-router-dom'
+import unisinosLogo from '../../assets/unisinos-logo-white.png'
 
 const navItems = [
   { to: '/', label: 'Início', icon: Home, end: true },
@@ -14,9 +15,8 @@ export function TopNavigation() {
   return (
     <header className="topbar">
       <div className="topbar__inner">
-        <NavLink to="/" className="brand" aria-label="Radar dos Municípios do RS — página inicial">
-          <span className="brand__mark" aria-hidden="true">R</span>
-          <span className="brand__text">Radar dos Municípios <span>do RS</span></span>
+        <NavLink to="/" className="brand" aria-label="Unisinos - página inicial">
+          <img className="brand__logo" src={unisinosLogo} alt="Unisinos" />
         </NavLink>
 
         <button
@@ -45,10 +45,10 @@ export function TopNavigation() {
         </nav>
 
         <div className="topbar__actions">
-          <button className="help-action" type="button" title="Ajuda — em breve">
+          <a className="help-action" href="/#como-navegar">
             <CircleHelp size={18} aria-hidden="true" />
             <span>Ajuda</span>
-          </button>
+          </a>
           <button className="cei-action" type="button" title="Núcleo CEI — em breve">
             <Users size={18} aria-hidden="true" />
             <span>Núcleo CEI</span>

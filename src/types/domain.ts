@@ -60,11 +60,13 @@ export type DashboardManifest = {
   sample?: DataSampleMetadata
 }
 
-/** Metadados de amostra parcial. */
+/** Metadados de amostra/cobertura. */
 export type DataSampleMetadata = {
   isSample: boolean
   coveredRegionIds: string[]
   detailedMunicipalityIds: string[]
+  detailedMunicipalityCount?: number
+  detailedCoverage?: string
 }
 
 export type RegionCatalogEntry = {
@@ -198,6 +200,22 @@ export type MunicipalityDimensionHistory = {
   values: MunicipalityDimensionHistoryEntry[]
 }
 
+export type MunicipalityPopulationEstimate = {
+  year: number
+  value: number | null
+}
+
+export type MunicipalityGdpValue = {
+  year: number
+  valueBrl: number | null
+}
+
+export type MunicipalityProfile = {
+  populationEstimates: MunicipalityPopulationEstimate[]
+  gdpValues: MunicipalityGdpValue[]
+  areaKm2: number | null
+}
+
 export type MunicipalitySummaryData = {
   municipality: {
     id: string
@@ -209,6 +227,7 @@ export type MunicipalitySummaryData = {
   }
   availableYears: number[]
   latestYear: number
+  municipalProfile?: MunicipalityProfile
   yearlySummaries: MunicipalityYearSummary[]
   dimensionHistory: MunicipalityDimensionHistory[]
 }

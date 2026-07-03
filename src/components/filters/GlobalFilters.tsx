@@ -1,6 +1,6 @@
-import { RotateCcw } from 'lucide-react'
+import { RotateCcw, SlidersHorizontal } from 'lucide-react'
 import { useEffect, useMemo, useRef, useState } from 'react'
-import { useSearchParams } from 'react-router-dom'
+import { useNavigate, useSearchParams } from 'react-router-dom'
 import {
   clearManifestCache,
   DataNotFoundError,
@@ -26,6 +26,7 @@ function readStringParam(params: URLSearchParams, key: string): string {
 
 export function GlobalFilters({ compact = false }: GlobalFiltersProps) {
   const [params, setParams] = useSearchParams()
+  const navigate = useNavigate()
 
   const [years, setYears] = useState<number[]>([])
   const [regions, setRegions] = useState<Region[]>([])
@@ -56,8 +57,12 @@ export function GlobalFilters({ compact = false }: GlobalFiltersProps) {
             ? yearFromUrl
             : manifest.defaultYear
           const regionFromUrl = readStringParam(params, 'regiao')
+          const coredeFromUrl = readStringParam(params, 'corede')
+          const municipalityFromUrl = readStringParam(params, 'municipio')
           setYearInput(String(validYear))
           setRegion(regionFromUrl)
+          setCorede(coredeFromUrl)
+          setMunicipality(municipalityFromUrl)
           // Garante um ano inicial canônico na URL sem derrubar outros params.
           if (!params.has('ano') || Number(params.get('ano')) !== validYear) {
             const next = new URLSearchParams(params)
@@ -82,6 +87,19 @@ export function GlobalFilters({ compact = false }: GlobalFiltersProps) {
     }
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
+
+  // Mantém os controles alinhados à URL quando a navegação parte da tabela.
+  useEffect(() => {
+    if (!initialized.current) return
+    const nextYear = readYearParam(params)
+    const nextRegion = readStringParam(params, 'regiao')
+    const nextCorede = readStringParam(params, 'corede')
+    const nextMunicipality = readStringParam(params, 'municipio')
+    if (nextYear !== null && String(nextYear) !== yearInput) setYearInput(String(nextYear))
+    if (nextRegion !== region) setRegion(nextRegion)
+    if (nextCorede !== corede) setCorede(nextCorede)
+    if (nextMunicipality !== municipality) setMunicipality(nextMunicipality)
+  }, [params, yearInput, region, corede, municipality])
 
   // Carrega regiões independentemente (sempre via regions/2025.json).
   useEffect(() => {
@@ -129,10 +147,16 @@ export function GlobalFilters({ compact = false }: GlobalFiltersProps) {
     return () => { cancelled = true }
   }, [yearInput, region])
 
-  const filteredMunicipalities = useMemo(() => {
-    if (!region) return municipalities
-    return municipalities.filter((item) => item.regionId === region)
-  }, [municipalities, region])
+  const coredes = useMemo(() => {
+    const byId = new Map<string, string>()
+    for (const item of municipalities) byId.set(item.coredeId, item.coredeName)
+    return [...byId].sort((a, b) => a[1].localeCompare(b[1], 'pt-BR'))
+  }, [municipalities])
+
+  const filteredMunicipalities = useMemo(() => municipalities.filter((item) => {
+    if (region && item.regionId !== region) return false
+    return !corede || item.coredeId === corede
+  }), [municipalities, region, corede])
 
   function commitParam(key: string, value: string) {
     const next = new URLSearchParams(params)
@@ -158,6 +182,10 @@ export function GlobalFilters({ compact = false }: GlobalFiltersProps) {
     setRegion(next)
     setCorede('')
     setMunicipality('')
+    if (compact && next) {
+      navigate(`/municipios?ano=${encodeURIComponent(yearInput)}&regiao=${encodeURIComponent(next)}`)
+      return
+    }
     const nextParams = new URLSearchParams(params)
     nextParams.set('ano', yearInput)
     if (next) nextParams.set('regiao', next)
@@ -170,12 +198,11 @@ export function GlobalFilters({ compact = false }: GlobalFiltersProps) {
   function handleCoredeChange(next: string) {
     setCorede(next)
     setMunicipality('')
-    commitParam('corede', next)
-    if (next) {
-      const nextParams = new URLSearchParams(params)
-      nextParams.delete('municipio')
-      setParams(nextParams, { replace: false })
-    }
+    const nextParams = new URLSearchParams(params)
+    if (next) nextParams.set('corede', next)
+    else nextParams.delete('corede')
+    nextParams.delete('municipio')
+    setParams(nextParams, { replace: false })
   }
 
   function handleMunicipalityChange(next: string) {
@@ -203,6 +230,10 @@ export function GlobalFilters({ compact = false }: GlobalFiltersProps) {
       onSubmit={(event) => event.preventDefault()}
       aria-label="Filtros globais"
     >
+      <div className="global-filters__heading">
+        <span><SlidersHorizontal size={15} aria-hidden="true" /> Filtros de análise</span>
+        <small>{compact ? 'Escolha uma Região Funcional para abrir o ranking.' : 'Refine ano, território e município sem perder o contexto.'}</small>
+      </div>
       <div className="filter-field filter-field--year">
         <label htmlFor="filter-year">Ano</label>
         <select
@@ -216,7 +247,7 @@ export function GlobalFilters({ compact = false }: GlobalFiltersProps) {
         </select>
       </div>
       <div className="filter-field filter-field--region">
-        <label htmlFor="filter-region">Região funcional</label>
+        <label htmlFor="filter-region">Região Funcional</label>
         <select
           id="filter-region"
           value={region}
@@ -236,10 +267,9 @@ export function GlobalFilters({ compact = false }: GlobalFiltersProps) {
               id="filter-corede"
               value={corede}
               onChange={(event) => handleCoredeChange(event.target.value)}
-              disabled
             >
-              <option value="">Todos</option>
-              <option value="placeholder" disabled>Disponível com os dados anuais</option>
+              <option value="">Todos os Coredes</option>
+              {coredes.map(([id, name]) => <option key={id} value={id}>{name}</option>)}
             </select>
           </div>
           <div className="filter-field filter-field--municipality">

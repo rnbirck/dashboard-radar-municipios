@@ -14,6 +14,8 @@ import type {
   CatalogData,
   DashboardManifest,
   Municipality,
+  MunicipalityDimensionData,
+  MunicipalitySummaryData,
   Region,
   RegionsData,
   RegionalRankingData,
@@ -98,7 +100,7 @@ function assertEnvelopeFields(payload: unknown, url: string): asserts payload is
   if (!isString(payload.dataVersion)) {
     throw new DataContractError('dataVersion ausente ou inválido', url)
   }
-  if (!isString(payload.generatedAt) || !/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}Z$/.test(payload.generatedAt)) {
+  if (!isString(payload.generatedAt) || !/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}(?:Z|\+00:00Z)$/.test(payload.generatedAt)) {
     throw new DataContractError('generatedAt ausente ou fora do formato ISO 8601 UTC', url)
   }
   if (!isRecord(payload.data)) {
@@ -291,6 +293,31 @@ function assertRankingData(data: unknown, url: string): asserts data is Regional
   }
 }
 
+function assertMunicipalitySummaryData(data: unknown, url: string): asserts data is MunicipalitySummaryData {
+  if (!isRecord(data) || !isRecord(data.municipality)) {
+    throw new DataContractError('summary.data inválido', url)
+  }
+  const municipality = data.municipality
+  if ((!isString(municipality.id) && !isNumber(municipality.id)) || !isString(municipality.name)) {
+    throw new DataContractError('summary.municipality incompleto', url)
+  }
+  if (!Array.isArray(data.availableYears) || !Array.isArray(data.yearlySummaries) || !Array.isArray(data.dimensionHistory)) {
+    throw new DataContractError('summary.data incompleto', url)
+  }
+}
+
+function assertMunicipalityDimensionData(data: unknown, url: string): asserts data is MunicipalityDimensionData {
+  if (!isRecord(data)) {
+    throw new DataContractError('dimension.data inválido', url)
+  }
+  if ((!isString(data.municipalityId) && !isNumber(data.municipalityId)) || !isString(data.dimensionId)) {
+    throw new DataContractError('dimension.data sem município ou dimensão', url)
+  }
+  if (!Array.isArray(data.availableYears) || !Array.isArray(data.dimensionHistory) || !Array.isArray(data.indicators)) {
+    throw new DataContractError('dimension.data incompleto', url)
+  }
+}
+
 // ---------------------------------------------------------------------------
 // API pública
 // ---------------------------------------------------------------------------
@@ -363,6 +390,29 @@ export async function loadRegionalRanking(year: number, regionId: string): Promi
     .replace('{region}', regionFileSlug(regionId))
   const url = `${BASE}/${manifest.activeDataVersion}/${relative}`
   return readEnvelope<RegionalRankingData>(url, manifest.activeDataVersion, assertRankingData)
+}
+
+/** Nome explícito usado pelas telas; mantém o alias anterior por compatibilidade. */
+export const loadRankingByRegion = loadRegionalRanking
+
+export async function loadMunicipalitySummary(idMunicipio: string | number): Promise<MunicipalitySummaryData> {
+  const manifest = await loadManifest()
+  const municipalityId = String(idMunicipio)
+  const relative = manifest.files.municipalitySummaryPattern.replace('{municipalityId}', municipalityId)
+  const url = `${BASE}/${manifest.activeDataVersion}/${relative}`
+  return readEnvelope<MunicipalitySummaryData>(url, manifest.activeDataVersion, assertMunicipalitySummaryData)
+}
+
+export async function loadMunicipalityDimension(
+  idMunicipio: string | number,
+  dimensionSlug: string,
+): Promise<MunicipalityDimensionData> {
+  const manifest = await loadManifest()
+  const relative = manifest.files.municipalityDimensionPattern
+    .replace('{municipalityId}', String(idMunicipio))
+    .replace('{dimension}', dimensionSlug)
+  const url = `${BASE}/${manifest.activeDataVersion}/${relative}`
+  return readEnvelope<MunicipalityDimensionData>(url, manifest.activeDataVersion, assertMunicipalityDimensionData)
 }
 
 export async function listYears(): Promise<number[]> {

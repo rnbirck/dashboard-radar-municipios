@@ -719,7 +719,7 @@
         "description": "Relaciona o número de vínculos formais ativos à população do município.",
         "unit": "vínculos/hab",
         "format": "number",
-        "decimalPlaces": 1,
+        "decimalPlaces": 2,
         "multiplier": 1,
         "direction": "higher_is_better",
         "order": 4
@@ -740,8 +740,8 @@
       {
         "id": "geracao_emprego_per_capita",
         "dimensionId": "socioeconomico",
-        "name": "Geração de Emprego per Capita",
-        "shortName": "Geração empregos",
+        "name": "Geração de Emprego por 1.000 Habitantes",
+        "shortName": "Geração empregos/1.000 hab",
         "description": "Relaciona o saldo de empregos formais gerados ao tamanho da população.",
         "unit": "empregos/1.000 hab",
         "format": "number",

@@ -633,6 +633,8 @@ def _indicator_multiplier(indicator_id: str) -> int:
 def _indicator_decimal_places(indicator_id: str) -> int:
     if _indicator_format(indicator_id) == "currency":
         return 2
+    if indicator_id == "vinculos_per_capita":
+        return 2
     unit = _indicator_unit(indicator_id)
     if unit == "pontos":
         return 1
@@ -679,7 +681,7 @@ def _indicator_short_name(indicator_id: str) -> str | None:
         "renda_media": "Renda média",
         "vinculos_per_capita": "Vínculos per capita",
         "formalidade_mercado_trabalho": "Formalidade",
-        "geracao_emprego_per_capita": "Geração empregos",
+        "geracao_emprego_per_capita": "Geração empregos/1.000 hab",
         "vulnerabilidade_social": "Vulnerabilidade social",
         "proporcao_pessoas_baixa_renda": "Baixa renda",
     }
@@ -730,7 +732,7 @@ def _indicator_name(indicator_id: str, data: dict[str, Any]) -> str:
         "renda_media": "Renda Média",
         "vinculos_per_capita": "Vínculos Formais per Capita",
         "formalidade_mercado_trabalho": "Formalidade do Mercado de Trabalho",
-        "geracao_emprego_per_capita": "Geração de Emprego per Capita",
+        "geracao_emprego_per_capita": "Geração de Emprego por 1.000 Habitantes",
         "vulnerabilidade_social": "Vulnerabilidade Social",
         "proporcao_pessoas_baixa_renda": "Proporção de Pessoas de Baixa Renda",
     }

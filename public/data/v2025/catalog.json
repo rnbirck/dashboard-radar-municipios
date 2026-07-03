@@ -1,0 +1,4253 @@
+{
+  "schemaVersion": "1.0.0",
+  "dataVersion": "v2025",
+  "generatedAt": "2026-07-03T19:39:40+00:00Z",
+  "data": {
+    "regions": [
+      {
+        "id": "RF1",
+        "slug": "rf1",
+        "name": "Região Funcional 1",
+        "order": 1
+      },
+      {
+        "id": "RF2",
+        "slug": "rf2",
+        "name": "Região Funcional 2",
+        "order": 2
+      },
+      {
+        "id": "RF3",
+        "slug": "rf3",
+        "name": "Região Funcional 3",
+        "order": 3
+      },
+      {
+        "id": "RF4",
+        "slug": "rf4",
+        "name": "Região Funcional 4",
+        "order": 4
+      },
+      {
+        "id": "RF5",
+        "slug": "rf5",
+        "name": "Região Funcional 5",
+        "order": 5
+      },
+      {
+        "id": "RF6",
+        "slug": "rf6",
+        "name": "Região Funcional 6",
+        "order": 6
+      },
+      {
+        "id": "RF7",
+        "slug": "rf7",
+        "name": "Região Funcional 7",
+        "order": 7
+      },
+      {
+        "id": "RF8",
+        "slug": "rf8",
+        "name": "Região Funcional 8",
+        "order": 8
+      },
+      {
+        "id": "RF9",
+        "slug": "rf9",
+        "name": "Região Funcional 9",
+        "order": 9
+      }
+    ],
+    "coredes": [
+      {
+        "id": "centro_sul",
+        "name": "Centro-Sul",
+        "regionId": "RF1"
+      },
+      {
+        "id": "metropolitano_delta_do_jacui",
+        "name": "Metropolitano Delta do Jacuí",
+        "regionId": "RF1"
+      },
+      {
+        "id": "paranhana_encosta_da_serra",
+        "name": "Paranhana Encosta da Serra",
+        "regionId": "RF1"
+      },
+      {
+        "id": "vale_do_cai",
+        "name": "Vale do Caí",
+        "regionId": "RF1"
+      },
+      {
+        "id": "vale_do_rio_dos_sinos",
+        "name": "Vale do Rio dos Sinos",
+        "regionId": "RF1"
+      },
+      {
+        "id": "vale_do_rio_pardo",
+        "name": "Vale do Rio Pardo",
+        "regionId": "RF2"
+      },
+      {
+        "id": "vale_do_taquari",
+        "name": "Vale do Taquari",
+        "regionId": "RF2"
+      },
+      {
+        "id": "campos_de_cima_da_serra",
+        "name": "Campos de Cima da Serra",
+        "regionId": "RF3"
+      },
+      {
+        "id": "hortensias",
+        "name": "Hortênsias",
+        "regionId": "RF3"
+      },
+      {
+        "id": "serra",
+        "name": "Serra",
+        "regionId": "RF3"
+      },
+      {
+        "id": "litoral",
+        "name": "Litoral",
+        "regionId": "RF4"
+      },
+      {
+        "id": "sul",
+        "name": "Sul",
+        "regionId": "RF5"
+      },
+      {
+        "id": "campanha",
+        "name": "Campanha",
+        "regionId": "RF6"
+      },
+      {
+        "id": "fronteira_oeste",
+        "name": "Fronteira Oeste",
+        "regionId": "RF6"
+      },
+      {
+        "id": "celeiro",
+        "name": "Celeiro",
+        "regionId": "RF7"
+      },
+      {
+        "id": "fronteira_noroeste",
+        "name": "Fronteira Noroeste",
+        "regionId": "RF7"
+      },
+      {
+        "id": "missoes",
+        "name": "Missões",
+        "regionId": "RF7"
+      },
+      {
+        "id": "noroeste_colonial",
+        "name": "Noroeste Colonial",
+        "regionId": "RF7"
+      },
+      {
+        "id": "alto_jacui",
+        "name": "Alto Jacuí",
+        "regionId": "RF8"
+      },
+      {
+        "id": "central",
+        "name": "Central",
+        "regionId": "RF8"
+      },
+      {
+        "id": "jacui_centro",
+        "name": "Jacuí Centro",
+        "regionId": "RF8"
+      },
+      {
+        "id": "vale_do_jaguari",
+        "name": "Vale do Jaguari",
+        "regionId": "RF8"
+      },
+      {
+        "id": "alto_da_serra_do_botucarai",
+        "name": "Alto da Serra do Botucaraí",
+        "regionId": "RF9"
+      },
+      {
+        "id": "medio_alto_uruguai",
+        "name": "Médio Alto Uruguai",
+        "regionId": "RF9"
+      },
+      {
+        "id": "nordeste",
+        "name": "Nordeste",
+        "regionId": "RF9"
+      },
+      {
+        "id": "norte",
+        "name": "Norte",
+        "regionId": "RF9"
+      },
+      {
+        "id": "producao",
+        "name": "Produção",
+        "regionId": "RF9"
+      },
+      {
+        "id": "rio_da_varzea",
+        "name": "Rio da Várzea",
+        "regionId": "RF9"
+      }
+    ],
+    "municipalities": [
+      {
+        "id": "4315149",
+        "name": "Presidente Lucena",
+        "searchName": "presidente lucena",
+        "regionId": "RF1",
+        "coredeId": "paranhana_encosta_da_serra"
+      },
+      {
+        "id": "4308102",
+        "name": "Feliz",
+        "searchName": "feliz",
+        "regionId": "RF1",
+        "coredeId": "vale_do_cai"
+      },
+      {
+        "id": "4301651",
+        "name": "Barão",
+        "searchName": "barao",
+        "regionId": "RF1",
+        "coredeId": "vale_do_cai"
+      },
+      {
+        "id": "4322251",
+        "name": "Tupandi",
+        "searchName": "tupandi",
+        "regionId": "RF1",
+        "coredeId": "vale_do_cai"
+      },
+      {
+        "id": "4300570",
+        "name": "Alto Feliz",
+        "searchName": "alto feliz",
+        "regionId": "RF1",
+        "coredeId": "vale_do_cai"
+      },
+      {
+        "id": "4306403",
+        "name": "Dois Irmãos",
+        "searchName": "dois irmaos",
+        "regionId": "RF1",
+        "coredeId": "vale_do_rio_dos_sinos"
+      },
+      {
+        "id": "4318614",
+        "name": "São José do Sul",
+        "searchName": "sao jose do sul",
+        "regionId": "RF1",
+        "coredeId": "vale_do_cai"
+      },
+      {
+        "id": "4312476",
+        "name": "Morro Reuter",
+        "searchName": "morro reuter",
+        "regionId": "RF1",
+        "coredeId": "paranhana_encosta_da_serra"
+      },
+      {
+        "id": "4309555",
+        "name": "Harmonia",
+        "searchName": "harmonia",
+        "regionId": "RF1",
+        "coredeId": "vale_do_cai"
+      },
+      {
+        "id": "4316501",
+        "name": "Salvador do Sul",
+        "searchName": "salvador do sul",
+        "regionId": "RF1",
+        "coredeId": "vale_do_cai"
+      },
+      {
+        "id": "4310108",
+        "name": "Igrejinha",
+        "searchName": "igrejinha",
+        "regionId": "RF1",
+        "coredeId": "paranhana_encosta_da_serra"
+      },
+      {
+        "id": "4311627",
+        "name": "Lindolfo Collor",
+        "searchName": "lindolfo collor",
+        "regionId": "RF1",
+        "coredeId": "paranhana_encosta_da_serra"
+      },
+      {
+        "id": "4318481",
+        "name": "São José do Hortêncio",
+        "searchName": "sao jose do hortencio",
+        "regionId": "RF1",
+        "coredeId": "vale_do_cai"
+      },
+      {
+        "id": "4310801",
+        "name": "Ivoti",
+        "searchName": "ivoti",
+        "regionId": "RF1",
+        "coredeId": "vale_do_rio_dos_sinos"
+      },
+      {
+        "id": "4302352",
+        "name": "Bom Princípio",
+        "searchName": "bom principio",
+        "regionId": "RF1",
+        "coredeId": "vale_do_cai"
+      },
+      {
+        "id": "4322541",
+        "name": "Vale Real",
+        "searchName": "vale real",
+        "regionId": "RF1",
+        "coredeId": "vale_do_cai"
+      },
+      {
+        "id": "4311643",
+        "name": "Linha Nova",
+        "searchName": "linha nova",
+        "regionId": "RF1",
+        "coredeId": "vale_do_cai"
+      },
+      {
+        "id": "4303905",
+        "name": "Campo Bom",
+        "searchName": "campo bom",
+        "regionId": "RF1",
+        "coredeId": "vale_do_rio_dos_sinos"
+      },
+      {
+        "id": "4319752",
+        "name": "São Vendelino",
+        "searchName": "sao vendelino",
+        "regionId": "RF1",
+        "coredeId": "vale_do_cai"
+      },
+      {
+        "id": "4311791",
+        "name": "Maratá",
+        "searchName": "marata",
+        "regionId": "RF1",
+        "coredeId": "vale_do_cai"
+      },
+      {
+        "id": "4315750",
+        "name": "Riozinho",
+        "searchName": "riozinho",
+        "regionId": "RF1",
+        "coredeId": "paranhana_encosta_da_serra"
+      },
+      {
+        "id": "4319356",
+        "name": "São Pedro da Serra",
+        "searchName": "sao pedro da serra",
+        "regionId": "RF1",
+        "coredeId": "vale_do_cai"
+      },
+      {
+        "id": "4316956",
+        "name": "Santa Maria do Herval",
+        "searchName": "santa maria do herval",
+        "regionId": "RF1",
+        "coredeId": "paranhana_encosta_da_serra"
+      },
+      {
+        "id": "4313060",
+        "name": "Nova Hartz",
+        "searchName": "nova hartz",
+        "regionId": "RF1",
+        "coredeId": "vale_do_rio_dos_sinos"
+      },
+      {
+        "id": "4312401",
+        "name": "Montenegro",
+        "searchName": "montenegro",
+        "regionId": "RF1",
+        "coredeId": "vale_do_cai"
+      },
+      {
+        "id": "4307609",
+        "name": "Estância Velha",
+        "searchName": "estancia velha",
+        "regionId": "RF1",
+        "coredeId": "vale_do_rio_dos_sinos"
+      },
+      {
+        "id": "4321709",
+        "name": "Três Coroas",
+        "searchName": "tres coroas",
+        "regionId": "RF1",
+        "coredeId": "paranhana_encosta_da_serra"
+      },
+      {
+        "id": "4314035",
+        "name": "Pareci Novo",
+        "searchName": "pareci novo",
+        "regionId": "RF1",
+        "coredeId": "vale_do_cai"
+      },
+      {
+        "id": "4300877",
+        "name": "Araricá",
+        "searchName": "ararica",
+        "regionId": "RF1",
+        "coredeId": "vale_do_rio_dos_sinos"
+      },
+      {
+        "id": "4316006",
+        "name": "Rolante",
+        "searchName": "rolante",
+        "regionId": "RF1",
+        "coredeId": "paranhana_encosta_da_serra"
+      },
+      {
+        "id": "4317608",
+        "name": "Santo Antônio da Patrulha",
+        "searchName": "santo antonio da patrulha",
+        "regionId": "RF1",
+        "coredeId": "metropolitano_delta_do_jacui"
+      },
+      {
+        "id": "4305355",
+        "name": "Charqueadas",
+        "searchName": "charqueadas",
+        "regionId": "RF1",
+        "coredeId": "centro_sul"
+      },
+      {
+        "id": "4302659",
+        "name": "Brochier",
+        "searchName": "brochier",
+        "regionId": "RF1",
+        "coredeId": "vale_do_cai"
+      },
+      {
+        "id": "4309050",
+        "name": "Glorinha",
+        "searchName": "glorinha",
+        "regionId": "RF1",
+        "coredeId": "metropolitano_delta_do_jacui"
+      },
+      {
+        "id": "4307708",
+        "name": "Esteio",
+        "searchName": "esteio",
+        "regionId": "RF1",
+        "coredeId": "vale_do_rio_dos_sinos"
+      },
+      {
+        "id": "4319901",
+        "name": "Sapiranga",
+        "searchName": "sapiranga",
+        "regionId": "RF1",
+        "coredeId": "vale_do_rio_dos_sinos"
+      },
+      {
+        "id": "4314050",
+        "name": "Parobé",
+        "searchName": "parobe",
+        "regionId": "RF1",
+        "coredeId": "paranhana_encosta_da_serra"
+      },
+      {
+        "id": "4321204",
+        "name": "Taquara",
+        "searchName": "taquara",
+        "regionId": "RF1",
+        "coredeId": "paranhana_encosta_da_serra"
+      },
+      {
+        "id": "4313409",
+        "name": "Novo Hamburgo",
+        "searchName": "novo hamburgo",
+        "regionId": "RF1",
+        "coredeId": "vale_do_rio_dos_sinos"
+      },
+      {
+        "id": "4319505",
+        "name": "São Sebastião do Caí",
+        "searchName": "sao sebastiao do cai",
+        "regionId": "RF1",
+        "coredeId": "vale_do_cai"
+      },
+      {
+        "id": "4314803",
+        "name": "Portão",
+        "searchName": "portao",
+        "regionId": "RF1",
+        "coredeId": "vale_do_rio_dos_sinos"
+      },
+      {
+        "id": "4303509",
+        "name": "Camaquã",
+        "searchName": "camaqua",
+        "regionId": "RF1",
+        "coredeId": "centro_sul"
+      },
+      {
+        "id": "4322004",
+        "name": "Triunfo",
+        "searchName": "triunfo",
+        "regionId": "RF1",
+        "coredeId": "metropolitano_delta_do_jacui"
+      },
+      {
+        "id": "4312252",
+        "name": "Minas do Leão",
+        "searchName": "minas do leao",
+        "regionId": "RF1",
+        "coredeId": "centro_sul"
+      },
+      {
+        "id": "4306056",
+        "name": "Cristal",
+        "searchName": "cristal",
+        "regionId": "RF1",
+        "coredeId": "centro_sul"
+      },
+      {
+        "id": "4314902",
+        "name": "Porto Alegre",
+        "searchName": "porto alegre",
+        "regionId": "RF1",
+        "coredeId": "metropolitano_delta_do_jacui"
+      },
+      {
+        "id": "4320552",
+        "name": "Sertão Santana",
+        "searchName": "sertao santana",
+        "regionId": "RF1",
+        "coredeId": "centro_sul"
+      },
+      {
+        "id": "4313375",
+        "name": "Nova Santa Rita",
+        "searchName": "nova santa rita",
+        "regionId": "RF1",
+        "coredeId": "vale_do_rio_dos_sinos"
+      },
+      {
+        "id": "4318408",
+        "name": "São Jerônimo",
+        "searchName": "sao jeronimo",
+        "regionId": "RF1",
+        "coredeId": "centro_sul"
+      },
+      {
+        "id": "4300851",
+        "name": "Arambaré",
+        "searchName": "arambare",
+        "regionId": "RF1",
+        "coredeId": "centro_sul"
+      },
+      {
+        "id": "4302709",
+        "name": "Butiá",
+        "searchName": "butia",
+        "regionId": "RF1",
+        "coredeId": "centro_sul"
+      },
+      {
+        "id": "4320008",
+        "name": "Sapucaia do Sul",
+        "searchName": "sapucaia do sul",
+        "regionId": "RF1",
+        "coredeId": "vale_do_rio_dos_sinos"
+      },
+      {
+        "id": "4304689",
+        "name": "Capela de Santana",
+        "searchName": "capela de santana",
+        "regionId": "RF1",
+        "coredeId": "vale_do_cai"
+      },
+      {
+        "id": "4321105",
+        "name": "Tapes",
+        "searchName": "tapes",
+        "regionId": "RF1",
+        "coredeId": "centro_sul"
+      },
+      {
+        "id": "4303103",
+        "name": "Cachoeirinha",
+        "searchName": "cachoeirinha",
+        "regionId": "RF1",
+        "coredeId": "metropolitano_delta_do_jacui"
+      },
+      {
+        "id": "4306767",
+        "name": "Eldorado do Sul",
+        "searchName": "eldorado do sul",
+        "regionId": "RF1",
+        "coredeId": "metropolitano_delta_do_jacui"
+      },
+      {
+        "id": "4309308",
+        "name": "Guaíba",
+        "searchName": "guaiba",
+        "regionId": "RF1",
+        "coredeId": "metropolitano_delta_do_jacui"
+      },
+      {
+        "id": "4301750",
+        "name": "Barão do Triunfo",
+        "searchName": "barao do triunfo",
+        "regionId": "RF1",
+        "coredeId": "centro_sul"
+      },
+      {
+        "id": "4301909",
+        "name": "Barra do Ribeiro",
+        "searchName": "barra do ribeiro",
+        "regionId": "RF1",
+        "coredeId": "centro_sul"
+      },
+      {
+        "id": "4304606",
+        "name": "Canoas",
+        "searchName": "canoas",
+        "regionId": "RF1",
+        "coredeId": "vale_do_rio_dos_sinos"
+      },
+      {
+        "id": "4318705",
+        "name": "São Leopoldo",
+        "searchName": "sao leopoldo",
+        "regionId": "RF1",
+        "coredeId": "vale_do_rio_dos_sinos"
+      },
+      {
+        "id": "4309209",
+        "name": "Gravataí",
+        "searchName": "gravatai",
+        "regionId": "RF1",
+        "coredeId": "metropolitano_delta_do_jacui"
+      },
+      {
+        "id": "4305447",
+        "name": "Chuvisca",
+        "searchName": "chuvisca",
+        "regionId": "RF1",
+        "coredeId": "centro_sul"
+      },
+      {
+        "id": "4301107",
+        "name": "Arroio dos Ratos",
+        "searchName": "arroio dos ratos",
+        "regionId": "RF1",
+        "coredeId": "centro_sul"
+      },
+      {
+        "id": "4311981",
+        "name": "Mariana Pimentel",
+        "searchName": "mariana pimentel",
+        "regionId": "RF1",
+        "coredeId": "centro_sul"
+      },
+      {
+        "id": "4320354",
+        "name": "Sentinela do Sul",
+        "searchName": "sentinela do sul",
+        "regionId": "RF1",
+        "coredeId": "centro_sul"
+      },
+      {
+        "id": "4305173",
+        "name": "Cerro Grande do Sul",
+        "searchName": "cerro grande do sul",
+        "regionId": "RF1",
+        "coredeId": "centro_sul"
+      },
+      {
+        "id": "4306502",
+        "name": "Dom Feliciano",
+        "searchName": "dom feliciano",
+        "regionId": "RF1",
+        "coredeId": "centro_sul"
+      },
+      {
+        "id": "4323002",
+        "name": "Viamão",
+        "searchName": "viamao",
+        "regionId": "RF1",
+        "coredeId": "metropolitano_delta_do_jacui"
+      },
+      {
+        "id": "4300604",
+        "name": "Alvorada",
+        "searchName": "alvorada",
+        "regionId": "RF1",
+        "coredeId": "metropolitano_delta_do_jacui"
+      },
+      {
+        "id": "4312153",
+        "name": "Mato Leitão",
+        "searchName": "mato leitao",
+        "regionId": "RF2",
+        "coredeId": "vale_do_rio_pardo"
+      },
+      {
+        "id": "4323770",
+        "name": "Westfalia",
+        "searchName": "westfalia",
+        "regionId": "RF2",
+        "coredeId": "vale_do_taquari"
+      },
+      {
+        "id": "4310363",
+        "name": "Imigrante",
+        "searchName": "imigrante",
+        "regionId": "RF2",
+        "coredeId": "vale_do_taquari"
+      },
+      {
+        "id": "4305587",
+        "name": "Colinas",
+        "searchName": "colinas",
+        "regionId": "RF2",
+        "coredeId": "vale_do_taquari"
+      },
+      {
+        "id": "4306759",
+        "name": "Doutor Ricardo",
+        "searchName": "doutor ricardo",
+        "regionId": "RF2",
+        "coredeId": "vale_do_taquari"
+      },
+      {
+        "id": "4314753",
+        "name": "Poço das Antas",
+        "searchName": "poco das antas",
+        "regionId": "RF2",
+        "coredeId": "vale_do_taquari"
+      },
+      {
+        "id": "4316758",
+        "name": "Santa Clara do Sul",
+        "searchName": "santa clara do sul",
+        "regionId": "RF2",
+        "coredeId": "vale_do_taquari"
+      },
+      {
+        "id": "4308433",
+        "name": "Forquetinha",
+        "searchName": "forquetinha",
+        "regionId": "RF2",
+        "coredeId": "vale_do_taquari"
+      },
+      {
+        "id": "4321626",
+        "name": "Travesseiro",
+        "searchName": "travesseiro",
+        "regionId": "RF2",
+        "coredeId": "vale_do_taquari"
+      },
+      {
+        "id": "4305835",
+        "name": "Coqueiro Baixo",
+        "searchName": "coqueiro baixo",
+        "regionId": "RF2",
+        "coredeId": "vale_do_taquari"
+      },
+      {
+        "id": "4312609",
+        "name": "Muçum",
+        "searchName": "mucum",
+        "regionId": "RF2",
+        "coredeId": "vale_do_taquari"
+      },
+      {
+        "id": "4310306",
+        "name": "Ilópolis",
+        "searchName": "ilopolis",
+        "regionId": "RF2",
+        "coredeId": "vale_do_taquari"
+      },
+      {
+        "id": "4321451",
+        "name": "Teutônia",
+        "searchName": "teutonia",
+        "regionId": "RF2",
+        "coredeId": "vale_do_taquari"
+      },
+      {
+        "id": "4313003",
+        "name": "Nova Bréscia",
+        "searchName": "nova brescia",
+        "regionId": "RF2",
+        "coredeId": "vale_do_taquari"
+      },
+      {
+        "id": "4315206",
+        "name": "Putinga",
+        "searchName": "putinga",
+        "regionId": "RF2",
+        "coredeId": "vale_do_taquari"
+      },
+      {
+        "id": "4301008",
+        "name": "Arroio do Meio",
+        "searchName": "arroio do meio",
+        "regionId": "RF2",
+        "coredeId": "vale_do_taquari"
+      },
+      {
+        "id": "4307815",
+        "name": "Estrela Velha",
+        "searchName": "estrela velha",
+        "regionId": "RF2",
+        "coredeId": "vale_do_rio_pardo"
+      },
+      {
+        "id": "4320453",
+        "name": "Sério",
+        "searchName": "serio",
+        "regionId": "RF2",
+        "coredeId": "vale_do_taquari"
+      },
+      {
+        "id": "4322855",
+        "name": "Vespasiano Correa",
+        "searchName": "vespasiano correa",
+        "regionId": "RF2",
+        "coredeId": "vale_do_taquari"
+      },
+      {
+        "id": "4312054",
+        "name": "Marques de Souza",
+        "searchName": "marques de souza",
+        "regionId": "RF2",
+        "coredeId": "vale_do_taquari"
+      },
+      {
+        "id": "4315131",
+        "name": "Pouso Novo",
+        "searchName": "pouso novo",
+        "regionId": "RF2",
+        "coredeId": "vale_do_taquari"
+      },
+      {
+        "id": "4304697",
+        "name": "Capitão",
+        "searchName": "capitao",
+        "regionId": "RF2",
+        "coredeId": "vale_do_taquari"
+      },
+      {
+        "id": "4300703",
+        "name": "Anta Gorda",
+        "searchName": "anta gorda",
+        "regionId": "RF2",
+        "coredeId": "vale_do_taquari"
+      },
+      {
+        "id": "4302402",
+        "name": "Bom Retiro do Sul",
+        "searchName": "bom retiro do sul",
+        "regionId": "RF2",
+        "coredeId": "vale_do_taquari"
+      },
+      {
+        "id": "4301404",
+        "name": "Arvorezinha",
+        "searchName": "arvorezinha",
+        "regionId": "RF2",
+        "coredeId": "vale_do_taquari"
+      },
+      {
+        "id": "4306452",
+        "name": "Dois Lajeados",
+        "searchName": "dois lajeados",
+        "regionId": "RF2",
+        "coredeId": "vale_do_taquari"
+      },
+      {
+        "id": "4316808",
+        "name": "Santa Cruz do Sul",
+        "searchName": "santa cruz do sul",
+        "regionId": "RF2",
+        "coredeId": "vale_do_rio_pardo"
+      },
+      {
+        "id": "4311403",
+        "name": "Lajeado",
+        "searchName": "lajeado",
+        "regionId": "RF2",
+        "coredeId": "vale_do_taquari"
+      },
+      {
+        "id": "4311239",
+        "name": "Lagoa Bonita do Sul",
+        "searchName": "lagoa bonita do sul",
+        "regionId": "RF2",
+        "coredeId": "vale_do_rio_pardo"
+      },
+      {
+        "id": "4304614",
+        "name": "Canudos do Vale",
+        "searchName": "canudos do vale",
+        "regionId": "RF2",
+        "coredeId": "vale_do_taquari"
+      },
+      {
+        "id": "4306809",
+        "name": "Encantado",
+        "searchName": "encantado",
+        "regionId": "RF2",
+        "coredeId": "vale_do_taquari"
+      },
+      {
+        "id": "4315156",
+        "name": "Progresso",
+        "searchName": "progresso",
+        "regionId": "RF2",
+        "coredeId": "vale_do_taquari"
+      },
+      {
+        "id": "4320701",
+        "name": "Sobradinho",
+        "searchName": "sobradinho",
+        "regionId": "RF2",
+        "coredeId": "vale_do_rio_pardo"
+      },
+      {
+        "id": "4314076",
+        "name": "Passo do Sobrado",
+        "searchName": "passo do sobrado",
+        "regionId": "RF2",
+        "coredeId": "vale_do_rio_pardo"
+      },
+      {
+        "id": "4306205",
+        "name": "Cruzeiro do Sul",
+        "searchName": "cruzeiro do sul",
+        "regionId": "RF2",
+        "coredeId": "vale_do_taquari"
+      },
+      {
+        "id": "4320859",
+        "name": "Tabaí",
+        "searchName": "tabai",
+        "regionId": "RF2",
+        "coredeId": "vale_do_taquari"
+      },
+      {
+        "id": "4313953",
+        "name": "Pantano Grande",
+        "searchName": "pantano grande",
+        "regionId": "RF2",
+        "coredeId": "vale_do_rio_pardo"
+      },
+      {
+        "id": "4307807",
+        "name": "Estrela",
+        "searchName": "estrela",
+        "regionId": "RF2",
+        "coredeId": "vale_do_taquari"
+      },
+      {
+        "id": "4302451",
+        "name": "Boqueirão do Leão",
+        "searchName": "boqueirao do leao",
+        "regionId": "RF2",
+        "coredeId": "vale_do_rio_pardo"
+      },
+      {
+        "id": "4308078",
+        "name": "Fazenda Vilanova",
+        "searchName": "fazenda vilanova",
+        "regionId": "RF2",
+        "coredeId": "vale_do_taquari"
+      },
+      {
+        "id": "4314159",
+        "name": "Paverama",
+        "searchName": "paverama",
+        "regionId": "RF2",
+        "coredeId": "vale_do_taquari"
+      },
+      {
+        "id": "4309571",
+        "name": "Herveiras",
+        "searchName": "herveiras",
+        "regionId": "RF2",
+        "coredeId": "vale_do_rio_pardo"
+      },
+      {
+        "id": "4309753",
+        "name": "Ibarama",
+        "searchName": "ibarama",
+        "regionId": "RF2",
+        "coredeId": "vale_do_rio_pardo"
+      },
+      {
+        "id": "4315453",
+        "name": "Relvado",
+        "searchName": "relvado",
+        "regionId": "RF2",
+        "coredeId": "vale_do_taquari"
+      },
+      {
+        "id": "4322707",
+        "name": "Vera Cruz",
+        "searchName": "vera cruz",
+        "regionId": "RF2",
+        "coredeId": "vale_do_rio_pardo"
+      },
+      {
+        "id": "4301206",
+        "name": "Arroio do Tigre",
+        "searchName": "arroio do tigre",
+        "regionId": "RF2",
+        "coredeId": "vale_do_rio_pardo"
+      },
+      {
+        "id": "4321303",
+        "name": "Taquari",
+        "searchName": "taquari",
+        "regionId": "RF2",
+        "coredeId": "vale_do_taquari"
+      },
+      {
+        "id": "4315800",
+        "name": "Roca Sales",
+        "searchName": "roca sales",
+        "regionId": "RF2",
+        "coredeId": "vale_do_taquari"
+      },
+      {
+        "id": "4322608",
+        "name": "Venâncio Aires",
+        "searchName": "venancio aires",
+        "regionId": "RF2",
+        "coredeId": "vale_do_rio_pardo"
+      },
+      {
+        "id": "4322152",
+        "name": "Tunas",
+        "searchName": "tunas",
+        "regionId": "RF2",
+        "coredeId": "vale_do_rio_pardo"
+      },
+      {
+        "id": "4322525",
+        "name": "Vale Verde",
+        "searchName": "vale verde",
+        "regionId": "RF2",
+        "coredeId": "vale_do_rio_pardo"
+      },
+      {
+        "id": "4314068",
+        "name": "Passa Sete",
+        "searchName": "passa sete",
+        "regionId": "RF2",
+        "coredeId": "vale_do_rio_pardo"
+      },
+      {
+        "id": "4322533",
+        "name": "Vale do Sol",
+        "searchName": "vale do sol",
+        "regionId": "RF2",
+        "coredeId": "vale_do_rio_pardo"
+      },
+      {
+        "id": "4320263",
+        "name": "Segredo",
+        "searchName": "segredo",
+        "regionId": "RF2",
+        "coredeId": "vale_do_rio_pardo"
+      },
+      {
+        "id": "4304200",
+        "name": "Candelária",
+        "searchName": "candelaria",
+        "regionId": "RF2",
+        "coredeId": "vale_do_rio_pardo"
+      },
+      {
+        "id": "4320677",
+        "name": "Sinimbu",
+        "searchName": "sinimbu",
+        "regionId": "RF2",
+        "coredeId": "vale_do_rio_pardo"
+      },
+      {
+        "id": "4315701",
+        "name": "Rio Pardo",
+        "searchName": "rio pardo",
+        "regionId": "RF2",
+        "coredeId": "vale_do_rio_pardo"
+      },
+      {
+        "id": "4306908",
+        "name": "Encruzilhada do Sul",
+        "searchName": "encruzilhada do sul",
+        "regionId": "RF2",
+        "coredeId": "vale_do_rio_pardo"
+      },
+      {
+        "id": "4308805",
+        "name": "General Câmara",
+        "searchName": "general camara",
+        "regionId": "RF2",
+        "coredeId": "vale_do_rio_pardo"
+      },
+      {
+        "id": "4312351",
+        "name": "Montauri",
+        "searchName": "montauri",
+        "regionId": "RF3",
+        "coredeId": "serra"
+      },
+      {
+        "id": "4314423",
+        "name": "Picada Café",
+        "searchName": "picada cafe",
+        "regionId": "RF3",
+        "coredeId": "hortensias"
+      },
+      {
+        "id": "4309258",
+        "name": "Guabiju",
+        "searchName": "guabiju",
+        "regionId": "RF3",
+        "coredeId": "serra"
+      },
+      {
+        "id": "4312807",
+        "name": "Nova Araçá",
+        "searchName": "nova araca",
+        "regionId": "RF3",
+        "coredeId": "serra"
+      },
+      {
+        "id": "4322350",
+        "name": "União da Serra",
+        "searchName": "uniao da serra",
+        "regionId": "RF3",
+        "coredeId": "serra"
+      },
+      {
+        "id": "4308201",
+        "name": "Flores da Cunha",
+        "searchName": "flores da cunha",
+        "regionId": "RF3",
+        "coredeId": "serra"
+      },
+      {
+        "id": "4307864",
+        "name": "Fagundes Varela",
+        "searchName": "fagundes varela",
+        "regionId": "RF3",
+        "coredeId": "serra"
+      },
+      {
+        "id": "4313300",
+        "name": "Nova Prata",
+        "searchName": "nova prata",
+        "regionId": "RF3",
+        "coredeId": "serra"
+      },
+      {
+        "id": "4314001",
+        "name": "Paraí",
+        "searchName": "parai",
+        "regionId": "RF3",
+        "coredeId": "serra"
+      },
+      {
+        "id": "4320404",
+        "name": "Serafina Corrêa",
+        "searchName": "serafina correa",
+        "regionId": "RF3",
+        "coredeId": "serra"
+      },
+      {
+        "id": "4304804",
+        "name": "Carlos Barbosa",
+        "searchName": "carlos barbosa",
+        "regionId": "RF3",
+        "coredeId": "serra"
+      },
+      {
+        "id": "4313201",
+        "name": "Nova Petrópolis",
+        "searchName": "nova petropolis",
+        "regionId": "RF3",
+        "coredeId": "hortensias"
+      },
+      {
+        "id": "4308607",
+        "name": "Garibaldi",
+        "searchName": "garibaldi",
+        "regionId": "RF3",
+        "coredeId": "serra"
+      },
+      {
+        "id": "4323309",
+        "name": "Vila Flores",
+        "searchName": "vila flores",
+        "regionId": "RF3",
+        "coredeId": "serra"
+      },
+      {
+        "id": "4315172",
+        "name": "Protásio Alves",
+        "searchName": "protasio alves",
+        "regionId": "RF3",
+        "coredeId": "serra"
+      },
+      {
+        "id": "4309100",
+        "name": "Gramado",
+        "searchName": "gramado",
+        "regionId": "RF3",
+        "coredeId": "hortensias"
+      },
+      {
+        "id": "4319000",
+        "name": "São Marcos",
+        "searchName": "sao marcos",
+        "regionId": "RF3",
+        "coredeId": "serra"
+      },
+      {
+        "id": "4309407",
+        "name": "Guaporé",
+        "searchName": "guapore",
+        "regionId": "RF3",
+        "coredeId": "serra"
+      },
+      {
+        "id": "4322806",
+        "name": "Veranópolis",
+        "searchName": "veranopolis",
+        "regionId": "RF3",
+        "coredeId": "serra"
+      },
+      {
+        "id": "4302253",
+        "name": "Boa Vista do Sul",
+        "searchName": "boa vista do sul",
+        "regionId": "RF3",
+        "coredeId": "serra"
+      },
+      {
+        "id": "4307906",
+        "name": "Farroupilha",
+        "searchName": "farroupilha",
+        "regionId": "RF3",
+        "coredeId": "serra"
+      },
+      {
+        "id": "4300802",
+        "name": "Antônio Prado",
+        "searchName": "antonio prado",
+        "regionId": "RF3",
+        "coredeId": "serra"
+      },
+      {
+        "id": "4312906",
+        "name": "Nova Bassano",
+        "searchName": "nova bassano",
+        "regionId": "RF3",
+        "coredeId": "serra"
+      },
+      {
+        "id": "4323606",
+        "name": "Vista Alegre do Prata",
+        "searchName": "vista alegre do prata",
+        "regionId": "RF3",
+        "coredeId": "serra"
+      },
+      {
+        "id": "4318440",
+        "name": "São Jorge",
+        "searchName": "sao jorge",
+        "regionId": "RF3",
+        "coredeId": "serra"
+      },
+      {
+        "id": "4319711",
+        "name": "São Valentim do Sul",
+        "searchName": "sao valentim do sul",
+        "regionId": "RF3",
+        "coredeId": "serra"
+      },
+      {
+        "id": "4305934",
+        "name": "Coronel Pilar",
+        "searchName": "coronel pilar",
+        "regionId": "RF3",
+        "coredeId": "serra"
+      },
+      {
+        "id": "4312385",
+        "name": "Monte Belo do Sul",
+        "searchName": "monte belo do sul",
+        "regionId": "RF3",
+        "coredeId": "serra"
+      },
+      {
+        "id": "4314548",
+        "name": "Pinto Bandeira",
+        "searchName": "pinto bandeira",
+        "regionId": "RF3",
+        "coredeId": "serra"
+      },
+      {
+        "id": "4317251",
+        "name": "Santa Tereza",
+        "searchName": "santa tereza",
+        "regionId": "RF3",
+        "coredeId": "serra"
+      },
+      {
+        "id": "4314464",
+        "name": "Pinhal da Serra",
+        "searchName": "pinhal da serra",
+        "regionId": "RF3",
+        "coredeId": "campos_de_cima_da_serra"
+      },
+      {
+        "id": "4300661",
+        "name": "André da Rocha",
+        "searchName": "andre da rocha",
+        "regionId": "RF3",
+        "coredeId": "campos_de_cima_da_serra"
+      },
+      {
+        "id": "4313086",
+        "name": "Nova Pádua",
+        "searchName": "nova padua",
+        "regionId": "RF3",
+        "coredeId": "serra"
+      },
+      {
+        "id": "4318622",
+        "name": "São José dos Ausentes",
+        "searchName": "sao jose dos ausentes",
+        "regionId": "RF3",
+        "coredeId": "campos_de_cima_da_serra"
+      },
+      {
+        "id": "4310439",
+        "name": "Ipê",
+        "searchName": "ipe",
+        "regionId": "RF3",
+        "coredeId": "campos_de_cima_da_serra"
+      },
+      {
+        "id": "4305959",
+        "name": "Cotiporã",
+        "searchName": "cotipora",
+        "regionId": "RF3",
+        "coredeId": "serra"
+      },
+      {
+        "id": "4313359",
+        "name": "Nova Roma do Sul",
+        "searchName": "nova roma do sul",
+        "regionId": "RF3",
+        "coredeId": "serra"
+      },
+      {
+        "id": "4303608",
+        "name": "Cambará do Sul",
+        "searchName": "cambara do sul",
+        "regionId": "RF3",
+        "coredeId": "hortensias"
+      },
+      {
+        "id": "4302105",
+        "name": "Bento Gonçalves",
+        "searchName": "bento goncalves",
+        "regionId": "RF3",
+        "coredeId": "serra"
+      },
+      {
+        "id": "4305108",
+        "name": "Caxias do Sul",
+        "searchName": "caxias do sul",
+        "regionId": "RF3",
+        "coredeId": "serra"
+      },
+      {
+        "id": "4312617",
+        "name": "Muitos Capões",
+        "searchName": "muitos capoes",
+        "regionId": "RF3",
+        "coredeId": "campos_de_cima_da_serra"
+      },
+      {
+        "id": "4312377",
+        "name": "Monte Alegre dos Campos",
+        "searchName": "monte alegre dos campos",
+        "regionId": "RF3",
+        "coredeId": "campos_de_cima_da_serra"
+      },
+      {
+        "id": "4304408",
+        "name": "Canela",
+        "searchName": "canela",
+        "regionId": "RF3",
+        "coredeId": "hortensias"
+      },
+      {
+        "id": "4322509",
+        "name": "Vacaria",
+        "searchName": "vacaria",
+        "regionId": "RF3",
+        "coredeId": "campos_de_cima_da_serra"
+      },
+      {
+        "id": "4318200",
+        "name": "São Francisco de Paula",
+        "searchName": "sao francisco de paula",
+        "regionId": "RF3",
+        "coredeId": "hortensias"
+      },
+      {
+        "id": "4311122",
+        "name": "Jaquirana",
+        "searchName": "jaquirana",
+        "regionId": "RF3",
+        "coredeId": "hortensias"
+      },
+      {
+        "id": "4302303",
+        "name": "Bom Jesus",
+        "searchName": "bom jesus",
+        "regionId": "RF3",
+        "coredeId": "campos_de_cima_da_serra"
+      },
+      {
+        "id": "4303673",
+        "name": "Campestre da Serra",
+        "searchName": "campestre da serra",
+        "regionId": "RF3",
+        "coredeId": "campos_de_cima_da_serra"
+      },
+      {
+        "id": "4307401",
+        "name": "Esmeralda",
+        "searchName": "esmeralda",
+        "regionId": "RF3",
+        "coredeId": "campos_de_cima_da_serra"
+      },
+      {
+        "id": "4304671",
+        "name": "Capivari do Sul",
+        "searchName": "capivari do sul",
+        "regionId": "RF4",
+        "coredeId": "litoral"
+      },
+      {
+        "id": "4312443",
+        "name": "Morrinhos do Sul",
+        "searchName": "morrinhos do sul",
+        "regionId": "RF4",
+        "coredeId": "litoral"
+      },
+      {
+        "id": "4321832",
+        "name": "Três Forquilhas",
+        "searchName": "tres forquilhas",
+        "regionId": "RF4",
+        "coredeId": "litoral"
+      },
+      {
+        "id": "4306551",
+        "name": "Dom Pedro de Alcântara",
+        "searchName": "dom pedro de alcantara",
+        "regionId": "RF4",
+        "coredeId": "litoral"
+      },
+      {
+        "id": "4321667",
+        "name": "Três Cachoeiras",
+        "searchName": "tres cachoeiras",
+        "regionId": "RF4",
+        "coredeId": "litoral"
+      },
+      {
+        "id": "4321501",
+        "name": "Torres",
+        "searchName": "torres",
+        "regionId": "RF4",
+        "coredeId": "litoral"
+      },
+      {
+        "id": "4310652",
+        "name": "Itati",
+        "searchName": "itati",
+        "regionId": "RF4",
+        "coredeId": "litoral"
+      },
+      {
+        "id": "4323804",
+        "name": "Xangri-lá",
+        "searchName": "xangri-la",
+        "regionId": "RF4",
+        "coredeId": "litoral"
+      },
+      {
+        "id": "4313508",
+        "name": "Osório",
+        "searchName": "osorio",
+        "regionId": "RF4",
+        "coredeId": "litoral"
+      },
+      {
+        "id": "4301057",
+        "name": "Arroio do Sal",
+        "searchName": "arroio do sal",
+        "regionId": "RF4",
+        "coredeId": "litoral"
+      },
+      {
+        "id": "4311734",
+        "name": "Mampituba",
+        "searchName": "mampituba",
+        "regionId": "RF4",
+        "coredeId": "litoral"
+      },
+      {
+        "id": "4304713",
+        "name": "Caraá",
+        "searchName": "caraa",
+        "regionId": "RF4",
+        "coredeId": "litoral"
+      },
+      {
+        "id": "4312500",
+        "name": "Mostardas",
+        "searchName": "mostardas",
+        "regionId": "RF4",
+        "coredeId": "litoral"
+      },
+      {
+        "id": "4311775",
+        "name": "Maquiné",
+        "searchName": "maquine",
+        "regionId": "RF4",
+        "coredeId": "litoral"
+      },
+      {
+        "id": "4310330",
+        "name": "Imbé",
+        "searchName": "imbe",
+        "regionId": "RF4",
+        "coredeId": "litoral"
+      },
+      {
+        "id": "4321436",
+        "name": "Terra de Areia",
+        "searchName": "terra de areia",
+        "regionId": "RF4",
+        "coredeId": "litoral"
+      },
+      {
+        "id": "4304630",
+        "name": "Capão da Canoa",
+        "searchName": "capao da canoa",
+        "regionId": "RF4",
+        "coredeId": "litoral"
+      },
+      {
+        "id": "4313656",
+        "name": "Palmares do Sul",
+        "searchName": "palmares do sul",
+        "regionId": "RF4",
+        "coredeId": "litoral"
+      },
+      {
+        "id": "4301636",
+        "name": "Balneário Pinhal",
+        "searchName": "balneario pinhal",
+        "regionId": "RF4",
+        "coredeId": "litoral"
+      },
+      {
+        "id": "4321600",
+        "name": "Tramandaí",
+        "searchName": "tramandai",
+        "regionId": "RF4",
+        "coredeId": "litoral"
+      },
+      {
+        "id": "4305454",
+        "name": "Cidreira",
+        "searchName": "cidreira",
+        "regionId": "RF4",
+        "coredeId": "litoral"
+      },
+      {
+        "id": "4301073",
+        "name": "Arroio do Padre",
+        "searchName": "arroio do padre",
+        "regionId": "RF5",
+        "coredeId": "sul"
+      },
+      {
+        "id": "4322327",
+        "name": "Turuçu",
+        "searchName": "turucu",
+        "regionId": "RF5",
+        "coredeId": "sul"
+      },
+      {
+        "id": "4312450",
+        "name": "Morro Redondo",
+        "searchName": "morro redondo",
+        "regionId": "RF5",
+        "coredeId": "sul"
+      },
+      {
+        "id": "4321352",
+        "name": "Tavares",
+        "searchName": "tavares",
+        "regionId": "RF5",
+        "coredeId": "sul"
+      },
+      {
+        "id": "4301305",
+        "name": "Arroio Grande",
+        "searchName": "arroio grande",
+        "regionId": "RF5",
+        "coredeId": "sul"
+      },
+      {
+        "id": "4318804",
+        "name": "São Lourenço do Sul",
+        "searchName": "sao lourenco do sul",
+        "regionId": "RF5",
+        "coredeId": "sul"
+      },
+      {
+        "id": "4317301",
+        "name": "Santa Vitória do Palmar",
+        "searchName": "santa vitoria do palmar",
+        "regionId": "RF5",
+        "coredeId": "sul"
+      },
+      {
+        "id": "4314209",
+        "name": "Pedro Osório",
+        "searchName": "pedro osorio",
+        "regionId": "RF5",
+        "coredeId": "sul"
+      },
+      {
+        "id": "4305439",
+        "name": "Chuí",
+        "searchName": "chui",
+        "regionId": "RF5",
+        "coredeId": "sul"
+      },
+      {
+        "id": "4314506",
+        "name": "Pinheiro Machado",
+        "searchName": "pinheiro machado",
+        "regionId": "RF5",
+        "coredeId": "sul"
+      },
+      {
+        "id": "4314407",
+        "name": "Pelotas",
+        "searchName": "pelotas",
+        "regionId": "RF5",
+        "coredeId": "sul"
+      },
+      {
+        "id": "4304507",
+        "name": "Canguçu",
+        "searchName": "cangucu",
+        "regionId": "RF5",
+        "coredeId": "sul"
+      },
+      {
+        "id": "4307104",
+        "name": "Herval",
+        "searchName": "herval",
+        "regionId": "RF5",
+        "coredeId": "sul"
+      },
+      {
+        "id": "4315602",
+        "name": "Rio Grande",
+        "searchName": "rio grande",
+        "regionId": "RF5",
+        "coredeId": "sul"
+      },
+      {
+        "id": "4314175",
+        "name": "Pedras Altas",
+        "searchName": "pedras altas",
+        "regionId": "RF5",
+        "coredeId": "sul"
+      },
+      {
+        "id": "4300638",
+        "name": "Amaral Ferrador",
+        "searchName": "amaral ferrador",
+        "regionId": "RF5",
+        "coredeId": "sul"
+      },
+      {
+        "id": "4318507",
+        "name": "São José do Norte",
+        "searchName": "sao jose do norte",
+        "regionId": "RF5",
+        "coredeId": "sul"
+      },
+      {
+        "id": "4314605",
+        "name": "Piratini",
+        "searchName": "piratini",
+        "regionId": "RF5",
+        "coredeId": "sul"
+      },
+      {
+        "id": "4305124",
+        "name": "Cerrito",
+        "searchName": "cerrito",
+        "regionId": "RF5",
+        "coredeId": "sul"
+      },
+      {
+        "id": "4311007",
+        "name": "Jaguarão",
+        "searchName": "jaguarao",
+        "regionId": "RF5",
+        "coredeId": "sul"
+      },
+      {
+        "id": "4304663",
+        "name": "Capão do Leão",
+        "searchName": "capao do leao",
+        "regionId": "RF5",
+        "coredeId": "sul"
+      },
+      {
+        "id": "4317004",
+        "name": "Santana da Boa Vista",
+        "searchName": "santana da boa vista",
+        "regionId": "RF5",
+        "coredeId": "sul"
+      },
+      {
+        "id": "4318002",
+        "name": "São Borja",
+        "searchName": "sao borja",
+        "regionId": "RF6",
+        "coredeId": "fronteira_oeste"
+      },
+      {
+        "id": "4310553",
+        "name": "Itacurubi",
+        "searchName": "itacurubi",
+        "regionId": "RF6",
+        "coredeId": "fronteira_oeste"
+      },
+      {
+        "id": "4301875",
+        "name": "Barra do Quaraí",
+        "searchName": "barra do quarai",
+        "regionId": "RF6",
+        "coredeId": "fronteira_oeste"
+      },
+      {
+        "id": "4300034",
+        "name": "Aceguá",
+        "searchName": "acegua",
+        "regionId": "RF6",
+        "coredeId": "campanha"
+      },
+      {
+        "id": "4311502",
+        "name": "Lavras do Sul",
+        "searchName": "lavras do sul",
+        "regionId": "RF6",
+        "coredeId": "campanha"
+      },
+      {
+        "id": "4315305",
+        "name": "Quaraí",
+        "searchName": "quarai",
+        "regionId": "RF6",
+        "coredeId": "fronteira_oeste"
+      },
+      {
+        "id": "4311759",
+        "name": "Manoel Viana",
+        "searchName": "manoel viana",
+        "regionId": "RF6",
+        "coredeId": "fronteira_oeste"
+      },
+      {
+        "id": "4310603",
+        "name": "Itaqui",
+        "searchName": "itaqui",
+        "regionId": "RF6",
+        "coredeId": "fronteira_oeste"
+      },
+      {
+        "id": "4309654",
+        "name": "Hulha Negra",
+        "searchName": "hulha negra",
+        "regionId": "RF6",
+        "coredeId": "campanha"
+      },
+      {
+        "id": "4300406",
+        "name": "Alegrete",
+        "searchName": "alegrete",
+        "regionId": "RF6",
+        "coredeId": "fronteira_oeste"
+      },
+      {
+        "id": "4304358",
+        "name": "Candiota",
+        "searchName": "candiota",
+        "regionId": "RF6",
+        "coredeId": "campanha"
+      },
+      {
+        "id": "4306601",
+        "name": "Dom Pedrito",
+        "searchName": "dom pedrito",
+        "regionId": "RF6",
+        "coredeId": "campanha"
+      },
+      {
+        "id": "4322400",
+        "name": "Uruguaiana",
+        "searchName": "uruguaiana",
+        "regionId": "RF6",
+        "coredeId": "fronteira_oeste"
+      },
+      {
+        "id": "4302808",
+        "name": "Caçapava do Sul",
+        "searchName": "cacapava do sul",
+        "regionId": "RF6",
+        "coredeId": "campanha"
+      },
+      {
+        "id": "4311718",
+        "name": "Maçambará",
+        "searchName": "macambara",
+        "regionId": "RF6",
+        "coredeId": "fronteira_oeste"
+      },
+      {
+        "id": "4316972",
+        "name": "Santa Margarida do Sul",
+        "searchName": "santa margarida do sul",
+        "regionId": "RF6",
+        "coredeId": "fronteira_oeste"
+      },
+      {
+        "id": "4316402",
+        "name": "Rosário do Sul",
+        "searchName": "rosario do sul",
+        "regionId": "RF6",
+        "coredeId": "fronteira_oeste"
+      },
+      {
+        "id": "4318309",
+        "name": "São Gabriel",
+        "searchName": "sao gabriel",
+        "regionId": "RF6",
+        "coredeId": "fronteira_oeste"
+      },
+      {
+        "id": "4301602",
+        "name": "Bagé",
+        "searchName": "bage",
+        "regionId": "RF6",
+        "coredeId": "campanha"
+      },
+      {
+        "id": "4317103",
+        "name": "Sant'Ana do Livramento",
+        "searchName": "sant'ana do livramento",
+        "regionId": "RF6",
+        "coredeId": "fronteira_oeste"
+      },
+      {
+        "id": "4313011",
+        "name": "Nova Candelária",
+        "searchName": "nova candelaria",
+        "regionId": "RF7",
+        "coredeId": "fronteira_noroeste"
+      },
+      {
+        "id": "4318499",
+        "name": "São José do Inhacorá",
+        "searchName": "sao jose do inhacora",
+        "regionId": "RF7",
+        "coredeId": "fronteira_noroeste"
+      },
+      {
+        "id": "4309605",
+        "name": "Horizontina",
+        "searchName": "horizontina",
+        "regionId": "RF7",
+        "coredeId": "fronteira_noroeste"
+      },
+      {
+        "id": "4302204",
+        "name": "Boa Vista do Buricá",
+        "searchName": "boa vista do burica",
+        "regionId": "RF7",
+        "coredeId": "fronteira_noroeste"
+      },
+      {
+        "id": "4316477",
+        "name": "Salvador das Missões",
+        "searchName": "salvador das missoes",
+        "regionId": "RF7",
+        "coredeId": "missoes"
+      },
+      {
+        "id": "4305207",
+        "name": "Cerro Largo",
+        "searchName": "cerro largo",
+        "regionId": "RF7",
+        "coredeId": "missoes"
+      },
+      {
+        "id": "4319372",
+        "name": "São Pedro do Butiá",
+        "searchName": "sao pedro do butia",
+        "regionId": "RF7",
+        "coredeId": "missoes"
+      },
+      {
+        "id": "4301503",
+        "name": "Augusto Pestana",
+        "searchName": "augusto pestana",
+        "regionId": "RF7",
+        "coredeId": "noroeste_colonial"
+      },
+      {
+        "id": "4319109",
+        "name": "São Martinho",
+        "searchName": "sao martinho",
+        "regionId": "RF7",
+        "coredeId": "celeiro"
+      },
+      {
+        "id": "4321808",
+        "name": "Três de Maio",
+        "searchName": "tres de maio",
+        "regionId": "RF7",
+        "coredeId": "fronteira_noroeste"
+      },
+      {
+        "id": "4302584",
+        "name": "Bozano",
+        "searchName": "bozano",
+        "regionId": "RF7",
+        "coredeId": "noroeste_colonial"
+      },
+      {
+        "id": "4315057",
+        "name": "Porto Mauá",
+        "searchName": "porto maua",
+        "regionId": "RF7",
+        "coredeId": "fronteira_noroeste"
+      },
+      {
+        "id": "4312179",
+        "name": "Mato Queimado",
+        "searchName": "mato queimado",
+        "regionId": "RF7",
+        "coredeId": "missoes"
+      },
+      {
+        "id": "4305871",
+        "name": "Coronel Barros",
+        "searchName": "coronel barros",
+        "regionId": "RF7",
+        "coredeId": "noroeste_colonial"
+      },
+      {
+        "id": "4323705",
+        "name": "Vista Gaúcha",
+        "searchName": "vista gaucha",
+        "regionId": "RF7",
+        "coredeId": "celeiro"
+      },
+      {
+        "id": "4300455",
+        "name": "Alegria",
+        "searchName": "alegria",
+        "regionId": "RF7",
+        "coredeId": "fronteira_noroeste"
+      },
+      {
+        "id": "4321907",
+        "name": "Três Passos",
+        "searchName": "tres passos",
+        "regionId": "RF7",
+        "coredeId": "celeiro"
+      },
+      {
+        "id": "4309704",
+        "name": "Humaitá",
+        "searchName": "humaita",
+        "regionId": "RF7",
+        "coredeId": "celeiro"
+      },
+      {
+        "id": "4300208",
+        "name": "Ajuricaba",
+        "searchName": "ajuricaba",
+        "regionId": "RF7",
+        "coredeId": "noroeste_colonial"
+      },
+      {
+        "id": "4322103",
+        "name": "Tucunduva",
+        "searchName": "tucunduva",
+        "regionId": "RF7",
+        "coredeId": "fronteira_noroeste"
+      },
+      {
+        "id": "4317905",
+        "name": "Santo Cristo",
+        "searchName": "santo cristo",
+        "regionId": "RF7",
+        "coredeId": "fronteira_noroeste"
+      },
+      {
+        "id": "4317806",
+        "name": "Santo Augusto",
+        "searchName": "santo augusto",
+        "regionId": "RF7",
+        "coredeId": "celeiro"
+      },
+      {
+        "id": "4309506",
+        "name": "Guarani das Missões",
+        "searchName": "guarani das missoes",
+        "regionId": "RF7",
+        "coredeId": "missoes"
+      },
+      {
+        "id": "4305702",
+        "name": "Condor",
+        "searchName": "condor",
+        "regionId": "RF7",
+        "coredeId": "noroeste_colonial"
+      },
+      {
+        "id": "4305009",
+        "name": "Catuípe",
+        "searchName": "catuipe",
+        "regionId": "RF7",
+        "coredeId": "noroeste_colonial"
+      },
+      {
+        "id": "4306007",
+        "name": "Crissiumal",
+        "searchName": "crissiumal",
+        "regionId": "RF7",
+        "coredeId": "celeiro"
+      },
+      {
+        "id": "4313904",
+        "name": "Panambi",
+        "searchName": "panambi",
+        "regionId": "RF7",
+        "coredeId": "noroeste_colonial"
+      },
+      {
+        "id": "4317202",
+        "name": "Santa Rosa",
+        "searchName": "santa rosa",
+        "regionId": "RF7",
+        "coredeId": "fronteira_noroeste"
+      },
+      {
+        "id": "4309001",
+        "name": "Giruá",
+        "searchName": "girua",
+        "regionId": "RF7",
+        "coredeId": "missoes"
+      },
+      {
+        "id": "4313425",
+        "name": "Novo Machado",
+        "searchName": "novo machado",
+        "regionId": "RF7",
+        "coredeId": "fronteira_noroeste"
+      },
+      {
+        "id": "4322301",
+        "name": "Tuparendi",
+        "searchName": "tuparendi",
+        "regionId": "RF7",
+        "coredeId": "fronteira_noroeste"
+      },
+      {
+        "id": "4305405",
+        "name": "Chiapetta",
+        "searchName": "chiapetta",
+        "regionId": "RF7",
+        "coredeId": "celeiro"
+      },
+      {
+        "id": "4315958",
+        "name": "Rolador",
+        "searchName": "rolador",
+        "regionId": "RF7",
+        "coredeId": "missoes"
+      },
+      {
+        "id": "4303301",
+        "name": "Caibaté",
+        "searchName": "caibate",
+        "regionId": "RF7",
+        "coredeId": "missoes"
+      },
+      {
+        "id": "4304309",
+        "name": "Cândido Godói",
+        "searchName": "candido godoi",
+        "regionId": "RF7",
+        "coredeId": "fronteira_noroeste"
+      },
+      {
+        "id": "4315073",
+        "name": "Porto Vera Cruz",
+        "searchName": "porto vera cruz",
+        "regionId": "RF7",
+        "coredeId": "fronteira_noroeste"
+      },
+      {
+        "id": "4303707",
+        "name": "Campina das Missões",
+        "searchName": "campina das missoes",
+        "regionId": "RF7",
+        "coredeId": "fronteira_noroeste"
+      },
+      {
+        "id": "4321402",
+        "name": "Tenente Portela",
+        "searchName": "tenente portela",
+        "regionId": "RF7",
+        "coredeId": "celeiro"
+      },
+      {
+        "id": "4306734",
+        "name": "Doutor Maurício Cardoso",
+        "searchName": "doutor mauricio cardoso",
+        "regionId": "RF7",
+        "coredeId": "fronteira_noroeste"
+      },
+      {
+        "id": "4310207",
+        "name": "Ijuí",
+        "searchName": "ijui",
+        "regionId": "RF7",
+        "coredeId": "noroeste_colonial"
+      },
+      {
+        "id": "4316303",
+        "name": "Roque Gonzales",
+        "searchName": "roque gonzales",
+        "regionId": "RF7",
+        "coredeId": "missoes"
+      },
+      {
+        "id": "4313334",
+        "name": "Nova Ramada",
+        "searchName": "nova ramada",
+        "regionId": "RF7",
+        "coredeId": "noroeste_colonial"
+      },
+      {
+        "id": "4319158",
+        "name": "São Miguel das Missões",
+        "searchName": "sao miguel das missoes",
+        "regionId": "RF7",
+        "coredeId": "missoes"
+      },
+      {
+        "id": "4307450",
+        "name": "Esperança do Sul",
+        "searchName": "esperanca do sul",
+        "regionId": "RF7",
+        "coredeId": "celeiro"
+      },
+      {
+        "id": "4306320",
+        "name": "Derrubadas",
+        "searchName": "derrubadas",
+        "regionId": "RF7",
+        "coredeId": "celeiro"
+      },
+      {
+        "id": "4314308",
+        "name": "Pejuçara",
+        "searchName": "pejucara",
+        "regionId": "RF7",
+        "coredeId": "noroeste_colonial"
+      },
+      {
+        "id": "4307831",
+        "name": "Eugênio de Castro",
+        "searchName": "eugenio de castro",
+        "regionId": "RF7",
+        "coredeId": "missoes"
+      },
+      {
+        "id": "4314555",
+        "name": "Pirapó",
+        "searchName": "pirapo",
+        "regionId": "RF7",
+        "coredeId": "missoes"
+      },
+      {
+        "id": "4320230",
+        "name": "Sede Nova",
+        "searchName": "sede nova",
+        "regionId": "RF7",
+        "coredeId": "celeiro"
+      },
+      {
+        "id": "4319307",
+        "name": "São Paulo das Missões",
+        "searchName": "sao paulo das missoes",
+        "regionId": "RF7",
+        "coredeId": "missoes"
+      },
+      {
+        "id": "4304002",
+        "name": "Campo Novo",
+        "searchName": "campo novo",
+        "regionId": "RF7",
+        "coredeId": "celeiro"
+      },
+      {
+        "id": "4302600",
+        "name": "Braga",
+        "searchName": "braga",
+        "regionId": "RF7",
+        "coredeId": "celeiro"
+      },
+      {
+        "id": "4319737",
+        "name": "São Valério do Sul",
+        "searchName": "sao valerio do sul",
+        "regionId": "RF7",
+        "coredeId": "celeiro"
+      },
+      {
+        "id": "4322343",
+        "name": "Ubiretama",
+        "searchName": "ubiretama",
+        "regionId": "RF7",
+        "coredeId": "missoes"
+      },
+      {
+        "id": "4306932",
+        "name": "Entre-Ijuís",
+        "searchName": "entre-ijuis",
+        "regionId": "RF7",
+        "coredeId": "missoes"
+      },
+      {
+        "id": "4315008",
+        "name": "Porto Lucena",
+        "searchName": "porto lucena",
+        "regionId": "RF7",
+        "coredeId": "fronteira_noroeste"
+      },
+      {
+        "id": "4315107",
+        "name": "Porto Xavier",
+        "searchName": "porto xavier",
+        "regionId": "RF7",
+        "coredeId": "missoes"
+      },
+      {
+        "id": "4310405",
+        "name": "Independência",
+        "searchName": "independencia",
+        "regionId": "RF7",
+        "coredeId": "fronteira_noroeste"
+      },
+      {
+        "id": "4320321",
+        "name": "Senador Salgado Filho",
+        "searchName": "senador salgado filho",
+        "regionId": "RF7",
+        "coredeId": "fronteira_noroeste"
+      },
+      {
+        "id": "4320578",
+        "name": "Sete de Setembro",
+        "searchName": "sete de setembro",
+        "regionId": "RF7",
+        "coredeId": "missoes"
+      },
+      {
+        "id": "4308656",
+        "name": "Garruchos",
+        "searchName": "garruchos",
+        "regionId": "RF7",
+        "coredeId": "missoes"
+      },
+      {
+        "id": "4310413",
+        "name": "Inhacorá",
+        "searchName": "inhacora",
+        "regionId": "RF7",
+        "coredeId": "celeiro"
+      },
+      {
+        "id": "4323754",
+        "name": "Vitória das Missões",
+        "searchName": "vitoria das missoes",
+        "regionId": "RF7",
+        "coredeId": "missoes"
+      },
+      {
+        "id": "4318903",
+        "name": "São Luiz Gonzaga",
+        "searchName": "sao luiz gonzaga",
+        "regionId": "RF7",
+        "coredeId": "missoes"
+      },
+      {
+        "id": "4305900",
+        "name": "Coronel Bicaco",
+        "searchName": "coronel bicaco",
+        "regionId": "RF7",
+        "coredeId": "celeiro"
+      },
+      {
+        "id": "4311155",
+        "name": "Jóia",
+        "searchName": "joia",
+        "regionId": "RF7",
+        "coredeId": "noroeste_colonial"
+      },
+      {
+        "id": "4306353",
+        "name": "Dezesseis de Novembro",
+        "searchName": "dezesseis de novembro",
+        "regionId": "RF7",
+        "coredeId": "missoes"
+      },
+      {
+        "id": "4302501",
+        "name": "Bossoroca",
+        "searchName": "bossoroca",
+        "regionId": "RF7",
+        "coredeId": "missoes"
+      },
+      {
+        "id": "4302378",
+        "name": "Bom Progresso",
+        "searchName": "bom progresso",
+        "regionId": "RF7",
+        "coredeId": "celeiro"
+      },
+      {
+        "id": "4301859",
+        "name": "Barra do Guarita",
+        "searchName": "barra do guarita",
+        "regionId": "RF7",
+        "coredeId": "celeiro"
+      },
+      {
+        "id": "4300307",
+        "name": "Alecrim",
+        "searchName": "alecrim",
+        "regionId": "RF7",
+        "coredeId": "fronteira_noroeste"
+      },
+      {
+        "id": "4319208",
+        "name": "São Nicolau",
+        "searchName": "sao nicolau",
+        "regionId": "RF7",
+        "coredeId": "missoes"
+      },
+      {
+        "id": "4321477",
+        "name": "Tiradentes do Sul",
+        "searchName": "tiradentes do sul",
+        "regionId": "RF7",
+        "coredeId": "celeiro"
+      },
+      {
+        "id": "4317509",
+        "name": "Santo Ângelo",
+        "searchName": "santo angelo",
+        "regionId": "RF7",
+        "coredeId": "missoes"
+      },
+      {
+        "id": "4312302",
+        "name": "Miraguaí",
+        "searchName": "miraguai",
+        "regionId": "RF7",
+        "coredeId": "celeiro"
+      },
+      {
+        "id": "4317707",
+        "name": "Santo Antônio das Missões",
+        "searchName": "santo antonio das missoes",
+        "regionId": "RF7",
+        "coredeId": "missoes"
+      },
+      {
+        "id": "4315404",
+        "name": "Redentora",
+        "searchName": "redentora",
+        "regionId": "RF7",
+        "coredeId": "celeiro"
+      },
+      {
+        "id": "4311270",
+        "name": "Lagoa dos Três Cantos",
+        "searchName": "lagoa dos tres cantos",
+        "regionId": "RF8",
+        "coredeId": "alto_jacui"
+      },
+      {
+        "id": "4313037",
+        "name": "Nova Esperança do Sul",
+        "searchName": "nova esperanca do sul",
+        "regionId": "RF8",
+        "coredeId": "vale_do_jaguari"
+      },
+      {
+        "id": "4310009",
+        "name": "Ibirubá",
+        "searchName": "ibiruba",
+        "regionId": "RF8",
+        "coredeId": "alto_jacui"
+      },
+      {
+        "id": "4316436",
+        "name": "Saldanha Marinho",
+        "searchName": "saldanha marinho",
+        "regionId": "RF8",
+        "coredeId": "alto_jacui"
+      },
+      {
+        "id": "4320305",
+        "name": "Selbach",
+        "searchName": "selbach",
+        "regionId": "RF8",
+        "coredeId": "alto_jacui"
+      },
+      {
+        "id": "4312658",
+        "name": "Não-Me-Toque",
+        "searchName": "nao-me-toque",
+        "regionId": "RF8",
+        "coredeId": "alto_jacui"
+      },
+      {
+        "id": "4321006",
+        "name": "Tapera",
+        "searchName": "tapera",
+        "regionId": "RF8",
+        "coredeId": "alto_jacui"
+      },
+      {
+        "id": "4315354",
+        "name": "Quinze de Novembro",
+        "searchName": "quinze de novembro",
+        "regionId": "RF8",
+        "coredeId": "alto_jacui"
+      },
+      {
+        "id": "4313102",
+        "name": "Nova Palma",
+        "searchName": "nova palma",
+        "regionId": "RF8",
+        "coredeId": "central"
+      },
+      {
+        "id": "4305603",
+        "name": "Colorado",
+        "searchName": "colorado",
+        "regionId": "RF8",
+        "coredeId": "alto_jacui"
+      },
+      {
+        "id": "4302220",
+        "name": "Boa Vista do Cadeado",
+        "searchName": "boa vista do cadeado",
+        "regionId": "RF8",
+        "coredeId": "alto_jacui"
+      },
+      {
+        "id": "4313391",
+        "name": "Novo Cabrais",
+        "searchName": "novo cabrais",
+        "regionId": "RF8",
+        "coredeId": "jacui_centro"
+      },
+      {
+        "id": "4308003",
+        "name": "Faxinal do Soturno",
+        "searchName": "faxinal do soturno",
+        "regionId": "RF8",
+        "coredeId": "central"
+      },
+      {
+        "id": "4308458",
+        "name": "Fortaleza dos Valos",
+        "searchName": "fortaleza dos valos",
+        "regionId": "RF8",
+        "coredeId": "alto_jacui"
+      },
+      {
+        "id": "4302238",
+        "name": "Boa Vista do Incra",
+        "searchName": "boa vista do incra",
+        "regionId": "RF8",
+        "coredeId": "alto_jacui"
+      },
+      {
+        "id": "4322376",
+        "name": "Unistalda",
+        "searchName": "unistalda",
+        "regionId": "RF8",
+        "coredeId": "vale_do_jaguari"
+      },
+      {
+        "id": "4316709",
+        "name": "Santa Bárbara do Sul",
+        "searchName": "santa barbara do sul",
+        "regionId": "RF8",
+        "coredeId": "alto_jacui"
+      },
+      {
+        "id": "4310538",
+        "name": "Itaara",
+        "searchName": "itaara",
+        "regionId": "RF8",
+        "coredeId": "central"
+      },
+      {
+        "id": "4305132",
+        "name": "Cerro Branco",
+        "searchName": "cerro branco",
+        "regionId": "RF8",
+        "coredeId": "jacui_centro"
+      },
+      {
+        "id": "4318432",
+        "name": "São João do Polêsine",
+        "searchName": "sao joao do polesine",
+        "regionId": "RF8",
+        "coredeId": "central"
+      },
+      {
+        "id": "4304655",
+        "name": "Capão do Cipó",
+        "searchName": "capao do cipo",
+        "regionId": "RF8",
+        "coredeId": "vale_do_jaguari"
+      },
+      {
+        "id": "4320651",
+        "name": "Silveira Martins",
+        "searchName": "silveira martins",
+        "regionId": "RF8",
+        "coredeId": "central"
+      },
+      {
+        "id": "4317400",
+        "name": "Santiago",
+        "searchName": "santiago",
+        "regionId": "RF8",
+        "coredeId": "vale_do_jaguari"
+      },
+      {
+        "id": "4312104",
+        "name": "Mata",
+        "searchName": "mata",
+        "regionId": "RF8",
+        "coredeId": "vale_do_jaguari"
+      },
+      {
+        "id": "4321493",
+        "name": "Toropi",
+        "searchName": "toropi",
+        "regionId": "RF8",
+        "coredeId": "central"
+      },
+      {
+        "id": "4306700",
+        "name": "Dona Francisca",
+        "searchName": "dona francisca",
+        "regionId": "RF8",
+        "coredeId": "central"
+      },
+      {
+        "id": "4310751",
+        "name": "Ivorá",
+        "searchName": "ivora",
+        "regionId": "RF8",
+        "coredeId": "central"
+      },
+      {
+        "id": "4311205",
+        "name": "Júlio de Castilhos",
+        "searchName": "julio de castilhos",
+        "regionId": "RF8",
+        "coredeId": "central"
+      },
+      {
+        "id": "4315503",
+        "name": "Restinga Seca",
+        "searchName": "restinga seca",
+        "regionId": "RF8",
+        "coredeId": "jacui_centro"
+      },
+      {
+        "id": "4314472",
+        "name": "Pinhal Grande",
+        "searchName": "pinhal grande",
+        "regionId": "RF8",
+        "coredeId": "central"
+      },
+      {
+        "id": "4314027",
+        "name": "Paraíso do Sul",
+        "searchName": "paraiso do sul",
+        "regionId": "RF8",
+        "coredeId": "jacui_centro"
+      },
+      {
+        "id": "4319802",
+        "name": "São Vicente do Sul",
+        "searchName": "sao vicente do sul",
+        "regionId": "RF8",
+        "coredeId": "vale_do_jaguari"
+      },
+      {
+        "id": "4323457",
+        "name": "Vila Nova do Sul",
+        "searchName": "vila nova do sul",
+        "regionId": "RF8",
+        "coredeId": "jacui_centro"
+      },
+      {
+        "id": "4308409",
+        "name": "Formigueiro",
+        "searchName": "formigueiro",
+        "regionId": "RF8",
+        "coredeId": "central"
+      },
+      {
+        "id": "4322202",
+        "name": "Tupanciretã",
+        "searchName": "tupancireta",
+        "regionId": "RF8",
+        "coredeId": "central"
+      },
+      {
+        "id": "4306106",
+        "name": "Cruz Alta",
+        "searchName": "cruz alta",
+        "regionId": "RF8",
+        "coredeId": "alto_jacui"
+      },
+      {
+        "id": "4303004",
+        "name": "Cachoeira do Sul",
+        "searchName": "cachoeira do sul",
+        "regionId": "RF8",
+        "coredeId": "jacui_centro"
+      },
+      {
+        "id": "4300109",
+        "name": "Agudo",
+        "searchName": "agudo",
+        "regionId": "RF8",
+        "coredeId": "central"
+      },
+      {
+        "id": "4319604",
+        "name": "São Sepé",
+        "searchName": "sao sepe",
+        "regionId": "RF8",
+        "coredeId": "jacui_centro"
+      },
+      {
+        "id": "4311106",
+        "name": "Jaguari",
+        "searchName": "jaguari",
+        "regionId": "RF8",
+        "coredeId": "vale_do_jaguari"
+      },
+      {
+        "id": "4316451",
+        "name": "Salto do Jacuí",
+        "searchName": "salto do jacui",
+        "regionId": "RF8",
+        "coredeId": "alto_jacui"
+      },
+      {
+        "id": "4311130",
+        "name": "Jari",
+        "searchName": "jari",
+        "regionId": "RF8",
+        "coredeId": "central"
+      },
+      {
+        "id": "4319406",
+        "name": "São Pedro do Sul",
+        "searchName": "sao pedro do sul",
+        "regionId": "RF8",
+        "coredeId": "central"
+      },
+      {
+        "id": "4315321",
+        "name": "Quevedos",
+        "searchName": "quevedos",
+        "regionId": "RF8",
+        "coredeId": "central"
+      },
+      {
+        "id": "4316907",
+        "name": "Santa Maria",
+        "searchName": "santa maria",
+        "regionId": "RF8",
+        "coredeId": "central"
+      },
+      {
+        "id": "4318101",
+        "name": "São Francisco de Assis",
+        "searchName": "sao francisco de assis",
+        "regionId": "RF8",
+        "coredeId": "vale_do_jaguari"
+      },
+      {
+        "id": "4319125",
+        "name": "São Martinho da Serra",
+        "searchName": "sao martinho da serra",
+        "regionId": "RF8",
+        "coredeId": "central"
+      },
+      {
+        "id": "4306379",
+        "name": "Dilermando de Aguiar",
+        "searchName": "dilermando de aguiar",
+        "regionId": "RF8",
+        "coredeId": "central"
+      },
+      {
+        "id": "4302907",
+        "name": "Cacequi",
+        "searchName": "cacequi",
+        "regionId": "RF8",
+        "coredeId": "vale_do_jaguari"
+      },
+      {
+        "id": "4312955",
+        "name": "Nova Boa Vista",
+        "searchName": "nova boa vista",
+        "regionId": "RF9",
+        "coredeId": "rio_da_varzea"
+      },
+      {
+        "id": "4303558",
+        "name": "Camargo",
+        "searchName": "camargo",
+        "regionId": "RF9",
+        "coredeId": "producao"
+      },
+      {
+        "id": "4307559",
+        "name": "Estação",
+        "searchName": "estacao",
+        "regionId": "RF9",
+        "coredeId": "norte"
+      },
+      {
+        "id": "4321634",
+        "name": "Três Arroios",
+        "searchName": "tres arroios",
+        "regionId": "RF9",
+        "coredeId": "norte"
+      },
+      {
+        "id": "4301958",
+        "name": "Barra Funda",
+        "searchName": "barra funda",
+        "regionId": "RF9",
+        "coredeId": "rio_da_varzea"
+      },
+      {
+        "id": "4314134",
+        "name": "Paulo Bento",
+        "searchName": "paulo bento",
+        "regionId": "RF9",
+        "coredeId": "norte"
+      },
+      {
+        "id": "4313466",
+        "name": "Novo Xingu",
+        "searchName": "novo xingu",
+        "regionId": "RF9",
+        "coredeId": "rio_da_varzea"
+      },
+      {
+        "id": "4322558",
+        "name": "Vanini",
+        "searchName": "vanini",
+        "regionId": "RF9",
+        "coredeId": "producao"
+      },
+      {
+        "id": "4317756",
+        "name": "Santo Antônio do Planalto",
+        "searchName": "santo antonio do planalto",
+        "regionId": "RF9",
+        "coredeId": "producao"
+      },
+      {
+        "id": "4304903",
+        "name": "Casca",
+        "searchName": "casca",
+        "regionId": "RF9",
+        "coredeId": "producao"
+      },
+      {
+        "id": "4320602",
+        "name": "Severiano de Almeida",
+        "searchName": "severiano de almeida",
+        "regionId": "RF9",
+        "coredeId": "norte"
+      },
+      {
+        "id": "4308854",
+        "name": "Gentil",
+        "searchName": "gentil",
+        "regionId": "RF9",
+        "coredeId": "producao"
+      },
+      {
+        "id": "4312757",
+        "name": "Nova Alvorada",
+        "searchName": "nova alvorada",
+        "regionId": "RF9",
+        "coredeId": "producao"
+      },
+      {
+        "id": "4300471",
+        "name": "Almirante Tamandaré do Sul",
+        "searchName": "almirante tamandare do sul",
+        "regionId": "RF9",
+        "coredeId": "producao"
+      },
+      {
+        "id": "4304853",
+        "name": "Carlos Gomes",
+        "searchName": "carlos gomes",
+        "regionId": "RF9",
+        "coredeId": "norte"
+      },
+      {
+        "id": "4302154",
+        "name": "Boa Vista das Missões",
+        "searchName": "boa vista das missoes",
+        "regionId": "RF9",
+        "coredeId": "rio_da_varzea"
+      },
+      {
+        "id": "4318606",
+        "name": "São José do Ouro",
+        "searchName": "sao jose do ouro",
+        "regionId": "RF9",
+        "coredeId": "nordeste"
+      },
+      {
+        "id": "4300554",
+        "name": "Alto Alegre",
+        "searchName": "alto alegre",
+        "regionId": "RF9",
+        "coredeId": "alto_da_serra_do_botucarai"
+      },
+      {
+        "id": "4305850",
+        "name": "Coqueiros do Sul",
+        "searchName": "coqueiros do sul",
+        "regionId": "RF9",
+        "coredeId": "producao"
+      },
+      {
+        "id": "4314787",
+        "name": "Ponte Preta",
+        "searchName": "ponte preta",
+        "regionId": "RF9",
+        "coredeId": "norte"
+      },
+      {
+        "id": "4317558",
+        "name": "Santo Antônio do Palma",
+        "searchName": "santo antonio do palma",
+        "regionId": "RF9",
+        "coredeId": "producao"
+      },
+      {
+        "id": "4301925",
+        "name": "Barra do Rio Azul",
+        "searchName": "barra do rio azul",
+        "regionId": "RF9",
+        "coredeId": "norte"
+      },
+      {
+        "id": "4309902",
+        "name": "Ibiraiaras",
+        "searchName": "ibiraiaras",
+        "regionId": "RF9",
+        "coredeId": "nordeste"
+      },
+      {
+        "id": "4316204",
+        "name": "Rondinha",
+        "searchName": "rondinha",
+        "regionId": "RF9",
+        "coredeId": "rio_da_varzea"
+      },
+      {
+        "id": "4323408",
+        "name": "Vila Maria",
+        "searchName": "vila maria",
+        "regionId": "RF9",
+        "coredeId": "producao"
+      },
+      {
+        "id": "4312674",
+        "name": "Nicolau Vergueiro",
+        "searchName": "nicolau vergueiro",
+        "regionId": "RF9",
+        "coredeId": "alto_da_serra_do_botucarai"
+      },
+      {
+        "id": "4313607",
+        "name": "Paim Filho",
+        "searchName": "paim filho",
+        "regionId": "RF9",
+        "coredeId": "nordeste"
+      },
+      {
+        "id": "4305306",
+        "name": "Chapada",
+        "searchName": "chapada",
+        "regionId": "RF9",
+        "coredeId": "rio_da_varzea"
+      },
+      {
+        "id": "4306130",
+        "name": "Cruzaltense",
+        "searchName": "cruzaltense",
+        "regionId": "RF9",
+        "coredeId": "norte"
+      },
+      {
+        "id": "4311908",
+        "name": "Marcelino Ramos",
+        "searchName": "marcelino ramos",
+        "regionId": "RF9",
+        "coredeId": "norte"
+      },
+      {
+        "id": "4318424",
+        "name": "São João da Urtiga",
+        "searchName": "sao joao da urtiga",
+        "regionId": "RF9",
+        "coredeId": "nordeste"
+      },
+      {
+        "id": "4318051",
+        "name": "São Domingos do Sul",
+        "searchName": "sao domingos do sul",
+        "regionId": "RF9",
+        "coredeId": "producao"
+      },
+      {
+        "id": "4322186",
+        "name": "Tupanci do Sul",
+        "searchName": "tupanci do sul",
+        "regionId": "RF9",
+        "coredeId": "nordeste"
+      },
+      {
+        "id": "4312005",
+        "name": "Mariano Moro",
+        "searchName": "mariano moro",
+        "regionId": "RF9",
+        "coredeId": "norte"
+      },
+      {
+        "id": "4306304",
+        "name": "David Canabarro",
+        "searchName": "david canabarro",
+        "regionId": "RF9",
+        "coredeId": "producao"
+      },
+      {
+        "id": "4300901",
+        "name": "Aratiba",
+        "searchName": "aratiba",
+        "regionId": "RF9",
+        "coredeId": "norte"
+      },
+      {
+        "id": "4305801",
+        "name": "Constantina",
+        "searchName": "constantina",
+        "regionId": "RF9",
+        "coredeId": "rio_da_varzea"
+      },
+      {
+        "id": "4306924",
+        "name": "Engenho Velho",
+        "searchName": "engenho velho",
+        "regionId": "RF9",
+        "coredeId": "rio_da_varzea"
+      },
+      {
+        "id": "4308706",
+        "name": "Gaurama",
+        "searchName": "gaurama",
+        "regionId": "RF9",
+        "coredeId": "norte"
+      },
+      {
+        "id": "4314456",
+        "name": "Pinhal",
+        "searchName": "pinhal",
+        "regionId": "RF9",
+        "coredeId": "medio_alto_uruguai"
+      },
+      {
+        "id": "4307500",
+        "name": "Espumoso",
+        "searchName": "espumoso",
+        "regionId": "RF9",
+        "coredeId": "alto_da_serra_do_botucarai"
+      },
+      {
+        "id": "4307005",
+        "name": "Erechim",
+        "searchName": "erechim",
+        "regionId": "RF9",
+        "coredeId": "norte"
+      },
+      {
+        "id": "4323200",
+        "name": "Victor Graeff",
+        "searchName": "victor graeff",
+        "regionId": "RF9",
+        "coredeId": "alto_da_serra_do_botucarai"
+      },
+      {
+        "id": "4316733",
+        "name": "Santa Cecília do Sul",
+        "searchName": "santa cecilia do sul",
+        "regionId": "RF9",
+        "coredeId": "nordeste"
+      },
+      {
+        "id": "4316600",
+        "name": "Sananduva",
+        "searchName": "sananduva",
+        "regionId": "RF9",
+        "coredeId": "nordeste"
+      },
+      {
+        "id": "4305975",
+        "name": "Coxilha",
+        "searchName": "coxilha",
+        "regionId": "RF9",
+        "coredeId": "producao"
+      },
+      {
+        "id": "4306957",
+        "name": "Entre Rios do Sul",
+        "searchName": "entre rios do sul",
+        "regionId": "RF9",
+        "coredeId": "norte"
+      },
+      {
+        "id": "4301701",
+        "name": "Barão de Cotegipe",
+        "searchName": "barao de cotegipe",
+        "regionId": "RF9",
+        "coredeId": "norte"
+      },
+      {
+        "id": "4305504",
+        "name": "Ciríaco",
+        "searchName": "ciriaco",
+        "regionId": "RF9",
+        "coredeId": "producao"
+      },
+      {
+        "id": "4320909",
+        "name": "Tapejara",
+        "searchName": "tapejara",
+        "regionId": "RF9",
+        "coredeId": "nordeste"
+      },
+      {
+        "id": "4308250",
+        "name": "Floriano Peixoto",
+        "searchName": "floriano peixoto",
+        "regionId": "RF9",
+        "coredeId": "norte"
+      },
+      {
+        "id": "4323358",
+        "name": "Vila Lângaro",
+        "searchName": "vila langaro",
+        "regionId": "RF9",
+        "coredeId": "nordeste"
+      },
+      {
+        "id": "4304101",
+        "name": "Campos Borges",
+        "searchName": "campos borges",
+        "regionId": "RF9",
+        "coredeId": "alto_da_serra_do_botucarai"
+      },
+      {
+        "id": "4319703",
+        "name": "São Valentim",
+        "searchName": "sao valentim",
+        "regionId": "RF9",
+        "coredeId": "norte"
+      },
+      {
+        "id": "4310900",
+        "name": "Jacutinga",
+        "searchName": "jacutinga",
+        "regionId": "RF9",
+        "coredeId": "norte"
+      },
+      {
+        "id": "4311809",
+        "name": "Marau",
+        "searchName": "marau",
+        "regionId": "RF9",
+        "coredeId": "producao"
+      },
+      {
+        "id": "4320107",
+        "name": "Sarandi",
+        "searchName": "sarandi",
+        "regionId": "RF9",
+        "coredeId": "rio_da_varzea"
+      },
+      {
+        "id": "4321329",
+        "name": "Taquaruçu do Sul",
+        "searchName": "taquarucu do sul",
+        "regionId": "RF9",
+        "coredeId": "medio_alto_uruguai"
+      },
+      {
+        "id": "4312625",
+        "name": "Muliterno",
+        "searchName": "muliterno",
+        "regionId": "RF9",
+        "coredeId": "producao"
+      },
+      {
+        "id": "4315909",
+        "name": "Rodeio Bonito",
+        "searchName": "rodeio bonito",
+        "regionId": "RF9",
+        "coredeId": "medio_alto_uruguai"
+      },
+      {
+        "id": "4308904",
+        "name": "Getúlio Vargas",
+        "searchName": "getulio vargas",
+        "regionId": "RF9",
+        "coredeId": "norte"
+      },
+      {
+        "id": "4323507",
+        "name": "Vista Alegre",
+        "searchName": "vista alegre",
+        "regionId": "RF9",
+        "coredeId": "medio_alto_uruguai"
+      },
+      {
+        "id": "4304622",
+        "name": "Capão Bonito do Sul",
+        "searchName": "capao bonito do sul",
+        "regionId": "RF9",
+        "coredeId": "nordeste"
+      },
+      {
+        "id": "4303806",
+        "name": "Campinas do Sul",
+        "searchName": "campinas do sul",
+        "regionId": "RF9",
+        "coredeId": "norte"
+      },
+      {
+        "id": "4313441",
+        "name": "Novo Tiradentes",
+        "searchName": "novo tiradentes",
+        "regionId": "RF9",
+        "coredeId": "medio_alto_uruguai"
+      },
+      {
+        "id": "4307054",
+        "name": "Ernestina",
+        "searchName": "ernestina",
+        "regionId": "RF9",
+        "coredeId": "producao"
+      },
+      {
+        "id": "4308508",
+        "name": "Frederico Westphalen",
+        "searchName": "frederico westphalen",
+        "regionId": "RF9",
+        "coredeId": "medio_alto_uruguai"
+      },
+      {
+        "id": "4305157",
+        "name": "Cerro Grande",
+        "searchName": "cerro grande",
+        "regionId": "RF9",
+        "coredeId": "rio_da_varzea"
+      },
+      {
+        "id": "4306429",
+        "name": "Dois Irmãos das Missões",
+        "searchName": "dois irmaos das missoes",
+        "regionId": "RF9",
+        "coredeId": "medio_alto_uruguai"
+      },
+      {
+        "id": "4314779",
+        "name": "Pontão",
+        "searchName": "pontao",
+        "regionId": "RF9",
+        "coredeId": "producao"
+      },
+      {
+        "id": "4305116",
+        "name": "Centenário",
+        "searchName": "centenario",
+        "regionId": "RF9",
+        "coredeId": "norte"
+      },
+      {
+        "id": "4310850",
+        "name": "Jaboticaba",
+        "searchName": "jaboticaba",
+        "regionId": "RF9",
+        "coredeId": "rio_da_varzea"
+      },
+      {
+        "id": "4310579",
+        "name": "Itapuca",
+        "searchName": "itapuca",
+        "regionId": "RF9",
+        "coredeId": "alto_da_serra_do_botucarai"
+      },
+      {
+        "id": "4313805",
+        "name": "Palmitinho",
+        "searchName": "palmitinho",
+        "regionId": "RF9",
+        "coredeId": "medio_alto_uruguai"
+      },
+      {
+        "id": "4320503",
+        "name": "Sertão",
+        "searchName": "sertao",
+        "regionId": "RF9",
+        "coredeId": "norte"
+      },
+      {
+        "id": "4304952",
+        "name": "Caseiros",
+        "searchName": "caseiros",
+        "regionId": "RF9",
+        "coredeId": "nordeste"
+      },
+      {
+        "id": "4322905",
+        "name": "Viadutos",
+        "searchName": "viadutos",
+        "regionId": "RF9",
+        "coredeId": "norte"
+      },
+      {
+        "id": "4301552",
+        "name": "Áurea",
+        "searchName": "aurea",
+        "regionId": "RF9",
+        "coredeId": "norte"
+      },
+      {
+        "id": "4317954",
+        "name": "Santo Expedito do Sul",
+        "searchName": "santo expedito do sul",
+        "regionId": "RF9",
+        "coredeId": "nordeste"
+      },
+      {
+        "id": "4310462",
+        "name": "Ipiranga do Sul",
+        "searchName": "ipiranga do sul",
+        "regionId": "RF9",
+        "coredeId": "norte"
+      },
+      {
+        "id": "4312203",
+        "name": "Maximiliano de Almeida",
+        "searchName": "maximiliano de almeida",
+        "regionId": "RF9",
+        "coredeId": "nordeste"
+      },
+      {
+        "id": "4321956",
+        "name": "Trindade do Sul",
+        "searchName": "trindade do sul",
+        "regionId": "RF9",
+        "coredeId": "medio_alto_uruguai"
+      },
+      {
+        "id": "4316105",
+        "name": "Ronda Alta",
+        "searchName": "ronda alta",
+        "regionId": "RF9",
+        "coredeId": "rio_da_varzea"
+      },
+      {
+        "id": "4311304",
+        "name": "Lagoa Vermelha",
+        "searchName": "lagoa vermelha",
+        "regionId": "RF9",
+        "coredeId": "nordeste"
+      },
+      {
+        "id": "4318457",
+        "name": "São José das Missões",
+        "searchName": "sao jose das missoes",
+        "regionId": "RF9",
+        "coredeId": "rio_da_varzea"
+      },
+      {
+        "id": "4319364",
+        "name": "São Pedro das Missões",
+        "searchName": "sao pedro das missoes",
+        "regionId": "RF9",
+        "coredeId": "rio_da_varzea"
+      },
+      {
+        "id": "4303202",
+        "name": "Cacique Doble",
+        "searchName": "cacique doble",
+        "regionId": "RF9",
+        "coredeId": "nordeste"
+      },
+      {
+        "id": "4320206",
+        "name": "Seberi",
+        "searchName": "seberi",
+        "regionId": "RF9",
+        "coredeId": "medio_alto_uruguai"
+      },
+      {
+        "id": "4314498",
+        "name": "Pinheirinho do Vale",
+        "searchName": "pinheirinho do vale",
+        "regionId": "RF9",
+        "coredeId": "medio_alto_uruguai"
+      },
+      {
+        "id": "4307203",
+        "name": "Erval Grande",
+        "searchName": "erval grande",
+        "regionId": "RF9",
+        "coredeId": "norte"
+      },
+      {
+        "id": "4300505",
+        "name": "Alpestre",
+        "searchName": "alpestre",
+        "regionId": "RF9",
+        "coredeId": "medio_alto_uruguai"
+      },
+      {
+        "id": "4309803",
+        "name": "Ibiaçá",
+        "searchName": "ibiaca",
+        "regionId": "RF9",
+        "coredeId": "nordeste"
+      },
+      {
+        "id": "4321857",
+        "name": "Três Palmeiras",
+        "searchName": "tres palmeiras",
+        "regionId": "RF9",
+        "coredeId": "rio_da_varzea"
+      },
+      {
+        "id": "4310504",
+        "name": "Iraí",
+        "searchName": "irai",
+        "regionId": "RF9",
+        "coredeId": "medio_alto_uruguai"
+      },
+      {
+        "id": "4315313",
+        "name": "Quatro Irmãos",
+        "searchName": "quatro irmaos",
+        "regionId": "RF9",
+        "coredeId": "norte"
+      },
+      {
+        "id": "4300646",
+        "name": "Ametista do Sul",
+        "searchName": "ametista do sul",
+        "regionId": "RF9",
+        "coredeId": "medio_alto_uruguai"
+      },
+      {
+        "id": "4312708",
+        "name": "Nonoai",
+        "searchName": "nonoai",
+        "regionId": "RF9",
+        "coredeId": "medio_alto_uruguai"
+      },
+      {
+        "id": "4312427",
+        "name": "Mormaço",
+        "searchName": "mormaco",
+        "regionId": "RF9",
+        "coredeId": "alto_da_serra_do_botucarai"
+      },
+      {
+        "id": "4311700",
+        "name": "Machadinho",
+        "searchName": "machadinho",
+        "regionId": "RF9",
+        "coredeId": "nordeste"
+      },
+      {
+        "id": "4314704",
+        "name": "Planalto",
+        "searchName": "planalto",
+        "regionId": "RF9",
+        "coredeId": "medio_alto_uruguai"
+      },
+      {
+        "id": "4310876",
+        "name": "Jacuizinho",
+        "searchName": "jacuizinho",
+        "regionId": "RF9",
+        "coredeId": "alto_da_serra_do_botucarai"
+      },
+      {
+        "id": "4302055",
+        "name": "Benjamin Constant do Sul",
+        "searchName": "benjamin constant do sul",
+        "regionId": "RF9",
+        "coredeId": "norte"
+      },
+      {
+        "id": "4310702",
+        "name": "Itatiba do Sul",
+        "searchName": "itatiba do sul",
+        "regionId": "RF9",
+        "coredeId": "norte"
+      },
+      {
+        "id": "4321469",
+        "name": "Tio Hugo",
+        "searchName": "tio hugo",
+        "regionId": "RF9",
+        "coredeId": "alto_da_serra_do_botucarai"
+      },
+      {
+        "id": "4309951",
+        "name": "Ibirapuitã",
+        "searchName": "ibirapuita",
+        "regionId": "RF9",
+        "coredeId": "alto_da_serra_do_botucarai"
+      },
+      {
+        "id": "4303400",
+        "name": "Caiçara",
+        "searchName": "caicara",
+        "regionId": "RF9",
+        "coredeId": "medio_alto_uruguai"
+      },
+      {
+        "id": "4312138",
+        "name": "Mato Castelhano",
+        "searchName": "mato castelhano",
+        "regionId": "RF9",
+        "coredeId": "producao"
+      },
+      {
+        "id": "4307302",
+        "name": "Erval Seco",
+        "searchName": "erval seco",
+        "regionId": "RF9",
+        "coredeId": "medio_alto_uruguai"
+      },
+      {
+        "id": "4300059",
+        "name": "Água Santa",
+        "searchName": "agua santa",
+        "regionId": "RF9",
+        "coredeId": "nordeste"
+      },
+      {
+        "id": "4304705",
+        "name": "Carazinho",
+        "searchName": "carazinho",
+        "regionId": "RF9",
+        "coredeId": "producao"
+      },
+      {
+        "id": "4318465",
+        "name": "São José do Herval",
+        "searchName": "sao jose do herval",
+        "regionId": "RF9",
+        "coredeId": "alto_da_serra_do_botucarai"
+      },
+      {
+        "id": "4306072",
+        "name": "Cristal do Sul",
+        "searchName": "cristal do sul",
+        "regionId": "RF9",
+        "coredeId": "medio_alto_uruguai"
+      },
+      {
+        "id": "4316428",
+        "name": "Sagrada Família",
+        "searchName": "sagrada familia",
+        "regionId": "RF9",
+        "coredeId": "rio_da_varzea"
+      },
+      {
+        "id": "4305371",
+        "name": "Charrua",
+        "searchName": "charrua",
+        "regionId": "RF9",
+        "coredeId": "norte"
+      },
+      {
+        "id": "4301800",
+        "name": "Barracão",
+        "searchName": "barracao",
+        "regionId": "RF9",
+        "coredeId": "nordeste"
+      },
+      {
+        "id": "4315552",
+        "name": "Rio dos Índios",
+        "searchName": "rio dos indios",
+        "regionId": "RF9",
+        "coredeId": "medio_alto_uruguai"
+      },
+      {
+        "id": "4311601",
+        "name": "Liberato Salzano",
+        "searchName": "liberato salzano",
+        "regionId": "RF9",
+        "coredeId": "rio_da_varzea"
+      },
+      {
+        "id": "4308300",
+        "name": "Fontoura Xavier",
+        "searchName": "fontoura xavier",
+        "regionId": "RF9",
+        "coredeId": "alto_da_serra_do_botucarai"
+      },
+      {
+        "id": "4309126",
+        "name": "Gramado dos Loureiros",
+        "searchName": "gramado dos loureiros",
+        "regionId": "RF9",
+        "coredeId": "medio_alto_uruguai"
+      },
+      {
+        "id": "4313490",
+        "name": "Novo Barreiro",
+        "searchName": "novo barreiro",
+        "regionId": "RF9",
+        "coredeId": "rio_da_varzea"
+      },
+      {
+        "id": "4308052",
+        "name": "Faxinalzinho",
+        "searchName": "faxinalzinho",
+        "regionId": "RF9",
+        "coredeId": "norte"
+      },
+      {
+        "id": "4323101",
+        "name": "Vicente Dutra",
+        "searchName": "vicente dutra",
+        "regionId": "RF9",
+        "coredeId": "medio_alto_uruguai"
+      },
+      {
+        "id": "4314100",
+        "name": "Passo Fundo",
+        "searchName": "passo fundo",
+        "regionId": "RF9",
+        "coredeId": "producao"
+      },
+      {
+        "id": "4309159",
+        "name": "Gramado Xavier",
+        "searchName": "gramado xavier",
+        "regionId": "RF9",
+        "coredeId": "alto_da_serra_do_botucarai"
+      },
+      {
+        "id": "4313706",
+        "name": "Palmeira das Missões",
+        "searchName": "palmeira das missoes",
+        "regionId": "RF9",
+        "coredeId": "rio_da_varzea"
+      },
+      {
+        "id": "4320800",
+        "name": "Soledade",
+        "searchName": "soledade",
+        "regionId": "RF9",
+        "coredeId": "alto_da_serra_do_botucarai"
+      },
+      {
+        "id": "4311429",
+        "name": "Lajeado do Bugre",
+        "searchName": "lajeado do bugre",
+        "regionId": "RF9",
+        "coredeId": "rio_da_varzea"
+      },
+      {
+        "id": "4306973",
+        "name": "Erebango",
+        "searchName": "erebango",
+        "regionId": "RF9",
+        "coredeId": "norte"
+      },
+      {
+        "id": "4311254",
+        "name": "Lagoão",
+        "searchName": "lagoao",
+        "regionId": "RF9",
+        "coredeId": "alto_da_serra_do_botucarai"
+      },
+      {
+        "id": "4302006",
+        "name": "Barros Cassal",
+        "searchName": "barros cassal",
+        "regionId": "RF9",
+        "coredeId": "alto_da_serra_do_botucarai"
+      }
+    ],
+    "dimensions": [
+      {
+        "id": "educacao",
+        "name": "Educação",
+        "order": 1
+      },
+      {
+        "id": "financas",
+        "name": "Finanças",
+        "order": 2
+      },
+      {
+        "id": "meio_ambiente",
+        "name": "Meio ambiente",
+        "order": 3
+      },
+      {
+        "id": "saude",
+        "name": "Saúde",
+        "order": 4
+      },
+      {
+        "id": "seguranca",
+        "name": "Segurança",
+        "order": 5
+      },
+      {
+        "id": "socioeconomico",
+        "name": "Socioeconômico",
+        "order": 6
+      }
+    ],
+    "indicators": [
+      {
+        "id": "adequacao_formacao_docente",
+        "dimensionId": "educacao",
+        "name": "Adequação da Formação Docente",
+        "shortName": "Formação docente",
+        "description": "Considera a proporção de docentes do ensino fundamental com formação adequada à área em que atuam.",
+        "unit": "%",
+        "format": "percent",
+        "decimalPlaces": 1,
+        "multiplier": 1,
+        "direction": "higher_is_better",
+        "order": 1
+      },
+      {
+        "id": "saeb_ensino_fundamental",
+        "dimensionId": "educacao",
+        "name": "Nota do SAEB — Ensino Fundamental",
+        "shortName": "SAEB fundamental",
+        "description": "Sintetiza o desempenho em Português e Matemática no SAEB.",
+        "unit": "pontos",
+        "format": "number",
+        "decimalPlaces": 1,
+        "multiplier": 1,
+        "direction": "higher_is_better",
+        "order": 2
+      },
+      {
+        "id": "taxa_cobertura_creche",
+        "dimensionId": "educacao",
+        "name": "Taxa de Cobertura de Creche",
+        "shortName": "Cobertura creche",
+        "description": "Expressa a cobertura de matrículas em creche na rede municipal.",
+        "unit": "%",
+        "format": "percent",
+        "decimalPlaces": 1,
+        "multiplier": 1,
+        "direction": "higher_is_better",
+        "order": 3
+      },
+      {
+        "id": "taxa_distorcao_fundamental",
+        "dimensionId": "educacao",
+        "name": "Taxa de Distorção Idade-Série — Ensino Fundamental",
+        "shortName": "Distorção fundamental",
+        "description": "Indica a proporção de estudantes do ensino fundamental com idade acima da esperada.",
+        "unit": "%",
+        "format": "percent",
+        "decimalPlaces": 1,
+        "multiplier": 1,
+        "direction": "lower_is_better",
+        "order": 4
+      },
+      {
+        "id": "qt_acesso_infor",
+        "dimensionId": "educacao",
+        "name": "Acesso à Informação",
+        "shortName": "Acesso à informação",
+        "description": "Considera a disponibilidade de recursos de acesso à informação nas escolas.",
+        "unit": "%",
+        "format": "percent",
+        "decimalPlaces": 1,
+        "multiplier": 1,
+        "direction": "higher_is_better",
+        "order": 5
+      },
+      {
+        "id": "exec_orc_corrente",
+        "dimensionId": "financas",
+        "name": "Execução Orçamentária Corrente",
+        "shortName": "Execução orçamentária",
+        "description": "Relaciona as despesas correntes às receitas correntes.",
+        "unit": "%",
+        "format": "percent",
+        "decimalPlaces": 1,
+        "multiplier": 1,
+        "direction": "lower_is_better",
+        "order": 101
+      },
+      {
+        "id": "autonomia_fiscal",
+        "dimensionId": "financas",
+        "name": "Autonomia Fiscal",
+        "shortName": "Autonomia fiscal",
+        "description": "Avalia a capacidade do município de financiar suas atividades com receitas próprias.",
+        "unit": "%",
+        "format": "percent",
+        "decimalPlaces": 1,
+        "multiplier": 1,
+        "direction": "higher_is_better",
+        "order": 102
+      },
+      {
+        "id": "endividamento",
+        "dimensionId": "financas",
+        "name": "Endividamento",
+        "shortName": null,
+        "description": "Expressa o peso da dívida consolidada líquida sobre a receita corrente líquida.",
+        "unit": "%",
+        "format": "percent",
+        "decimalPlaces": 1,
+        "multiplier": 1,
+        "direction": "lower_is_better",
+        "order": 103
+      },
+      {
+        "id": "despesas_pessoal",
+        "dimensionId": "financas",
+        "name": "Despesas com Pessoal",
+        "shortName": "Despesas pessoal",
+        "description": "Indica a participação das despesas com pessoal na receita corrente líquida.",
+        "unit": "%",
+        "format": "percent",
+        "decimalPlaces": 1,
+        "multiplier": 1,
+        "direction": "lower_is_better",
+        "order": 104
+      },
+      {
+        "id": "investimento",
+        "dimensionId": "financas",
+        "name": "Investimento",
+        "shortName": null,
+        "description": "Representa a parcela da receita corrente líquida destinada a investimentos.",
+        "unit": "%",
+        "format": "percent",
+        "decimalPlaces": 1,
+        "multiplier": 1,
+        "direction": "higher_is_better",
+        "order": 105
+      },
+      {
+        "id": "disponibilidade_caixa",
+        "dimensionId": "financas",
+        "name": "Disponibilidade de Caixa",
+        "shortName": "Disponibilidade caixa",
+        "description": "Compara a disponibilidade líquida de caixa com a receita corrente líquida.",
+        "unit": "%",
+        "format": "percent",
+        "decimalPlaces": 1,
+        "multiplier": 1,
+        "direction": "higher_is_better",
+        "order": 106
+      },
+      {
+        "id": "geracao_de_caixa",
+        "dimensionId": "financas",
+        "name": "Geração de Caixa",
+        "shortName": "Geração de caixa",
+        "description": "Mostra a variação da disponibilidade líquida de caixa em relação ao ano anterior.",
+        "unit": "%",
+        "format": "percent",
+        "decimalPlaces": 1,
+        "multiplier": 1,
+        "direction": "higher_is_better",
+        "order": 107
+      },
+      {
+        "id": "restos_a_pagar",
+        "dimensionId": "financas",
+        "name": "Restos a Pagar",
+        "shortName": "Restos a pagar",
+        "description": "Relaciona o saldo de restos a pagar à receita corrente líquida.",
+        "unit": "%",
+        "format": "percent",
+        "decimalPlaces": 1,
+        "multiplier": 1,
+        "direction": "lower_is_better",
+        "order": 108
+      },
+      {
+        "id": "desmatamento_por_area",
+        "dimensionId": "meio_ambiente",
+        "name": "Desmatamento por Área",
+        "shortName": "Desmatamento",
+        "description": "Expressa a parcela da área municipal afetada pelo desmatamento.",
+        "unit": "%",
+        "format": "percent",
+        "decimalPlaces": 1,
+        "multiplier": 1,
+        "direction": "lower_is_better",
+        "order": 201
+      },
+      {
+        "id": "emissao_gases_per_capita",
+        "dimensionId": "meio_ambiente",
+        "name": "Emissão de Gases per Capita",
+        "shortName": "Emissão gases",
+        "description": "Relaciona as emissões de gases de efeito estufa ao tamanho da população.",
+        "unit": "MtCO₂",
+        "format": "number",
+        "decimalPlaces": 1,
+        "multiplier": 1,
+        "direction": "lower_is_better",
+        "order": 202
+      },
+      {
+        "id": "incidencia_coliformes",
+        "dimensionId": "meio_ambiente",
+        "name": "Incidência de Coliformes na Água",
+        "shortName": "Coliformes",
+        "description": "Indica a presença de coliformes nas análises da água distribuída.",
+        "unit": "%",
+        "format": "percent",
+        "decimalPlaces": 1,
+        "multiplier": 1,
+        "direction": "lower_is_better",
+        "order": 203
+      },
+      {
+        "id": "indice_perdas_distribuicao",
+        "dimensionId": "meio_ambiente",
+        "name": "Índice de Perdas na Distribuição",
+        "shortName": "Perdas distribuição",
+        "description": "Representa a parcela da água produzida que se perde durante a distribuição.",
+        "unit": "%",
+        "format": "percent",
+        "decimalPlaces": 1,
+        "multiplier": 1,
+        "direction": "lower_is_better",
+        "order": 204
+      },
+      {
+        "id": "prop_atendimento_agua",
+        "dimensionId": "meio_ambiente",
+        "name": "Proporção de Atendimento de Água",
+        "shortName": "Atendimento água",
+        "description": "Expressa a proporção da população atendida pelo abastecimento de água.",
+        "unit": "%",
+        "format": "percent",
+        "decimalPlaces": 1,
+        "multiplier": 1,
+        "direction": "higher_is_better",
+        "order": 205
+      },
+      {
+        "id": "prop_coleta_residuos",
+        "dimensionId": "meio_ambiente",
+        "name": "Proporção de Coleta de Resíduos",
+        "shortName": "Coleta resíduos",
+        "description": "Indica a proporção da população atendida pela coleta de resíduos.",
+        "unit": "%",
+        "format": "percent",
+        "decimalPlaces": 1,
+        "multiplier": 1,
+        "direction": "higher_is_better",
+        "order": 206
+      },
+      {
+        "id": "obitos_causas_evitaveis_mil_habitantes",
+        "dimensionId": "saude",
+        "name": "Óbitos por Causas Evitáveis por Mil Habitantes",
+        "shortName": "Óbitos evitáveis",
+        "description": "Relaciona os óbitos por causas evitáveis ao tamanho da população.",
+        "unit": "óbitos/mil hab",
+        "format": "number",
+        "decimalPlaces": 1,
+        "multiplier": 1,
+        "direction": "lower_is_better",
+        "order": 301
+      },
+      {
+        "id": "proporcao_consultas_pre_natal",
+        "dimensionId": "saude",
+        "name": "Proporção de Consultas de Pré-natal",
+        "shortName": "Pré-natal",
+        "description": "Indica a proporção de nascidos vivos cujas mães realizaram 7+ consultas de pré-natal.",
+        "unit": "%",
+        "format": "percent",
+        "decimalPlaces": 1,
+        "multiplier": 1,
+        "direction": "higher_is_better",
+        "order": 302
+      },
+      {
+        "id": "proporcao_gravidez_adolescencia",
+        "dimensionId": "saude",
+        "name": "Proporção de Gravidez na Adolescência",
+        "shortName": "Gravidez adolescência",
+        "description": "Expressa a participação de mães adolescentes no total de nascidos vivos.",
+        "unit": "%",
+        "format": "percent",
+        "decimalPlaces": 1,
+        "multiplier": 1,
+        "direction": "lower_is_better",
+        "order": 303
+      },
+      {
+        "id": "medicos_por_mil_habitantes",
+        "dimensionId": "saude",
+        "name": "Médicos por Mil Habitantes",
+        "shortName": "Médicos/mil hab",
+        "description": "Relaciona o número de médicos disponíveis ao tamanho da população.",
+        "unit": "médicos/mil hab",
+        "format": "number",
+        "decimalPlaces": 1,
+        "multiplier": 1,
+        "direction": "higher_is_better",
+        "order": 304
+      },
+      {
+        "id": "cobertura_aps",
+        "dimensionId": "saude",
+        "name": "Cobertura de Atenção Primária à Saúde",
+        "shortName": "Cobertura APS",
+        "description": "Representa a cobertura potencial da Atenção Primária à Saúde.",
+        "unit": "%",
+        "format": "percent",
+        "decimalPlaces": 1,
+        "multiplier": 1,
+        "direction": "higher_is_better",
+        "order": 305
+      },
+      {
+        "id": "cobertura_acs",
+        "dimensionId": "saude",
+        "name": "Cobertura de Agentes Comunitários de Saúde",
+        "shortName": "Cobertura ACS",
+        "description": "Indica a cobertura estimada dos agentes comunitários de saúde.",
+        "unit": "%",
+        "format": "percent",
+        "decimalPlaces": 1,
+        "multiplier": 1,
+        "direction": "higher_is_better",
+        "order": 306
+      },
+      {
+        "id": "cobertura_vacinal_penta_polio_media",
+        "dimensionId": "saude",
+        "name": "Cobertura Vacinal Média — Pentavalente e Poliomielite",
+        "shortName": "Vacinal penta/pólio",
+        "description": "Sintetiza a cobertura das vacinas pentavalente e poliomielite.",
+        "unit": "%",
+        "format": "percent",
+        "decimalPlaces": 1,
+        "multiplier": 1,
+        "direction": "higher_is_better",
+        "order": 307
+      },
+      {
+        "id": "delitos_com_armas_por_10mil_hab",
+        "dimensionId": "seguranca",
+        "name": "Delitos com Armas por 10 Mil Habitantes",
+        "shortName": "Armas/10 mil hab",
+        "description": "Relaciona as ocorrências de delitos com armas ao tamanho da população.",
+        "unit": "ocorrências/10 mil hab",
+        "format": "number",
+        "decimalPlaces": 1,
+        "multiplier": 1,
+        "direction": "lower_is_better",
+        "order": 401
+      },
+      {
+        "id": "furtos_por_10mil_hab",
+        "dimensionId": "seguranca",
+        "name": "Furtos por 10 Mil Habitantes",
+        "shortName": "Furtos/10 mil hab",
+        "description": "Expressa as ocorrências de furto em relação ao tamanho da população.",
+        "unit": "ocorrências/10 mil hab",
+        "format": "number",
+        "decimalPlaces": 1,
+        "multiplier": 1,
+        "direction": "lower_is_better",
+        "order": 402
+      },
+      {
+        "id": "homicidio_doloso_por_10mil_hab",
+        "dimensionId": "seguranca",
+        "name": "Homicídios Dolosos por 10 Mil Habitantes",
+        "shortName": "Homicídios/10 mil hab",
+        "description": "Indica a incidência de homicídios dolosos em relação ao tamanho da população.",
+        "unit": "ocorrências/10 mil hab",
+        "format": "number",
+        "decimalPlaces": 1,
+        "multiplier": 1,
+        "direction": "lower_is_better",
+        "order": 403
+      },
+      {
+        "id": "roubos_por_10mil_hab",
+        "dimensionId": "seguranca",
+        "name": "Roubos por 10 Mil Habitantes",
+        "shortName": "Roubos/10 mil hab",
+        "description": "Relaciona as ocorrências de roubo ao tamanho da população.",
+        "unit": "ocorrências/10 mil hab",
+        "format": "number",
+        "decimalPlaces": 1,
+        "multiplier": 1,
+        "direction": "lower_is_better",
+        "order": 404
+      },
+      {
+        "id": "roubos_furtos_veiculos_por_10mil_veiculos",
+        "dimensionId": "seguranca",
+        "name": "Roubos e Furtos de Veículos por 10 Mil Veículos",
+        "shortName": "Roubos/furtos veíc.",
+        "description": "Compara os roubos e furtos de veículos com o tamanho da frota.",
+        "unit": "ocorrências/10 mil veíc.",
+        "format": "number",
+        "decimalPlaces": 1,
+        "multiplier": 1,
+        "direction": "lower_is_better",
+        "order": 405
+      },
+      {
+        "id": "estupro_por_10mil_mulheres",
+        "dimensionId": "seguranca",
+        "name": "Estupros por 10 Mil Mulheres",
+        "shortName": "Estupros/10 mil mulh.",
+        "description": "Relaciona as ocorrências de estupro à população feminina.",
+        "unit": "ocorrências/10 mil mulheres",
+        "format": "number",
+        "decimalPlaces": 1,
+        "multiplier": 1,
+        "direction": "lower_is_better",
+        "order": 406
+      },
+      {
+        "id": "ameaca_por_10mil_mulheres",
+        "dimensionId": "seguranca",
+        "name": "Ameaças por 10 Mil Mulheres",
+        "shortName": "Ameaças/10 mil mulh.",
+        "description": "Relaciona as ocorrências de ameaça à população feminina.",
+        "unit": "ocorrências/10 mil mulheres",
+        "format": "number",
+        "decimalPlaces": 1,
+        "multiplier": 1,
+        "direction": "lower_is_better",
+        "order": 407
+      },
+      {
+        "id": "pib_per_capita",
+        "dimensionId": "socioeconomico",
+        "name": "PIB per Capita",
+        "shortName": "PIB per capita",
+        "description": "Relaciona o valor do PIB municipal ao número de habitantes.",
+        "unit": "R$",
+        "format": "currency",
+        "decimalPlaces": 2,
+        "multiplier": 1,
+        "direction": "higher_is_better",
+        "order": 501
+      },
+      {
+        "id": "mulheres_empregadas_ensino_medio_ou_mais_por_1000_mulheres",
+        "dimensionId": "socioeconomico",
+        "name": "Mulheres Empregadas com Ensino Médio ou Mais por 1.000 Mulheres",
+        "shortName": "Mulheres empregadas ensino médio+",
+        "description": "Expressa os vínculos formais de mulheres com ensino médio+.",
+        "unit": "por mil mulheres",
+        "format": "number",
+        "decimalPlaces": 1,
+        "multiplier": 1,
+        "direction": "higher_is_better",
+        "order": 502
+      },
+      {
+        "id": "renda_media",
+        "dimensionId": "socioeconomico",
+        "name": "Renda Média",
+        "shortName": "Renda média",
+        "description": "Representa a remuneração média dos vínculos formais em dezembro.",
+        "unit": "R$",
+        "format": "currency",
+        "decimalPlaces": 2,
+        "multiplier": 1,
+        "direction": "higher_is_better",
+        "order": 503
+      },
+      {
+        "id": "vinculos_per_capita",
+        "dimensionId": "socioeconomico",
+        "name": "Vínculos Formais per Capita",
+        "shortName": "Vínculos per capita",
+        "description": "Relaciona o número de vínculos formais ativos à população.",
+        "unit": "vínculos/hab",
+        "format": "number",
+        "decimalPlaces": 2,
+        "multiplier": 1,
+        "direction": "higher_is_better",
+        "order": 504
+      },
+      {
+        "id": "formalidade_mercado_trabalho",
+        "dimensionId": "socioeconomico",
+        "name": "Formalidade do Mercado de Trabalho",
+        "shortName": "Formalidade",
+        "description": "Compara os vínculos formais ativos com a população de 15 a 69 anos.",
+        "unit": "%",
+        "format": "percent",
+        "decimalPlaces": 1,
+        "multiplier": 100,
+        "direction": "higher_is_better",
+        "order": 505
+      },
+      {
+        "id": "geracao_emprego_per_capita",
+        "dimensionId": "socioeconomico",
+        "name": "Geração de Emprego por 1.000 Habitantes",
+        "shortName": "Geração empregos/1.000 hab",
+        "description": "Relaciona o saldo de empregos formais gerados ao tamanho da população.",
+        "unit": "empregos/1.000 hab",
+        "format": "number",
+        "decimalPlaces": 1,
+        "multiplier": 1000,
+        "direction": "higher_is_better",
+        "order": 506
+      },
+      {
+        "id": "vulnerabilidade_social",
+        "dimensionId": "socioeconomico",
+        "name": "Vulnerabilidade Social",
+        "shortName": "Vulnerabilidade social",
+        "description": "Indica a proporção da população registrada no Cadastro Único.",
+        "unit": "%",
+        "format": "percent",
+        "decimalPlaces": 1,
+        "multiplier": 1,
+        "direction": "lower_is_better",
+        "order": 507
+      },
+      {
+        "id": "proporcao_pessoas_baixa_renda",
+        "dimensionId": "socioeconomico",
+        "name": "Proporção de Pessoas de Baixa Renda",
+        "shortName": "Baixa renda",
+        "description": "Expressa a proporção de pessoas em famílias de baixa renda.",
+        "unit": "%",
+        "format": "percent",
+        "decimalPlaces": 1,
+        "multiplier": 1,
+        "direction": "lower_is_better",
+        "order": 508
+      }
+    ]
+  }
+}

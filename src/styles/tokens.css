@@ -1,9 +1,14 @@
 :root {
-  font-family: Inter, "Segoe UI", Arial, sans-serif;
+  --font-sans: "Source Sans 3", "Segoe UI Variable Text", "Segoe UI", "Helvetica Neue", Arial, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family: var(--font-sans);
   color: #102542;
   background: #f5f7fa;
   font-synthesis: none;
+  font-kerning: normal;
+  font-optical-sizing: auto;
   text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 
   --color-navy: #061f3b;
   --color-text: #102542;
@@ -13,13 +18,29 @@
   --color-gold: #b7791f;
   --color-gold-dark: #8a5a12;
   --color-gold-soft: #fff4dc;
+  --color-gold-muted: #f6e2bd;
   --color-border: #dfe6ec;
+  --color-border-strong: #cbd7e2;
   --color-background: #f5f7fa;
   --color-surface: #ffffff;
-  --shadow-panel: 0 10px 26px rgba(20, 34, 50, 0.08);
+  --color-surface-subtle: #f9fbfc;
+  --color-surface-tint: #f2f7f7;
+  --shadow-panel: 0 2px 8px rgba(20, 34, 50, 0.08);
+  --shadow-soft: 0 1px 4px rgba(20, 34, 50, 0.07);
   --radius-sm: 8px;
   --radius-md: 12px;
   --radius-lg: 16px;
-  --content-width: 1450px;
-  --header-height: 68px;
+  --dashboard-max-width: 1680px;
+  --dashboard-content-width: 1608px;
+  --dashboard-page-padding-x: 28px;
+  --dashboard-page-padding-y: 18px;
+  --dashboard-section-gap: 12px;
+  --dashboard-card-radius: 12px;
+  --dashboard-header-height: 58px;
+  --dashboard-filter-height: 64px;
+  --dashboard-chart-height: 336px;
+
+  /* Aliases mantidos para os componentes existentes. */
+  --content-width: var(--dashboard-max-width);
+  --header-height: var(--dashboard-header-height);
 }

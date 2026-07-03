@@ -1,0 +1,445 @@
+{
+  "schemaVersion": "1.0.0",
+  "dataVersion": "v2025",
+  "generatedAt": "2026-07-03T19:39:40+00:00Z",
+  "data": {
+    "municipalityId": "4307559",
+    "municipalityName": "Estação",
+    "regionId": "RF9",
+    "regionName": "Região Funcional 9",
+    "corede": "Norte",
+    "dimensionId": "meio_ambiente",
+    "dimensionName": "Meio ambiente",
+    "availableYears": [
+      2021,
+      2022,
+      2023,
+      2024,
+      2025
+    ],
+    "dimensionHistory": [
+      {
+        "year": 2021,
+        "score": 9.34055877269123,
+        "rank": 3,
+        "totalMunicipalitiesInRegion": 130
+      },
+      {
+        "year": 2022,
+        "score": 9.26011748125622,
+        "rank": 2,
+        "totalMunicipalitiesInRegion": 130
+      },
+      {
+        "year": 2023,
+        "score": 9.36553403351494,
+        "rank": 3,
+        "totalMunicipalitiesInRegion": 130
+      },
+      {
+        "year": 2024,
+        "score": 9.17646525751262,
+        "rank": 5,
+        "totalMunicipalitiesInRegion": 130
+      },
+      {
+        "year": 2025,
+        "score": 8.84123060020208,
+        "rank": 21,
+        "totalMunicipalitiesInRegion": 130
+      }
+    ],
+    "indicators": [
+      {
+        "indicatorId": "desmatamento_por_area",
+        "values": [
+          {
+            "year": 2021,
+            "score": 9.52318716925153,
+            "rank": 9,
+            "untiedRank": null,
+            "originalValue": 0.077829588791388,
+            "valueUsedForScore": -0.077829588791388,
+            "isImputed": false,
+            "regionalMedianScore": 8.399856739854386,
+            "regionalMedianOriginalValue": 0.228073506993725,
+            "regionalMedianSampleSize": 130
+          },
+          {
+            "year": 2022,
+            "score": 8.98187540609307,
+            "rank": 19,
+            "untiedRank": null,
+            "originalValue": 0.162004992382956,
+            "valueUsedForScore": -0.162004992382956,
+            "isImputed": false,
+            "regionalMedianScore": 7.51714881613583,
+            "regionalMedianOriginalValue": 0.3574556580826245,
+            "regionalMedianSampleSize": 130
+          },
+          {
+            "year": 2023,
+            "score": 9.34865943592024,
+            "rank": 9,
+            "untiedRank": null,
+            "originalValue": 0.10640751465759,
+            "valueUsedForScore": -0.10640751465759,
+            "isImputed": false,
+            "regionalMedianScore": 7.70635171965592,
+            "regionalMedianOriginalValue": 0.301135488762335,
+            "regionalMedianSampleSize": 130
+          },
+          {
+            "year": 2024,
+            "score": 8.45165746042852,
+            "rank": 35,
+            "untiedRank": null,
+            "originalValue": 0.142936456805859,
+            "valueUsedForScore": -0.142936456805859,
+            "isImputed": false,
+            "regionalMedianScore": 7.4822604052813,
+            "regionalMedianOriginalValue": 0.2204022281330415,
+            "regionalMedianSampleSize": 130
+          },
+          {
+            "year": 2025,
+            "score": 7.28931886639884,
+            "rank": 107,
+            "untiedRank": null,
+            "originalValue": 0.0817752762381533,
+            "valueUsedForScore": -0.0817752762381533,
+            "isImputed": false,
+            "regionalMedianScore": 9.04196108252312,
+            "regionalMedianOriginalValue": 0.02928689177266665,
+            "regionalMedianSampleSize": 130
+          }
+        ]
+      },
+      {
+        "indicatorId": "emissao_gases_per_capita",
+        "values": [
+          {
+            "year": 2021,
+            "score": 9.61091578206614,
+            "rank": 5,
+            "untiedRank": null,
+            "originalValue": 4.466042181752,
+            "valueUsedForScore": -4.466042181752,
+            "isImputed": false,
+            "regionalMedianScore": 7.31257795057616,
+            "regionalMedianOriginalValue": 14.63177865343685,
+            "regionalMedianSampleSize": 130
+          },
+          {
+            "year": 2022,
+            "score": 9.63095262249785,
+            "rank": 5,
+            "untiedRank": null,
+            "originalValue": 5.20828154675183,
+            "valueUsedForScore": -5.20828154675183,
+            "isImputed": false,
+            "regionalMedianScore": 7.684120069961775,
+            "regionalMedianOriginalValue": 17.0901988894242,
+            "regionalMedianSampleSize": 130
+          },
+          {
+            "year": 2023,
+            "score": 9.46534906873065,
+            "rank": 6,
+            "untiedRank": null,
+            "originalValue": 5.16060518142008,
+            "valueUsedForScore": -5.16060518142008,
+            "isImputed": false,
+            "regionalMedianScore": 7.1822216859382895,
+            "regionalMedianOriginalValue": 14.62620394577085,
+            "regionalMedianSampleSize": 130
+          },
+          {
+            "year": 2024,
+            "score": 9.53417756073699,
+            "rank": 6,
+            "untiedRank": null,
+            "originalValue": 5.26781620052542,
+            "valueUsedForScore": -5.26781620052542,
+            "isImputed": false,
+            "regionalMedianScore": 7.841121660449415,
+            "regionalMedianOriginalValue": 14.005984035446101,
+            "regionalMedianSampleSize": 130
+          },
+          {
+            "year": 2025,
+            "score": 9.10831039903661,
+            "rank": 17,
+            "untiedRank": null,
+            "originalValue": 7.0578395754751,
+            "valueUsedForScore": -7.0578395754751,
+            "isImputed": false,
+            "regionalMedianScore": 7.950060081481444,
+            "regionalMedianOriginalValue": 12.710107192279299,
+            "regionalMedianSampleSize": 130
+          }
+        ]
+      },
+      {
+        "indicatorId": "incidencia_coliformes",
+        "values": [
+          {
+            "year": 2021,
+            "score": 10.0,
+            "rank": 1,
+            "untiedRank": null,
+            "originalValue": 0.0,
+            "valueUsedForScore": 0.0,
+            "isImputed": false,
+            "regionalMedianScore": 9.92141249549114,
+            "regionalMedianOriginalValue": 0.12000000000000001,
+            "regionalMedianSampleSize": 130
+          },
+          {
+            "year": 2022,
+            "score": 9.73796965145079,
+            "rank": 85,
+            "untiedRank": null,
+            "originalValue": 1.09,
+            "valueUsedForScore": -1.09,
+            "isImputed": false,
+            "regionalMedianScore": 9.92816467417368,
+            "regionalMedianOriginalValue": 0.17,
+            "regionalMedianSampleSize": 130
+          },
+          {
+            "year": 2023,
+            "score": 10.0,
+            "rank": 1,
+            "untiedRank": null,
+            "originalValue": 0.0,
+            "valueUsedForScore": 0.0,
+            "isImputed": false,
+            "regionalMedianScore": 10.0,
+            "regionalMedianOriginalValue": 0.0,
+            "regionalMedianSampleSize": 130
+          },
+          {
+            "year": 2024,
+            "score": 10.0,
+            "rank": 1,
+            "untiedRank": null,
+            "originalValue": 0.0,
+            "valueUsedForScore": 0.0,
+            "isImputed": false,
+            "regionalMedianScore": 10.0,
+            "regionalMedianOriginalValue": 0.0,
+            "regionalMedianSampleSize": 130
+          },
+          {
+            "year": 2025,
+            "score": 9.84595313943298,
+            "rank": 82,
+            "untiedRank": null,
+            "originalValue": 0.27,
+            "valueUsedForScore": -0.27,
+            "isImputed": false,
+            "regionalMedianScore": 10.0,
+            "regionalMedianOriginalValue": 0.0,
+            "regionalMedianSampleSize": 130
+          }
+        ]
+      },
+      {
+        "indicatorId": "indice_perdas_distribuicao",
+        "values": [
+          {
+            "year": 2021,
+            "score": 4.27188986566992,
+            "rank": 111,
+            "untiedRank": null,
+            "originalValue": 44.78,
+            "valueUsedForScore": -44.78,
+            "isImputed": false,
+            "regionalMedianScore": 7.604439760168545,
+            "regionalMedianOriginalValue": 24.71,
+            "regionalMedianSampleSize": 130
+          },
+          {
+            "year": 2022,
+            "score": 5.12777026616786,
+            "rank": 113,
+            "untiedRank": null,
+            "originalValue": 45.17,
+            "valueUsedForScore": -45.17,
+            "isImputed": false,
+            "regionalMedianScore": 7.85319050251233,
+            "regionalMedianOriginalValue": 25.0,
+            "regionalMedianSampleSize": 130
+          },
+          {
+            "year": 2023,
+            "score": 6.18964475443121,
+            "rank": 116,
+            "untiedRank": null,
+            "originalValue": 44.11,
+            "valueUsedForScore": -44.11,
+            "isImputed": false,
+            "regionalMedianScore": 8.613712190801106,
+            "regionalMedianOriginalValue": 23.13,
+            "regionalMedianSampleSize": 130
+          },
+          {
+            "year": 2024,
+            "score": 5.82403257513248,
+            "rank": 108,
+            "untiedRank": null,
+            "originalValue": 39.76,
+            "valueUsedForScore": -39.76,
+            "isImputed": false,
+            "regionalMedianScore": 7.802615862182201,
+            "regionalMedianOriginalValue": 24.14,
+            "regionalMedianSampleSize": 130
+          },
+          {
+            "year": 2025,
+            "score": 5.19548973798562,
+            "rank": 116,
+            "untiedRank": null,
+            "originalValue": 44.99,
+            "valueUsedForScore": -44.99,
+            "isImputed": false,
+            "regionalMedianScore": 8.143485469177776,
+            "regionalMedianOriginalValue": 22.24,
+            "regionalMedianSampleSize": 130
+          }
+        ]
+      },
+      {
+        "indicatorId": "prop_atendimento_agua",
+        "values": [
+          {
+            "year": 2021,
+            "score": 9.19193242689084,
+            "rank": 49,
+            "untiedRank": null,
+            "originalValue": 85.21,
+            "valueUsedForScore": 85.21,
+            "isImputed": false,
+            "regionalMedianScore": 7.918891328895995,
+            "regionalMedianOriginalValue": 65.08500000000001,
+            "regionalMedianSampleSize": 130
+          },
+          {
+            "year": 2022,
+            "score": 9.18815741411062,
+            "rank": 47,
+            "untiedRank": null,
+            "originalValue": 85.21,
+            "valueUsedForScore": 85.21,
+            "isImputed": false,
+            "regionalMedianScore": 7.55424613535266,
+            "regionalMedianOriginalValue": 61.43,
+            "regionalMedianSampleSize": 130
+          },
+          {
+            "year": 2023,
+            "score": 9.16421764082285,
+            "rank": 48,
+            "untiedRank": null,
+            "originalValue": 85.27,
+            "valueUsedForScore": 85.27,
+            "isImputed": false,
+            "regionalMedianScore": 7.581352886643855,
+            "regionalMedianOriginalValue": 62.06,
+            "regionalMedianSampleSize": 130
+          },
+          {
+            "year": 2024,
+            "score": 9.16387358317795,
+            "rank": 49,
+            "untiedRank": null,
+            "originalValue": 85.26,
+            "valueUsedForScore": 85.26,
+            "isImputed": false,
+            "regionalMedianScore": 7.69580287789649,
+            "regionalMedianOriginalValue": 63.05,
+            "regionalMedianSampleSize": 130
+          },
+          {
+            "year": 2025,
+            "score": 9.4707559545793,
+            "rank": 45,
+            "untiedRank": null,
+            "originalValue": 90.49,
+            "valueUsedForScore": 90.49,
+            "isImputed": false,
+            "regionalMedianScore": 7.65623961298021,
+            "regionalMedianOriginalValue": 64.2,
+            "regionalMedianSampleSize": 130
+          }
+        ]
+      },
+      {
+        "indicatorId": "prop_coleta_residuos",
+        "values": [
+          {
+            "year": 2021,
+            "score": 10.0,
+            "rank": 1,
+            "untiedRank": null,
+            "originalValue": 100.0,
+            "valueUsedForScore": 100.0,
+            "isImputed": false,
+            "regionalMedianScore": 7.75955773558414,
+            "regionalMedianOriginalValue": 61.44,
+            "regionalMedianSampleSize": 130
+          },
+          {
+            "year": 2022,
+            "score": 9.994147479377,
+            "rank": 16,
+            "untiedRank": null,
+            "originalValue": 99.87,
+            "valueUsedForScore": 99.87,
+            "isImputed": false,
+            "regionalMedianScore": 7.746184419795146,
+            "regionalMedianOriginalValue": 62.14,
+            "regionalMedianSampleSize": 130
+          },
+          {
+            "year": 2023,
+            "score": 10.0,
+            "rank": 1,
+            "untiedRank": null,
+            "originalValue": 100.0,
+            "valueUsedForScore": 100.0,
+            "isImputed": false,
+            "regionalMedianScore": 7.144391498825465,
+            "regionalMedianOriginalValue": 60.16,
+            "regionalMedianSampleSize": 130
+          },
+          {
+            "year": 2024,
+            "score": 10.0,
+            "rank": 1,
+            "untiedRank": null,
+            "originalValue": 100.0,
+            "valueUsedForScore": 100.0,
+            "isImputed": false,
+            "regionalMedianScore": 7.115077727452725,
+            "regionalMedianOriginalValue": 59.26,
+            "regionalMedianSampleSize": 130
+          },
+          {
+            "year": 2025,
+            "score": 9.93607366231078,
+            "rank": 15,
+            "untiedRank": null,
+            "originalValue": 98.84,
+            "valueUsedForScore": 98.84,
+            "isImputed": false,
+            "regionalMedianScore": 7.30974970050562,
+            "regionalMedianOriginalValue": 62.24,
+            "regionalMedianSampleSize": 130
+          }
+        ]
+      }
+    ]
+  }
+}
