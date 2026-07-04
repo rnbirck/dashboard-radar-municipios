@@ -403,11 +403,12 @@ button { color: inherit; }
 .dimension-selector-card::after { content: "ver"; position: absolute; right: 10px; bottom: 9px; display: inline-flex; align-items: center; min-height: 18px; padding: 1px 7px; border-radius: 999px; color: #6b7d91; background: #f2f5f8; font-size: 8.5px; font-weight: 780; line-height: 1; }
 .dimension-selector-card:hover { background: #fbfdfd; color: var(--color-teal); box-shadow: inset 0 -2px 0 rgba(0,108,103,.26); }
 .dimension-selector-card:hover::after { color: var(--color-teal); background: var(--color-teal-soft); }
-.dimension-selector-card.is-selected { background: #0b4f59; color: #fff; box-shadow: inset 0 -3px 0 #f1bd62; }
-.dimension-selector-card.is-selected::after { content: "em foco"; color: #f7d7a3; background: rgba(255,255,255,.12); }
+.dimension-selector-card:focus-visible { z-index: 2; outline: 3px solid rgba(183,121,31,.32); outline-offset: -3px; }
+.dimension-selector-card.is-selected { z-index: 1; background: linear-gradient(180deg, #ffffff 0%, #e8f6f4 100%); color: #0f2b46; box-shadow: inset 0 0 0 1px rgba(0,108,103,.58), inset 0 -3px 0 rgba(0,108,103,.74), 0 1px 5px rgba(13,95,97,.09); }
+.dimension-selector-card.is-selected::after { content: "em foco"; border: 1px solid #a8d0cb; color: #0b5a5a; background: #dff2ef; }
 .dimension-selector-card__icon { width: 32px; height: 32px; display: grid; place-items: center; border-radius: 9px; background: #fff4dc; color: var(--color-gold-dark); }
 .dimension-selector-card--general .dimension-selector-card__icon { background: #dff2ef; color: var(--color-teal); }
-.dimension-selector-card.is-selected .dimension-selector-card__icon { background: rgba(255,255,255,.15); color: #f1bd62; }
+.dimension-selector-card.is-selected .dimension-selector-card__icon { background: #fff; color: var(--color-teal); box-shadow: inset 0 0 0 1px #b9d9d5; }
 .dimension-selector-card__body { min-width: 0; display: grid; gap: 4px; }
 .dimension-selector-card__body b { overflow: hidden; display: -webkit-box; -webkit-box-orient: vertical; -webkit-line-clamp: 2; color: #213b56; font-size: 12px; line-height: 1.15; font-weight: 820; text-overflow: ellipsis; white-space: normal; }
 .dimension-selector-card__body strong { font-size: 27px; line-height: .95; letter-spacing: 0; font-variant-numeric: tabular-nums; }
@@ -415,8 +416,8 @@ button { color: inherit; }
 .dimension-selector-card__meta small { color: inherit; font-size: inherit; font-weight: inherit; }
 .dimension-selector-card__meta > span { color: #9aa8b6; }
 .dimension-selector-card .variation-chip { min-height: auto; padding: 0; border-radius: 0; background: transparent; color: inherit; font-size: inherit; font-weight: inherit; }
-.dimension-selector-card.is-selected .dimension-selector-card__body b, .dimension-selector-card.is-selected .dimension-selector-card__body strong, .dimension-selector-card.is-selected .dimension-selector-card__meta small { color: #fff; }
-.dimension-selector-card.is-selected .dimension-selector-card__meta, .dimension-selector-card.is-selected .dimension-selector-card__meta > span, .dimension-selector-card.is-selected .variation-chip { color: rgba(255,255,255,.74); }
+.dimension-selector-card.is-selected .dimension-selector-card__body b { color: #0f2b46; }
+.dimension-selector-card.is-selected .dimension-selector-card__meta, .dimension-selector-card.is-selected .dimension-selector-card__meta small, .dimension-selector-card.is-selected .dimension-selector-card__meta > span, .dimension-selector-card.is-selected .variation-chip { color: #49677e; }
 .position-text--good { color: var(--rank-good); }.position-text--middle { color: var(--rank-mid); }.position-text--low { color: var(--rank-low); }.position-text--neutral { color: #526277; }
 .analysis-layout { min-width: 0; display: grid; grid-template-columns: repeat(2,minmax(0,1fr)); gap: var(--dashboard-section-gap); align-items: stretch; }
 .analysis-panel { min-width: 0; height: 100%; padding: 18px 18px 16px; border: 1px solid var(--color-border); border-radius: var(--dashboard-card-radius); background: #fff; box-shadow: var(--shadow-panel); }
