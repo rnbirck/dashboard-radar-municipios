@@ -137,7 +137,7 @@ export function HomePage() {
       <section className="home-use-panel" aria-labelledby="home-use-title">
         <div className="home-use-panel__heading">
           <h2 id="home-use-title">Duas entradas para a análise</h2>
-          <p>Comece pelo território ou vá direto ao município mantendo o mesmo recorte de ano e região.</p>
+          <p>Escolha a entrada da análise: Região Funcional ou município, mantendo ano e recorte regional consistentes.</p>
         </div>
         <div className="home-use-panel__body">
           <article className="home-route">
