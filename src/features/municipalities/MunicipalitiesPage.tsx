@@ -1,4 +1,4 @@
-import { Building2, CalendarDays, MousePointerClick, Network, Trophy, Users } from 'lucide-react'
+import { Building2 } from 'lucide-react'
 import { useEffect, useRef, useState } from 'react'
 import { useSearchParams } from 'react-router-dom'
 import { EmptyState } from '../../components/ui/EmptyState'
@@ -96,26 +96,8 @@ export function MunicipalitiesPage() {
           showHint
         />
       ) : null}
-      {!municipalityId && ranking ? <RegionalMunicipalitiesOverview ranking={ranking} /> : null}
       {!municipalityId && ranking && catalog ? <MunicipalityRankingTable ranking={ranking} catalog={catalog} coredeId={coredeId} /> : null}
       {municipalityId && summary && catalog && dimensions.length === DIMENSION_IDS.length ? <MunicipalityDetail summary={summary} dimensions={dimensions} catalog={catalog} selectedYear={displayYear ?? undefined} /> : null}
     </div>
   )
-}
-
-function RegionalMunicipalitiesOverview({ ranking }: { ranking: RegionalRankingData }) {
-  const coredes = new Set(ranking.municipalities.map((item) => item.coredeId))
-  const best = ranking.municipalities.find((item) => item.overallRank === 1) ?? ranking.municipalities[0]
-  return <section className="regional-municipalities-overview">
-    <div className="regional-municipalities-overview__heading">
-      <div><h1>Municípios da {ranking.regionName}</h1><p>{ranking.municipalityCount} municípios avaliados no ranking de {ranking.year}.</p></div>
-      <span><MousePointerClick size={16} /> Clique em uma linha da tabela para abrir a análise completa do município.</span>
-    </div>
-    <div className="regional-overview-metrics">
-      <article><Users size={18} /><div><strong>{ranking.municipalityCount}</strong><span>municípios da RF</span></div></article>
-      <article><Network size={18} /><div><strong>{coredes.size}</strong><span>Coredes</span></div></article>
-      <article><Trophy size={18} /><div><strong>{best?.municipalityName ?? '—'}</strong><span>1º colocado</span></div></article>
-      <article><CalendarDays size={18} /><div><strong>{ranking.year}</strong><span>ano de referência</span></div></article>
-    </div>
-  </section>
 }

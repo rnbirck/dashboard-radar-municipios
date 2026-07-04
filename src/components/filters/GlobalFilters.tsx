@@ -232,7 +232,7 @@ export function GlobalFilters({ compact = false }: GlobalFiltersProps) {
     >
       <div className="global-filters__heading">
         <span><SlidersHorizontal size={15} aria-hidden="true" /> Filtros de análise</span>
-        <small>{compact ? 'Escolha uma Região Funcional para abrir o ranking.' : 'Refine ano, território e município sem perder o contexto.'}</small>
+        <small>{compact ? 'Escolha uma Região Funcional para abrir o ranking.' : 'Selecione ano, Região Funcional, Corede ou município.'}</small>
       </div>
       <div className="filter-field filter-field--year">
         <label htmlFor="filter-year">Ano</label>

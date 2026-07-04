@@ -17,8 +17,8 @@ type LineChartSimpleProps = {
 }
 
 const WIDTH = 640
-const HEIGHT = 270
-const PAD = { top: 40, right: 34, bottom: 42, left: 46 }
+const HEIGHT = 286
+const PAD = { top: 42, right: 42, bottom: 50, left: 54 }
 const MUNICIPALITY_LABEL = 'Munic\u00edpio'
 const FUNCTIONAL_REGION_MEDIAN_LABEL = 'Mediana da Regi\u00e3o Funcional'
 
@@ -108,7 +108,7 @@ export function LineChartSimple({ points, comparison, comparisonLabel, invert = 
     points[hoverIndex]?.value,
     comparison?.[hoverIndex]?.value,
   ].filter((value): value is number => value !== null && value !== undefined)
-  const hoverTop = hoverIndex === null || !hoverValues.length ? 0 : clamp(((Math.min(...hoverValues.map(y)) - 14) / HEIGHT) * 100, 7, 78)
+  const hoverTop = hoverIndex === null || !hoverValues.length ? 0 : clamp(((Math.min(...hoverValues.map(y)) - 14) / HEIGHT) * 100, 7, 76)
   const hoverLeft = hoverIndex === null ? 0 : (x(hoverIndex) / WIDTH) * 100
 
   return (
@@ -117,7 +117,7 @@ export function LineChartSimple({ points, comparison, comparisonLabel, invert = 
         className="simple-chart"
         viewBox={`0 0 ${WIDTH} ${HEIGHT}`}
         role="img"
-        aria-label={yAxisLabel ? `Gr\u00e1fico de linha com evolu\u00e7\u00e3o anual. Eixo Y: ${yAxisLabel}` : 'Gr\u00e1fico de linha com evolu\u00e7\u00e3o anual'}
+        aria-label={yAxisLabel ? `Gr\u00e1fico de linha com evolu\u00e7\u00e3o anual. Eixo Y: ${yAxisLabel}` : 'Gr\u00e1fico de linha com hist\u00f3rico anual de posi\u00e7\u00e3o'}
         onPointerMove={handlePointerMove}
         onPointerLeave={() => setHoverIndex(null)}
       >
@@ -178,9 +178,9 @@ type RadarChartSimpleProps = {
 export function RadarChartSimple({ labels, values, comparison, comparisonLabel, max = 10, primaryLabel = MUNICIPALITY_LABEL }: RadarChartSimpleProps) {
   const [hoverIndex, setHoverIndex] = useState<number | null>(null)
   if (!labels.length || !values.some((value) => value !== null)) return <div className="chart-empty">{'N\u00e3o h\u00e1 dados para esta compara\u00e7\u00e3o.'}</div>
-  const size = 400
+  const size = 420
   const center = size / 2
-  const radius = 148
+  const radius = 152
   const point = (index: number, value: number) => {
     const angle = -Math.PI / 2 + index * (Math.PI * 2 / labels.length)
     const distance = radius * Math.max(0, Math.min(value / max, 1))
@@ -190,7 +190,7 @@ export function RadarChartSimple({ labels, values, comparison, comparisonLabel, 
   const pointsFor = (series: Array<number | null>) => series.map((value, index) => value === null ? null : point(index, value))
   const axisEnd = (index: number) => point(index, max)
   const labelPoint = (index: number) => {
-    const [labelX, labelY] = point(index, max * 1.18)
+    const [labelX, labelY] = point(index, max * 1.2)
     return [labelX, labelY]
   }
   const labelLines = (label: string) => {
@@ -244,7 +244,7 @@ export function RadarChartSimple({ labels, values, comparison, comparisonLabel, 
         className="radar-chart"
         viewBox={`0 0 ${size} ${size}`}
         role="img"
-        aria-label={'Gr\u00e1fico radar comparativo'}
+        aria-label={`Gr\u00e1fico radar comparando ${primaryLabel}${comparison ? ` e ${comparisonName}` : ''}`}
         onPointerMove={handleRadarPointerMove}
         onPointerLeave={() => setHoverIndex(null)}
       >

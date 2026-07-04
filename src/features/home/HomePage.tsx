@@ -1,7 +1,6 @@
-import { ArrowRight, BarChart3, Building2, CalendarDays, Compass, ListChecks, Map, Network, RefreshCw, Search, SlidersHorizontal, TrendingUp } from 'lucide-react'
+import { ArrowRight, BarChart3, Building2, Compass, ListChecks, Map, RefreshCw, Search, SlidersHorizontal, TrendingUp } from 'lucide-react'
 import { useEffect, useMemo, useState } from 'react'
 import { Link } from 'react-router-dom'
-import { MetricCard } from '../../components/ui/MetricCard'
 import { formatInteger, missingValue } from '../../data/formatters'
 import { clearManifestCache, DataFetchError, loadManifest } from '../../data/repository'
 import type { DashboardManifest } from '../../types/domain'
@@ -46,47 +45,32 @@ export function HomePage() {
     setLoadAttempt((current) => current + 1)
   }
 
-  const metrics = useMemo(() => {
+  const summaryItems = useMemo(() => {
     const t = manifest?.totals
     return [
       {
-        icon: Building2,
         value: t ? formatInteger(t.municipalities) : missingValue(),
         label: 'municípios',
-        note: 'do Rio Grande do Sul',
-        loading: isLoading,
       },
       {
-        icon: Map,
         value: t ? formatInteger(t.regions) : missingValue(),
-        label: 'regiões funcionais',
-        note: 'de planejamento',
-        loading: isLoading,
+        label: 'Regiões Funcionais',
       },
       {
-        icon: Network,
         value: t ? formatInteger(t.coredes) : missingValue(),
         label: 'Coredes',
-        note: 'Conselhos Regionais de Desenvolvimento',
-        loading: isLoading,
       },
       manifest
         ? {
-            icon: CalendarDays,
             value: String(manifest.defaultYear),
             label: 'ano de referência',
-            note: 'ranking mais recente',
-            loading: false,
           }
         : {
-            icon: CalendarDays,
             value: missingValue(),
             label: 'ano de referência',
-            note: 'ranking mais recente',
-            loading: isLoading,
           },
     ]
-  }, [isLoading, manifest])
+  }, [manifest])
 
   return (
     <div className="home-page">
@@ -106,6 +90,15 @@ export function HomePage() {
               Analisar município
               <ArrowRight size={17} aria-hidden="true" />
             </Link>
+          </div>
+          <div className="home-workbench__summary" aria-label="Resumo do Radar" aria-busy={isLoading || undefined}>
+            {isLoading ? <span className="sr-only">Carregando totais do painel.</span> : null}
+            {summaryItems.map((item) => (
+              <span key={item.label}>
+                <strong>{item.value}</strong>
+                <small>{item.label}</small>
+              </span>
+            ))}
           </div>
         </div>
 
@@ -128,11 +121,6 @@ export function HomePage() {
         </aside>
       </section>
 
-      <section className="metric-grid" aria-label="Resumo do painel" aria-busy={isLoading || undefined}>
-        {isLoading ? <span className="sr-only">Carregando totais do painel.</span> : null}
-        {metrics.map((metric) => <MetricCard key={metric.label} {...metric} />)}
-      </section>
-
       {status === 'error' ? (
         <section className="home-data-alert" role="alert">
           <div>
@@ -148,8 +136,8 @@ export function HomePage() {
 
       <section className="home-use-panel" aria-labelledby="home-use-title">
         <div className="home-use-panel__heading">
-          <h2 id="home-use-title">Do panorama regional ao detalhe municipal</h2>
-          <p>O painel foi organizado para começar amplo e chegar ao município sem trocar de contexto.</p>
+          <h2 id="home-use-title">Duas entradas para a análise</h2>
+          <p>Comece pelo território ou vá direto ao município mantendo o mesmo recorte de ano e região.</p>
         </div>
         <div className="home-use-panel__body">
           <article className="home-route">
@@ -178,16 +166,16 @@ export function HomePage() {
 
       <section className="home-section home-section--explain">
         <div className="home-section__heading">
-          <h2>O que você encontra no Radar</h2>
+          <h2>Base de leitura</h2>
         </div>
         <div className="objective-grid objective-grid--compact">
           <article className="objective-card">
             <span><BarChart3 size={27} aria-hidden="true" /></span>
-            <div><h3>Comparação regional</h3><p>Os rankings comparam municípios dentro da mesma Região Funcional, aproximando a leitura de cada território.</p></div>
+            <div><h3>Comparação regional</h3><p>Os rankings comparam municípios dentro da mesma Região Funcional.</p></div>
           </article>
           <article className="objective-card">
             <span><TrendingUp size={27} aria-hidden="true" /></span>
-            <div><h3>Evolução e dimensões</h3><p>Cada município reúne posição geral, histórico e desempenho nas dimensões que compõem o Radar.</p></div>
+            <div><h3>Evolução e dimensões</h3><p>Cada município reúne posição geral, histórico e desempenho por dimensão.</p></div>
           </article>
         </div>
       </section>

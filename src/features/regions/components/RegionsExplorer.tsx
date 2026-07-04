@@ -1,9 +1,8 @@
-import { ArrowRight, CalendarDays, Map, Network, Users } from 'lucide-react'
+import { ArrowRight, Map } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import { EmptyState } from '../../../components/ui/EmptyState'
 import { ErrorState } from '../../../components/ui/ErrorState'
 import { LoadingState } from '../../../components/ui/LoadingState'
-import { MetricCard } from '../../../components/ui/MetricCard'
 import { formatInteger, missingValue } from '../../../data/formatters'
 import type { RegionsData } from '../../../types/domain'
 
@@ -23,19 +22,23 @@ export function RegionsExplorer({ data, status, year, title, description, showHi
 
   return (
     <>
-      <section className="region-hero">
-        <div className="region-hero__copy">
-          <h1>{title}</h1>
-          <p>{description}</p>
+      <section className="context-panel regions-context-panel" aria-labelledby="regions-context-title">
+        <div className="context-panel__identity">
+          <span className="context-badge"><Map size={13} aria-hidden="true" /> Contexto regional</span>
+          <h1 id="regions-context-title" className="context-panel__title">{title}</h1>
+          {showHint ? (
+            <div className="context-panel__meta" aria-label="Metadados do recorte estadual">
+              <span className="context-chip">Entrada por Região Funcional ou município</span>
+            </div>
+          ) : null}
+          <p className="context-panel__copy">{description}</p>
         </div>
-        <span className="region-hero__icon" aria-hidden="true"><Map size={36} strokeWidth={1.6} /></span>
-      </section>
-
-      <section className="metric-grid metric-grid--compact" aria-label="Resumo das regiões">
-        <MetricCard icon={Map} value={totalRegions === null ? missingValue() : formatInteger(totalRegions)} label="regiões funcionais" note="recortes de planejamento" />
-        <MetricCard icon={Users} value={totalMunicipalities === null ? missingValue() : formatInteger(totalMunicipalities)} label="municípios" note="em todo o estado" />
-        <MetricCard icon={Network} value={totalCoredes === null ? missingValue() : formatInteger(totalCoredes)} label="Coredes" note="conselhos regionais" />
-        <MetricCard icon={CalendarDays} value={year === null ? missingValue() : String(year)} label="ano mais recente" note="dados estáticos reais" />
+        <div className="context-panel__summary" aria-label="Resumo das regiões">
+          <span className="context-panel__metric context-panel__secondary-metric"><span>Ano de referência</span><strong>{year === null ? missingValue() : String(year)}</strong></span>
+          <span className="context-panel__metric context-panel__primary-metric"><span>Regiões Funcionais</span><strong>{totalRegions === null ? missingValue() : formatInteger(totalRegions)}</strong></span>
+          <span className="context-panel__metric"><span>Municípios</span><strong>{totalMunicipalities === null ? missingValue() : formatInteger(totalMunicipalities)}</strong></span>
+          <span className="context-panel__metric"><span>Coredes</span><strong>{totalCoredes === null ? missingValue() : formatInteger(totalCoredes)}</strong></span>
+        </div>
       </section>
 
       <section className="placeholder-panel">
@@ -59,10 +62,15 @@ export function RegionsExplorer({ data, status, year, title, description, showHi
                 to={`/municipios?ano=${year ?? ''}&regiao=${encodeURIComponent(region.id)}`}
                 title={`Explorar ${region.name}`}
               >
-                <span className="region-explore-col region-explore-col--badge"><span className="region-explore-badge">{region.id}</span></span>
-                <span className="region-explore-col region-explore-col--metric"><span className="region-explore-metric-value">{region.municipalityCount}</span><span className="region-explore-metric-label">municípios</span></span>
-                <span className="region-explore-col region-explore-col--metric"><span className="region-explore-metric-value">{region.coredeCount}</span><span className="region-explore-metric-label">Coredes</span></span>
-                <span className="region-explore-col region-explore-col--coredes"><span className="region-explore-coredes-label">Coredes</span><span className="region-explore-coredes-text">{region.coredeNames.join(', ')}</span></span>
+                <span className="region-explore-col region-explore-col--identity">
+                  <span className="region-explore-badge">{region.id}</span>
+                  <span className="region-explore-summary">
+                    <strong>{region.municipalityCount} municípios</strong>
+                    <span aria-hidden="true">·</span>
+                    <strong>{region.coredeCount} Corede{region.coredeCount === 1 ? '' : 's'}</strong>
+                  </span>
+                </span>
+                <span className="region-explore-col region-explore-col--coredes" aria-label={`Coredes: ${region.coredeNames.join(', ')}`}><span className="region-explore-coredes-text">{region.coredeNames.join(', ')}</span></span>
                 <span className="region-explore-col region-explore-col--cta"><span className="region-explore-cta">Explorar região<ArrowRight size={14} aria-hidden="true" /></span></span>
               </Link>
             ))}
