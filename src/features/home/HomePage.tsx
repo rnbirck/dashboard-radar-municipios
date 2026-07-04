@@ -152,9 +152,9 @@ export function HomePage() {
             <span><TrendingUp size={21} aria-hidden="true" /></span>
             <div><h3>Histórico e dimensões</h3><p>Evolução anual e desempenho por dimensão.</p></div>
           </article>
-          <article className="home-insight-card home-insight-card--accent">
+          <article className="home-insight-card">
             <span><ListChecks size={21} aria-hidden="true" /></span>
-            <div><h3>Recorte compartilhável</h3><p>Ano, RF, Corede e município sincronizados na URL.</p></div>
+            <div><h3>Filtros sincronizados</h3><p>Ano, RF, Corede e município na URL.</p></div>
           </article>
         </div>
       </section>
