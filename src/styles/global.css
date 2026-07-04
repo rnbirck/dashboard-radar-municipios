@@ -404,8 +404,8 @@ button { color: inherit; }
 .dimension-selector-card:hover { background: #fbfdfd; color: var(--color-teal); box-shadow: inset 0 -2px 0 rgba(0,108,103,.26); }
 .dimension-selector-card:hover::after { color: var(--color-teal); background: var(--color-teal-soft); }
 .dimension-selector-card:focus-visible { z-index: 2; outline: 3px solid rgba(183,121,31,.32); outline-offset: -3px; }
-.dimension-selector-card.is-selected { z-index: 1; background: linear-gradient(180deg, #ffffff 0%, #e8f6f4 100%); color: #0f2b46; box-shadow: inset 0 0 0 1px rgba(0,108,103,.58), inset 0 -3px 0 rgba(0,108,103,.74), 0 1px 5px rgba(13,95,97,.09); }
-.dimension-selector-card.is-selected::after { content: "em foco"; border: 1px solid #a8d0cb; color: #0b5a5a; background: #dff2ef; }
+.dimension-selector-card.is-selected { z-index: 1; background: linear-gradient(180deg, #f7fdfc 0%, #d8efec 100%); color: #0f2b46; box-shadow: inset 0 0 0 2px rgba(0,108,103,.78), inset 0 -5px 0 #0b6c67, 0 4px 8px rgba(13,95,97,.13); }
+.dimension-selector-card.is-selected::after { content: "em foco"; min-height: 19px; padding: 2px 8px; border: 1px solid #0b5a5a; color: #fff; background: #0b5a5a; font-weight: 840; }
 .dimension-selector-card__icon { width: 32px; height: 32px; display: grid; place-items: center; border-radius: 9px; background: #fff4dc; color: var(--color-gold-dark); }
 .dimension-selector-card--general .dimension-selector-card__icon { background: #dff2ef; color: var(--color-teal); }
 .dimension-selector-card.is-selected .dimension-selector-card__icon { background: #fff; color: var(--color-teal); box-shadow: inset 0 0 0 1px #b9d9d5; }
