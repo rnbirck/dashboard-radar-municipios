@@ -38,7 +38,7 @@ export function TopNavigation() {
               onClick={() => setIsOpen(false)}
               className={({ isActive }) => isActive ? 'nav-link nav-link--active' : 'nav-link'}
             >
-              <Icon size={18} strokeWidth={1.8} aria-hidden="true" />
+              <Icon size={19} strokeWidth={1.9} aria-hidden="true" />
               <span>{label}</span>
             </NavLink>
           ))}
@@ -46,11 +46,11 @@ export function TopNavigation() {
 
         <div className="topbar__actions">
           <a className="help-action" href="/#como-navegar">
-            <CircleHelp size={18} aria-hidden="true" />
+            <CircleHelp size={18} strokeWidth={1.9} aria-hidden="true" />
             <span>Ajuda</span>
           </a>
           <button className="cei-action" type="button" title="Núcleo CEI — em breve">
-            <Users size={18} aria-hidden="true" />
+            <Users size={19} strokeWidth={1.9} aria-hidden="true" />
             <span>Núcleo CEI</span>
           </button>
         </div>
