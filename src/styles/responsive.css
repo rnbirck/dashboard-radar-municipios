@@ -11,6 +11,7 @@
   .home-workbench__intro, .home-guide { min-height: 0; }
   .home-use-panel__body { grid-template-columns: repeat(2, minmax(0,1fr)); }
   .home-filter-note { grid-column: 1 / -1; }
+  .home-insight-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .context-panel { grid-template-columns: minmax(0, 1fr); }
   .context-panel__identity { padding: 20px 22px; }
   .context-panel__summary { grid-template-columns: repeat(4, minmax(0, 1fr)); }
@@ -77,6 +78,11 @@
   .home-use-panel__heading p { text-align: left; }
   .home-use-panel__body { grid-template-columns: 1fr; }
   .home-filter-note { grid-column: auto; }
+  .home-insight-panel { padding: 18px; }
+  .home-insight-panel__heading { align-items: flex-start; flex-direction: column; gap: 4px; }
+  .home-insight-panel__heading h2 { font-size: 19px; }
+  .home-insight-panel__heading p { text-align: left; }
+  .home-insight-grid { grid-template-columns: 1fr; }
   .objective-grid, .entry-grid { grid-template-columns: 1fr; }
   .metric-card { min-height: 88px; }
   .home-section__heading { align-items: flex-start; flex-direction: column; gap: 3px; }
@@ -106,6 +112,8 @@
   .content-panel__subtitle { font-size: 12px; }
   .home-guide li { grid-template-columns: 38px minmax(0, 1fr); }
   .home-guide li > span { width: 38px; height: 38px; }
+  .home-insight-card { grid-template-columns: 38px minmax(0, 1fr); min-height: 0; padding: 14px; }
+  .home-insight-card > span { width: 38px; height: 38px; }
   .objective-card, .entry-card { padding: 17px; }
   .empty-state { display: grid; gap: 14px; }
 }

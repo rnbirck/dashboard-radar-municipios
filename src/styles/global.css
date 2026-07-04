@@ -218,6 +218,19 @@ button { color: inherit; }
 .home-filter-note { background: #fff8e8; color: #583b0d; }
 .home-filter-note > svg { background: #fff; color: var(--color-gold-dark); }
 .home-filter-note strong { display: block; margin-bottom: 5px; color: #70480e; font-size: 13px; line-height: 1.25; }
+.home-insight-panel { display: grid; gap: 14px; padding: 20px 22px; border: 1px solid #d8e4ea; border-radius: 16px; background: #fff; box-shadow: 0 2px 8px rgba(20,34,50,.07); }
+.home-insight-panel__heading { display: flex; align-items: baseline; justify-content: space-between; gap: 18px; }
+.home-insight-panel__heading h2 { margin: 0; color: #0f2b46; font-size: 20px; line-height: 1.12; font-weight: 920; text-wrap: balance; }
+.home-insight-panel__heading p { margin: 0; color: #52677f; font-size: 12.5px; line-height: 1.35; font-weight: 700; text-align: right; }
+.home-insight-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; }
+.home-insight-card { min-width: 0; min-height: 98px; display: grid; grid-template-columns: 42px minmax(0, 1fr); align-items: start; gap: 12px; padding: 15px; border: 1px solid #e0e8ee; border-radius: 12px; background: #fbfcfd; }
+.home-insight-card > span { width: 42px; height: 42px; display: grid; place-items: center; border-radius: 11px; background: #dff2ef; color: var(--color-teal); }
+.home-insight-card h3 { margin: 0 0 5px; color: var(--color-teal); font-size: 14px; line-height: 1.2; font-weight: 900; }
+.home-insight-card p { margin: 0; color: #53677f; font-size: 12px; line-height: 1.38; font-weight: 620; }
+.home-insight-card--accent { border-color: #f0dfbf; background: #fff8e8; }
+.home-insight-card--accent > span { background: #fff; color: var(--color-gold-dark); }
+.home-insight-card--accent h3 { color: #70480e; }
+.home-insight-card--accent p { color: #5d4b2d; }
 
 .empty-state { position: relative; min-height: 108px; display: flex; align-items: center; gap: 24px; padding: 22px 34px; overflow: hidden; border: 1px solid var(--color-border); border-radius: var(--radius-md); background: #fff; box-shadow: var(--shadow-panel); }
 .empty-state::after { content: ""; position: absolute; right: 38px; bottom: -65px; width: 280px; height: 110px; border: 1px solid rgba(183,121,31,.15); border-radius: 50%; box-shadow: 0 0 0 25px rgba(183,121,31,.035), 0 0 0 50px rgba(183,121,31,.025); }
