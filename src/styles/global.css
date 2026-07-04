@@ -258,7 +258,8 @@ button { color: inherit; }
 .region-explore-coredes-text { display: block; color: #2f465f; font-size: .76rem; font-weight: 650; line-height: 1.24; }
 .region-explore-cta { display: inline-flex; align-items: center; gap: 6px; min-height: 30px; padding: 0 11px; border: 1px solid #c8e0e3; border-radius: 999px; color: #073d3f; background: #f5fbfa; font-weight: 850; font-size: .72rem; white-space: nowrap; transition: background-color .16s ease, border-color .16s ease, color .16s ease; }
 .region-explore-card:hover .region-explore-cta { border-color: #efd2a2; color: #70480e; background: #fff4dc; }
-.placeholder-panel .region-explore-hint { display: flex; align-items: center; gap: 8px; margin: 10px 0 0; padding: 10px 12px; }
+.placeholder-panel .region-explore-hint { display: flex; align-items: flex-start; gap: 8px; margin: 12px 0 0; padding: 10px 12px; border: 1px solid #dbe8ee; border-radius: 10px; background: #f8fbfc; color: #53677f; font-size: 12.25px; font-weight: 650; line-height: 1.35; }
+.region-explore-hint svg { flex: 0 0 auto; margin-top: 1px; color: var(--color-teal); stroke-width: 2; }
 
 /* Estado de erro */
 .error-state { position: relative; display: flex; align-items: center; gap: 22px; padding: 22px 28px; border: 1px solid rgba(217, 47, 58, .35); border-radius: var(--radius-md); background: #fff; box-shadow: var(--shadow-panel); }

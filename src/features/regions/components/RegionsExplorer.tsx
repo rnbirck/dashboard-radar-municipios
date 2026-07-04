@@ -1,4 +1,4 @@
-import { ArrowRight, Map } from 'lucide-react'
+import { ArrowRight, Info, Map } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import { EmptyState } from '../../../components/ui/EmptyState'
 import { ErrorState } from '../../../components/ui/ErrorState'
@@ -19,6 +19,10 @@ export function RegionsExplorer({ data, status, year, title, description, showHi
   const totalMunicipalities = data?.totals.municipalities ?? null
   const totalCoredes = data?.totals.coredes ?? null
   const totalRegions = data?.totals.regions ?? null
+  const entryLabel = showHint ? 'Entrada por Região Funcional ou município' : 'Entrada por Região Funcional'
+  const footerNote = showHint
+    ? 'Selecione uma Região Funcional ou um município para explorar rankings, indicadores e detalhes.'
+    : 'Selecione uma Região Funcional para consultar seus municípios, Coredes e ranking regional.'
 
   return (
     <>
@@ -26,11 +30,9 @@ export function RegionsExplorer({ data, status, year, title, description, showHi
         <div className="context-panel__identity">
           <span className="context-badge"><Map size={13} aria-hidden="true" /> Contexto regional</span>
           <h1 id="regions-context-title" className="context-panel__title">{title}</h1>
-          {showHint ? (
-            <div className="context-panel__meta" aria-label="Metadados do recorte estadual">
-              <span className="context-chip">Entrada por Região Funcional ou município</span>
-            </div>
-          ) : null}
+          <div className="context-panel__meta" aria-label="Entrada de análise">
+            <span className="context-chip context-chip--strong">{entryLabel}</span>
+          </div>
           <p className="context-panel__copy">{description}</p>
         </div>
         <div className="context-panel__summary" aria-label="Resumo das regiões">
@@ -76,7 +78,7 @@ export function RegionsExplorer({ data, status, year, title, description, showHi
             ))}
           </div>
         )}
-        {showHint ? <p className="region-explore-hint"><Map size={15} aria-hidden="true" /> Selecione uma região funcional ou um município para explorar rankings, indicadores e detalhes.</p> : null}
+        <p className="region-explore-hint"><Info size={14} aria-hidden="true" /> {footerNote}</p>
       </section>
     </>
   )
