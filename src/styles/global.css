@@ -139,7 +139,7 @@ button { color: inherit; }
 
 .home-page { position: relative; display: grid; gap: 16px; min-width: 0; }
 .home-workbench { display: grid; grid-template-columns: minmax(0, 1fr); gap: 12px; align-items: stretch; }
-.home-workbench__intro { min-height: 316px; display: grid; grid-template-columns: minmax(0, 1fr); align-items: start; align-content: start; gap: 13px; padding: 30px 32px 24px; overflow: hidden; border: 1px solid #b5d0d8; border-radius: 14px; background: linear-gradient(180deg, #ffffff 0%, #eaf6f5 100%); box-shadow: var(--shadow-soft); }
+.home-workbench__intro { min-height: 338px; display: grid; grid-template-columns: minmax(0, 1fr); align-items: start; align-content: start; gap: 14px; padding: 34px 34px 28px; overflow: hidden; border: 1px solid #b5d0d8; border-radius: 14px; background: linear-gradient(180deg, #ffffff 0%, #eaf6f5 100%); box-shadow: var(--shadow-soft); }
 .home-kicker { width: fit-content; display: inline-flex; align-items: center; min-height: 28px; padding: 4px 11px; border: 1px solid #7fb4b3; border-radius: 999px; background: #d9eeeb; color: #03484b; font-size: 11px; font-weight: 900; letter-spacing: 0; text-transform: none; }
 .home-kicker, .home-workbench h1, .home-workbench__intro p, .home-workbench__actions { grid-column: 1; }
 .home-workbench h1 { margin: 0; max-width: 1040px; color: #062640; font-size: 38px; line-height: 1.04; font-weight: 940; letter-spacing: 0; text-wrap: balance; }
@@ -154,13 +154,13 @@ button { color: inherit; }
 .home-action-button:hover { transform: translateY(-2px); border-color: rgba(13,126,122,.38); background: #f3fbfa; color: #006f70; }
 .home-action-button--primary { border-color: transparent; background: linear-gradient(135deg, #007d7a 0%, #0b5a5a 100%); color: #fff; }
 .home-action-button--primary:hover { border-color: transparent; background: linear-gradient(135deg, #008a86 0%, #0b6665 100%); color: #fff; }
-.home-guide { min-height: 82px; display: grid; grid-template-columns: auto minmax(0, 1fr); align-items: center; gap: 18px; padding: 16px 18px; overflow: hidden; border: 1px solid #dbe8ee; border-radius: 12px; background: #fbfeff; color: #102542; }
-.home-guide h2 { margin: 0; color: #0f2b46; font-size: 15px; line-height: 1.1; font-weight: 920; white-space: nowrap; }
-.home-guide ol { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 12px; margin: 0; padding: 0; list-style: none; }
-.home-guide li { min-width: 0; display: grid; grid-template-columns: 40px minmax(0, 1fr); gap: 12px; align-items: start; }
-.home-guide li > span { width: 40px; height: 40px; display: grid; place-items: center; border: 1px solid #cce0e6; border-radius: 10px; background: #fff; color: var(--color-teal); }
-.home-guide strong { display: block; margin: 0 0 3px; color: #15314b; font-size: 12.5px; line-height: 1.2; }
-.home-guide p { margin: 0; color: #53677f; font-size: 11.5px; line-height: 1.35; font-weight: 620; }
+.home-guide { min-height: 112px; display: grid; grid-template-columns: auto minmax(0, 1fr); align-items: center; gap: 22px; padding: 22px; overflow: hidden; border: 1px solid #dbe8ee; border-radius: 12px; background: #fbfeff; color: #102542; }
+.home-guide h2 { margin: 0; color: #0f2b46; font-size: 16px; line-height: 1.1; font-weight: 930; white-space: nowrap; }
+.home-guide ol { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 16px; margin: 0; padding: 0; list-style: none; }
+.home-guide li { min-width: 0; display: grid; grid-template-columns: 48px minmax(0, 1fr); gap: 14px; align-items: start; }
+.home-guide li > span { width: 48px; height: 48px; display: grid; place-items: center; border: 1px solid #cce0e6; border-radius: 11px; background: #fff; color: var(--color-teal); }
+.home-guide strong { display: block; margin: 0 0 5px; color: #15314b; font-size: 13px; line-height: 1.2; }
+.home-guide p { margin: 0; color: #53677f; font-size: 11.75px; line-height: 1.38; font-weight: 620; }
 .metric-card { min-height: 104px; display: flex; align-items: center; gap: 15px; padding: 16px; border: 1px solid #e1eaf0; border-radius: var(--dashboard-card-radius); background: #fff; }
 .metric-card__icon { flex: 0 0 48px; width: 48px; height: 48px; display: grid; place-items: center; border-radius: 12px; background: #dff2ef; color: var(--color-teal); }
 .metric-card__copy { display: grid; gap: 1px; min-width: 0; }
@@ -218,13 +218,13 @@ button { color: inherit; }
 .home-filter-note { background: #fff8e8; color: #583b0d; }
 .home-filter-note > svg { background: #fff; color: var(--color-gold-dark); }
 .home-filter-note strong { display: block; margin-bottom: 5px; color: #70480e; font-size: 13px; line-height: 1.25; }
-.home-insight-panel { display: grid; gap: 16px; padding: 24px 24px; border: 1px solid #d8e4ea; border-radius: 16px; background: #fff; box-shadow: 0 2px 8px rgba(20,34,50,.07); }
+.home-insight-panel { display: grid; gap: 18px; padding: 26px 24px; border: 1px solid #d8e4ea; border-radius: 16px; background: #fff; box-shadow: 0 2px 8px rgba(20,34,50,.07); }
 .home-insight-panel__heading { display: flex; align-items: baseline; justify-content: space-between; gap: 18px; }
 .home-insight-panel__heading h2 { margin: 0; color: #0f2b46; font-size: 20px; line-height: 1.12; font-weight: 920; text-wrap: balance; }
 .home-insight-panel__heading p { margin: 0; color: #52677f; font-size: 12.5px; line-height: 1.35; font-weight: 700; text-align: right; }
 .home-insight-grid { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 10px; }
-.home-insight-card { min-width: 0; min-height: 124px; display: grid; grid-template-columns: 46px minmax(0, 1fr); align-items: start; gap: 14px; padding: 18px; border: 1px solid #e0e8ee; border-radius: 12px; background: #fbfcfd; }
-.home-insight-card > span { width: 46px; height: 46px; display: grid; place-items: center; border-radius: 11px; background: #dff2ef; color: var(--color-teal); }
+.home-insight-card { min-width: 0; min-height: 136px; display: grid; grid-template-columns: 48px minmax(0, 1fr); align-items: start; gap: 15px; padding: 20px; border: 1px solid #e0e8ee; border-radius: 12px; background: #fbfcfd; }
+.home-insight-card > span { width: 48px; height: 48px; display: grid; place-items: center; border-radius: 11px; background: #dff2ef; color: var(--color-teal); }
 .home-insight-card h3 { margin: 0 0 5px; color: var(--color-teal); font-size: 14px; line-height: 1.2; font-weight: 900; }
 .home-insight-card p { margin: 0; color: #53677f; font-size: 12px; line-height: 1.38; font-weight: 620; }
 

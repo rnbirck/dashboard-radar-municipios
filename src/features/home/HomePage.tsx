@@ -1,4 +1,4 @@
-import { ArrowRight, BarChart3, Building2, Compass, ListChecks, Map, RefreshCw, SlidersHorizontal, TrendingUp } from 'lucide-react'
+import { ArrowRight, BarChart3, Building2, Compass, Map, RefreshCw, SlidersHorizontal, TrendingUp } from 'lucide-react'
 import { useEffect, useMemo, useState } from 'react'
 import { Link } from 'react-router-dom'
 import { formatInteger, missingValue } from '../../data/formatters'
@@ -137,24 +137,23 @@ export function HomePage() {
       <section className="home-insight-panel" aria-labelledby="home-insight-title">
         <div className="home-insight-panel__heading">
           <h2 id="home-insight-title">O que o Radar mostra</h2>
-          <p>Leituras essenciais para comparar territórios.</p>
         </div>
         <div className="home-insight-grid">
           <article className="home-insight-card">
             <span><Map size={21} aria-hidden="true" /></span>
-            <div><h3>Visão regional</h3><p>Municípios ranqueados dentro da mesma Região Funcional.</p></div>
+            <div><h3>Comparação regional</h3><p>Rankings por Região Funcional e Corede.</p></div>
           </article>
           <article className="home-insight-card">
-            <span><Building2 size={21} aria-hidden="true" /></span>
-            <div><h3>Leitura municipal</h3><p>Posição geral, porte, população, PIB e área.</p></div>
+            <span><SlidersHorizontal size={21} aria-hidden="true" /></span>
+            <div><h3>Dimensões do Radar</h3><p>Temas organizados para leitura comparável.</p></div>
+          </article>
+          <article className="home-insight-card">
+            <span><BarChart3 size={21} aria-hidden="true" /></span>
+            <div><h3>Indicadores em destaque</h3><p>Indicadores selecionados em cada dimensão.</p></div>
           </article>
           <article className="home-insight-card">
             <span><TrendingUp size={21} aria-hidden="true" /></span>
-            <div><h3>Histórico e dimensões</h3><p>Evolução anual e desempenho por dimensão.</p></div>
-          </article>
-          <article className="home-insight-card">
-            <span><ListChecks size={21} aria-hidden="true" /></span>
-            <div><h3>Filtros sincronizados</h3><p>Ano, RF, Corede e município na URL.</p></div>
+            <div><h3>Evolução histórica</h3><p>Série anual de posições e desempenho.</p></div>
           </article>
         </div>
       </section>
