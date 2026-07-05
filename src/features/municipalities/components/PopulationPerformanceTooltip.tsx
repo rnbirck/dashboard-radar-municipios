@@ -18,7 +18,7 @@ export function PopulationPerformanceTooltip() {
           <span className="performance-tooltip__intro">{'Classifica o munic\u00edpio considerando seu desempenho em rela\u00e7\u00e3o ao seu tamanho populacional.'}</span>
           <span className="performance-tooltip__divider" aria-hidden="true" />
           <TooltipItem tone="above" label="ACIMA" description="Desempenho acima do esperado para o porte populacional." />
-          <TooltipItem tone="expected" label="NO INTERVALO" description="Desempenho dentro do esperado para o porte populacional." />
+          <TooltipItem tone="expected" label="NO INTERVALO" description="Desempenho no intervalo esperado para o porte populacional." />
           <TooltipItem tone="below" label="ABAIXO" description="Desempenho abaixo do esperado para o porte populacional." />
         </span>
       </span>

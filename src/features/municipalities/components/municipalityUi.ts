@@ -41,7 +41,7 @@ export function formatRankVariation(current: number | null | undefined, previous
 
 export function performanceShortLabel(code: PopulationPerformanceCode): string {
   if (code === 'above') return 'Acima'
-  if (code === 'expected') return 'Dentro'
+  if (code === 'expected') return 'No intervalo'
   if (code === 'below') return 'Abaixo'
   return 'N\u00e3o informado'
 }
