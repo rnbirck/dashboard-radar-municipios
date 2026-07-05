@@ -79,6 +79,7 @@ export function formatIndicatorPointLabel(value: number | null, metadata?: Indic
 
 export function indicatorAxisLabel(metadata?: IndicatorCatalogEntry): string {
   if (!metadata) return 'Valor do indicador'
+  if (metadata.id === 'saeb_ensino_fundamental') return 'Nota'
   if (metadata.format === 'percent' || metadata.unit === '%') return 'Percentual (%)'
   if (metadata.format === 'currency') return metadata.unit ? `Valor (${metadata.unit})` : 'Valor (R$)'
   return metadata.unit ?? metadata.shortName ?? 'Valor do indicador'
