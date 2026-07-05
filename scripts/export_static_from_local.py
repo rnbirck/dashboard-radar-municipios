@@ -256,7 +256,7 @@ def _read_municipal_profile(engine: Any) -> dict[int, dict[str, Any]]:
 
 
 # ---------------------------------------------------------------------------
-# Indicadores — metadados curados (replicados de export_static_sample.py)
+# Indicadores — metadados curados do projeto
 # ---------------------------------------------------------------------------
 
 
@@ -459,7 +459,11 @@ def _indicator_decimal(iid: str) -> int:
 
 
 def _indicator_mult(iid: str) -> int:
-    return {"formalidade_mercado_trabalho": 100, "geracao_emprego_per_capita": 1000}.get(iid, 1)
+    return {
+        "qt_acesso_infor": 100,
+        "formalidade_mercado_trabalho": 100,
+        "geracao_emprego_per_capita": 1000,
+    }.get(iid, 1)
 
 
 # Indicadores por dimensao (ordem curada)
@@ -602,13 +606,6 @@ def build_manifest(segments: dict[str, Any]) -> dict[str, Any]:
             "municipalitySummaryPattern": "municipalities/{municipalityId}/summary.json",
             "municipalityDimensionPattern": "municipalities/{municipalityId}/{dimension}.json",
         },
-        "sample": {
-            "isSample": False,
-            "coveredRegionIds": segments["region_ids"],
-            "detailedMunicipalityIds": segments["all_municipality_ids"],
-            "detailedMunicipalityCount": segments["total_municipios"],
-            "detailedCoverage": "all_municipalities",
-        },
     }
 
 
@@ -660,10 +657,10 @@ def build_catalog(ranking_2025: pd.DataFrame, segments: dict[str, Any]) -> dict[
     }
 
 
-def build_regions_2025(ranking_2025: pd.DataFrame) -> dict[str, Any]:
+def build_regions_year(ranking_year: pd.DataFrame, year: int) -> dict[str, Any]:
     regions_list = []
-    for rid in sorted(ranking_2025["regiao_funcional"].unique(), key=lambda x: int(x[2:])):
-        rf = ranking_2025[ranking_2025["regiao_funcional"] == rid]
+    for rid in sorted(ranking_year["regiao_funcional"].unique(), key=lambda x: int(x[2:])):
+        rf = ranking_year[ranking_year["regiao_funcional"] == rid]
         mids = rf["id_municipio"].nunique()
         coredes_in_region = sorted(rf["corede"].str.strip().unique())
         avg_score = _s(rf["nota_final"].mean())
@@ -680,35 +677,36 @@ def build_regions_2025(ranking_2025: pd.DataFrame) -> dict[str, Any]:
         })
 
     return {
-        "year": DEFAULT_YEAR,
+        "year": year,
         "totals": {
-            "municipalities": ranking_2025["id_municipio"].nunique(),
+            "municipalities": ranking_year["id_municipio"].nunique(),
             "regions": len(regions_list),
-            "coredes": ranking_2025["corede"].str.strip().nunique(),
+            "coredes": ranking_year["corede"].str.strip().nunique(),
         },
         "regions": regions_list,
     }
 
 
 def build_ranking_rf(
-    ranking_2025: pd.DataFrame,
+    ranking_year: pd.DataFrame,
     reg_rf: pd.DataFrame,
     region_id: str,
-    classification_2025: pd.DataFrame,
+    classification_year: pd.DataFrame,
     dimension_rank_lookup: dict[tuple[int, int, str], int | None],
+    year: int,
 ) -> dict[str, Any]:
-    rf_rows = ranking_2025[ranking_2025["regiao_funcional"] == region_id].copy()
+    rf_rows = ranking_year[ranking_year["regiao_funcional"] == region_id].copy()
     rf_rows = rf_rows.sort_values("ranking_regiao_funcional")
 
-    # Previous year ranks (2024)
-    ranking_2024 = reg_rf[reg_rf["ano"] == 2024]
+    # Previous year ranks.
+    ranking_previous = reg_rf[reg_rf["ano"] == year - 1]
     prev_map = {}
-    for _, r in ranking_2024.iterrows():
+    for _, r in ranking_previous.iterrows():
         prev_map[int(r["id_municipio"])] = int(r["ranking_regiao_funcional"])
 
     class_map = {}
-    if not classification_2025.empty:
-        for _, r in classification_2025.iterrows():
+    if not classification_year.empty:
+        for _, r in classification_year.iterrows():
             class_map[int(r["id_municipio"])] = str(r.get("classificacao", ""))
 
     entries = []
@@ -720,7 +718,7 @@ def build_ranking_rf(
 
         dim_ranks = _empty_dim_map()
         for d, js_key in _JS_DIM_MAP.items():
-            dim_ranks[js_key] = dimension_rank_lookup.get((mid, DEFAULT_YEAR, d))
+            dim_ranks[js_key] = dimension_rank_lookup.get((mid, year, d))
 
         entries.append({
             "municipalityId": str(mid),
@@ -736,7 +734,7 @@ def build_ranking_rf(
         })
 
     return {
-        "year": DEFAULT_YEAR,
+        "year": year,
         "regionId": region_id,
         "regionName": REGION_NAMES.get(region_id, region_id),
         "municipalityCount": len(entries),
@@ -978,13 +976,6 @@ def validate_output(manifest: dict[str, Any], catalog: dict[str, Any],
     _assert(manifest["defaultYear"] == DEFAULT_YEAR, "manifest.defaultYear")
     _assert(len(manifest["availableYears"]) == 5, "manifest.availableYears")
 
-    # Manifest sample metadata
-    sample = manifest.get("sample", {})
-    _assert(sample.get("isSample") == False, "manifest.sample.isSample deve ser False")
-    _assert(sample.get("detailedCoverage") == "all_municipalities", "manifest.sample.detailedCoverage")
-    _assert(sample.get("detailedMunicipalityCount") == 497, "manifest.sample.detailedMunicipalityCount")
-    _assert(len(sample.get("detailedMunicipalityIds", [])) == 497, "manifest.sample.detailedMunicipalityIds: 497")
-
     _assert(len(catalog["regions"]) == 9, "catalog: 9 regioes")
     _assert(len(catalog["coredes"]) == 28, "catalog: 28 Coredes")
     _assert(len(catalog["municipalities"]) == 497, "catalog: 497 municipios")
@@ -1190,13 +1181,10 @@ def main() -> int:
     corede_ids = sorted(ranking_2025["corede"].str.strip().unique())
     total_municipios = ranking_2025["id_municipio"].nunique()
 
-    all_municipality_ids = sorted([str(int(m)) for m in ranking_2025["id_municipio"].unique()])
-
     segments = {
         "region_ids": region_ids,
         "corede_ids": sorted(list({_slugify(c) for c in corede_ids})),
         "total_municipios": total_municipios,
-        "all_municipality_ids": all_municipality_ids,
     }
 
     # Calcular medianas em memoria
@@ -1212,22 +1200,24 @@ def main() -> int:
     print("Construindo catalog...")
     catalog = build_catalog(ranking_2025, segments)
 
-    # Construir regions
-    print("Construindo regions...")
-    regions_data = build_regions_2025(ranking_2025)
-
-    # Construir rankings RF1-RF9
-    print("Construindo rankings regionais...")
-    classification_2025 = regressao[regressao["ano"] == DEFAULT_YEAR]
-    rankings = {}
-    for rid in region_ids:
-        rankings[rid] = build_ranking_rf(
-            ranking_2025,
-            ranking_all,
-            rid,
-            classification_2025,
-            dimension_rank_lookup,
-        )
+    # Construir regions e rankings RF1-RF9 para todos os anos publicados.
+    print("Construindo regions e rankings regionais...")
+    regions_by_year = {}
+    rankings_by_year = {}
+    for year in YEARS:
+        ranking_year = ranking_all[ranking_all["ano"] == year]
+        classification_year = regressao[regressao["ano"] == year]
+        regions_by_year[year] = build_regions_year(ranking_year, year)
+        rankings_by_year[year] = {}
+        for rid in region_ids:
+            rankings_by_year[year][rid] = build_ranking_rf(
+                ranking_year,
+                ranking_all,
+                rid,
+                classification_year,
+                dimension_rank_lookup,
+                year,
+            )
 
     # Construir manifest
     manifest = build_manifest(segments)
@@ -1267,11 +1257,13 @@ def main() -> int:
         print("Escrevendo JSONs em temp...")
 
         _write_json(tmp_v2025 / "catalog.json", _envelope(catalog))
-        _write_json(tmp_v2025 / "regions" / "2025.json", _envelope(regions_data))
+        for year, regions_data in regions_by_year.items():
+            _write_json(tmp_v2025 / "regions" / f"{year}.json", _envelope(regions_data))
 
-        for rid, ranking in rankings.items():
-            rf = rid.lower()
-            _write_json(tmp_v2025 / "rankings" / "2025" / f"{rf}.json", _envelope(ranking))
+        for year, rankings in rankings_by_year.items():
+            for rid, ranking in rankings.items():
+                rf = rid.lower()
+                _write_json(tmp_v2025 / "rankings" / str(year) / f"{rf}.json", _envelope(ranking))
 
         for mid_int, summary in municipio_summaries.items():
             mun_dir = tmp_v2025 / "municipalities" / str(mid_int)
@@ -1283,9 +1275,11 @@ def main() -> int:
         _write_json(tmp / "manifest.json", manifest)
 
         print(f"  catalog.json")
-        print(f"  regions/2025.json")
-        for rid in region_ids:
-            print(f"  rankings/2025/{rid.lower()}.json")
+        for year in YEARS:
+            print(f"  regions/{year}.json")
+        for year in YEARS:
+            for rid in region_ids:
+                print(f"  rankings/{year}/{rid.lower()}.json")
         print(f"  {len(municipio_summaries)} municipios escritos")
         print(f"  manifest.json")
         print()
@@ -1295,8 +1289,8 @@ def main() -> int:
         validate_output(
             manifest,
             catalog,
-            regions_data,
-            rankings,
+            regions_by_year[DEFAULT_YEAR],
+            rankings_by_year[DEFAULT_YEAR],
             municipio_summaries,
             municipio_dimensions,
         )
@@ -1329,9 +1323,11 @@ def main() -> int:
     print("Arquivos gerados:")
     print(f"  manifest.json")
     print(f"  v2025/catalog.json")
-    print(f"  v2025/regions/2025.json")
-    for rid in region_ids:
-        print(f"  v2025/rankings/2025/{rid.lower()}.json")
+    for year in YEARS:
+        print(f"  v2025/regions/{year}.json")
+    for year in YEARS:
+        for rid in region_ids:
+            print(f"  v2025/rankings/{year}/{rid.lower()}.json")
     print(f"  v2025/municipalities/ — {len(municipio_summaries)} diretorios")
     print(f"     {n_summaries} summaries")
     print(f"     {n_dims} arquivos dimensionais")
@@ -1349,8 +1345,8 @@ def main() -> int:
     print("  Supabase: NAO usado")
     print("  DDL/DML: NAO executado")
     print("  Banco: NAO alterado (somente SELECT)")
-    print("  UI React: NAO alterada")
-    print("  public: NAO tocado")
+    print("  UI React: NAO alterada pelo exportador")
+    print("  public/data/v2025: atualizado apos validacao")
     print("  497 municipios em 2025: OK")
     print("  9 regioes funcionais: OK")
     print("  28 Coredes: OK")

@@ -14,12 +14,12 @@ export type DimensionId =
   | 'seguranca'
   | 'socioeconomico'
 
-export type IndicatorDirection =
+type IndicatorDirection =
   | 'higher_is_better'
   | 'lower_is_better'
   | 'neutral'
 
-export type IndicatorFormat = 'number' | 'percent' | 'currency' | 'integer'
+type IndicatorFormat = 'number' | 'percent' | 'currency' | 'integer'
 
 export type PopulationPerformanceCode =
   | 'above'
@@ -27,7 +27,6 @@ export type PopulationPerformanceCode =
   | 'below'
   | 'unknown'
 
-export type ClassificationCode = PopulationPerformanceCode
 
 /** Envelope obrigatório em todo JSON versionado (exceto o manifest). */
 export type StaticDataEnvelope<T> = {
@@ -57,32 +56,22 @@ export type DashboardManifest = {
     municipalitySummaryPattern: string
     municipalityDimensionPattern: string
   }
-  sample?: DataSampleMetadata
 }
 
-/** Metadados de amostra/cobertura. */
-export type DataSampleMetadata = {
-  isSample: boolean
-  coveredRegionIds: string[]
-  detailedMunicipalityIds: string[]
-  detailedMunicipalityCount?: number
-  detailedCoverage?: string
-}
-
-export type RegionCatalogEntry = {
+type RegionCatalogEntry = {
   id: string
   slug: string
   name: string
   order: number
 }
 
-export type CoredeCatalogEntry = {
+type CoredeCatalogEntry = {
   id: string
   name: string
   regionId: string
 }
 
-export type MunicipalityCatalogEntry = {
+type MunicipalityCatalogEntry = {
   id: string
   name: string
   searchName: string
@@ -90,7 +79,7 @@ export type MunicipalityCatalogEntry = {
   coredeId: string
 }
 
-export type DimensionCatalogEntry = {
+type DimensionCatalogEntry = {
   id: DimensionId
   name: string
   order: number
@@ -118,7 +107,7 @@ export type CatalogData = {
   indicators: IndicatorCatalogEntry[]
 }
 
-export type RegionSummary = {
+type RegionSummary = {
   id: string
   name: string
   order: number
@@ -139,12 +128,12 @@ export type RegionsData = {
   regions: RegionSummary[]
 }
 
-export type PopulationPerformance = {
+type PopulationPerformance = {
   code: PopulationPerformanceCode
   label: string
 }
 
-export type DimensionRankMap = {
+type DimensionRankMap = {
   educacao: number | null
   financas: number | null
   meioAmbiente: number | null
@@ -153,9 +142,9 @@ export type DimensionRankMap = {
   socioeconomico: number | null
 }
 
-export type DimensionScoreMap = DimensionRankMap
+type DimensionScoreMap = DimensionRankMap
 
-export type RegionalRankingEntry = {
+type RegionalRankingEntry = {
   municipalityId: string
   municipalityName: string
   coredeId: string
@@ -176,7 +165,7 @@ export type RegionalRankingData = {
   municipalities: RegionalRankingEntry[]
 }
 
-export type MunicipalityYearSummary = {
+type MunicipalityYearSummary = {
   year: number
   overallRank: number | null
   previousOverallRank: number | null
@@ -188,29 +177,29 @@ export type MunicipalityYearSummary = {
   dimensionRanks: DimensionRankMap
 }
 
-export type MunicipalityDimensionHistoryEntry = {
+type MunicipalityDimensionHistoryEntry = {
   year: number
   score: number | null
   rank: number | null
   totalMunicipalitiesInRegion: number
 }
 
-export type MunicipalityDimensionHistory = {
+type MunicipalityDimensionHistory = {
   dimensionId: DimensionId
   values: MunicipalityDimensionHistoryEntry[]
 }
 
-export type MunicipalityPopulationEstimate = {
+type MunicipalityPopulationEstimate = {
   year: number
   value: number | null
 }
 
-export type MunicipalityGdpValue = {
+type MunicipalityGdpValue = {
   year: number
   valueBrl: number | null
 }
 
-export type MunicipalityProfile = {
+type MunicipalityProfile = {
   populationEstimates: MunicipalityPopulationEstimate[]
   gdpValues: MunicipalityGdpValue[]
   areaKm2: number | null
@@ -232,14 +221,14 @@ export type MunicipalitySummaryData = {
   dimensionHistory: MunicipalityDimensionHistory[]
 }
 
-export type DimensionYearValue = {
+type DimensionYearValue = {
   year: number
   score: number | null
   rank: number | null
   totalMunicipalitiesInRegion: number
 }
 
-export type IndicatorYearValue = {
+type IndicatorYearValue = {
   year: number
   score: number | null
   rank: number | null
@@ -252,7 +241,7 @@ export type IndicatorYearValue = {
   regionalMedianSampleSize: number | null
 }
 
-export type MunicipalityIndicatorSeries = {
+type MunicipalityIndicatorSeries = {
   indicatorId: string
   values: IndicatorYearValue[]
 }

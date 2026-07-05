@@ -10,7 +10,7 @@ import {
   loadManifest,
   loadMunicipalityDimension,
   loadMunicipalitySummary,
-  loadRankingByRegion,
+  loadRegionalRanking,
   loadRegions,
 } from '../../data/repository'
 import type { CatalogData, MunicipalityDimensionData, MunicipalitySummaryData, RegionalRankingData, RegionsData } from '../../types/domain'
@@ -50,7 +50,7 @@ export function MunicipalitiesPage() {
         const year = manifest.availableYears.includes(requestedYear) ? requestedYear : manifest.defaultYear
         setDisplayYear(year)
         const [nextRanking, nextSummary, nextRegions] = await Promise.all([
-          regionId ? loadRankingByRegion(year, regionId) : Promise.resolve(null),
+          regionId ? loadRegionalRanking(year, regionId) : Promise.resolve(null),
           municipalityId ? loadMunicipalitySummary(municipalityId) : Promise.resolve(null),
           !regionId && !municipalityId ? loadRegions(year) : Promise.resolve(null),
         ])

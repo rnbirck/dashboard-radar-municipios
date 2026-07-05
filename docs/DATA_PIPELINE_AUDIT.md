@@ -42,9 +42,9 @@ dash_municipio_indicadores
   -> refresh manual/externo da materialized view
   -> mv_municipio_indicador_mediana_regiao
 
-Supabase/PostgREST
-  -> DASHBOARD-RADAR-MUNICIPIOS/scripts/export_static_sample.py
-  -> public/data/v2025-sample/*.json
+PostgreSQL local validado
+  -> DASHBOARD-RADAR-MUNICIPIOS/scripts/export_static_from_local.py
+  -> public/data/v2025/*.json
   -> frontend React/Vite
 ```
 
@@ -150,12 +150,12 @@ Ele não atualiza o PostgreSQL local e não executa `REFRESH MATERIALIZED VIEW` 
 
 ### Exportador React
 
-`DASHBOARD-RADAR-MUNICIPIOS/scripts/export_static_sample.py`:
+Fluxo ativo de publicação: `DASHBOARD-RADAR-MUNICIPIOS/scripts/export_static_from_local.py`:
 
-- usa o Supabase/PostgREST como fonte canônica;
-- consulta somente em modo GET;
-- gera a amostra de Picada Café/RF3;
-- não usa o PostgreSQL local;
+- usa o PostgreSQL local validado como fonte;
+- consulta somente em modo leitura;
+- gera `public/data/v2025` completo;
+- substitui o exportador de amostra `export_static_sample.py`, removido do repositório;
 - não deve receber credenciais no frontend.
 
 ## 5. Configuração de bancos e ambientes
@@ -440,7 +440,6 @@ Todos foram somente leitura:
 - qualquer `INSERT`, `UPDATE`, `DELETE`, `DROP`, `TRUNCATE` ou DDL;
 - `REFRESH MATERIALIZED VIEW`;
 - scripts de construção que escrevem novos Excels;
-- `scripts/export_static_sample.py`, pois geraria novamente os JSONs;
+- `scripts/export_static_from_local.py`, pois geraria novamente os JSONs de publicação;
 - `npm run build`, por não contribuir para a auditoria de dados e poder alterar `dist/`;
 - qualquer commit Git.
-

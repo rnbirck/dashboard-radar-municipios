@@ -7,6 +7,7 @@ import { RegionsExplorer } from './components/RegionsExplorer'
 export function RegionsPage() {
   const [params] = useSearchParams()
   const navigate = useNavigate()
+  const searchParams = params.toString()
   const [data, setData] = useState<RegionsData | null>(null)
   const [status, setStatus] = useState<'loading' | 'ready' | 'empty' | 'error'>('loading')
   const [year, setYear] = useState<number | null>(null)
@@ -20,15 +21,16 @@ export function RegionsPage() {
 
     void (async () => {
       try {
+        const currentParams = new URLSearchParams(searchParams)
         const manifest = await loadManifest()
         if (currentId !== requestId.current) return
-        const yearParam = params.get('ano')
+        const yearParam = currentParams.get('ano')
         const numericYear = yearParam && Number.isFinite(Number(yearParam)) && manifest.availableYears.includes(Number(yearParam))
           ? Number(yearParam)
           : manifest.defaultYear
         setYear(numericYear)
-        if (params.has('regiao') || params.has('corede') || params.has('municipio')) {
-          const next = new URLSearchParams(params)
+        if (currentParams.has('regiao') || currentParams.has('corede') || currentParams.has('municipio')) {
+          const next = new URLSearchParams(currentParams)
           next.set('ano', String(numericYear))
           navigate(`/municipios?${next.toString()}`, { replace: true })
           return
@@ -42,7 +44,7 @@ export function RegionsPage() {
         setStatus('error')
       }
     })()
-  }, [navigate, params])
+  }, [navigate, searchParams])
 
   return (
     <div className="page-stack">

@@ -16,23 +16,13 @@ export const DIMENSION_RANK_KEYS: Record<DimensionId, 'educacao' | 'financas' | 
 export function rankTone(rank: number | null | undefined, total: number): 'good' | 'middle' | 'low' | 'neutral' {
   if (rank === null || rank === undefined || total < 1) return 'neutral'
   const percentile = rank / total
-  // O Dash distingue top 25% e 25-50% com dois verdes; a UI React
-  // consolida ambos na faixa verde já existente.
   if (percentile <= .5) return 'good'
   if (percentile <= .75) return 'middle'
   return 'low'
 }
 
 export function formatPosition(rank: number | null | undefined): string {
-  return rank === null || rank === undefined ? '—' : `${rank}º`
-}
-
-export function variationLabel(current: number | null | undefined, previous: number | null | undefined): string {
-  if (current === null || current === undefined || previous === null || previous === undefined) return 'Variação indisponível'
-  const change = previous - current
-  if (change > 0) return `Subiu ${change}`
-  if (change < 0) return `Caiu ${Math.abs(change)}`
-  return 'Sem variação'
+  return rank === null || rank === undefined ? '\u2014' : `${rank}\u00ba`
 }
 
 export function variationTone(current: number | null | undefined, previous: number | null | undefined): 'up' | 'down' | 'neutral' {
@@ -40,11 +30,20 @@ export function variationTone(current: number | null | undefined, previous: numb
   return current < previous ? 'up' : 'down'
 }
 
+export function formatRankVariation(current: number | null | undefined, previous: number | null | undefined): string {
+  if (current === null || current === undefined || previous === null || previous === undefined) return 'varia\u00e7\u00e3o indispon\u00edvel'
+  const change = previous - current
+  const suffix = Math.abs(change) === 1 ? 'posi\u00e7\u00e3o' : 'posi\u00e7\u00f5es'
+  if (change > 0) return `subiu ${change} ${suffix}`
+  if (change < 0) return `caiu ${Math.abs(change)} ${suffix}`
+  return 'sem varia\u00e7\u00e3o'
+}
+
 export function performanceShortLabel(code: PopulationPerformanceCode): string {
   if (code === 'above') return 'Acima'
   if (code === 'expected') return 'Dentro'
   if (code === 'below') return 'Abaixo'
-  return 'Não informado'
+  return 'N\u00e3o informado'
 }
 
 function scaledIndicatorValue(value: number, metadata?: IndicatorCatalogEntry): number {
@@ -56,7 +55,7 @@ function minimumFractionDigits(metadata?: IndicatorCatalogEntry): number {
 }
 
 export function formatIndicatorValue(value: number | null, metadata?: IndicatorCatalogEntry): string {
-  if (value === null || !Number.isFinite(value)) return '—'
+  if (value === null || !Number.isFinite(value)) return '\u2014'
   const displayValue = scaledIndicatorValue(value, metadata)
   const decimals = metadata?.decimalPlaces ?? 2
   if (metadata?.format === 'currency') {
@@ -68,7 +67,7 @@ export function formatIndicatorValue(value: number | null, metadata?: IndicatorC
 }
 
 export function formatIndicatorPointLabel(value: number | null, metadata?: IndicatorCatalogEntry): string {
-  if (value === null || !Number.isFinite(value)) return '—'
+  if (value === null || !Number.isFinite(value)) return '\u2014'
   const displayValue = scaledIndicatorValue(value, metadata)
   const decimals = metadata?.decimalPlaces ?? 2
   if (metadata?.format === 'currency') {

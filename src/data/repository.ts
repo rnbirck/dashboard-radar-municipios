@@ -43,7 +43,7 @@ export class DataFetchError extends Error {
   }
 }
 
-export class DataContractError extends Error {
+class DataContractError extends Error {
   readonly url: string
   constructor(message: string, url: string) {
     super(message)
@@ -52,7 +52,7 @@ export class DataContractError extends Error {
   }
 }
 
-export class DataVersionError extends Error {
+class DataVersionError extends Error {
   readonly url: string
   readonly expected: string
   readonly actual: unknown
@@ -392,9 +392,6 @@ export async function loadRegionalRanking(year: number, regionId: string): Promi
   return readEnvelope<RegionalRankingData>(url, manifest.activeDataVersion, assertRankingData)
 }
 
-/** Nome explícito usado pelas telas; mantém o alias anterior por compatibilidade. */
-export const loadRankingByRegion = loadRegionalRanking
-
 export async function loadMunicipalitySummary(idMunicipio: string | number): Promise<MunicipalitySummaryData> {
   const manifest = await loadManifest()
   const municipalityId = String(idMunicipio)
@@ -458,17 +455,4 @@ export async function listMunicipalities(year: number, regionId?: string): Promi
       coredeName: catalog.coredes.find((corede) => corede.id === entry.coredeId)?.name ?? '',
     }))
     .sort((a, b) => ptBrCollator.compare(a.name, b.name))
-}
-
-// ---------------------------------------------------------------------------
-// Backward-compat nominal mantido temporariamente para facilitar a migração
-// dos filtros; prefira as funções list* acima.
-// ---------------------------------------------------------------------------
-
-export const getAvailableYears = listYears
-export async function getRegions(year: number): Promise<Region[]> {
-  return listRegions(year)
-}
-export async function getMunicipalities(year: number, regionId?: string): Promise<Municipality[]> {
-  return listMunicipalities(year, regionId)
 }

@@ -1,4 +1,5 @@
 import { RotateCcw, SlidersHorizontal } from 'lucide-react'
+import type { FocusEvent, KeyboardEvent } from 'react'
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { useNavigate, useSearchParams } from 'react-router-dom'
 import {
@@ -24,9 +25,40 @@ function readStringParam(params: URLSearchParams, key: string): string {
   return params.get(key) ?? ''
 }
 
+function normalizeSearchText(value: string): string {
+  return value
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '')
+    .toLocaleLowerCase('pt-BR')
+    .trim()
+}
+
+function readInsertedText(previous: string, next: string): string {
+  if (!previous || next.length <= previous.length) return next
+
+  let start = 0
+  while (start < previous.length && previous[start] === next[start]) start += 1
+
+  let previousEnd = previous.length - 1
+  let nextEnd = next.length - 1
+  while (previousEnd >= start && nextEnd >= start && previous[previousEnd] === next[nextEnd]) {
+    previousEnd -= 1
+    nextEnd -= 1
+  }
+
+  return next.slice(start, nextEnd + 1)
+}
+
 export function GlobalFilters({ compact = false }: GlobalFiltersProps) {
   const [params, setParams] = useSearchParams()
   const navigate = useNavigate()
+  const initialParams = useRef<URLSearchParams | null>(null)
+  if (initialParams.current === null) {
+    initialParams.current = new URLSearchParams(params)
+  }
+  const isMunicipalityQueryDraft = useRef(false)
+  const replaceMunicipalityQueryOnNextKey = useRef(false)
+  const municipalityFieldRef = useRef<HTMLDivElement | null>(null)
 
   const [years, setYears] = useState<number[]>([])
   const [regions, setRegions] = useState<Region[]>([])
@@ -35,6 +67,9 @@ export function GlobalFilters({ compact = false }: GlobalFiltersProps) {
   const [region, setRegion] = useState('')
   const [corede, setCorede] = useState('')
   const [municipality, setMunicipality] = useState('')
+  const [municipalityQuery, setMunicipalityQuery] = useState('')
+  const [isMunicipalityMenuOpen, setIsMunicipalityMenuOpen] = useState(false)
+  const [activeMunicipalityIndex, setActiveMunicipalityIndex] = useState(0)
   const [loadError, setLoadError] = useState(false)
 
   // Inicializa a partir da URL (deep links) e do manifest.
@@ -42,30 +77,30 @@ export function GlobalFilters({ compact = false }: GlobalFiltersProps) {
 
   useEffect(() => {
     let cancelled = false
-    let generation = 0
 
     async function bootstrap() {
       try {
         const manifest = await loadManifest()
         if (cancelled) return
         const availableYears = await listYears()
-        if (cancelled || generation !== 0) return
+        if (cancelled) return
         if (!initialized.current) {
           initialized.current = true
-          const yearFromUrl = readYearParam(params)
+          const paramsFromInitialUrl = initialParams.current ?? new URLSearchParams()
+          const yearFromUrl = readYearParam(paramsFromInitialUrl)
           const validYear = yearFromUrl && availableYears.includes(yearFromUrl)
             ? yearFromUrl
             : manifest.defaultYear
-          const regionFromUrl = readStringParam(params, 'regiao')
-          const coredeFromUrl = readStringParam(params, 'corede')
-          const municipalityFromUrl = readStringParam(params, 'municipio')
+          const regionFromUrl = readStringParam(paramsFromInitialUrl, 'regiao')
+          const coredeFromUrl = readStringParam(paramsFromInitialUrl, 'corede')
+          const municipalityFromUrl = readStringParam(paramsFromInitialUrl, 'municipio')
           setYearInput(String(validYear))
           setRegion(regionFromUrl)
           setCorede(coredeFromUrl)
           setMunicipality(municipalityFromUrl)
           // Garante um ano inicial canônico na URL sem derrubar outros params.
-          if (!params.has('ano') || Number(params.get('ano')) !== validYear) {
-            const next = new URLSearchParams(params)
+          if (!paramsFromInitialUrl.has('ano') || Number(paramsFromInitialUrl.get('ano')) !== validYear) {
+            const next = new URLSearchParams(paramsFromInitialUrl)
             next.set('ano', String(validYear))
             setParams(next, { replace: true })
           }
@@ -83,10 +118,8 @@ export function GlobalFilters({ compact = false }: GlobalFiltersProps) {
     void bootstrap()
     return () => {
       cancelled = true
-      generation += 1
     }
-    // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [])
+  }, [setParams])
 
   // Mantém os controles alinhados à URL quando a navegação parte da tabela.
   useEffect(() => {
@@ -98,8 +131,15 @@ export function GlobalFilters({ compact = false }: GlobalFiltersProps) {
     if (nextYear !== null && String(nextYear) !== yearInput) setYearInput(String(nextYear))
     if (nextRegion !== region) setRegion(nextRegion)
     if (nextCorede !== corede) setCorede(nextCorede)
-    if (nextMunicipality !== municipality) setMunicipality(nextMunicipality)
-  }, [params, yearInput, region, corede, municipality])
+    if (nextMunicipality !== municipality) {
+      setMunicipality(nextMunicipality)
+      if (nextMunicipality) {
+        isMunicipalityQueryDraft.current = false
+        const selected = municipalities.find((item) => item.id === nextMunicipality)
+        if (selected) setMunicipalityQuery(selected.name)
+      }
+    }
+  }, [params, yearInput, region, corede, municipality, municipalities])
 
   // Carrega regiões independentemente (sempre via regions/2025.json).
   useEffect(() => {
@@ -158,6 +198,26 @@ export function GlobalFilters({ compact = false }: GlobalFiltersProps) {
     return !corede || item.coredeId === corede
   }), [municipalities, region, corede])
 
+  const municipalitySuggestions = useMemo(() => {
+    const normalizedQuery = normalizeSearchText(municipalityQuery)
+    const items = normalizedQuery && isMunicipalityQueryDraft.current
+      ? filteredMunicipalities.filter((item) => {
+        const searchable = normalizeSearchText(`${item.name} ${item.coredeName}`)
+        return searchable.includes(normalizedQuery)
+      })
+      : filteredMunicipalities
+
+    return items
+  }, [filteredMunicipalities, municipalityQuery])
+
+  useEffect(() => {
+    if (!municipality || isMunicipalityQueryDraft.current) return
+    const selected = municipalities.find((item) => item.id === municipality)
+    if (selected && municipalityQuery !== selected.name) {
+      setMunicipalityQuery(selected.name)
+    }
+  }, [municipality, municipalities, municipalityQuery])
+
   function commitParam(key: string, value: string) {
     const next = new URLSearchParams(params)
     if (value) next.set(key, value)
@@ -167,9 +227,21 @@ export function GlobalFilters({ compact = false }: GlobalFiltersProps) {
 
   function handleYearChange(next: string) {
     setYearInput(next)
+    const hasMunicipalitySelected = Boolean(municipality)
+    if (hasMunicipalitySelected) {
+      const nextParams = new URLSearchParams(params)
+      nextParams.set('ano', next)
+      setParams(nextParams, { replace: false })
+      return
+    }
+
     setRegion('')
     setCorede('')
     setMunicipality('')
+    isMunicipalityQueryDraft.current = false
+    replaceMunicipalityQueryOnNextKey.current = false
+    setIsMunicipalityMenuOpen(false)
+    setMunicipalityQuery('')
     const nextParams = new URLSearchParams(params)
     nextParams.set('ano', next)
     nextParams.delete('regiao')
@@ -182,6 +254,10 @@ export function GlobalFilters({ compact = false }: GlobalFiltersProps) {
     setRegion(next)
     setCorede('')
     setMunicipality('')
+    isMunicipalityQueryDraft.current = false
+    replaceMunicipalityQueryOnNextKey.current = false
+    setIsMunicipalityMenuOpen(false)
+    setMunicipalityQuery('')
     if (compact && next) {
       navigate(`/municipios?ano=${encodeURIComponent(yearInput)}&regiao=${encodeURIComponent(next)}`)
       return
@@ -198,6 +274,10 @@ export function GlobalFilters({ compact = false }: GlobalFiltersProps) {
   function handleCoredeChange(next: string) {
     setCorede(next)
     setMunicipality('')
+    isMunicipalityQueryDraft.current = false
+    replaceMunicipalityQueryOnNextKey.current = false
+    setIsMunicipalityMenuOpen(false)
+    setMunicipalityQuery('')
     const nextParams = new URLSearchParams(params)
     if (next) nextParams.set('corede', next)
     else nextParams.delete('corede')
@@ -210,10 +290,106 @@ export function GlobalFilters({ compact = false }: GlobalFiltersProps) {
     commitParam('municipio', next)
   }
 
+  function selectMunicipality(item: Municipality) {
+    isMunicipalityQueryDraft.current = false
+    replaceMunicipalityQueryOnNextKey.current = false
+    setMunicipalityQuery(item.name)
+    setIsMunicipalityMenuOpen(false)
+    setActiveMunicipalityIndex(0)
+    handleMunicipalityChange(item.id)
+  }
+
+  function handleMunicipalitySearchChange(next: string) {
+    const selectedMunicipality = municipality
+      ? municipalities.find((item) => item.id === municipality)
+      : undefined
+    const nextQuery = !isMunicipalityQueryDraft.current && selectedMunicipality
+      ? readInsertedText(selectedMunicipality.name, next)
+      : next
+
+    replaceMunicipalityQueryOnNextKey.current = false
+    setMunicipalityQuery(nextQuery)
+    setIsMunicipalityMenuOpen(true)
+    setActiveMunicipalityIndex(0)
+    const normalizedNext = normalizeSearchText(nextQuery)
+    const selected = filteredMunicipalities.find((item) => (
+      normalizeSearchText(item.name) === normalizedNext
+    ))
+
+    if (!normalizedNext) {
+      isMunicipalityQueryDraft.current = true
+      return
+    }
+
+    if (selected) {
+      selectMunicipality(selected)
+      return
+    }
+
+    isMunicipalityQueryDraft.current = true
+  }
+
+  function handleMunicipalitySearchBlur() {
+    window.setTimeout(() => setIsMunicipalityMenuOpen(false), 120)
+  }
+
+  function handleMunicipalitySearchFocus(event: FocusEvent<HTMLInputElement>) {
+    event.currentTarget.select()
+    const selected = municipalities.find((item) => item.id === municipality)
+    replaceMunicipalityQueryOnNextKey.current = Boolean(selected && municipalityQuery === selected.name)
+    isMunicipalityQueryDraft.current = false
+    setIsMunicipalityMenuOpen(true)
+    setActiveMunicipalityIndex(0)
+  }
+
+  function handleMunicipalitySearchKeyDown(event: KeyboardEvent<HTMLInputElement>) {
+    if (replaceMunicipalityQueryOnNextKey.current && event.key.length === 1 && !event.altKey && !event.ctrlKey && !event.metaKey) {
+      event.preventDefault()
+      replaceMunicipalityQueryOnNextKey.current = false
+      handleMunicipalitySearchChange(event.key)
+      return
+    }
+
+    if (replaceMunicipalityQueryOnNextKey.current && (event.key === 'Backspace' || event.key === 'Delete')) {
+      event.preventDefault()
+      replaceMunicipalityQueryOnNextKey.current = false
+      handleMunicipalitySearchChange('')
+      return
+    }
+
+    if (event.key === 'Escape') {
+      setIsMunicipalityMenuOpen(false)
+      return
+    }
+
+    if (event.key === 'ArrowDown') {
+      event.preventDefault()
+      setIsMunicipalityMenuOpen(true)
+      setActiveMunicipalityIndex((current) => Math.min(current + 1, Math.max(municipalitySuggestions.length - 1, 0)))
+      return
+    }
+
+    if (event.key === 'ArrowUp') {
+      event.preventDefault()
+      setIsMunicipalityMenuOpen(true)
+      setActiveMunicipalityIndex((current) => Math.max(current - 1, 0))
+      return
+    }
+
+    if (event.key === 'Enter' && isMunicipalityMenuOpen && municipalitySuggestions[activeMunicipalityIndex]) {
+      event.preventDefault()
+      selectMunicipality(municipalitySuggestions[activeMunicipalityIndex])
+    }
+  }
+
   function clearFilters() {
     setRegion('')
     setCorede('')
     setMunicipality('')
+    isMunicipalityQueryDraft.current = false
+    replaceMunicipalityQueryOnNextKey.current = false
+    setIsMunicipalityMenuOpen(false)
+    setMunicipalityQuery('')
     const next = new URLSearchParams(params)
     next.set('ano', yearInput)
     next.delete('regiao')
@@ -272,18 +448,53 @@ export function GlobalFilters({ compact = false }: GlobalFiltersProps) {
               {coredes.map(([id, name]) => <option key={id} value={id}>{name}</option>)}
             </select>
           </div>
-          <div className="filter-field filter-field--municipality">
+          <div className="filter-field filter-field--municipality" ref={municipalityFieldRef}>
             <label htmlFor="filter-municipality">Município</label>
-            <select
-              id="filter-municipality"
-              value={municipality}
-              onChange={(event) => handleMunicipalityChange(event.target.value)}
-            >
-              <option value="">Selecione um município</option>
-              {filteredMunicipalities.map((item) => (
-                <option key={item.id} value={item.id}>{item.name}</option>
-              ))}
-            </select>
+            <div className="filter-combobox">
+              <input
+                id="filter-municipality"
+                className="filter-combobox__input"
+                value={municipalityQuery}
+                onChange={(event) => handleMunicipalitySearchChange(event.target.value)}
+                onFocus={handleMunicipalitySearchFocus}
+                onBlur={handleMunicipalitySearchBlur}
+                onKeyDown={handleMunicipalitySearchKeyDown}
+                onMouseDown={() => {
+                  setIsMunicipalityMenuOpen(true)
+                  setActiveMunicipalityIndex(0)
+                }}
+                placeholder="Selecione um município"
+                autoComplete="off"
+                role="combobox"
+                aria-autocomplete="list"
+                aria-expanded={isMunicipalityMenuOpen}
+                aria-controls="filter-municipality-options"
+                aria-activedescendant={isMunicipalityMenuOpen && municipalitySuggestions[activeMunicipalityIndex]
+                  ? `filter-municipality-option-${municipalitySuggestions[activeMunicipalityIndex].id}`
+                  : undefined}
+              />
+              {isMunicipalityMenuOpen ? (
+                <div className="filter-combobox__menu" id="filter-municipality-options" role="listbox">
+                  {municipalitySuggestions.length ? municipalitySuggestions.map((item, index) => (
+                    <button
+                      key={item.id}
+                      id={`filter-municipality-option-${item.id}`}
+                      className={index === activeMunicipalityIndex ? 'filter-combobox__option is-active' : 'filter-combobox__option'}
+                      type="button"
+                      role="option"
+                      aria-selected={municipality === item.id}
+                      onMouseDown={(event) => event.preventDefault()}
+                      onMouseEnter={() => setActiveMunicipalityIndex(index)}
+                      onClick={() => selectMunicipality(item)}
+                    >
+                      <span>{item.name}</span>
+                    </button>
+                  )) : (
+                    <span className="filter-combobox__empty">Nenhum município encontrado</span>
+                  )}
+                </div>
+              ) : null}
+            </div>
           </div>
           <button className="clear-filters" type="button" onClick={clearFilters}>
             <RotateCcw size={16} aria-hidden="true" />
