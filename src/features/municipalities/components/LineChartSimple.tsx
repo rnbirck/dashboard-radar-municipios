@@ -72,7 +72,6 @@ export function LineChartSimple({ points, comparison, comparisonLabel, fixedValu
   const formatValueLabel = valueLabelFormatter ?? format
   const comparisonName = comparisonLabel ?? FUNCTIONAL_REGION_MEDIAN_LABEL
   const primaryLastValueIndex = lastValueIndex(points)
-  const comparisonLastValueIndex = comparison ? lastValueIndex(comparison) : -1
   const shouldShowFixedLabel = (index: number, lastIndex: number) => showValueLabels && (fixedValueLabels === 'all' || index === lastIndex)
   const valueLabelY = (series: 'primary' | 'comparison', index: number, value: number) => {
     const baseY = y(value)
@@ -141,7 +140,6 @@ export function LineChartSimple({ points, comparison, comparisonLabel, fixedValu
               onFocus={() => setHoverIndex(index)}
               onBlur={() => setHoverIndex(null)}
             />
-            {shouldShowFixedLabel(index, comparisonLastValueIndex) ? <text x={x(index)} y={valueLabelY('comparison', index, item.value)} textAnchor="middle" className="chart-value-label chart-value-label--comparison">{formatValueLabel(item.value)}</text> : null}
           </g>
         ))}
         {points.map((item, index) => item.value === null ? null : (
