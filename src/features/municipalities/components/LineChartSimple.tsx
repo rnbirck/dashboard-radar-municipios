@@ -29,9 +29,9 @@ export function LineChartSimple({ points, comparison, comparisonLabel, fixedValu
   const rawMin = Math.min(...values)
   const rawMax = Math.max(...values)
   const observedSpan = Math.max(rawMax - rawMin, Number.EPSILON)
-  const visualMagnitude = Math.max(Math.abs(rawMin), Math.abs(rawMax), 1)
-  const visualSpan = softenScale ? Math.max(observedSpan, visualMagnitude * 1.2) : Math.max(observedSpan, 1)
-  const spanPadding = softenScale ? visualSpan * .22 : visualSpan * .12
+  const visualMagnitude = Math.max(Math.abs(rawMin), Math.abs(rawMax), Number.EPSILON)
+  const visualSpan = softenScale ? Math.max(observedSpan * 1.55, visualMagnitude * .55) : Math.max(observedSpan, 1)
+  const spanPadding = softenScale ? visualSpan * .16 : visualSpan * .12
   const center = (rawMin + rawMax) / 2
   const min = softenScale ? center - visualSpan / 2 - spanPadding : rawMin - spanPadding
   const max = softenScale ? center + visualSpan / 2 + spanPadding : rawMax + spanPadding
