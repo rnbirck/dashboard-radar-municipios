@@ -145,7 +145,7 @@ export function DimensionView({ data, summary, catalog, referenceYear, selectedI
       <section className="analysis-panel analysis-panel--wide">
         <div className="analysis-panel__title"><Activity size={18} /><h2>{'Posi\u00e7\u00f5es por indicador ao longo do tempo'}</h2></div>
         <p className="analysis-panel__caption">{'Hist\u00f3rico anual da coloca\u00e7\u00e3o do munic\u00edpio em cada indicador da dimens\u00e3o. Posi\u00e7\u00f5es menores indicam melhor coloca\u00e7\u00e3o no ranking da Regi\u00e3o Funcional.'}</p>
-        <IndicatorHistoryTable data={data} metadata={metadata} />
+        <IndicatorHistoryTable data={data} indicators={sortedIndicators} metadata={metadata} />
       </section>
       <section className="indicator-selector analysis-panel--wide">
         <h2>Selecione um indicador</h2>
@@ -190,7 +190,7 @@ export function DimensionView({ data, summary, catalog, referenceYear, selectedI
   )
 }
 
-function IndicatorHistoryTable({ data, metadata }: { data: MunicipalityDimensionData; metadata: Map<string, CatalogData['indicators'][number]> }) {
+function IndicatorHistoryTable({ data, indicators, metadata }: { data: MunicipalityDimensionData; indicators: MunicipalityDimensionData['indicators']; metadata: Map<string, CatalogData['indicators'][number]> }) {
   const years = [...data.availableYears].sort((a, b) => b - a)
 
   return (
@@ -199,7 +199,7 @@ function IndicatorHistoryTable({ data, metadata }: { data: MunicipalityDimension
         <thead>
           <tr>
             <th>Ano</th>
-            {data.indicators.map((item) => {
+            {indicators.map((item) => {
               const meta = metadata.get(item.indicatorId)
               return <th key={item.indicatorId}>{meta?.name ?? meta?.shortName ?? item.indicatorId}</th>
             })}
@@ -209,7 +209,7 @@ function IndicatorHistoryTable({ data, metadata }: { data: MunicipalityDimension
           {years.map((year) => (
             <tr key={year}>
               <td><strong>{year}</strong></td>
-              {data.indicators.map((indicator) => {
+              {indicators.map((indicator) => {
                 const row = indicator.values.find((item) => item.year === year)
                 const total = row?.regionalMedianSampleSize ?? 0
                 return (
