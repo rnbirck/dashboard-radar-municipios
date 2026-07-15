@@ -8,19 +8,27 @@ type RankingEntry = RegionalRankingData['municipalities'][number]
 
 type MunicipalityRankingTableViewProps = {
   dimensions: CatalogData['dimensions']
+  filterLabel?: string
   getMunicipalityUrl: (entry: RankingEntry) => string
   ranking: RegionalRankingData
   rows: RankingEntry[]
   onOpenMunicipality: (entry: RankingEntry) => void
 }
 
-export function MunicipalityRankingTableView({ dimensions, getMunicipalityUrl, ranking, rows, onOpenMunicipality }: MunicipalityRankingTableViewProps) {
+export function MunicipalityRankingTableView({ dimensions, filterLabel, getMunicipalityUrl, ranking, rows, onOpenMunicipality }: MunicipalityRankingTableViewProps) {
   return (
     <section className="municipality-list-panel placeholder-panel" aria-labelledby="municipality-ranking-table-title">
-      <div className="placeholder-panel__heading"><ListFilter size={19} aria-hidden="true" /><h2 id="municipality-ranking-table-title">Tabela de ranking</h2></div>
+      <div className="placeholder-panel__heading">
+        <ListFilter size={19} aria-hidden="true" />
+        <h2 id="municipality-ranking-table-title">Tabela de ranking</h2>
+        <span className="municipality-table-count">
+          {filterLabel ? `${rows.length} de ${ranking.municipalityCount} municípios · ${filterLabel}` : `${rows.length} municípios`}
+        </span>
+      </div>
       <p className="section-description">{'Munic\u00edpios classificados na Regi\u00e3o Funcional, com Corede e posi\u00e7\u00f5es por dimens\u00e3o.'}</p>
       <div className="data-table-wrap municipality-ranking-scroll">
         <table className="data-table municipality-ranking-table">
+          <caption className="sr-only">Ranking dos municípios da {ranking.regionName}</caption>
           <thead>
             <tr>
               <th>Geral</th>
@@ -79,9 +87,9 @@ function RankingReadingGuide() {
         <li>{'O filtro de Corede altera apenas os munic\u00edpios exibidos, n\u00e3o a regra do ranking.'}</li>
       </ul>
       <div className="regional-ranking-color-key" aria-label="Legenda das cores">
-        <span><i className="legend-dot legend-dot--good" />{'Coloca\u00e7\u00f5es mais altas'}</span>
-        <span><i className="legend-dot legend-dot--middle" />{'Faixa intermedi\u00e1ria'}</span>
-        <span><i className="legend-dot legend-dot--low" />{'Coloca\u00e7\u00f5es mais baixas'}</span>
+        <span><i className="legend-dot legend-dot--good" />{'1\u00aa metade do ranking'}</span>
+        <span><i className="legend-dot legend-dot--middle" />{'Entre 50% e 75%'}</span>
+        <span><i className="legend-dot legend-dot--low" />{'25% finais'}</span>
       </div>
     </aside>
   )

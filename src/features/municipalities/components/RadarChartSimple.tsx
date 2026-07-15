@@ -75,6 +75,11 @@ export function RadarChartSimple({ labels, values, comparison, comparisonLabel, 
         })}
         {comparison ? <polygon points={polygon(comparison)} className="radar-area radar-area--comparison" /> : null}
         <polygon points={polygon(values)} className="radar-area radar-area--primary" />
+        {[.25, .5, .75, 1].map((ratio) => (
+          <text key={`scale-${ratio}`} x={center + 5} y={center - radius * ratio + 11} className="radar-scale-label">
+            {formatScore(max * ratio)}
+          </text>
+        ))}
         {comparison ? pointsFor(comparison).map((coords, index) => coords ? (
           <circle
             key={`comparison-point-${index}`}

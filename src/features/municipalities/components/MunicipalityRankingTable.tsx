@@ -26,6 +26,7 @@ export function MunicipalityRankingTable({ ranking, catalog, coredeId }: Props) 
       />
       <MunicipalityRankingTableView
         dimensions={dimensions}
+        filterLabel={coredeId ? coredes.get(coredeId) : undefined}
         getMunicipalityUrl={(entry) => municipalityDetailUrl(ranking, entry)}
         ranking={ranking}
         rows={rows}

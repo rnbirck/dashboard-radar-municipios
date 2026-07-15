@@ -70,6 +70,18 @@ export function LineChartSimple({ points, comparison, comparisonLabel, fixedValu
   }
   const format = valueFormatter ?? ((value: number) => value.toLocaleString('pt-BR', { maximumFractionDigits: 1 }))
   const formatValueLabel = valueLabelFormatter ?? format
+  const axisRatios = [0, .5, 1]
+  const axisValue = (ratio: number) => invert ? min + ratio * span : max - ratio * span
+  const formatAxisTick = (value: number) => {
+    if (invert) return `${Math.max(1, Math.round(value))}\u00ba`
+    if (Math.abs(value) >= 1_000_000_000) return `${(value / 1_000_000_000).toLocaleString('pt-BR', { maximumFractionDigits: 1 })} bi`
+    if (Math.abs(value) >= 1_000_000) return `${(value / 1_000_000).toLocaleString('pt-BR', { maximumFractionDigits: 1 })} mi`
+    if (Math.abs(value) >= 1_000) return `${(value / 1_000).toLocaleString('pt-BR', { maximumFractionDigits: 1 })} mil`
+    return formatValueLabel(value)
+  }
+  const axisTicks = axisRatios
+    .map((ratio) => ({ ratio, label: formatAxisTick(axisValue(ratio)) }))
+    .filter((tick, index, items) => index === 0 || tick.label !== items[index - 1].label)
   const comparisonName = comparisonLabel ?? FUNCTIONAL_REGION_MEDIAN_LABEL
   const primaryLastValueIndex = lastValueIndex(points)
   const shouldShowFixedLabel = (index: number, lastIndex: number) => showValueLabels && (fixedValueLabels === 'all' || index === lastIndex)
@@ -123,6 +135,12 @@ export function LineChartSimple({ points, comparison, comparisonLabel, fixedValu
       >
         <rect x={PAD.left} y={PAD.top} width={plotWidth} height={plotHeight} rx="8" className="chart-plot-area" />
         {yAxisLabel ? <text x="16" y={PAD.top + plotHeight / 2} textAnchor="middle" transform={`rotate(-90 16 ${PAD.top + plotHeight / 2})`} className="chart-y-axis-label">{yAxisLabel}</text> : null}
+        {axisTicks.map(({ ratio, label }) => (
+          <text key={`axis-tick-${ratio}`} x={PAD.left - 8} y={PAD.top + ratio * plotHeight + 4} textAnchor="end" className="chart-axis-tick">
+            {label}
+          </text>
+        ))}
+        {invert ? <text x={WIDTH - PAD.right} y={PAD.top - 13} textAnchor="end" className="chart-scale-hint">melhor posição ↑</text> : null}
         {[0, .25, .5, .75, 1].map((ratio) => <line key={ratio} x1={PAD.left} x2={WIDTH - PAD.right} y1={PAD.top + ratio * plotHeight} y2={PAD.top + ratio * plotHeight} className="chart-grid-line" />)}
         {hoverIndex !== null ? <line x1={x(hoverIndex)} x2={x(hoverIndex)} y1={PAD.top} y2={PAD.top + plotHeight} className="chart-hover-line" /> : null}
         {comparison ? <path d={path(comparison)} className="chart-line chart-line--comparison" /> : null}

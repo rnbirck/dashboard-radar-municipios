@@ -399,6 +399,7 @@ export function GlobalFilters({ compact = false }: GlobalFiltersProps) {
   }
 
   const yearsOptions = years.length ? years : (yearInput ? [Number(yearInput)] : [])
+  const activeFilterCount = [region, corede, municipality].filter(Boolean).length
 
   return (
     <form
@@ -409,6 +410,11 @@ export function GlobalFilters({ compact = false }: GlobalFiltersProps) {
       <div className="global-filters__heading">
         <span><SlidersHorizontal size={15} aria-hidden="true" /> Filtros de análise</span>
         <small>{compact ? 'Escolha uma Região Funcional para abrir o ranking.' : 'Selecione ano, Região Funcional, Corede ou município.'}</small>
+        {!compact ? (
+          <strong className="global-filters__selection" aria-live="polite">
+            {activeFilterCount === 0 ? 'Sem recorte territorial' : `${activeFilterCount} ${activeFilterCount === 1 ? 'filtro ativo' : 'filtros ativos'}`}
+          </strong>
+        ) : null}
       </div>
       <div className="filter-field filter-field--year">
         <label htmlFor="filter-year">Ano</label>
@@ -463,7 +469,7 @@ export function GlobalFilters({ compact = false }: GlobalFiltersProps) {
                   setIsMunicipalityMenuOpen(true)
                   setActiveMunicipalityIndex(0)
                 }}
-                placeholder="Selecione um município"
+                placeholder="Digite para buscar um município"
                 autoComplete="off"
                 role="combobox"
                 aria-autocomplete="list"
@@ -479,7 +485,7 @@ export function GlobalFilters({ compact = false }: GlobalFiltersProps) {
                     <button
                       key={item.id}
                       id={`filter-municipality-option-${item.id}`}
-                      className={index === activeMunicipalityIndex ? 'filter-combobox__option is-active' : 'filter-combobox__option'}
+                      className={`${index === activeMunicipalityIndex ? 'filter-combobox__option is-active' : 'filter-combobox__option'}${municipality === item.id ? ' is-selected' : ''}`}
                       type="button"
                       role="option"
                       aria-selected={municipality === item.id}
@@ -488,6 +494,7 @@ export function GlobalFilters({ compact = false }: GlobalFiltersProps) {
                       onClick={() => selectMunicipality(item)}
                     >
                       <span>{item.name}</span>
+                      <small>{`Corede ${item.coredeName}`}</small>
                     </button>
                   )) : (
                     <span className="filter-combobox__empty">Nenhum município encontrado</span>
@@ -496,7 +503,7 @@ export function GlobalFilters({ compact = false }: GlobalFiltersProps) {
               ) : null}
             </div>
           </div>
-          <button className="clear-filters" type="button" onClick={clearFilters}>
+          <button className="clear-filters" type="button" onClick={clearFilters} disabled={activeFilterCount === 0}>
             <RotateCcw size={16} aria-hidden="true" />
             Limpar filtros
           </button>

@@ -1,5 +1,5 @@
 @media (max-width: 1100px) {
-  :root { --dashboard-page-padding-x: 22px; --dashboard-page-padding-y: 16px; --dashboard-chart-height: 305px; }
+  :root { --dashboard-page-padding-x: 22px; --dashboard-page-padding-y: 18px; --dashboard-chart-height: 330px; }
   .topbar__inner { gap: 14px; }
   .brand { flex-basis: 184px; width: 184px; }
   .brand__logo { width: 166px; max-height: 48px; }
@@ -9,7 +9,7 @@
   .clear-filters { grid-column: 3; }
   .home-workbench { grid-template-columns: 1fr; }
   .home-workbench__intro { grid-template-columns: minmax(0, 1fr) minmax(280px, 340px); gap: 24px; min-height: 420px; padding: 42px 34px 30px; }
-  .home-workbench h1 { font-size: 44px; }
+  .home-workbench h1 { font-size: 48px; }
   .home-workbench__tagline { font-size: 17px; }
   .home-workbench__summary { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
   .home-workbench__institution { min-height: 220px; padding-inline: 20px; }
@@ -38,7 +38,7 @@
 }
 
 @media (max-width: 760px) {
-  :root { --dashboard-page-padding-x: 12px; --dashboard-page-padding-y: 12px; --dashboard-section-gap: 12px; --dashboard-header-height: 58px; --dashboard-chart-height: 235px; }
+  :root { --dashboard-page-padding-x: 12px; --dashboard-page-padding-y: 14px; --dashboard-section-gap: 14px; --dashboard-header-height: 62px; --dashboard-chart-height: 278px; }
   .topbar__inner { gap: 12px; }
   .brand { flex-basis: 150px; width: 150px; }
   .brand__logo { width: 140px; max-height: 44px; }
@@ -53,6 +53,7 @@
   .global-filters, .global-filters--compact { grid-template-columns: 1fr; gap: 12px; padding: 15px; }
   .global-filters__heading { align-items: flex-start; flex-direction: column; gap: 3px; }
   .global-filters__heading small { text-align: left; white-space: normal; }
+  .global-filters__selection { margin-left: 0; }
   .filter-field--region, .filter-field--municipality { grid-column: 1 / -1; }
   .clear-filters { grid-column: auto; }
   .context-panel { grid-template-columns: 1fr; }
@@ -73,7 +74,7 @@
   .home-workbench__institution img { width: min(100%, 310px); max-height: 58px; }
   .home-workbench__summary { grid-column: auto; grid-row: auto; grid-template-columns: repeat(2, minmax(0, 1fr)); margin-top: 0; max-width: none; }
   .home-workbench__summary > span { min-height: 64px; padding: 12px; }
-  .home-workbench h1 { font-size: 34px; line-height: 1.05; }
+  .home-workbench h1 { font-size: 38px; line-height: 1.04; }
   .home-workbench__tagline { font-size: 16px; line-height: 1.36; }
   .home-workbench__actions { flex-direction: column; align-items: stretch; }
   .home-action-button--primary { min-width: 0; }
@@ -157,28 +158,28 @@
   .dimension-selector-card { flex: 0 0 176px; min-height: 108px; scroll-snap-align: start; }
   .analysis-layout { grid-template-columns: 1fr; }
   .analysis-panel--wide, .indicator-selector { grid-column: auto; }
-  .analysis-panel { padding: 16px; }
+  .analysis-panel { padding: 18px 16px; }
   .analysis-panel--chart .analysis-panel__header { min-height: 0; }
-  .analysis-panel__description, .analysis-panel__caption { font-size: 11.75px; }
+  .analysis-panel__description, .analysis-panel__caption { font-size: 12.75px; }
   .simple-chart, .radar-chart { height: var(--dashboard-chart-height); }
 }
 
 @media (max-width: 480px) {
-  :root { --dashboard-chart-height: 215px; }
+  :root { --dashboard-chart-height: 258px; }
   .global-filters, .global-filters--compact { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; padding: 12px; }
   .global-filters__heading { grid-column: 1 / -1; padding-bottom: 8px; }
   .global-filters__heading small { font-size: 11.5px; }
   .filter-field { gap: 4px; }
-  .filter-field label { font-size: 10px; }
-  .filter-field select, .filter-field input { height: 40px; padding-left: 10px; font-size: 12.5px; }
+  .filter-field label { font-size: 11px; }
+  .filter-field select, .filter-field input { height: 42px; padding-left: 10px; font-size: 13.5px; }
   .filter-field--region, .filter-field--municipality { grid-column: 1 / -1; }
-  .global-filters:not(.global-filters--compact) .clear-filters { grid-column: 2; grid-row: 4; justify-self: stretch; height: 40px; }
+  .global-filters:not(.global-filters--compact) .clear-filters { grid-column: 2; grid-row: 4; justify-self: stretch; height: 42px; }
   .dimension-selector-card { flex-basis: 166px; padding: 12px 11px 32px; }
   .dimension-selector-card__body strong { font-size: 23px; }
   .simple-chart, .radar-chart { height: var(--dashboard-chart-height); }
   .analysis-panel { padding: 14px 12px; }
-  .analysis-panel__title h2, .indicator-selector h2 { font-size: 14px; }
-  .analysis-panel__description, .analysis-panel__caption, .indicator-subtitle { font-size: 11.25px; }
+  .analysis-panel__title h2, .indicator-selector h2 { font-size: 15.5px; }
+  .analysis-panel__description, .analysis-panel__caption, .indicator-subtitle { font-size: 12.25px; }
   .regions-context-panel .context-panel__identity, .municipality-ranking-context .context-panel__identity { padding: 15px; }
   .regions-context-panel .context-panel__title, .municipality-ranking-context .context-panel__title { font-size: 21px; }
   .regions-context-panel .context-panel__copy, .municipality-ranking-context .context-panel__copy { font-size: 12.25px; }
@@ -217,6 +218,7 @@
   .municipality-ranking-table th:nth-child(3), .municipality-ranking-table td:nth-child(3) { width: 150px; }
   .municipality-ranking-table th:nth-child(4), .municipality-ranking-table td:nth-child(4) { width: 160px; }
   .municipality-ranking-table th:nth-child(n+5), .municipality-ranking-table td:nth-child(n+5) { width: 90px; }
+  .municipality-table-count { flex-basis: 100%; width: fit-content; margin-left: 0; }
   .municipality-profile-metrics { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1px; }
   .municipality-profile-metric { grid-template-columns: 20px minmax(0, 1fr); min-height: 50px; padding: 8px; }
   .municipality-profile-metric + .municipality-profile-metric { border-top: 0; border-left: 0; }

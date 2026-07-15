@@ -59,6 +59,7 @@ function PositionHistoryTable({ summary, dimensions }: { summary: MunicipalitySu
   return (
     <div className="data-table-wrap">
       <table className="data-table analysis-table analysis-table--positions">
+        <caption className="sr-only">Posições geral e por dimensão ao longo dos anos</caption>
         <thead>
           <tr>
             <th>Ano</th>
@@ -153,7 +154,13 @@ export function DimensionView({ data, summary, catalog, referenceYear, selectedI
           {sortedIndicators.map((indicator) => {
             const item = metadata.get(indicator.indicatorId)
             return (
-              <button type="button" key={indicator.indicatorId} className={selectedIndicatorId === indicator.indicatorId ? 'is-selected' : ''} onClick={() => setSelectedIndicatorId(indicator.indicatorId)}>
+              <button
+                type="button"
+                key={indicator.indicatorId}
+                aria-pressed={selectedIndicatorId === indicator.indicatorId}
+                className={selectedIndicatorId === indicator.indicatorId ? 'is-selected' : ''}
+                onClick={() => setSelectedIndicatorId(indicator.indicatorId)}
+              >
                 {item?.name ?? item?.shortName ?? indicator.indicatorId}
               </button>
             )
@@ -196,6 +203,7 @@ function IndicatorHistoryTable({ data, indicators, metadata }: { data: Municipal
   return (
     <div className="data-table-wrap">
       <table className="data-table analysis-table analysis-table--indicators">
+        <caption className="sr-only">Posições dos indicadores de {data.dimensionName} ao longo dos anos</caption>
         <thead>
           <tr>
             <th>Ano</th>
