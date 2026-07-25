@@ -253,6 +253,16 @@ function assertCatalogData(data: unknown, url: string): asserts data is CatalogD
     if (!isString(i.direction) || !validDirections.has(i.direction)) {
       throw new DataContractError(`catalog.indicators: direction inválida em "${String(i.id)}"`, url)
     }
+    if (i.dataYearByReferenceYear !== undefined) {
+      if (!isRecord(i.dataYearByReferenceYear)) {
+        throw new DataContractError(`catalog.indicators: dataYearByReferenceYear inválido em "${String(i.id)}"`, url)
+      }
+      for (const [referenceYear, dataYear] of Object.entries(i.dataYearByReferenceYear)) {
+        if (!/^\d{4}$/.test(referenceYear) || !isNumber(dataYear)) {
+          throw new DataContractError(`catalog.indicators: mapeamento de ano inválido em "${String(i.id)}"`, url)
+        }
+      }
+    }
   }
 }
 

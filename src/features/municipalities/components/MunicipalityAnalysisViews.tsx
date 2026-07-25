@@ -129,6 +129,9 @@ export function DimensionView({ data, summary, catalog, referenceYear, selectedI
       ? 'Valores mais baixos indicam melhor desempenho.'
       : 'Dire\u00e7\u00e3o interpretativa neutra.'
   const selectedIndicatorName = selectedMetadata?.name ?? selectedIndicator?.indicatorId ?? ''
+  const indicatorEvolution = selectedIndicator
+    ? buildIndicatorEvolution(years, selectedIndicator, selectedMetadata)
+    : { points: [], comparison: [] }
 
   return (
     <div className="analysis-layout">
@@ -185,8 +188,8 @@ export function DimensionView({ data, summary, catalog, referenceYear, selectedI
               softenScale
               primaryLabel={summary.municipality.name}
               yAxisLabel={indicatorAxisLabel(selectedMetadata)}
-              points={years.map((year) => ({ label: String(year), value: selectedIndicator.values.find((item) => item.year === year)?.originalValue ?? null }))}
-              comparison={years.map((year) => ({ label: String(year), value: selectedIndicator.values.find((item) => item.year === year)?.regionalMedianOriginalValue ?? null }))}
+              points={indicatorEvolution.points}
+              comparison={indicatorEvolution.comparison}
               valueFormatter={(value) => formatIndicatorValue(value, selectedMetadata)}
               valueLabelFormatter={(value) => formatIndicatorPointLabel(value, selectedMetadata)}
             />
@@ -195,6 +198,34 @@ export function DimensionView({ data, summary, catalog, referenceYear, selectedI
       ) : null}
     </div>
   )
+}
+
+function buildIndicatorEvolution(
+  referenceYears: number[],
+  indicator: MunicipalityDimensionData['indicators'][number],
+  metadata: CatalogData['indicators'][number] | undefined,
+) {
+  const valuesByDataYear = new Map<number, {
+    originalValue: number | null
+    regionalMedianOriginalValue: number | null
+  }>()
+
+  for (const referenceYear of referenceYears) {
+    const row = indicator.values.find((item) => item.year === referenceYear)
+    const dataYear = metadata?.dataYearByReferenceYear?.[String(referenceYear)] ?? referenceYear
+    const current = valuesByDataYear.get(dataYear)
+
+    valuesByDataYear.set(dataYear, {
+      originalValue: row?.originalValue ?? current?.originalValue ?? null,
+      regionalMedianOriginalValue: row?.regionalMedianOriginalValue ?? current?.regionalMedianOriginalValue ?? null,
+    })
+  }
+
+  const rows = [...valuesByDataYear.entries()].sort(([yearA], [yearB]) => yearA - yearB)
+  return {
+    points: rows.map(([year, row]) => ({ label: String(year), value: row.originalValue })),
+    comparison: rows.map(([year, row]) => ({ label: String(year), value: row.regionalMedianOriginalValue })),
+  }
 }
 
 function IndicatorHistoryTable({ data, indicators, metadata }: { data: MunicipalityDimensionData; indicators: MunicipalityDimensionData['indicators']; metadata: Map<string, CatalogData['indicators'][number]> }) {

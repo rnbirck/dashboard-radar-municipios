@@ -35,6 +35,7 @@ from sqlalchemy import create_engine, text
 ALLOWED_HOSTS = {"localhost", "127.0.0.1", "::1"}
 _STAGING_PATTERN = re.compile(r"^staging_[12][0-9]{3}$")
 DB_PROJECT = Path(r"C:\Users\rnbirck\PROJETOS\CEI\cei\ranking_municipios\DB")
+RANKING_RESULTS_DIR = DB_PROJECT.parent / "resultados"
 sys.path.insert(0, str(DB_PROJECT))
 
 from shared.config import DbConfig  # noqa: E402
@@ -489,13 +490,65 @@ _INDICATOR_IDS: dict[str, list[str]] = {
                         "proporcao_pessoas_baixa_renda"],
 }
 
+_INDICATOR_SOURCE_YEAR_ALIASES: dict[str, tuple[str, ...]] = {
+    "qt_acesso_infor": (
+        "qtd_desktops_alunos",
+        "qtd_computadores_portateis_alunos",
+        "qtd_tablets_alunos",
+    ),
+}
 
-def _build_indicator_catalog() -> list[dict[str, Any]]:
+
+def _load_indicator_data_years(results_dir: Path) -> dict[str, dict[int, int]]:
+    """Le o ano-fonte real nos sufixos das colunas dos rankings oficiais."""
+    indicator_ids = [iid for dim in DIMENSION_IDS for iid in _INDICATOR_IDS[dim]]
+    result: dict[str, dict[int, int]] = {iid: {} for iid in indicator_ids}
+
+    for reference_year in YEARS:
+        ranking_file = results_dir / f"ranking_municipios_rs_{reference_year}.xlsx"
+        if not ranking_file.is_file():
+            raise FileNotFoundError(f"Arquivo de ranking nao encontrado: {ranking_file}")
+
+        columns = [str(column) for column in pd.read_excel(ranking_file, nrows=0).columns]
+        years_by_source: dict[str, set[int]] = {}
+        for column in columns:
+            match = re.fullmatch(r"(.+)_(\d{2})", column)
+            if match is None:
+                continue
+            source_name, short_year = match.groups()
+            years_by_source.setdefault(source_name, set()).add(2000 + int(short_year))
+
+        for indicator_id in indicator_ids:
+            source_names = _INDICATOR_SOURCE_YEAR_ALIASES.get(indicator_id, (indicator_id,))
+            data_years = {
+                data_year
+                for source_name in source_names
+                for data_year in years_by_source.get(source_name, set())
+            }
+            if len(data_years) != 1:
+                raise RuntimeError(
+                    f"{ranking_file.name}: ano-fonte de {indicator_id} ambiguo ou ausente: "
+                    f"{sorted(data_years)}"
+                )
+
+            data_year = next(iter(data_years))
+            if data_year > reference_year:
+                raise RuntimeError(
+                    f"{ranking_file.name}: ano-fonte futuro para {indicator_id}: {data_year}"
+                )
+            result[indicator_id][reference_year] = data_year
+
+    return result
+
+
+def _build_indicator_catalog(
+    data_years_by_indicator: dict[str, dict[int, int]] | None = None,
+) -> list[dict[str, Any]]:
     result = []
     for dim in DIMENSION_IDS:
         ord_base = list(_INDICATOR_IDS.keys()).index(dim) * 100
         for i, iid in enumerate(_INDICATOR_IDS.get(dim, [])):
-            result.append({
+            indicator = {
                 "id": iid,
                 "dimensionId": dim,
                 "name": _indicator_name(iid),
@@ -507,7 +560,16 @@ def _build_indicator_catalog() -> list[dict[str, Any]]:
                 "multiplier": _indicator_mult(iid),
                 "direction": _indicator_direction(iid),
                 "order": ord_base + i + 1,
-            })
+            }
+            data_years = (data_years_by_indicator or {}).get(iid, {})
+            shifted_years = {
+                str(reference_year): data_year
+                for reference_year, data_year in sorted(data_years.items())
+                if data_year != reference_year
+            }
+            if shifted_years:
+                indicator["dataYearByReferenceYear"] = shifted_years
+            result.append(indicator)
     return result
 
 
@@ -516,8 +578,11 @@ def _build_indicator_catalog() -> list[dict[str, Any]]:
 # ---------------------------------------------------------------------------
 
 
-def _sync_indicators(db_indicators: set[str]) -> list[dict[str, Any]]:
-    catalog = _build_indicator_catalog()
+def _sync_indicators(
+    db_indicators: set[str],
+    data_years_by_indicator: dict[str, dict[int, int]],
+) -> list[dict[str, Any]]:
+    catalog = _build_indicator_catalog(data_years_by_indicator)
     cat_ids = {i["id"] for i in catalog}
     missing_in_cat = db_indicators - cat_ids
     missing_in_db = cat_ids - db_indicators
@@ -609,7 +674,11 @@ def build_manifest(segments: dict[str, Any]) -> dict[str, Any]:
     }
 
 
-def build_catalog(ranking_2025: pd.DataFrame, segments: dict[str, Any]) -> dict[str, Any]:
+def build_catalog(
+    ranking_2025: pd.DataFrame,
+    segments: dict[str, Any],
+    indicator_catalog: list[dict[str, Any]],
+) -> dict[str, Any]:
     region_ids_sorted = sorted(segments["region_ids"], key=lambda r: int(r[2:]))
     regions_cat = [
         {"id": rid, "slug": rid.lower(), "name": REGION_NAMES.get(rid, rid), "order": int(rid[2:])}
@@ -653,7 +722,7 @@ def build_catalog(ranking_2025: pd.DataFrame, segments: dict[str, Any]) -> dict[
         "coredes": coredes_cat,
         "municipalities": municipalities_cat,
         "dimensions": dimensions_cat,
-        "indicators": _build_indicator_catalog(),
+        "indicators": indicator_catalog,
     }
 
 
@@ -981,6 +1050,10 @@ def validate_output(manifest: dict[str, Any], catalog: dict[str, Any],
     _assert(len(catalog["municipalities"]) == 497, "catalog: 497 municipios")
     _assert(len(catalog["dimensions"]) == 6, "catalog: 6 dimensoes")
     _assert(len(catalog["indicators"]) == 41, f"catalog: 41 indicadores ({len(catalog['indicators'])})")
+    for indicator in catalog["indicators"]:
+        for reference_year, data_year in indicator.get("dataYearByReferenceYear", {}).items():
+            _assert(int(reference_year) in YEARS, f"{indicator['id']}: ano de referencia invalido")
+            _assert(data_year < int(reference_year), f"{indicator['id']}: ano-fonte nao defasado")
 
     _assert(len(regions_data["regions"]) == 9, "regions: 9 regioes")
     _assert(regions_data["totals"]["municipalities"] == 497, "regions: 497 municipios")
@@ -1123,6 +1196,12 @@ def main() -> int:
     parser = argparse.ArgumentParser(description="Exportador estatico — staging local")
     parser.add_argument("--schema", default="staging_2025",
                         help="Schema PostgreSQL (padrao: staging_2025)")
+    parser.add_argument(
+        "--ranking-results-dir",
+        type=Path,
+        default=RANKING_RESULTS_DIR,
+        help="Pasta com ranking_municipios_rs_YYYY.xlsx usados para recuperar o ano-fonte",
+    )
     args = parser.parse_args()
 
     schema = args.schema
@@ -1172,7 +1251,9 @@ def main() -> int:
     for d, df in dim_frames.items():
         for iid in df["indicador"].dropna().unique():
             all_db_indicators.add(str(iid))
-    indicator_catalog = _sync_indicators(all_db_indicators)
+    print("Lendo anos-fonte dos indicadores...")
+    indicator_data_years = _load_indicator_data_years(args.ranking_results_dir)
+    indicator_catalog = _sync_indicators(all_db_indicators, indicator_data_years)
     print(f"[OK] {len(indicator_catalog)} indicadores sincronizados com staging")
 
     # Segmentos
@@ -1198,7 +1279,7 @@ def main() -> int:
 
     # Construir catalog
     print("Construindo catalog...")
-    catalog = build_catalog(ranking_2025, segments)
+    catalog = build_catalog(ranking_2025, segments, indicator_catalog)
 
     # Construir regions e rankings RF1-RF9 para todos os anos publicados.
     print("Construindo regions e rankings regionais...")
@@ -1336,6 +1417,7 @@ def main() -> int:
     print(f"  Total geral: 1 + 1 + 1 + 9 + {n_total} = {12 + n_total} JSONs")
     print()
     print("Fontes lidas:")
+    print(f"  Rankings oficiais: {args.ranking_results_dir}")
     print(f"  staging_2025.ranking_municipios: {len(ranking_all)} linhas")
     for d in DIMENSION_IDS:
         print(f"  staging_2025.base_{d}: {len(dim_frames[d])} linhas")

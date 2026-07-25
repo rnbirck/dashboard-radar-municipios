@@ -20,7 +20,18 @@ Tambem aceita um schema explicito:
 python scripts/export_static_from_local.py --schema staging_2025
 ```
 
-O script valida contagens, rankings, dimensoes, indicadores e arquivos municipais antes de publicar os JSONs em `public/data/v2025`.
+O script também lê os cabeçalhos de `resultados/ranking_municipios_rs_YYYY.xlsx`
+para registrar no catálogo o ano real de cada indicador. Isso mantém separados o
+ano de referência da nota e o ano-fonte exibido na evolução do indicador.
+
+Caso os arquivos estejam em outra pasta:
+
+```powershell
+python scripts/export_static_from_local.py --ranking-results-dir "C:\caminho\resultados"
+```
+
+O script valida contagens, rankings, dimensões, indicadores, anos-fonte e arquivos
+municipais antes de publicar os JSONs em `public/data/v2025`.
 
 ## backfill_year_aggregates_from_static.py
 

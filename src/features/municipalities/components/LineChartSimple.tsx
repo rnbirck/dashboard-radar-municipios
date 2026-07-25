@@ -129,7 +129,7 @@ export function LineChartSimple({ points, comparison, comparisonLabel, fixedValu
         className="simple-chart"
         viewBox={`0 0 ${WIDTH} ${HEIGHT}`}
         role="img"
-        aria-label={yAxisLabel ? `Gr\u00e1fico de linha com evolu\u00e7\u00e3o anual. Eixo Y: ${yAxisLabel}` : 'Gr\u00e1fico de linha com hist\u00f3rico anual de posi\u00e7\u00e3o'}
+        aria-label={yAxisLabel ? `Gr\u00e1fico de linha com evolu\u00e7\u00e3o do indicador. Eixo Y: ${yAxisLabel}` : 'Gr\u00e1fico de linha com hist\u00f3rico anual de posi\u00e7\u00e3o'}
         onPointerMove={handlePointerMove}
         onPointerLeave={() => setHoverIndex(null)}
       >

@@ -97,6 +97,8 @@ export type IndicatorCatalogEntry = {
   multiplier: number
   direction: IndicatorDirection
   order: number
+  /** Ano real do dado quando ele difere do ano de referência usado na nota. */
+  dataYearByReferenceYear?: Record<string, number>
 }
 
 export type CatalogData = {
