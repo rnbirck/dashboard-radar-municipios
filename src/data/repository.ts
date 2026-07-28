@@ -152,6 +152,7 @@ async function readEnvelope<T>(
   url: string,
   expectedVersion: string,
   assertData: (data: unknown, url: string) => asserts data is T,
+  cache: RequestCache = 'default',
 ): Promise<T> {
   const cached = envelopeCache.get(url) as Promise<StaticDataEnvelope<T>> | undefined
   if (cached) {
@@ -161,7 +162,7 @@ async function readEnvelope<T>(
   const promise = (async () => {
     let response: Response
     try {
-      response = await fetch(url, { headers: { Accept: 'application/json' } })
+      response = await fetch(url, { headers: { Accept: 'application/json' }, cache })
     } catch (cause) {
       throw new DataFetchError('Falha de rede ao buscar dados', url)
     }
@@ -373,7 +374,7 @@ export function clearManifestCache(): void {
 export async function loadCatalog(): Promise<CatalogData> {
   const manifest = await loadManifest()
   const url = `${BASE}/${manifest.activeDataVersion}/${manifest.files.catalog}`
-  return readEnvelope<CatalogData>(url, manifest.activeDataVersion, assertCatalogData)
+  return readEnvelope<CatalogData>(url, manifest.activeDataVersion, assertCatalogData, 'no-cache')
 }
 
 export async function loadRegions(year: number): Promise<RegionsData> {

@@ -1,5 +1,6 @@
 import { Outlet, useLocation } from 'react-router-dom'
 import { GlobalFilters } from '../components/filters/GlobalFilters'
+import { ScrollToTopButton } from '../components/navigation/ScrollToTopButton'
 import { TopNavigation } from '../components/navigation/TopNavigation'
 
 export function AppShell() {
@@ -13,6 +14,7 @@ export function AppShell() {
         {!isHome ? <GlobalFilters compact={pathname === '/ranking-regional'} /> : null}
         <Outlet />
       </main>
+      {!isHome ? <ScrollToTopButton /> : null}
     </div>
   )
 }

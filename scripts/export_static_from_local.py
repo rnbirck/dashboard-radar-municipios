@@ -624,6 +624,44 @@ def _calc_medians(dim_frames: dict[str, pd.DataFrame]) -> dict[tuple[int, str, s
     return result
 
 
+def _calc_state_medians(
+    dim_frames: dict[str, pd.DataFrame],
+) -> dict[tuple[int, str, str], float | None]:
+    """Calcula a mediana estadual por (ano, dimensao, indicador)."""
+    result: dict[tuple[int, str, str], float | None] = {}
+    for dim, frame in dim_frames.items():
+        groups = frame.groupby(["ano", "indicador"], dropna=False)
+        for (year, indicator), group in groups:
+            result[(int(year), dim, str(indicator))] = _s(group["valor_original"].median())
+    return result
+
+
+def _attach_state_medians(
+    indicator_catalog: list[dict[str, Any]],
+    state_medians: dict[tuple[int, str, str], float | None],
+    regional_medians: dict[tuple[int, str, str, str], dict[str, float | None]],
+) -> None:
+    """Publica as medianas estaduais e regionais no catalogo compacto."""
+    for indicator in indicator_catalog:
+        dimension_id = str(indicator["dimensionId"])
+        indicator_id = str(indicator["id"])
+        indicator["stateMedianOriginalValueByReferenceYear"] = {
+            str(year): state_medians.get((year, dimension_id, indicator_id))
+            for year in YEARS
+        }
+        indicator["regionalMedianOriginalValueByRegionAndReferenceYear"] = {
+            region_id: {
+                str(year): _s(
+                    regional_medians
+                    .get((year, region_id, dimension_id, indicator_id), {})
+                    .get("mediana_valor_original_regiao")
+                )
+                for year in YEARS
+            }
+            for region_id in REGION_NAMES
+        }
+
+
 def _calc_dim_medians(dim_frames: dict[str, pd.DataFrame]) -> dict[tuple[int, str, str], dict[str, float | None]]:
     """Calcula mediana por (ano, regiao_funcional, dimensao) da nota_dimensao."""
     all_rows = []
@@ -1272,6 +1310,11 @@ def main() -> int:
     print("Calculando medianas regionais...")
     medians = _calc_medians(dim_frames)
     print(f"  {len(medians)} grupos de mediana calculados")
+
+    print("Calculando medianas estaduais...")
+    state_medians = _calc_state_medians(dim_frames)
+    _attach_state_medians(indicator_catalog, state_medians, medians)
+    print(f"  {len(state_medians)} grupos de mediana estadual calculados")
 
     print("Indexando rankings dimensionais...")
     dimension_rank_lookup = _build_dimension_rank_lookup(dim_frames)

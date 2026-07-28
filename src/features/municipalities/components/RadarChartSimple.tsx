@@ -1,7 +1,6 @@
 import { useState, type PointerEvent } from 'react'
 import { ChartTooltip } from './ChartTooltip'
 import { clamp, FUNCTIONAL_REGION_MEDIAN_LABEL, MUNICIPALITY_LABEL } from './municipalityChartUtils'
-import type { TooltipRow } from './municipalityChartUtils'
 
 type RadarChartSimpleProps = {
   labels: string[]
@@ -38,7 +37,7 @@ export function RadarChartSimple({ labels, values, comparison, comparisonLabel, 
   const hoverRows = hoverIndex === null ? [] : [
     values[hoverIndex] !== null && values[hoverIndex] !== undefined ? { label: primaryLabel, value: formatScore(values[hoverIndex]), tone: 'primary' as const } : null,
     comparison?.[hoverIndex] !== null && comparison?.[hoverIndex] !== undefined ? { label: comparisonName, value: formatScore(comparison[hoverIndex]), tone: 'comparison' as const } : null,
-  ].filter((row): row is TooltipRow => row !== null)
+  ].filter((row): row is Exclude<typeof row, null> => row !== null)
   const handleRadarPointerMove = (event: PointerEvent<SVGSVGElement>) => {
     const rect = event.currentTarget.getBoundingClientRect()
     const localX = ((event.clientX - rect.left) / rect.width) * size

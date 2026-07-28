@@ -99,6 +99,10 @@ export type IndicatorCatalogEntry = {
   order: number
   /** Ano real do dado quando ele difere do ano de referência usado na nota. */
   dataYearByReferenceYear?: Record<string, number>
+  /** Mediana do valor original entre todos os municípios do RS, por ano de referência. */
+  stateMedianOriginalValueByReferenceYear?: Record<string, number | null>
+  /** Mediana do valor original por Região Funcional e ano de referência. */
+  regionalMedianOriginalValueByRegionAndReferenceYear?: Record<string, Record<string, number | null>>
 }
 
 export type CatalogData = {

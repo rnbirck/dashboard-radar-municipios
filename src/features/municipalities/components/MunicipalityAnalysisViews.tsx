@@ -1,5 +1,5 @@
 import { Activity, BarChart3 } from 'lucide-react'
-import type { ReactNode } from 'react'
+import { useEffect, useState, type ReactNode } from 'react'
 import type { CatalogData, MunicipalityDimensionData, MunicipalitySummaryData } from '../../../types/domain'
 import { LineChartSimple, RadarChartSimple } from './MunicipalityCharts'
 import { formatIndicatorPointLabel, formatIndicatorValue, formatPosition, indicatorAxisLabel, rankTone } from './municipalityUi'
@@ -8,11 +8,14 @@ const INDICATOR_COLLATOR = new Intl.Collator('pt-BR', { sensitivity: 'base' })
 const POSITION_RANK_CAPTION = 'Quanto mais pr\u00f3xima do 1\u00ba lugar, melhor a coloca\u00e7\u00e3o no ranking da Regi\u00e3o Funcional.'
 const RADAR_COMPARISON_CAPTION = 'Compara a nota do munic\u00edpio com a mediana da Regi\u00e3o Funcional.'
 
-function Panel({ title, description, children }: { title: string; description?: ReactNode; children: ReactNode }) {
+function Panel({ title, description, action, children }: { title: string; description?: ReactNode; action?: ReactNode; children: ReactNode }) {
   return (
     <section className="analysis-panel analysis-panel--chart">
       <header className="analysis-panel__header">
-        <div className="analysis-panel__title"><BarChart3 size={18} /><h2>{title}</h2></div>
+        <div className="analysis-panel__heading-row">
+          <div className="analysis-panel__title"><BarChart3 size={18} /><h2>{title}</h2></div>
+          {action}
+        </div>
         {description ? <div className="analysis-panel__description">{description}</div> : null}
       </header>
       {children}
@@ -107,7 +110,12 @@ type DimensionViewProps = {
 }
 
 export function DimensionView({ data, summary, catalog, referenceYear, selectedIndicatorId, setSelectedIndicatorId, selectedIndicator, selectedMetadata }: DimensionViewProps) {
+  const [comparisonRegionId, setComparisonRegionId] = useState(summary.municipality.regionId)
   const years = [...data.availableYears].sort((a, b) => a - b)
+  const comparisonRegions = [...catalog.regions].sort((a, b) => a.order - b.order)
+  const comparisonRegion = comparisonRegions.find((region) => region.id === comparisonRegionId)
+    ?? comparisonRegions.find((region) => region.id === summary.municipality.regionId)
+  const comparisonRegionName = comparisonRegion?.name ?? summary.municipality.regionName
   const metadata = new Map(catalog.indicators.map((item) => [item.id, item]))
   const sortedIndicators = [...data.indicators].sort((a, b) => {
     const labelA = metadata.get(a.indicatorId)?.name ?? metadata.get(a.indicatorId)?.shortName ?? a.indicatorId
@@ -130,8 +138,12 @@ export function DimensionView({ data, summary, catalog, referenceYear, selectedI
       : 'Dire\u00e7\u00e3o interpretativa neutra.'
   const selectedIndicatorName = selectedMetadata?.name ?? selectedIndicator?.indicatorId ?? ''
   const indicatorEvolution = selectedIndicator
-    ? buildIndicatorEvolution(years, selectedIndicator, selectedMetadata)
-    : { points: [], comparison: [] }
+    ? buildIndicatorEvolution(years, selectedIndicator, selectedMetadata, comparisonRegion?.id ?? summary.municipality.regionId, summary.municipality.regionId)
+    : { points: [], comparison: [], stateComparison: [] }
+
+  useEffect(() => {
+    setComparisonRegionId(summary.municipality.regionId)
+  }, [summary.municipality.id, summary.municipality.regionId])
 
   return (
     <div className="analysis-layout">
@@ -183,13 +195,34 @@ export function DimensionView({ data, summary, catalog, referenceYear, selectedI
           <Panel
             title={`Evolu\u00e7\u00e3o do indicador \u2014 ${selectedIndicatorName}`}
             description={<div className="indicator-subtitle"><p>{indicatorDescription}</p> <strong>{indicatorDirection}</strong></div>}
+            action={(
+              <div className="chart-comparison-filter">
+                <label htmlFor={`indicator-comparison-region-${data.dimensionId}`}>Região funcional comparada</label>
+                <select
+                  id={`indicator-comparison-region-${data.dimensionId}`}
+                  value={comparisonRegion?.id ?? summary.municipality.regionId}
+                  onChange={(event) => setComparisonRegionId(event.target.value)}
+                  title="Altera somente a mediana regional deste gráfico"
+                >
+                  {comparisonRegions.map((region) => (
+                    <option key={region.id} value={region.id}>
+                      {region.id.replace(/^RF/, 'RF ')}{region.id === summary.municipality.regionId ? ' (do município)' : ''}
+                    </option>
+                  ))}
+                </select>
+              </div>
+            )}
           >
             <LineChartSimple
               softenScale
               primaryLabel={summary.municipality.name}
+              primaryTooltipLabel={`Município: ${summary.municipality.name}`}
+              comparisonLabel={`Mediana da ${comparisonRegionName}`}
+              comparisonTooltipLabel={`Mediana da ${comparisonRegionName}`}
               yAxisLabel={indicatorAxisLabel(selectedMetadata)}
               points={indicatorEvolution.points}
               comparison={indicatorEvolution.comparison}
+              stateComparison={indicatorEvolution.stateComparison}
               valueFormatter={(value) => formatIndicatorValue(value, selectedMetadata)}
               valueLabelFormatter={(value) => formatIndicatorPointLabel(value, selectedMetadata)}
             />
@@ -204,20 +237,31 @@ function buildIndicatorEvolution(
   referenceYears: number[],
   indicator: MunicipalityDimensionData['indicators'][number],
   metadata: CatalogData['indicators'][number] | undefined,
+  comparisonRegionId: string,
+  municipalityRegionId: string,
 ) {
   const valuesByDataYear = new Map<number, {
     originalValue: number | null
     regionalMedianOriginalValue: number | null
+    stateMedianOriginalValue: number | null
   }>()
 
   for (const referenceYear of referenceYears) {
     const row = indicator.values.find((item) => item.year === referenceYear)
     const dataYear = metadata?.dataYearByReferenceYear?.[String(referenceYear)] ?? referenceYear
     const current = valuesByDataYear.get(dataYear)
+    const selectedRegionalMedian = metadata
+      ?.regionalMedianOriginalValueByRegionAndReferenceYear
+      ?.[comparisonRegionId]
+      ?.[String(referenceYear)]
+    const ownRegionalMedian = comparisonRegionId === municipalityRegionId
+      ? row?.regionalMedianOriginalValue
+      : null
 
     valuesByDataYear.set(dataYear, {
       originalValue: row?.originalValue ?? current?.originalValue ?? null,
-      regionalMedianOriginalValue: row?.regionalMedianOriginalValue ?? current?.regionalMedianOriginalValue ?? null,
+      regionalMedianOriginalValue: selectedRegionalMedian ?? ownRegionalMedian ?? current?.regionalMedianOriginalValue ?? null,
+      stateMedianOriginalValue: metadata?.stateMedianOriginalValueByReferenceYear?.[String(referenceYear)] ?? current?.stateMedianOriginalValue ?? null,
     })
   }
 
@@ -225,6 +269,7 @@ function buildIndicatorEvolution(
   return {
     points: rows.map(([year, row]) => ({ label: String(year), value: row.originalValue })),
     comparison: rows.map(([year, row]) => ({ label: String(year), value: row.regionalMedianOriginalValue })),
+    stateComparison: rows.map(([year, row]) => ({ label: String(year), value: row.stateMedianOriginalValue })),
   }
 }
 
