@@ -215,6 +215,7 @@ export function DimensionView({ data, summary, catalog, referenceYear, selectedI
           >
             <LineChartSimple
               softenScale
+              showValueLabels={false}
               primaryLabel={summary.municipality.name}
               primaryTooltipLabel={`Município: ${summary.municipality.name}`}
               comparisonLabel={`Mediana da ${comparisonRegionName}`}
