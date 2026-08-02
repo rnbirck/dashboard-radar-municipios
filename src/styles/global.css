@@ -518,6 +518,9 @@ button { color: inherit; }
 .chart-y-axis-label { fill: #52677f; font-size: 10.75px; font-weight: 800; paint-order: stroke; stroke: #fff; stroke-width: 3px; stroke-linejoin: round; }
 .chart-legend { min-height: 22px; display: flex; align-items: center; justify-content: center; align-self: end; flex-wrap: wrap; gap: 18px; color: #52677f; font-size: 11.5px; font-weight: 680; line-height: 1.25; }
 .chart-legend span { display: inline-flex; align-items: center; gap: 6px; }
+.chart-legend-stack { min-width: 0; display: grid; justify-items: center; gap: 4px; }
+.chart-source { max-width: 100%; margin: 0; color: #6a7c8e; font-size: 11px; font-weight: 560; line-height: 1.35; text-align: center; text-wrap: pretty; }
+.chart-source strong { color: #465d74; font-weight: 780; }
 .legend-line { position: relative; width: 22px; height: 3px; display: inline-block; border-radius: 999px; background: var(--color-gold); }
 .legend-line::after { position: absolute; top: 50%; left: 50%; width: 6px; height: 6px; border: 1.5px solid #fff; background: var(--color-gold); content: ""; transform: translate(-50%, -50%); }
 .legend-line--primary::after { border-radius: 999px; }

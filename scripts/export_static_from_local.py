@@ -387,6 +387,58 @@ def _indicator_desc(iid: str) -> str:
     }.get(iid, "")
 
 
+_INDICATOR_SOURCES: dict[str, str] = {
+    "adequacao_formacao_docente": "INEP",
+    "saeb_ensino_fundamental": "INEP",
+    "taxa_cobertura_creche": "INEP",
+    "taxa_distorcao_fundamental": "INEP",
+    "qt_acesso_infor": "INEP",
+    "exec_orc_corrente": "Siconfi / STN",
+    "autonomia_fiscal": "Siconfi / STN",
+    "endividamento": "Siconfi / STN",
+    "despesas_pessoal": "Siconfi / STN",
+    "investimento": "Siconfi / STN",
+    "disponibilidade_caixa": "Siconfi / STN",
+    "geracao_de_caixa": "Siconfi / STN",
+    "restos_a_pagar": "Siconfi / STN",
+    "desmatamento_por_area": "MapBiomas",
+    "emissao_gases_per_capita": "SEEG",
+    "incidencia_coliformes": "SNIS",
+    "indice_perdas_distribuicao": "SNIS",
+    "prop_atendimento_agua": "SNIS",
+    "prop_coleta_residuos": "SNIS",
+    "obitos_causas_evitaveis_mil_habitantes": "Ministério da Saúde / DATASUS",
+    "proporcao_consultas_pre_natal": "Ministério da Saúde / DATASUS",
+    "proporcao_gravidez_adolescencia": "Ministério da Saúde / DATASUS",
+    "medicos_por_mil_habitantes": "Ministério da Saúde / CNES",
+    "cobertura_aps": "Ministério da Saúde / CNES",
+    "cobertura_acs": "Ministério da Saúde / CNES",
+    "cobertura_vacinal_penta_polio_media": "Ministério da Saúde / SI-PNI",
+    "delitos_com_armas_por_10mil_hab": "SSP-RS",
+    "furtos_por_10mil_hab": "SSP-RS",
+    "homicidio_doloso_por_10mil_hab": "SSP-RS",
+    "roubos_por_10mil_hab": "SSP-RS",
+    "roubos_furtos_veiculos_por_10mil_veiculos": "SSP-RS",
+    "estupro_por_10mil_mulheres": "SSP-RS",
+    "ameaca_por_10mil_mulheres": "SSP-RS",
+    "pib_per_capita": "IBGE",
+    "mulheres_empregadas_ensino_medio_ou_mais_por_1000_mulheres": "RAIS / IBGE",
+    "renda_media": "RAIS",
+    "vinculos_per_capita": "RAIS",
+    "formalidade_mercado_trabalho": "RAIS",
+    "geracao_emprego_per_capita": "Novo Caged",
+    "vulnerabilidade_social": "Cadastro Único",
+    "proporcao_pessoas_baixa_renda": "Cadastro Único",
+}
+
+
+def _indicator_source(iid: str) -> str:
+    try:
+        return _INDICATOR_SOURCES[iid]
+    except KeyError as error:
+        raise RuntimeError(f"Fonte não cadastrada para o indicador: {iid}") from error
+
+
 def _indicator_direction(iid: str) -> str:
     higher = {"adequacao_formacao_docente", "saeb_ensino_fundamental", "taxa_cobertura_creche",
               "qt_acesso_infor", "autonomia_fiscal", "investimento", "disponibilidade_caixa",
@@ -554,6 +606,7 @@ def _build_indicator_catalog(
                 "name": _indicator_name(iid),
                 "shortName": _indicator_short(iid),
                 "description": _indicator_desc(iid),
+                "source": _indicator_source(iid),
                 "unit": _indicator_unit(iid),
                 "format": _indicator_format(iid),
                 "decimalPlaces": _indicator_decimal(iid),

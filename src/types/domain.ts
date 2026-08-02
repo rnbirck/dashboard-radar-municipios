@@ -91,6 +91,7 @@ export type IndicatorCatalogEntry = {
   name: string
   shortName: string | null
   description: string | null
+  source: string
   unit: string | null
   format: IndicatorFormat
   decimalPlaces: number

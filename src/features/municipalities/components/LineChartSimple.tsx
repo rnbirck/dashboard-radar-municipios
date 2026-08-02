@@ -16,6 +16,7 @@ type LineChartSimpleProps = {
   showValueLabels?: boolean
   softenScale?: boolean
   comparisonTooltipLabel?: string
+  dataSource?: string
   valueLabelFormatter?: (value: number) => string
   valueFormatter?: (value: number) => string
   yAxisLabel?: string
@@ -26,7 +27,7 @@ const HEIGHT = 286
 const PAD = { top: 46, right: 42, bottom: 54, left: 54 }
 const COMPARISON_PAD = { ...PAD, right: 104, left: 50 }
 
-export function LineChartSimple({ points, comparison, comparisonLabel, comparisonTooltipLabel, stateComparison, stateComparisonLabel = 'Mediana do RS', fixedValueLabels = 'all', invert = false, primaryLabel = MUNICIPALITY_LABEL, primaryTooltipLabel, showValueLabels = true, softenScale = false, valueLabelFormatter, valueFormatter, yAxisLabel }: LineChartSimpleProps) {
+export function LineChartSimple({ points, comparison, comparisonLabel, comparisonTooltipLabel, dataSource, stateComparison, stateComparisonLabel = 'Mediana do RS', fixedValueLabels = 'all', invert = false, primaryLabel = MUNICIPALITY_LABEL, primaryTooltipLabel, showValueLabels = true, softenScale = false, valueLabelFormatter, valueFormatter, yAxisLabel }: LineChartSimpleProps) {
   const [hoverIndex, setHoverIndex] = useState<number | null>(null)
   const pad = stateComparison ? COMPARISON_PAD : PAD
   const values = [...points, ...(comparison ?? []), ...(stateComparison ?? [])].flatMap((item) => item.value === null ? [] : [item.value])
@@ -220,10 +221,13 @@ export function LineChartSimple({ points, comparison, comparisonLabel, compariso
         {points.map((item, index) => <text key={`${item.label}-axis`} x={x(index)} y={HEIGHT - 14} textAnchor="middle" className="chart-axis-label">{item.label}</text>)}
       </svg>
       {hoverIndex !== null && hoverRows.length ? <ChartTooltip title={points[hoverIndex]?.label ?? ''} rows={hoverRows} left={hoverLeft} top={hoverTop} /> : null}
-      <div className="chart-legend">
-        <span><i className="legend-line legend-line--primary" />{primaryLabel}</span>
-        {comparison ? <span><i className="legend-line legend-line--comparison" />{comparisonLabel ?? FUNCTIONAL_REGION_MEDIAN_LABEL}</span> : null}
-        {stateComparison ? <span><i className="legend-line legend-line--state" />{stateComparisonLabel}</span> : null}
+      <div className="chart-legend-stack">
+        <div className="chart-legend">
+          <span><i className="legend-line legend-line--primary" />{primaryLabel}</span>
+          {comparison ? <span><i className="legend-line legend-line--comparison" />{comparisonLabel ?? FUNCTIONAL_REGION_MEDIAN_LABEL}</span> : null}
+          {stateComparison ? <span><i className="legend-line legend-line--state" />{stateComparisonLabel}</span> : null}
+        </div>
+        {dataSource ? <p className="chart-source"><strong>Fonte:</strong> {dataSource}</p> : null}
       </div>
     </div>
   )

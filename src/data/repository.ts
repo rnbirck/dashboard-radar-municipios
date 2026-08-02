@@ -248,8 +248,8 @@ function assertCatalogData(data: unknown, url: string): asserts data is CatalogD
   const validDirections = new Set(['higher_is_better', 'lower_is_better', 'neutral'])
   for (const ind of d['indicators'] as unknown[]) {
     const i = ind as Record<string, unknown>
-    if (!isString(i.id) || !isString(i.dimensionId) || !isString(i.name)) {
-      throw new DataContractError('catalog.indicators: id/dimensionId/name obrigatórios', url)
+    if (!isString(i.id) || !isString(i.dimensionId) || !isString(i.name) || !isString(i.source) || !i.source.trim()) {
+      throw new DataContractError('catalog.indicators: id/dimensionId/name/source obrigatórios', url)
     }
     if (!isString(i.direction) || !validDirections.has(i.direction)) {
       throw new DataContractError(`catalog.indicators: direction inválida em "${String(i.id)}"`, url)

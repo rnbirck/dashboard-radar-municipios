@@ -3717,6 +3717,7 @@
     "indicators": [
       {
         "id": "adequacao_formacao_docente",
+        "source": "INEP",
         "dimensionId": "educacao",
         "name": "Adequação da Formação Docente",
         "shortName": "Formação docente",
@@ -3802,6 +3803,7 @@
       },
       {
         "id": "saeb_ensino_fundamental",
+        "source": "INEP",
         "dimensionId": "educacao",
         "name": "Nota do SAEB — Ensino Fundamental",
         "shortName": "SAEB fundamental",
@@ -3894,6 +3896,7 @@
       },
       {
         "id": "taxa_cobertura_creche",
+        "source": "INEP",
         "dimensionId": "educacao",
         "name": "Taxa de Cobertura de Creche",
         "shortName": "Cobertura creche",
@@ -3979,6 +3982,7 @@
       },
       {
         "id": "taxa_distorcao_fundamental",
+        "source": "INEP",
         "dimensionId": "educacao",
         "name": "Taxa de Distorção Idade-Série — Ensino Fundamental",
         "shortName": "Distorção fundamental",
@@ -4064,6 +4068,7 @@
       },
       {
         "id": "qt_acesso_infor",
+        "source": "INEP",
         "dimensionId": "educacao",
         "name": "Acesso à Informação",
         "shortName": "Acesso à informação",
@@ -4149,6 +4154,7 @@
       },
       {
         "id": "exec_orc_corrente",
+        "source": "Siconfi / STN",
         "dimensionId": "financas",
         "name": "Execução Orçamentária Corrente",
         "shortName": "Execução orçamentária",
@@ -4234,6 +4240,7 @@
       },
       {
         "id": "autonomia_fiscal",
+        "source": "Siconfi / STN",
         "dimensionId": "financas",
         "name": "Autonomia Fiscal",
         "shortName": "Autonomia fiscal",
@@ -4319,6 +4326,7 @@
       },
       {
         "id": "endividamento",
+        "source": "Siconfi / STN",
         "dimensionId": "financas",
         "name": "Endividamento",
         "shortName": null,
@@ -4404,6 +4412,7 @@
       },
       {
         "id": "despesas_pessoal",
+        "source": "Siconfi / STN",
         "dimensionId": "financas",
         "name": "Despesas com Pessoal",
         "shortName": "Despesas pessoal",
@@ -4489,6 +4498,7 @@
       },
       {
         "id": "investimento",
+        "source": "Siconfi / STN",
         "dimensionId": "financas",
         "name": "Investimento",
         "shortName": null,
@@ -4574,6 +4584,7 @@
       },
       {
         "id": "disponibilidade_caixa",
+        "source": "Siconfi / STN",
         "dimensionId": "financas",
         "name": "Disponibilidade de Caixa",
         "shortName": "Disponibilidade caixa",
@@ -4659,6 +4670,7 @@
       },
       {
         "id": "geracao_de_caixa",
+        "source": "Siconfi / STN",
         "dimensionId": "financas",
         "name": "Geração de Caixa",
         "shortName": "Geração de caixa",
@@ -4744,6 +4756,7 @@
       },
       {
         "id": "restos_a_pagar",
+        "source": "Siconfi / STN",
         "dimensionId": "financas",
         "name": "Restos a Pagar",
         "shortName": "Restos a pagar",
@@ -4829,6 +4842,7 @@
       },
       {
         "id": "desmatamento_por_area",
+        "source": "MapBiomas",
         "dimensionId": "meio_ambiente",
         "name": "Desmatamento por Área",
         "shortName": "Desmatamento",
@@ -4921,6 +4935,7 @@
       },
       {
         "id": "emissao_gases_per_capita",
+        "source": "SEEG",
         "dimensionId": "meio_ambiente",
         "name": "Emissão de Gases per Capita",
         "shortName": "Emissão gases",
@@ -5013,6 +5028,7 @@
       },
       {
         "id": "incidencia_coliformes",
+        "source": "SNIS",
         "dimensionId": "meio_ambiente",
         "name": "Incidência de Coliformes na Água",
         "shortName": "Coliformes",
@@ -5105,6 +5121,7 @@
       },
       {
         "id": "indice_perdas_distribuicao",
+        "source": "SNIS",
         "dimensionId": "meio_ambiente",
         "name": "Índice de Perdas na Distribuição",
         "shortName": "Perdas distribuição",
@@ -5197,6 +5214,7 @@
       },
       {
         "id": "prop_atendimento_agua",
+        "source": "SNIS",
         "dimensionId": "meio_ambiente",
         "name": "Proporção de Atendimento de Água",
         "shortName": "Atendimento água",
@@ -5289,6 +5307,7 @@
       },
       {
         "id": "prop_coleta_residuos",
+        "source": "SNIS",
         "dimensionId": "meio_ambiente",
         "name": "Proporção de Coleta de Resíduos",
         "shortName": "Coleta resíduos",
@@ -5381,6 +5400,7 @@
       },
       {
         "id": "obitos_causas_evitaveis_mil_habitantes",
+        "source": "Ministério da Saúde / DATASUS",
         "dimensionId": "saude",
         "name": "Óbitos por Causas Evitáveis por Mil Habitantes",
         "shortName": "Óbitos evitáveis",
@@ -5473,6 +5493,7 @@
       },
       {
         "id": "proporcao_consultas_pre_natal",
+        "source": "Ministério da Saúde / DATASUS",
         "dimensionId": "saude",
         "name": "Proporção de Consultas de Pré-natal",
         "shortName": "Pré-natal",
@@ -5558,6 +5579,7 @@
       },
       {
         "id": "proporcao_gravidez_adolescencia",
+        "source": "Ministério da Saúde / DATASUS",
         "dimensionId": "saude",
         "name": "Proporção de Gravidez na Adolescência",
         "shortName": "Gravidez adolescência",
@@ -5643,6 +5665,7 @@
       },
       {
         "id": "medicos_por_mil_habitantes",
+        "source": "Ministério da Saúde / CNES",
         "dimensionId": "saude",
         "name": "Médicos por Mil Habitantes",
         "shortName": "Médicos/mil hab",
@@ -5728,6 +5751,7 @@
       },
       {
         "id": "cobertura_aps",
+        "source": "Ministério da Saúde / CNES",
         "dimensionId": "saude",
         "name": "Cobertura de Atenção Primária à Saúde",
         "shortName": "Cobertura APS",
@@ -5813,6 +5837,7 @@
       },
       {
         "id": "cobertura_acs",
+        "source": "Ministério da Saúde / CNES",
         "dimensionId": "saude",
         "name": "Cobertura de Agentes Comunitários de Saúde",
         "shortName": "Cobertura ACS",
@@ -5898,6 +5923,7 @@
       },
       {
         "id": "cobertura_vacinal_penta_polio_media",
+        "source": "Ministério da Saúde / SI-PNI",
         "dimensionId": "saude",
         "name": "Cobertura Vacinal Média — Pentavalente e Poliomielite",
         "shortName": "Vacinal penta/pólio",
@@ -5983,6 +6009,7 @@
       },
       {
         "id": "delitos_com_armas_por_10mil_hab",
+        "source": "SSP-RS",
         "dimensionId": "seguranca",
         "name": "Delitos com Armas por 10 Mil Habitantes",
         "shortName": "Armas/10 mil hab",
@@ -6068,6 +6095,7 @@
       },
       {
         "id": "furtos_por_10mil_hab",
+        "source": "SSP-RS",
         "dimensionId": "seguranca",
         "name": "Furtos por 10 Mil Habitantes",
         "shortName": "Furtos/10 mil hab",
@@ -6153,6 +6181,7 @@
       },
       {
         "id": "homicidio_doloso_por_10mil_hab",
+        "source": "SSP-RS",
         "dimensionId": "seguranca",
         "name": "Homicídios Dolosos por 10 Mil Habitantes",
         "shortName": "Homicídios/10 mil hab",
@@ -6238,6 +6267,7 @@
       },
       {
         "id": "roubos_por_10mil_hab",
+        "source": "SSP-RS",
         "dimensionId": "seguranca",
         "name": "Roubos por 10 Mil Habitantes",
         "shortName": "Roubos/10 mil hab",
@@ -6323,6 +6353,7 @@
       },
       {
         "id": "roubos_furtos_veiculos_por_10mil_veiculos",
+        "source": "SSP-RS",
         "dimensionId": "seguranca",
         "name": "Roubos e Furtos de Veículos por 10 Mil Veículos",
         "shortName": "Roubos/furtos veíc.",
@@ -6408,6 +6439,7 @@
       },
       {
         "id": "estupro_por_10mil_mulheres",
+        "source": "SSP-RS",
         "dimensionId": "seguranca",
         "name": "Estupros por 10 Mil Mulheres",
         "shortName": "Estupros/10 mil mulh.",
@@ -6493,6 +6525,7 @@
       },
       {
         "id": "ameaca_por_10mil_mulheres",
+        "source": "SSP-RS",
         "dimensionId": "seguranca",
         "name": "Ameaças por 10 Mil Mulheres",
         "shortName": "Ameaças/10 mil mulh.",
@@ -6578,6 +6611,7 @@
       },
       {
         "id": "pib_per_capita",
+        "source": "IBGE",
         "dimensionId": "socioeconomico",
         "name": "PIB per Capita",
         "shortName": "PIB per capita",
@@ -6670,6 +6704,7 @@
       },
       {
         "id": "mulheres_empregadas_ensino_medio_ou_mais_por_1000_mulheres",
+        "source": "RAIS / IBGE",
         "dimensionId": "socioeconomico",
         "name": "Mulheres Empregadas com Ensino Médio ou Mais por 1.000 Mulheres",
         "shortName": "Mulheres empregadas ensino médio+",
@@ -6762,6 +6797,7 @@
       },
       {
         "id": "renda_media",
+        "source": "RAIS",
         "dimensionId": "socioeconomico",
         "name": "Renda Média",
         "shortName": "Renda média",
@@ -6854,6 +6890,7 @@
       },
       {
         "id": "vinculos_per_capita",
+        "source": "RAIS",
         "dimensionId": "socioeconomico",
         "name": "Vínculos Formais per Capita",
         "shortName": "Vínculos per capita",
@@ -6946,6 +6983,7 @@
       },
       {
         "id": "formalidade_mercado_trabalho",
+        "source": "RAIS",
         "dimensionId": "socioeconomico",
         "name": "Formalidade do Mercado de Trabalho",
         "shortName": "Formalidade",
@@ -7038,6 +7076,7 @@
       },
       {
         "id": "geracao_emprego_per_capita",
+        "source": "Novo Caged",
         "dimensionId": "socioeconomico",
         "name": "Geração de Emprego por 1.000 Habitantes",
         "shortName": "Geração empregos/1.000 hab",
@@ -7123,6 +7162,7 @@
       },
       {
         "id": "vulnerabilidade_social",
+        "source": "Cadastro Único",
         "dimensionId": "socioeconomico",
         "name": "Vulnerabilidade Social",
         "shortName": "Vulnerabilidade social",
@@ -7208,6 +7248,7 @@
       },
       {
         "id": "proporcao_pessoas_baixa_renda",
+        "source": "Cadastro Único",
         "dimensionId": "socioeconomico",
         "name": "Proporção de Pessoas de Baixa Renda",
         "shortName": "Baixa renda",

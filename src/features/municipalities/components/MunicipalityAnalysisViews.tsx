@@ -219,6 +219,7 @@ export function DimensionView({ data, summary, catalog, referenceYear, selectedI
               primaryTooltipLabel={`Município: ${summary.municipality.name}`}
               comparisonLabel={`Mediana da ${comparisonRegionName}`}
               comparisonTooltipLabel={`Mediana da ${comparisonRegionName}`}
+              dataSource={selectedMetadata?.source}
               yAxisLabel={indicatorAxisLabel(selectedMetadata)}
               points={indicatorEvolution.points}
               comparison={indicatorEvolution.comparison}
