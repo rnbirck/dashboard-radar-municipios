@@ -1,4 +1,4 @@
-import { RotateCcw, SlidersHorizontal } from 'lucide-react'
+import { Check, ChevronDown, RotateCcw, Search, SlidersHorizontal } from 'lucide-react'
 import type { FocusEvent, KeyboardEvent } from 'react'
 import { useEffect, useMemo, useRef, useState } from 'react'
 import { useNavigate, useSearchParams } from 'react-router-dom'
@@ -418,41 +418,50 @@ export function GlobalFilters({ compact = false }: GlobalFiltersProps) {
       </div>
       <div className="filter-field filter-field--year">
         <label htmlFor="filter-year">Ano</label>
-        <select
-          id="filter-year"
-          value={yearInput}
-          onChange={(event) => handleYearChange(event.target.value)}
-        >
-          {yearsOptions.map((item) => (
-            <option key={item} value={item}>{item}</option>
-          ))}
-        </select>
+        <div className="filter-select">
+          <select
+            id="filter-year"
+            value={yearInput}
+            onChange={(event) => handleYearChange(event.target.value)}
+          >
+            {yearsOptions.map((item) => (
+              <option key={item} value={item}>{item}</option>
+            ))}
+          </select>
+          <ChevronDown size={17} aria-hidden="true" />
+        </div>
       </div>
       <div className="filter-field filter-field--region">
         <label htmlFor="filter-region">Região Funcional</label>
-        <select
-          id="filter-region"
-          value={region}
-          onChange={(event) => handleRegionChange(event.target.value)}
-        >
-          <option value="">Selecione uma região funcional</option>
-          {regions.map((item) => (
-            <option key={item.id} value={item.id}>{item.name}</option>
-          ))}
-        </select>
+        <div className="filter-select">
+          <select
+            id="filter-region"
+            value={region}
+            onChange={(event) => handleRegionChange(event.target.value)}
+          >
+            <option value="">Selecione uma região funcional</option>
+            {regions.map((item) => (
+              <option key={item.id} value={item.id}>{item.name}</option>
+            ))}
+          </select>
+          <ChevronDown size={17} aria-hidden="true" />
+        </div>
       </div>
       {!compact ? (
         <>
           <div className="filter-field">
             <label htmlFor="filter-corede">Corede</label>
-            <select
-              id="filter-corede"
-              value={corede}
-              onChange={(event) => handleCoredeChange(event.target.value)}
-            >
-              <option value="">Todos os Coredes</option>
-              {coredes.map(([id, name]) => <option key={id} value={id}>{name}</option>)}
-            </select>
+            <div className="filter-select">
+              <select
+                id="filter-corede"
+                value={corede}
+                onChange={(event) => handleCoredeChange(event.target.value)}
+              >
+                <option value="">Todos os Coredes</option>
+                {coredes.map(([id, name]) => <option key={id} value={id}>{name}</option>)}
+              </select>
+              <ChevronDown size={17} aria-hidden="true" />
+            </div>
           </div>
           <div className="filter-field filter-field--municipality" ref={municipalityFieldRef}>
             <label htmlFor="filter-municipality">Município</label>
@@ -479,6 +488,7 @@ export function GlobalFilters({ compact = false }: GlobalFiltersProps) {
                   ? `filter-municipality-option-${municipalitySuggestions[activeMunicipalityIndex].id}`
                   : undefined}
               />
+              <Search className="filter-combobox__icon" size={17} aria-hidden="true" />
               {isMunicipalityMenuOpen ? (
                 <div className="filter-combobox__menu" id="filter-municipality-options" role="listbox">
                   {municipalitySuggestions.length ? municipalitySuggestions.map((item, index) => (
@@ -495,6 +505,7 @@ export function GlobalFilters({ compact = false }: GlobalFiltersProps) {
                     >
                       <span>{item.name}</span>
                       <small>{`Corede ${item.coredeName}`}</small>
+                      {municipality === item.id ? <Check className="filter-combobox__check" size={16} aria-hidden="true" /> : null}
                     </button>
                   )) : (
                     <span className="filter-combobox__empty">Nenhum município encontrado</span>

@@ -1,4 +1,4 @@
-import { Activity, BarChart3 } from 'lucide-react'
+import { ChartSpline, Check, ChevronDown, ListChecks, Radar, TableProperties, type LucideIcon } from 'lucide-react'
 import { useEffect, useState, type ReactNode } from 'react'
 import type { CatalogData, MunicipalityDimensionData, MunicipalitySummaryData } from '../../../types/domain'
 import { LineChartSimple, RadarChartSimple } from './MunicipalityCharts'
@@ -8,12 +8,12 @@ const INDICATOR_COLLATOR = new Intl.Collator('pt-BR', { sensitivity: 'base' })
 const POSITION_RANK_CAPTION = 'Quanto mais pr\u00f3xima do 1\u00ba lugar, melhor a coloca\u00e7\u00e3o no ranking da Regi\u00e3o Funcional.'
 const RADAR_COMPARISON_CAPTION = 'Compara a nota do munic\u00edpio com a mediana da Regi\u00e3o Funcional.'
 
-function Panel({ title, description, action, children }: { title: string; description?: ReactNode; action?: ReactNode; children: ReactNode }) {
+function Panel({ icon: Icon = ChartSpline, title, description, action, children }: { icon?: LucideIcon; title: string; description?: ReactNode; action?: ReactNode; children: ReactNode }) {
   return (
     <section className="analysis-panel analysis-panel--chart">
       <header className="analysis-panel__header">
         <div className="analysis-panel__heading-row">
-          <div className="analysis-panel__title"><BarChart3 size={18} /><h2>{title}</h2></div>
+          <div className="analysis-panel__title"><Icon size={18} aria-hidden="true" /><h2>{title}</h2></div>
           {action}
         </div>
         {description ? <div className="analysis-panel__description">{description}</div> : null}
@@ -44,11 +44,11 @@ export function GeneralView({ summary, dimensions, referenceYear }: { summary: M
           valueFormatter={(value) => `${value}\u00ba`}
         />
       </Panel>
-      <Panel title="Comparação das dimensões — visão geral" description={`${RADAR_COMPARISON_CAPTION} em cada dimens\u00e3o.`}>
+      <Panel icon={Radar} title="Comparação das dimensões — visão geral" description={`${RADAR_COMPARISON_CAPTION} em cada dimens\u00e3o.`}>
         <RadarChartSimple primaryLabel={summary.municipality.name} labels={labels} values={values} comparison={medians} comparisonLabel="Mediana da Região Funcional" />
       </Panel>
       <section className="analysis-panel analysis-panel--wide">
-        <div className="analysis-panel__title"><Activity size={18} /><h2>{'Posi\u00e7\u00f5es por dimens\u00e3o ao longo do tempo'}</h2></div>
+        <div className="analysis-panel__title"><TableProperties size={18} aria-hidden="true" /><h2>{'Posi\u00e7\u00f5es por dimens\u00e3o ao longo do tempo'}</h2></div>
         <p className="analysis-panel__caption">{'Hist\u00f3rico anual de coloca\u00e7\u00e3o geral e por dimens\u00e3o. Posi\u00e7\u00f5es menores indicam melhor coloca\u00e7\u00e3o no ranking da Regi\u00e3o Funcional.'}</p>
         <PositionHistoryTable summary={summary} dimensions={dimensions} />
       </section>
@@ -155,16 +155,16 @@ export function DimensionView({ data, summary, catalog, referenceYear, selectedI
           valueFormatter={(value) => `${value}\u00ba`}
         />
       </Panel>
-      <Panel title={`Compara\u00e7\u00e3o da dimens\u00e3o \u2014 ${data.dimensionName}`} description={`${RADAR_COMPARISON_CAPTION} nos indicadores selecionados.`}>
+      <Panel icon={Radar} title={`Compara\u00e7\u00e3o da dimens\u00e3o \u2014 ${data.dimensionName}`} description={`${RADAR_COMPARISON_CAPTION} nos indicadores selecionados.`}>
         <RadarChartSimple primaryLabel={summary.municipality.name} labels={radarLabels} values={currentScores} comparison={regionalScores} comparisonLabel="Mediana da Região Funcional" />
       </Panel>
       <section className="analysis-panel analysis-panel--wide">
-        <div className="analysis-panel__title"><Activity size={18} /><h2>{'Posi\u00e7\u00f5es por indicador ao longo do tempo'}</h2></div>
+        <div className="analysis-panel__title"><TableProperties size={18} aria-hidden="true" /><h2>{'Posi\u00e7\u00f5es por indicador ao longo do tempo'}</h2></div>
         <p className="analysis-panel__caption">{'Hist\u00f3rico anual da coloca\u00e7\u00e3o do munic\u00edpio em cada indicador da dimens\u00e3o. Posi\u00e7\u00f5es menores indicam melhor coloca\u00e7\u00e3o no ranking da Regi\u00e3o Funcional.'}</p>
         <IndicatorHistoryTable data={data} indicators={sortedIndicators} metadata={metadata} />
       </section>
       <section className="indicator-selector analysis-panel--wide">
-        <h2>Selecione um indicador</h2>
+        <h2><ListChecks size={18} aria-hidden="true" /> Selecione um indicador</h2>
         <div>
           {sortedIndicators.map((indicator) => {
             const item = metadata.get(indicator.indicatorId)
@@ -176,6 +176,7 @@ export function DimensionView({ data, summary, catalog, referenceYear, selectedI
                 className={selectedIndicatorId === indicator.indicatorId ? 'is-selected' : ''}
                 onClick={() => setSelectedIndicatorId(indicator.indicatorId)}
               >
+                {selectedIndicatorId === indicator.indicatorId ? <Check size={16} aria-hidden="true" /> : null}
                 {item?.name ?? item?.shortName ?? indicator.indicatorId}
               </button>
             )
@@ -198,18 +199,21 @@ export function DimensionView({ data, summary, catalog, referenceYear, selectedI
             action={(
               <div className="chart-comparison-filter">
                 <label htmlFor={`indicator-comparison-region-${data.dimensionId}`}>Região funcional comparada</label>
-                <select
-                  id={`indicator-comparison-region-${data.dimensionId}`}
-                  value={comparisonRegion?.id ?? summary.municipality.regionId}
-                  onChange={(event) => setComparisonRegionId(event.target.value)}
-                  title="Altera somente a mediana regional deste gráfico"
-                >
-                  {comparisonRegions.map((region) => (
-                    <option key={region.id} value={region.id}>
-                      {region.id.replace(/^RF/, 'RF ')}{region.id === summary.municipality.regionId ? ' (do município)' : ''}
-                    </option>
-                  ))}
-                </select>
+                <span className="chart-comparison-select">
+                  <select
+                    id={`indicator-comparison-region-${data.dimensionId}`}
+                    value={comparisonRegion?.id ?? summary.municipality.regionId}
+                    onChange={(event) => setComparisonRegionId(event.target.value)}
+                    title="Altera somente a mediana regional deste gráfico"
+                  >
+                    {comparisonRegions.map((region) => (
+                      <option key={region.id} value={region.id}>
+                        {region.id.replace(/^RF/, 'RF ')}{region.id === summary.municipality.regionId ? ' (do município)' : ''}
+                      </option>
+                    ))}
+                  </select>
+                  <ChevronDown size={16} aria-hidden="true" />
+                </span>
               </div>
             )}
           >

@@ -1,4 +1,4 @@
-import { ChartNoAxesColumnIncreasing, CircleGauge, GraduationCap, HeartPulse, Landmark, Leaf, ShieldCheck } from 'lucide-react'
+import { BriefcaseBusiness, CircleGauge, GraduationCap, HeartPulse, Landmark, Leaf, ShieldCheck } from 'lucide-react'
 import type { DimensionId, MunicipalityDimensionData, MunicipalitySummaryData } from '../../../types/domain'
 import { formatPosition, formatRankVariation, rankTone, variationTone } from './municipalityUi'
 
@@ -8,7 +8,7 @@ const DIMENSION_ICONS = {
   meio_ambiente: Leaf,
   saude: HeartPulse,
   seguranca: ShieldCheck,
-  socioeconomico: ChartNoAxesColumnIncreasing,
+  socioeconomico: BriefcaseBusiness,
 }
 
 type YearSummary = MunicipalitySummaryData['yearlySummaries'][number]
@@ -35,7 +35,7 @@ export function DimensionSelector({ dimensions, latest, previous, selectedDimens
           className={`dimension-selector-card dimension-selector-card--general${selectedDimension === 'geral' ? ' is-selected' : ''}`}
           onClick={() => onSelectDimension('geral')}
         >
-          <span className="dimension-selector-card__icon"><CircleGauge size={17} /></span>
+          <span className="dimension-selector-card__icon"><CircleGauge size={17} aria-hidden="true" /></span>
           <span className="dimension-selector-card__body">
             <b>Geral</b>
             <strong className={`position-text position-text--${rankTone(latest.overallRank, latest.totalMunicipalitiesInRegion)}`}>
@@ -63,7 +63,7 @@ export function DimensionSelector({ dimensions, latest, previous, selectedDimens
               className={`dimension-selector-card${selectedDimension === dimension.dimensionId ? ' is-selected' : ''}`}
               onClick={() => onSelectDimension(dimension.dimensionId)}
             >
-              <span className="dimension-selector-card__icon"><Icon size={17} /></span>
+              <span className="dimension-selector-card__icon"><Icon size={17} aria-hidden="true" /></span>
               <span className="dimension-selector-card__body">
                 <b>{dimension.dimensionName}</b>
                 <strong className={`position-text position-text--${rankTone(current?.rank, current?.totalMunicipalitiesInRegion ?? 0)}`}>

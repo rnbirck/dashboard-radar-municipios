@@ -1,3 +1,4 @@
+import { ArrowUp } from 'lucide-react'
 import { useState, type PointerEvent } from 'react'
 import { ChartTooltip } from './ChartTooltip'
 import { clamp, FUNCTIONAL_REGION_MEDIAN_LABEL, MUNICIPALITY_LABEL } from './municipalityChartUtils'
@@ -157,7 +158,12 @@ export function LineChartSimple({ points, comparison, comparisonLabel, compariso
             {label}
           </text>
         ))}
-        {invert ? <text x={WIDTH - pad.right} y={pad.top - 13} textAnchor="end" className="chart-scale-hint">melhor posição ↑</text> : null}
+        {invert ? (
+          <g className="chart-scale-hint" aria-hidden="true">
+            <text x={WIDTH - pad.right - 15} y={pad.top - 13} textAnchor="end">melhor posição</text>
+            <ArrowUp x={WIDTH - pad.right - 12} y={pad.top - 24} width={12} height={12} strokeWidth={2.3} />
+          </g>
+        ) : null}
         {[0, .25, .5, .75, 1].map((ratio) => <line key={ratio} x1={pad.left} x2={WIDTH - pad.right} y1={pad.top + ratio * plotHeight} y2={pad.top + ratio * plotHeight} className="chart-grid-line" />)}
         {hoverIndex !== null ? <line x1={x(hoverIndex)} x2={x(hoverIndex)} y1={pad.top} y2={pad.top + plotHeight} className="chart-hover-line" /> : null}
         {stateComparison ? <path d={path(stateComparison)} className="chart-line chart-line--state" /> : null}

@@ -771,6 +771,32 @@ def draw_chart(record: IndicatorEvolution) -> None:
                 width=6,
             )
 
+    value_font = font(39, bold=True)
+    for index, point in enumerate(record.points):
+        if point.municipality_value is None:
+            continue
+        x_coord = x_values[index]
+        base_y = y_value(float(point.municipality_value))
+        label_y = base_y - 57
+        if point.regional_median is not None:
+            comparison_y = y_value(float(point.regional_median))
+            if abs((base_y - 44) - (comparison_y + 48)) < 65:
+                label_y = base_y - 84
+        label = format_point_value(point.municipality_value, record)
+        label_box = draw.textbbox((0, 0), label, font=value_font)
+        label_width = label_box[2] - label_box[0]
+        label_height = label_box[3] - label_box[1]
+        label_y = max(
+            plot_top + 12,
+            min(label_y, plot_bottom - label_height - 12),
+        )
+        draw.text(
+            (x_coord - label_width / 2, label_y - label_box[1]),
+            label,
+            font=value_font,
+            fill=COLORS["teal"],
+        )
+
     year_font = font(31, bold=True)
     for index, point in enumerate(record.points):
         label = str(point.data_year)

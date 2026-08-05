@@ -1,4 +1,4 @@
-import { ListFilter } from 'lucide-react'
+import { TableProperties } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import type { CatalogData, RegionalRankingData } from '../../../types/domain'
 import { DIMENSION_IDS, DIMENSION_RANK_KEYS, formatPosition, performanceShortLabel, rankTone } from './municipalityUi'
@@ -19,7 +19,7 @@ export function MunicipalityRankingTableView({ dimensions, filterLabel, getMunic
   return (
     <section className="municipality-list-panel placeholder-panel" aria-labelledby="municipality-ranking-table-title">
       <div className="placeholder-panel__heading">
-        <ListFilter size={19} aria-hidden="true" />
+        <TableProperties size={19} aria-hidden="true" />
         <h2 id="municipality-ranking-table-title">Tabela de ranking</h2>
         <span className="municipality-table-count">
           {filterLabel ? `${rows.length} de ${ranking.municipalityCount} municípios · ${filterLabel}` : `${rows.length} municípios`}

@@ -1,15 +1,16 @@
 import {
   ArrowRight,
-  BarChart3,
   Building2,
   ListChecks,
   Mail,
   Map,
   MapPin,
+  Network,
   Phone,
   RefreshCw,
   SlidersHorizontal,
   TrendingUp,
+  Trophy,
 } from 'lucide-react'
 import { useEffect, useMemo, useState } from 'react'
 import { Link } from 'react-router-dom'
@@ -25,7 +26,7 @@ const insightCards = [
     title: 'Comparação regional',
     description: 'Rankings por Região Funcional e Corede.',
     badges: ['RF/Corede', 'posição municipal'],
-    icon: BarChart3,
+    icon: Trophy,
   },
   {
     title: 'Dimensões do Radar',
@@ -101,7 +102,7 @@ export function HomePage() {
       {
         value: t ? formatInteger(t.coredes) : missingValue(),
         label: 'Coredes',
-        icon: MapPin,
+        icon: Network,
       },
     ]
   }, [manifest])
@@ -117,7 +118,7 @@ export function HomePage() {
             </p>
             <div className="home-workbench__actions" aria-label="Acessos principais">
               <Link className="home-action-button home-action-button--primary" to="/ranking-regional">
-                <BarChart3 size={18} aria-hidden="true" />
+                <Trophy size={18} aria-hidden="true" />
                 Comparar por região
                 <ArrowRight size={17} aria-hidden="true" />
               </Link>
@@ -156,7 +157,7 @@ export function HomePage() {
           </div>
           <ol>
             <li>
-              <span><BarChart3 size={19} aria-hidden="true" /></span>
+              <span><Trophy size={19} aria-hidden="true" /></span>
               <div><strong>Visão regional</strong><p>Abra uma RF e leia o ranking dos municípios para entender o contexto territorial.</p></div>
             </li>
             <li>

@@ -1,4 +1,4 @@
-import { ListFilter } from 'lucide-react'
+import { Trophy } from 'lucide-react'
 import type { RegionalRankingData } from '../../../types/domain'
 
 type MunicipalityRankingContextProps = {
@@ -12,7 +12,7 @@ export function MunicipalityRankingContext({ ranking, coredeCount, coredeList, c
   return (
     <section className="context-panel municipality-ranking-context" aria-labelledby="regional-ranking-title">
       <div className="context-panel__identity">
-        <span className="context-badge"><ListFilter size={13} aria-hidden="true" /> {'Ranking dos munic\u00edpios'}</span>
+        <span className="context-badge"><Trophy size={13} aria-hidden="true" /> {'Ranking dos munic\u00edpios'}</span>
         <h1 id="regional-ranking-title" className="context-panel__title">{`Ranking dos munic\u00edpios \u2014 ${ranking.regionName}`}</h1>
         <p className="context-panel__copy">{'Ranking calculado no universo da Regi\u00e3o Funcional.'}</p>
         {coredeList ? (
