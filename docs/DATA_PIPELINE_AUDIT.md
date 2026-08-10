@@ -34,7 +34,7 @@ Tabelas operacionais do PostgreSQL local
      - regressão/classificação
 
 DB/data/*.xlsx
-  -> DASHBOARD-RANKING-MUNICIPIOS/update_data.py
+-> DASHBOARDS/RANKING-MUNICIPIOS/update_data.py
   -> tabelas base no Supabase
   -> tabelas derivadas no Supabase
 
@@ -43,7 +43,7 @@ dash_municipio_indicadores
   -> mv_municipio_indicador_mediana_regiao
 
 PostgreSQL local validado
-  -> DASHBOARD-RADAR-MUNICIPIOS/scripts/export_static_from_local.py
+-> DASHBOARDS/RADAR-MUNICIPIOS/scripts/export_static_from_local.py
   -> public/data/v2025/*.json
   -> frontend React/Vite
 ```
@@ -134,7 +134,7 @@ Não foram encontrados notebooks, arquivos SQL, batch, PowerShell ou CMD dentro 
 
 ### Dashboard Dash
 
-`DASHBOARD-RANKING-MUNICIPIOS/update_data.py` é o fluxo principal que transforma os Excels consolidados em dados para o dashboard:
+`DASHBOARDS/RANKING-MUNICIPIOS/update_data.py` é o fluxo principal que transforma os Excels consolidados em dados para o dashboard:
 
 1. lê os nove arquivos de `DB/data`;
 2. carrega `ranking_municipios`, seis tabelas `base_*`, pesos e regressão;
@@ -150,7 +150,7 @@ Ele não atualiza o PostgreSQL local e não executa `REFRESH MATERIALIZED VIEW` 
 
 ### Exportador React
 
-Fluxo ativo de publicação: `DASHBOARD-RADAR-MUNICIPIOS/scripts/export_static_from_local.py`:
+Fluxo ativo de publicação: `DASHBOARDS/RADAR-MUNICIPIOS/scripts/export_static_from_local.py`:
 
 - usa o PostgreSQL local validado como fonte;
 - consulta somente em modo leitura;
@@ -162,8 +162,8 @@ Fluxo ativo de publicação: `DASHBOARD-RADAR-MUNICIPIOS/scripts/export_static_f
 
 ### Arquivos `.env` encontrados
 
-- `C:\Users\rnbirck\PROJETOS\DASHBOARD-RANKING-MUNICIPIOS\.env`
-- `C:\Users\rnbirck\PROJETOS\DASHBOARD-RANKING-MUNICIPIOS\.env.example`
+- `C:\Users\rnbirck\PROJETOS\DASHBOARDS\RANKING-MUNICIPIOS\.env`
+- `C:\Users\rnbirck\PROJETOS\DASHBOARDS\RANKING-MUNICIPIOS\.env.example`
 
 Não foram encontrados `.env` no novo dashboard nem na árvore `CEI` inspecionada.
 

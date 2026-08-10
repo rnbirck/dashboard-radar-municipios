@@ -4,7 +4,7 @@
 
 O novo **Radar dos Municípios do Rio Grande do Sul** deve preservar a leitura institucional, sóbria e orientada a dados do dashboard atual, enquanto transforma a experiência em uma aplicação estática React/Vite mais rápida, responsiva e previsível.
 
-A referência principal é o estado atual do projeto Dash em `DASHBOARD-RANKING-MUNICIPIOS`, complementado pelos screenshots fornecidos. A migração não deve ser uma cópia literal do HTML gerado pelo Dash: deve reproduzir a hierarquia visual, a terminologia e os fluxos, com componentes React próprios e acessíveis.
+A referência principal é o estado atual do projeto Dash em `DASHBOARDS/RANKING-MUNICIPIOS`, complementado pelos screenshots fornecidos. A migração não deve ser uma cópia literal do HTML gerado pelo Dash: deve reproduzir a hierarquia visual, a terminologia e os fluxos, com componentes React próprios e acessíveis.
 
 Princípios:
 
@@ -265,4 +265,3 @@ Usar nomes estáveis, resolução anotada e, se possível, capturar desktop e mo
 14. `14-mobile-detalhe-municipio.png` — cards, gráficos e tabela empilhados.
 
 Os sete screenshots já fornecidos cobrem os itens 1 a 7 e devem ser preservados como referência visual, se houver autorização para copiá-los para o repositório.
-
