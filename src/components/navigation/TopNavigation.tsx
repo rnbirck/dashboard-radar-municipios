@@ -1,4 +1,4 @@
-import { Building2, CircleHelp, Home, Map, Menu, Users, X } from 'lucide-react'
+import { Building2, CircleHelp, FileDown, Home, Map, Menu, Users, X } from 'lucide-react'
 import { useState } from 'react'
 import { NavLink } from 'react-router-dom'
 import unisinosLogo from '../../assets/unisinos-logo-white.png'
@@ -45,6 +45,17 @@ export function TopNavigation() {
         </nav>
 
         <div className="topbar__actions">
+          <a
+            className="document-download-action"
+            href="/documents/brde-visao-2040-nov25.pdf"
+            download="BRDE_Visao2040-NOV25_Digital.pdf"
+            type="application/pdf"
+            aria-label="Baixar documento BRDE Visão 2040 em PDF"
+            title="Baixar documento BRDE Visão 2040 (PDF)"
+          >
+            <FileDown size={19} strokeWidth={1.9} aria-hidden="true" />
+            <span>Baixar PDF</span>
+          </a>
           <a className="help-action" href="/#como-navegar">
             <CircleHelp size={18} strokeWidth={1.9} aria-hidden="true" />
             <span>Ajuda</span>

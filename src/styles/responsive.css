@@ -33,7 +33,8 @@
 }
 
 @media (max-width: 900px) {
-  .topbar__actions { display: none; }
+  .help-action, .cei-action { display: none; }
+  .document-download-action { height: 40px; padding-inline: 12px; }
   .nav-link { padding-inline: 10px; }
 }
 
@@ -44,6 +45,9 @@
   .brand { flex-basis: 150px; width: 150px; }
   .brand__logo { width: 140px; max-height: 44px; }
   .nav-toggle { display: grid; place-items: center; width: 44px; }
+  .topbar__actions { margin-left: 0; }
+  .document-download-action { width: 44px; height: 44px; justify-content: center; padding: 0; }
+  .document-download-action span { display: none; }
   .primary-nav { position: absolute; top: var(--header-height); left: 0; right: 0; display: none; padding: 8px 12px 14px; background: var(--color-navy); box-shadow: 0 10px 22px rgba(6,31,59,.18); }
   .primary-nav--open { display: grid; }
   .nav-link { min-height: 46px; border-radius: 8px; padding: 0 14px; }

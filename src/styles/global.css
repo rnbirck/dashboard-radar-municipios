@@ -20,8 +20,12 @@ button { color: inherit; }
 .nav-link--active { background: rgba(255,255,255,.055); }
 .nav-link--active::after { content: ""; position: absolute; left: 16px; right: 16px; bottom: 0; height: 4px; border-radius: 4px 4px 0 0; background: #d49135; box-shadow: 0 -1px 6px rgba(212,145,53,.34); }
 .topbar__actions { margin-left: auto; display: flex; align-items: center; gap: 11px; }
-.help-action, .cei-action, .nav-toggle { border: 0; cursor: pointer; }
-.help-action, .cei-action { display: flex; align-items: center; gap: 8px; height: 40px; padding: 0 14px; border-radius: 8px; color: #fff; font-size: 13.5px; font-weight: 700; }
+.document-download-action, .help-action, .cei-action, .nav-toggle { border: 0; cursor: pointer; }
+.document-download-action, .help-action, .cei-action { display: flex; align-items: center; gap: 8px; height: 40px; padding: 0 14px; border-radius: 8px; color: #fff; font-size: 13.5px; font-weight: 700; }
+.document-download-action { border: 1px solid rgba(255,255,255,.34); background: rgba(255,255,255,.075); box-shadow: inset 0 1px 0 rgba(255,255,255,.08); text-decoration: none; transition: background-color .16s ease, border-color .16s ease, transform .16s ease; }
+.document-download-action:hover { border-color: rgba(255,255,255,.62); background: rgba(255,255,255,.14); transform: translateY(-1px); }
+.document-download-action:active { transform: translateY(0); }
+.document-download-action svg { flex: 0 0 auto; }
 .help-action { background: transparent; text-decoration: none; }
 .help-action:hover { background: rgba(255,255,255,.08); }
 .cei-action { height: 42px; padding-inline: 16px; background: #c87c1c; font-weight: 800; box-shadow: inset 0 0 0 1px rgba(255,255,255,.16), 0 2px 6px rgba(0,0,0,.16); }
