@@ -459,6 +459,7 @@ h1 { font-family: var(--font-display); }
 .analysis-panel--chart { border-top: 3px solid #9fc8c4; }
 .analysis-panel__header { margin-bottom: 16px; padding-bottom: 14px; }
 .analysis-panel--chart .analysis-panel__header { min-height: 104px; }
+.analysis-panel--chart.analysis-panel--wide .analysis-panel__header { min-height: 0; margin-bottom: 12px; padding-bottom: 11px; }
 .analysis-panel__title { gap: 9px; margin-bottom: 8px; }
 .analysis-panel__title h2, .indicator-selector h2 { font-size: 17px; font-weight: 800; line-height: 1.3; }
 .analysis-panel__description, .analysis-panel__caption, .indicator-subtitle { color: #52677d; font-size: 13.5px; font-weight: 560; line-height: 1.5; }

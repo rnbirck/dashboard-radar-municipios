@@ -61,20 +61,33 @@ export function LineChartSimple({ points, comparison, comparisonLabel, compariso
     }).join(' ')
   }
   const primaryPath = path(points)
-  const primaryAreaPath = () => {
-    const valid = points
-      .map((item, index) => item.value === null ? null : { index, value: item.value })
-      .filter((item): item is { index: number; value: number } => item !== null)
-    if (valid.length < 2) return ''
+  const primaryAreaPaths = () => {
     const baseline = pad.top + plotHeight
-    const first = valid[0]
-    const last = valid[valid.length - 1]
-    return [
-      `M ${x(first.index)} ${baseline}`,
-      ...valid.map((item) => `L ${x(item.index)} ${y(item.value)}`),
-      `L ${x(last.index)} ${baseline}`,
-      'Z',
-    ].join(' ')
+    const paths: string[] = []
+    let segment: { index: number; value: number }[] = []
+    const flush = () => {
+      if (segment.length >= 2) {
+        const first = segment[0]
+        const last = segment[segment.length - 1]
+        paths.push([
+          `M ${x(first.index)} ${baseline}`,
+          ...segment.map((item) => `L ${x(item.index)} ${y(item.value)}`),
+          `L ${x(last.index)} ${baseline}`,
+          'Z',
+        ].join(' '))
+      }
+      segment = []
+    }
+
+    points.forEach((item, index) => {
+      if (item.value === null) {
+        flush()
+      } else {
+        segment.push({ index, value: item.value })
+      }
+    })
+    flush()
+    return paths
   }
   const format = valueFormatter ?? ((value: number) => value.toLocaleString('pt-BR', { maximumFractionDigits: 1 }))
   const formatValueLabel = valueLabelFormatter ?? format
@@ -169,7 +182,7 @@ export function LineChartSimple({ points, comparison, comparisonLabel, compariso
         {stateComparison ? <path d={path(stateComparison)} className="chart-line chart-line--state" /> : null}
         {comparison ? <path d={path(comparison)} className="chart-line chart-line--comparison-halo" /> : null}
         {comparison ? <path d={path(comparison)} className="chart-line chart-line--comparison" /> : null}
-        {primaryAreaPath() ? <path d={primaryAreaPath()} className="chart-area chart-area--primary" /> : null}
+        {primaryAreaPaths().map((areaPath, index) => <path key={`primary-area-${index}`} d={areaPath} className="chart-area chart-area--primary" />)}
         <path d={primaryPath} className="chart-line chart-line--primary" />
         {stateComparison?.map((item, index) => item.value === null ? null : (
           <rect

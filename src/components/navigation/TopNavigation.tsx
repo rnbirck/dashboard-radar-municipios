@@ -45,17 +45,16 @@ export function TopNavigation() {
         </nav>
 
         <div className="topbar__actions">
-          <a
+          <button
             className="document-download-action"
-            href="/documents/brde-visao-2040-nov25.pdf"
-            download="BRDE_Visao2040-NOV25_Digital.pdf"
-            type="application/pdf"
-            aria-label="Baixar documento BRDE Visão 2040 em PDF"
-            title="Baixar documento BRDE Visão 2040 (PDF)"
+            type="button"
+            disabled
+            aria-label="Download do relatório em PDF indisponível"
+            title="Relatório em PDF indisponível"
           >
             <FileDown size={19} strokeWidth={1.9} aria-hidden="true" />
             <span>Baixar PDF</span>
-          </a>
+          </button>
           <a className="help-action" href="/#como-navegar">
             <CircleHelp size={18} strokeWidth={1.9} aria-hidden="true" />
             <span>Ajuda</span>

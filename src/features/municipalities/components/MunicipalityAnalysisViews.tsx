@@ -1,16 +1,16 @@
-import { ChartSpline, Check, ChevronDown, ListChecks, Radar, TableProperties, type LucideIcon } from 'lucide-react'
-import { useEffect, useState, type ReactNode } from 'react'
+import { BarChart3, ChartSpline, Check, ChevronDown, ListChecks, Radar, TableProperties, type LucideIcon } from 'lucide-react'
+import { useEffect, useState, type ReactNode, type RefObject } from 'react'
 import type { CatalogData, MunicipalityDimensionData, MunicipalitySummaryData } from '../../../types/domain'
-import { LineChartSimple, RadarChartSimple } from './MunicipalityCharts'
+import { BarChartSimple, LineChartSimple, RadarChartSimple } from './MunicipalityCharts'
 import { formatIndicatorPointLabel, formatIndicatorValue, formatPosition, indicatorAxisLabel, rankTone } from './municipalityUi'
 
 const INDICATOR_COLLATOR = new Intl.Collator('pt-BR', { sensitivity: 'base' })
 const POSITION_RANK_CAPTION = 'Quanto mais pr\u00f3xima do 1\u00ba lugar, melhor a coloca\u00e7\u00e3o no ranking da Regi\u00e3o Funcional.'
 const RADAR_COMPARISON_CAPTION = 'Compara a nota do munic\u00edpio com a mediana da Regi\u00e3o Funcional.'
 
-function Panel({ icon: Icon = ChartSpline, title, description, action, children }: { icon?: LucideIcon; title: string; description?: ReactNode; action?: ReactNode; children: ReactNode }) {
+function Panel({ icon: Icon = ChartSpline, title, description, action, wide = false, children }: { icon?: LucideIcon; title: string; description?: ReactNode; action?: ReactNode; wide?: boolean; children: ReactNode }) {
   return (
-    <section className="analysis-panel analysis-panel--chart">
+    <section className={`analysis-panel analysis-panel--chart${wide ? ' analysis-panel--wide' : ''}`}>
       <header className="analysis-panel__header">
         <div className="analysis-panel__heading-row">
           <div className="analysis-panel__title"><Icon size={18} aria-hidden="true" /><h2>{title}</h2></div>
@@ -107,9 +107,10 @@ type DimensionViewProps = {
   setSelectedIndicatorId: (id: string) => void
   selectedIndicator: MunicipalityDimensionData['indicators'][number] | undefined
   selectedMetadata: CatalogData['indicators'][number] | undefined
+  indicatorSelectorRef?: RefObject<HTMLElement | null>
 }
 
-export function DimensionView({ data, summary, catalog, referenceYear, selectedIndicatorId, setSelectedIndicatorId, selectedIndicator, selectedMetadata }: DimensionViewProps) {
+export function DimensionView({ data, summary, catalog, referenceYear, selectedIndicatorId, setSelectedIndicatorId, selectedIndicator, selectedMetadata, indicatorSelectorRef }: DimensionViewProps) {
   const [comparisonRegionId, setComparisonRegionId] = useState(summary.municipality.regionId)
   const years = [...data.availableYears].sort((a, b) => a - b)
   const comparisonRegions = [...catalog.regions].sort((a, b) => a.order - b.order)
@@ -139,7 +140,34 @@ export function DimensionView({ data, summary, catalog, referenceYear, selectedI
   const selectedIndicatorName = selectedMetadata?.name ?? selectedIndicator?.indicatorId ?? ''
   const indicatorEvolution = selectedIndicator
     ? buildIndicatorEvolution(years, selectedIndicator, selectedMetadata, comparisonRegion?.id ?? summary.municipality.regionId, summary.municipality.regionId)
-    : { points: [], comparison: [], stateComparison: [] }
+    : { points: [], comparison: [], stateComparison: [], hasMissingData: false }
+  const averages2025 = selectedIndicator
+    ? catalog.indicatorAveragesByReferenceYear?.['2025']?.[selectedIndicator.indicatorId]
+    : undefined
+  const averageDataYear = selectedMetadata?.dataYearByReferenceYear?.['2025'] ?? 2025
+  const averagePoints = [
+    ...comparisonRegions.map((region) => {
+      const aggregate = averages2025?.regions[region.id]
+      return {
+        id: region.id,
+        label: region.name,
+        tooltipLabel: region.name,
+        value: aggregate?.averageOriginalValue ?? null,
+        sampleSize: aggregate?.sampleSize ?? 0,
+        municipalityCount: aggregate?.municipalityCount ?? 0,
+        tone: region.id === summary.municipality.regionId ? 'primary' as const : 'comparison' as const,
+      }
+    }),
+    {
+      id: 'RS',
+      label: 'Rio Grande do Sul',
+      tooltipLabel: 'Rio Grande do Sul',
+      value: averages2025?.state.averageOriginalValue ?? null,
+      sampleSize: averages2025?.state.sampleSize ?? 0,
+      municipalityCount: averages2025?.state.municipalityCount ?? 0,
+      tone: 'state' as const,
+    },
+  ]
 
   useEffect(() => {
     setComparisonRegionId(summary.municipality.regionId)
@@ -163,7 +191,7 @@ export function DimensionView({ data, summary, catalog, referenceYear, selectedI
         <p className="analysis-panel__caption">{'Hist\u00f3rico anual da coloca\u00e7\u00e3o do munic\u00edpio em cada indicador da dimens\u00e3o. Posi\u00e7\u00f5es menores indicam melhor coloca\u00e7\u00e3o no ranking da Regi\u00e3o Funcional.'}</p>
         <IndicatorHistoryTable data={data} indicators={sortedIndicators} metadata={metadata} />
       </section>
-      <section className="indicator-selector analysis-panel--wide">
+      <section ref={indicatorSelectorRef} className="indicator-selector analysis-panel--wide">
         <h2><ListChecks size={18} aria-hidden="true" /> Selecione um indicador</h2>
         <div>
           {sortedIndicators.map((indicator) => {
@@ -232,6 +260,25 @@ export function DimensionView({ data, summary, catalog, referenceYear, selectedI
               valueFormatter={(value) => formatIndicatorValue(value, selectedMetadata)}
               valueLabelFormatter={(value) => formatIndicatorPointLabel(value, selectedMetadata)}
             />
+            {indicatorEvolution.hasMissingData ? (
+              <p className="chart-missing-note">
+                <strong>*</strong> Não há valor informado pelo município para este indicador no ano assinalado. Para saber como a ausência é tratada na classificação do ranking, consulte a metodologia do Relatório de 2025.
+              </p>
+            ) : null}
+          </Panel>
+          <Panel
+            wide
+            icon={BarChart3}
+            title={`Médias das Regiões Funcionais e do RS — ${selectedIndicatorName}`}
+            description={`Média aritmética dos valores informados pelos municípios no ano de referência de 2025${averageDataYear === 2025 ? '' : ` (dados de ${averageDataYear})`}.`}
+          >
+            <BarChartSimple
+              points={averagePoints}
+              axisLabel={indicatorAxisLabel(selectedMetadata)}
+              dataSource={selectedMetadata?.source}
+              valueFormatter={(value) => formatIndicatorValue(value, selectedMetadata)}
+              valueLabelFormatter={(value) => formatIndicatorPointLabel(value, selectedMetadata)}
+            />
           </Panel>
         </>
       ) : null}
@@ -273,9 +320,10 @@ function buildIndicatorEvolution(
 
   const rows = [...valuesByDataYear.entries()].sort(([yearA], [yearB]) => yearA - yearB)
   return {
-    points: rows.map(([year, row]) => ({ label: String(year), value: row.originalValue })),
+    points: rows.map(([year, row]) => ({ label: `${year}${row.originalValue === null ? '*' : ''}`, value: row.originalValue })),
     comparison: rows.map(([year, row]) => ({ label: String(year), value: row.regionalMedianOriginalValue })),
     stateComparison: rows.map(([year, row]) => ({ label: String(year), value: row.stateMedianOriginalValue })),
+    hasMissingData: rows.some(([, row]) => row.originalValue === null),
   }
 }
 
