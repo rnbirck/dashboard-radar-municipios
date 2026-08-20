@@ -141,18 +141,18 @@ export function DimensionView({ data, summary, catalog, referenceYear, selectedI
   const indicatorEvolution = selectedIndicator
     ? buildIndicatorEvolution(years, selectedIndicator, selectedMetadata, comparisonRegion?.id ?? summary.municipality.regionId, summary.municipality.regionId)
     : { points: [], comparison: [], stateComparison: [], hasMissingData: false }
-  const averages2025 = selectedIndicator
-    ? catalog.indicatorAveragesByReferenceYear?.['2025']?.[selectedIndicator.indicatorId]
+  const medians2025 = selectedIndicator
+    ? catalog.indicatorMediansByReferenceYear?.['2025']?.[selectedIndicator.indicatorId]
     : undefined
-  const averageDataYear = selectedMetadata?.dataYearByReferenceYear?.['2025'] ?? 2025
-  const averagePoints = [
+  const medianDataYear = selectedMetadata?.dataYearByReferenceYear?.['2025'] ?? 2025
+  const medianPoints = [
     ...comparisonRegions.map((region) => {
-      const aggregate = averages2025?.regions[region.id]
+      const aggregate = medians2025?.regions[region.id]
       return {
         id: region.id,
         label: region.name,
         tooltipLabel: region.name,
-        value: aggregate?.averageOriginalValue ?? null,
+        value: aggregate?.medianOriginalValue ?? null,
         sampleSize: aggregate?.sampleSize ?? 0,
         municipalityCount: aggregate?.municipalityCount ?? 0,
         tone: region.id === summary.municipality.regionId ? 'primary' as const : 'comparison' as const,
@@ -162,9 +162,9 @@ export function DimensionView({ data, summary, catalog, referenceYear, selectedI
       id: 'RS',
       label: 'Rio Grande do Sul',
       tooltipLabel: 'Rio Grande do Sul',
-      value: averages2025?.state.averageOriginalValue ?? null,
-      sampleSize: averages2025?.state.sampleSize ?? 0,
-      municipalityCount: averages2025?.state.municipalityCount ?? 0,
+      value: medians2025?.state.medianOriginalValue ?? null,
+      sampleSize: medians2025?.state.sampleSize ?? 0,
+      municipalityCount: medians2025?.state.municipalityCount ?? 0,
       tone: 'state' as const,
     },
   ]
@@ -269,11 +269,11 @@ export function DimensionView({ data, summary, catalog, referenceYear, selectedI
           <Panel
             wide
             icon={BarChart3}
-            title={`Médias das Regiões Funcionais e do RS — ${selectedIndicatorName}`}
-            description={`Média aritmética dos valores informados pelos municípios no ano de referência de 2025${averageDataYear === 2025 ? '' : ` (dados de ${averageDataYear})`}.`}
+            title={`Medianas das Regiões Funcionais e do RS — ${selectedIndicatorName}`}
+            description={`Mediana dos valores informados pelos municípios no ano de referência de 2025${medianDataYear === 2025 ? '' : ` (dados de ${medianDataYear})`}.`}
           >
             <BarChartSimple
-              points={averagePoints}
+              points={medianPoints}
               axisLabel={indicatorAxisLabel(selectedMetadata)}
               dataSource={selectedMetadata?.source}
               valueFormatter={(value) => formatIndicatorValue(value, selectedMetadata)}

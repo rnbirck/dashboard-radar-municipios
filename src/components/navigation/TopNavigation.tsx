@@ -53,7 +53,7 @@ export function TopNavigation() {
             title="Relatório em PDF indisponível"
           >
             <FileDown size={19} strokeWidth={1.9} aria-hidden="true" />
-            <span>Baixar PDF</span>
+            <span>Baixar Relatório</span>
           </button>
           <a className="help-action" href="/#como-navegar">
             <CircleHelp size={18} strokeWidth={1.9} aria-hidden="true" />

@@ -37,47 +37,54 @@ for (const municipalityId of municipalityIds) {
       if (!row || row.isImputed || !Number.isFinite(row.originalValue)) continue
 
       const current = accumulator.get(indicator.indicatorId) ?? {
-        state: { sum: 0, sampleSize: 0 },
+        state: { values: [] },
         regions: new Map(),
       }
-      const region = current.regions.get(dimension.regionId) ?? { sum: 0, sampleSize: 0 }
+      const region = current.regions.get(dimension.regionId) ?? { values: [] }
 
-      current.state.sum += row.originalValue
-      current.state.sampleSize += 1
-      region.sum += row.originalValue
-      region.sampleSize += 1
+      current.state.values.push(row.originalValue)
+      region.values.push(row.originalValue)
       current.regions.set(dimension.regionId, region)
       accumulator.set(indicator.indicatorId, current)
     }
   }
 }
 
-const average = (entry, municipalityCount) => ({
-  averageOriginalValue: entry.sampleSize ? entry.sum / entry.sampleSize : null,
-  sampleSize: entry.sampleSize,
-  municipalityCount,
-})
+const median = (entry, municipalityCount) => {
+  const sorted = [...entry.values].sort((a, b) => a - b)
+  const size = sorted.length
+  let value = null
+  if (size) {
+    const mid = Math.floor(size / 2)
+    value = size % 2 === 0 ? (sorted[mid - 1] + sorted[mid]) / 2 : sorted[mid]
+  }
+  return {
+    medianOriginalValue: value,
+    sampleSize: size,
+    municipalityCount,
+  }
+}
 
-const indicatorAverages = Object.fromEntries(catalog.indicators.map((indicator) => {
+const indicatorMedians = Object.fromEntries(catalog.indicators.map((indicator) => {
   const current = accumulator.get(indicator.id) ?? {
-    state: { sum: 0, sampleSize: 0 },
+    state: { values: [] },
     regions: new Map(),
   }
 
   return [indicator.id, {
-    state: average(current.state, catalog.municipalities.length),
+    state: median(current.state, catalog.municipalities.length),
     regions: Object.fromEntries(regions.map((region) => [
       region.id,
-      average(current.regions.get(region.id) ?? { sum: 0, sampleSize: 0 }, municipalityCountByRegion[region.id]),
+      median(current.regions.get(region.id) ?? { values: [] }, municipalityCountByRegion[region.id]),
     ])),
   }]
 }))
 
-catalog.indicatorAveragesByReferenceYear = {
-  ...(catalog.indicatorAveragesByReferenceYear ?? {}),
-  [String(referenceYear)]: indicatorAverages,
+catalog.indicatorMediansByReferenceYear = {
+  ...(catalog.indicatorMediansByReferenceYear ?? {}),
+  [String(referenceYear)]: indicatorMedians,
 }
 
 await writeFile(catalogPath, `${JSON.stringify(catalogEnvelope, null, 2)}\n`, 'utf8')
 
-console.log(`Médias de ${referenceYear} geradas para ${Object.keys(indicatorAverages).length} indicadores.`)
+console.log(`Medianas de ${referenceYear} geradas para ${Object.keys(indicatorMedians).length} indicadores.`)

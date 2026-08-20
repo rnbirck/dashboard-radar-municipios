@@ -106,15 +106,15 @@ export type IndicatorCatalogEntry = {
   regionalMedianOriginalValueByRegionAndReferenceYear?: Record<string, Record<string, number | null>>
 }
 
-export type IndicatorAverageEntry = {
-  averageOriginalValue: number | null
+export type IndicatorMedianEntry = {
+  medianOriginalValue: number | null
   sampleSize: number
   municipalityCount: number
 }
 
-export type IndicatorAverageComparison = {
-  state: IndicatorAverageEntry
-  regions: Record<string, IndicatorAverageEntry>
+export type IndicatorMedianComparison = {
+  state: IndicatorMedianEntry
+  regions: Record<string, IndicatorMedianEntry>
 }
 
 export type CatalogData = {
@@ -123,8 +123,8 @@ export type CatalogData = {
   municipalities: MunicipalityCatalogEntry[]
   dimensions: DimensionCatalogEntry[]
   indicators: IndicatorCatalogEntry[]
-  /** Médias aritméticas dos valores observados, sem valores imputados, por ano de referência. */
-  indicatorAveragesByReferenceYear?: Record<string, Record<string, IndicatorAverageComparison>>
+  /** Medianas dos valores observados, sem valores imputados, por ano de referência. */
+  indicatorMediansByReferenceYear?: Record<string, Record<string, IndicatorMedianComparison>>
 }
 
 type RegionSummary = {

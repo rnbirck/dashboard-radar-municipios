@@ -14,8 +14,8 @@ import {
 } from 'lucide-react'
 import { useEffect, useMemo, useState } from 'react'
 import { Link } from 'react-router-dom'
-import brdeLogo from '../../assets/brde-trim-alpha.png'
-import ceiUnisinosLogo from '../../assets/cei-unisinos-logo-white.png'
+import brdeLogo from '../../assets/brde-trim-hq.png'
+import ceiUnisinosLogo from '../../assets/cei-unisinos-wordmark-white.png'
 import observAzulLogo from '../../assets/observ-azul-trim.png'
 import { formatInteger, missingValue } from '../../data/formatters'
 import { clearManifestCache, DataFetchError, loadManifest } from '../../data/repository'
@@ -148,17 +148,15 @@ export function HomePage() {
           </div>
 
           <aside className="home-workbench__institution" aria-label="Núcleo CEI Unisinos">
-            <img src={ceiUnisinosLogo} alt="CEI - Competitividade, Economia Regional e Internacional | Unisinos" />
-            <div className="home-partners">
-              <span className="home-partners__divider" aria-hidden="true" />
-              <span className="home-partners__label">Em parceria com</span>
-              <div className="home-partners__row">
-                <span className="home-partner-badge home-partner-badge--observ">
-                  <img src={observAzulLogo} alt="OBSERV - Observatório de Gestão e Negócios da Unisinos" />
-                </span>
-                <span className="home-partner-badge home-partner-badge--brde">
-                  <img src={brdeLogo} alt="BRDE" />
-                </span>
+            <div className="home-partners-stack">
+              <div className="home-partners-group">
+                <span className="home-partners-group__label">Realização</span>
+                <img className="home-brand-logo home-brand-logo--cei" src={ceiUnisinosLogo} alt="CEI - Competitividade, Economia Regional e Internacional | Unisinos" />
+                <img className="home-brand-logo home-brand-logo--observ" src={observAzulLogo} alt="OBSERV - Observatório de Gestão e Negócios da Unisinos" />
+              </div>
+              <div className="home-partners-support">
+                <span className="home-partners-support__label">Apoio</span>
+                <img className="home-brand-logo home-brand-logo--brde" src={brdeLogo} alt="BRDE" />
               </div>
             </div>
           </aside>

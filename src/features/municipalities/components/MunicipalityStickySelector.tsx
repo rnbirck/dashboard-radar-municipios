@@ -19,6 +19,13 @@ type Props = {
   onSelectIndicator: (indicatorId: string) => void
 }
 
+// Só expõe o nome completo como tooltip quando o texto do botão está truncado pela largura disponível.
+function syncTruncationTitle(event: { currentTarget: HTMLButtonElement }) {
+  const button = event.currentTarget
+  const isTruncated = button.scrollWidth > button.clientWidth
+  button.title = isTruncated ? button.textContent ?? '' : ''
+}
+
 export function MunicipalityStickySelector({ mode, dimensions, selectedDimension, onSelectDimension, indicators, selectedIndicatorId, onSelectIndicator }: Props) {
   const optionsRef = useRef<HTMLElement>(null)
 
@@ -55,6 +62,8 @@ export function MunicipalityStickySelector({ mode, dimensions, selectedDimension
                 key={dimension.dimensionId}
                 aria-pressed={selectedDimension === dimension.dimensionId}
                 onClick={() => onSelectDimension(dimension.dimensionId)}
+                onMouseEnter={syncTruncationTitle}
+                onFocus={syncTruncationTitle}
               >
                 {dimension.dimensionName}
               </button>
@@ -66,6 +75,8 @@ export function MunicipalityStickySelector({ mode, dimensions, selectedDimension
             key={indicator.id}
             aria-pressed={selectedIndicatorId === indicator.id}
             onClick={() => onSelectIndicator(indicator.id)}
+            onMouseEnter={syncTruncationTitle}
+            onFocus={syncTruncationTitle}
           >
             {indicator.label}
           </button>

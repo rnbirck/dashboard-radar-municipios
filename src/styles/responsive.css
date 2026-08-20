@@ -1,9 +1,8 @@
 @media (min-width: 1400px) {
-  .home-partners { gap: 14px; max-width: 440px; }
-  .home-partners__row { gap: 14px; }
-  .home-partner-badge { height: 84px; padding: 0 22px; }
-  .home-partner-badge--observ img { height: 56px; }
-  .home-partner-badge--brde img { height: 50px; }
+  .home-partners-stack { gap: 24px; max-width: 380px; }
+  .home-brand-logo--cei { max-height: 90px; }
+  .home-brand-logo--observ { max-height: 74px; }
+  .home-brand-logo--brde { max-height: 53px; }
 }
 
 @media (max-width: 1100px) {
@@ -21,7 +20,6 @@
   .home-workbench__tagline { font-size: 17px; }
   .home-workbench__summary { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
   .home-workbench__institution { min-height: 220px; padding-inline: 20px; }
-  .home-workbench__institution > img { width: min(100%, 330px); }
   .home-insight-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .home-contact-panel { grid-template-columns: 1fr 1fr; padding: 20px 24px; }
   .home-contact-panel h2 { grid-column: 1 / -1; }
@@ -83,11 +81,10 @@
   .home-workbench__copy { gap: 13px; }
   .home-workbench__institution { min-height: 128px; gap: 18px; padding: 18px 20px 24px; }
   .home-workbench__institution::before { top: -10px; right: 10px; width: 90px; height: 90px; }
-  .home-workbench__institution > img { width: min(100%, 310px); max-height: 58px; }
-  .home-partners__row { gap: 6px; }
-  .home-partner-badge { height: 52px; padding: 0 10px; }
-  .home-partner-badge--observ img { height: 34px; }
-  .home-partner-badge--brde img { height: 30px; }
+  .home-partners-stack { gap: 18px; max-width: 260px; }
+  .home-brand-logo--cei { max-height: 60px; }
+  .home-brand-logo--observ { max-height: 50px; }
+  .home-brand-logo--brde { max-height: 36px; }
   .home-workbench__summary { grid-column: auto; grid-row: auto; grid-template-columns: repeat(2, minmax(0, 1fr)); margin-top: 0; max-width: none; }
   .home-workbench__summary > span { min-height: 64px; padding: 12px; }
   .home-workbench h1 { font-size: 38px; line-height: 1.04; }

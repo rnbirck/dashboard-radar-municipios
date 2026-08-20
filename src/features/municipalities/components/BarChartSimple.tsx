@@ -32,7 +32,7 @@ export function BarChartSimple({ points, axisLabel, dataSource, valueFormatter, 
   const formatLabel = valueLabelFormatter ?? format
 
   if (!values.length) {
-    return <div className="chart-empty">Não há médias disponíveis para este indicador em 2025.</div>
+    return <div className="chart-empty">Não há medianas disponíveis para este indicador em 2025.</div>
   }
 
   const plotWidth = WIDTH - PAD.left - PAD.right
@@ -52,7 +52,7 @@ export function BarChartSimple({ points, axisLabel, dataSource, valueFormatter, 
   const hoveredPoint = hoverIndex === null ? null : points[hoverIndex]
   const hoverValue = hoveredPoint?.value ?? 0
   const hoverRows: TooltipRow[] = hoveredPoint ? [
-    { label: 'Média', value: hoveredPoint.value === null ? 'Não disponível' : format(hoveredPoint.value), tone: hoveredPoint.tone },
+    { label: 'Mediana', value: hoveredPoint.value === null ? 'Não disponível' : format(hoveredPoint.value), tone: hoveredPoint.tone },
     { label: 'Municípios considerados', value: `${hoveredPoint.sampleSize} de ${hoveredPoint.municipalityCount}`, tone: hoveredPoint.tone },
   ] : []
 
@@ -64,7 +64,7 @@ export function BarChartSimple({ points, axisLabel, dataSource, valueFormatter, 
             className="bar-chart"
             viewBox={`0 0 ${WIDTH} ${HEIGHT}`}
             role="img"
-            aria-label={`Gráfico de colunas com as médias das Regiões Funcionais e do Rio Grande do Sul em 2025${axisLabel ? `. Eixo de valores: ${axisLabel}` : ''}`}
+            aria-label={`Gráfico de colunas com as medianas das Regiões Funcionais e do Rio Grande do Sul em 2025${axisLabel ? `. Eixo de valores: ${axisLabel}` : ''}`}
             onPointerLeave={() => setHoverIndex(null)}
           >
             <rect x={PAD.left} y={PAD.top} width={plotWidth} height={plotHeight} rx="8" className="chart-plot-area" />
@@ -79,7 +79,7 @@ export function BarChartSimple({ points, axisLabel, dataSource, valueFormatter, 
               )
             })}
             <line x1={PAD.left} x2={PAD.left + plotWidth} y1={zeroY} y2={zeroY} className="bar-chart__zero-line" />
-            <g role="list" aria-label="Médias por território">
+            <g role="list" aria-label="Medianas por território">
               {points.map((point, index) => {
                 const centerX = x(index)
                 const valueY = point.value === null ? zeroY : y(point.value)
@@ -99,7 +99,7 @@ export function BarChartSimple({ points, axisLabel, dataSource, valueFormatter, 
                     className="bar-chart__column-group"
                     tabIndex={0}
                     role="listitem"
-                    aria-label={`${point.tooltipLabel}: ${point.value === null ? 'média não disponível' : format(point.value)}; ${coverage}`}
+                    aria-label={`${point.tooltipLabel}: ${point.value === null ? 'mediana não disponível' : format(point.value)}; ${coverage}`}
                     onPointerEnter={() => setHoverIndex(index)}
                     onFocus={() => setHoverIndex(index)}
                     onBlur={() => setHoverIndex(null)}
