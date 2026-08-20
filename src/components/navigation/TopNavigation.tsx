@@ -59,10 +59,16 @@ export function TopNavigation() {
             <CircleHelp size={18} strokeWidth={1.9} aria-hidden="true" />
             <span>Ajuda</span>
           </a>
-          <button className="cei-action" type="button" title="Núcleo CEI — em breve">
+          <a
+            className="cei-action"
+            href="https://www.unisinos.br/portal-de-inovacao/nucleos-de-excelencia/competitividade-economia-regional-e-industria"
+            target="_blank"
+            rel="noopener noreferrer"
+            title="Núcleo CEI"
+          >
             <Users size={19} strokeWidth={1.9} aria-hidden="true" />
             <span>Núcleo CEI</span>
-          </button>
+          </a>
         </div>
       </div>
     </header>

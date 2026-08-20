@@ -14,7 +14,9 @@ import {
 } from 'lucide-react'
 import { useEffect, useMemo, useState } from 'react'
 import { Link } from 'react-router-dom'
+import brdeLogo from '../../assets/brde-trim-alpha.png'
 import ceiUnisinosLogo from '../../assets/cei-unisinos-logo-white.png'
+import observAzulLogo from '../../assets/observ-azul-trim.png'
 import { formatInteger, missingValue } from '../../data/formatters'
 import { clearManifestCache, DataFetchError, loadManifest } from '../../data/repository'
 import type { DashboardManifest } from '../../types/domain'
@@ -147,6 +149,18 @@ export function HomePage() {
 
           <aside className="home-workbench__institution" aria-label="Núcleo CEI Unisinos">
             <img src={ceiUnisinosLogo} alt="CEI - Competitividade, Economia Regional e Internacional | Unisinos" />
+            <div className="home-partners">
+              <span className="home-partners__divider" aria-hidden="true" />
+              <span className="home-partners__label">Em parceria com</span>
+              <div className="home-partners__row">
+                <span className="home-partner-badge home-partner-badge--observ">
+                  <img src={observAzulLogo} alt="OBSERV - Observatório de Gestão e Negócios da Unisinos" />
+                </span>
+                <span className="home-partner-badge home-partner-badge--brde">
+                  <img src={brdeLogo} alt="BRDE" />
+                </span>
+              </div>
+            </div>
           </aside>
         </div>
 
