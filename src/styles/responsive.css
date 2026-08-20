@@ -1,6 +1,6 @@
 @media (min-width: 1400px) {
   .home-workbench__institution { min-height: 330px; max-width: 430px; padding: 30px 30px 32px; }
-  .home-partners-stack { gap: 30px; max-width: 330px; }
+  .home-partners-stack { gap: 40px; max-width: 330px; }
 }
 
 @media (max-width: 1100px) {
@@ -18,7 +18,7 @@
   .home-workbench__tagline { font-size: 17px; }
   .home-workbench__summary { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 10px; }
   .home-workbench__institution { min-height: 260px; padding: 22px 20px 24px; }
-  .home-partners-stack { gap: 22px; max-width: 260px; }
+  .home-partners-stack { gap: 28px; max-width: 260px; }
   .home-insight-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
   .home-contact-panel { grid-template-columns: 1fr 1fr; padding: 20px 24px; }
   .home-contact-panel h2 { grid-column: 1 / -1; }
@@ -77,9 +77,9 @@
   .home-workbench__intro { grid-template-columns: 1fr; gap: 14px; min-height: 0; padding: 20px; }
   .home-workbench__copy { gap: 13px; }
   .home-workbench__institution { min-height: 0; max-width: none; padding: 20px 20px 22px; }
-  .home-partners-stack { gap: 20px; max-width: 240px; }
-  .home-partners-group { gap: 18px; padding-top: 12px; }
-  .home-partners-support { gap: 15px; padding-top: 12px; }
+  .home-partners-stack { gap: 26px; max-width: 240px; }
+  .home-partners-group { gap: 24px; padding-top: 12px; }
+  .home-partners-support { gap: 20px; padding-top: 12px; }
   .home-workbench__summary { grid-column: auto; grid-row: auto; grid-template-columns: repeat(2, minmax(0, 1fr)); margin-top: 0; max-width: none; }
   .home-workbench__summary > span { min-height: 64px; padding: 12px; }
   .home-workbench h1 { font-size: 38px; line-height: 1.04; }

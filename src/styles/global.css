@@ -182,15 +182,15 @@ button { color: inherit; }
   background: #ffffff;
   box-shadow: 0 2px 10px rgba(20,34,50,.05);
 }
-.home-partners-stack { position: relative; z-index: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 26px; width: 100%; max-width: 300px; }
-.home-partners-group { display: flex; flex-direction: column; align-items: center; gap: 22px; width: 100%; padding-top: 15px; border-top: 1px solid #e2edee; }
-.home-partners-support { display: flex; flex-direction: column; align-items: center; gap: 19px; width: 100%; padding-top: 15px; border-top: 1px solid #e2edee; }
+.home-partners-stack { position: relative; z-index: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 34px; width: 100%; max-width: 300px; }
+.home-partners-group { display: flex; flex-direction: column; align-items: center; gap: 30px; width: 100%; padding-top: 15px; border-top: 1px solid #e2edee; }
+.home-partners-support { display: flex; flex-direction: column; align-items: center; gap: 26px; width: 100%; padding-top: 15px; border-top: 1px solid #e2edee; }
 .home-partners-group__label,
 .home-partners-support__label { color: #5b7183; font-size: 10.5px; font-weight: 820; letter-spacing: .16em; text-transform: uppercase; }
 .home-brand-logo { display: block; width: 100%; height: auto; object-fit: contain; object-position: center; }
-.home-brand-logo--cei { max-width: 100%; filter: brightness(0) saturate(100%) invert(21%) sepia(41%) saturate(1057%) hue-rotate(146deg) brightness(86%) contrast(98%); }
-.home-brand-logo--observ { max-width: 89%; }
-.home-brand-logo--brde { max-width: 68%; }
+.home-brand-logo--cei { max-width: 88%; filter: brightness(0) saturate(100%) invert(21%) sepia(41%) saturate(1057%) hue-rotate(146deg) brightness(86%) contrast(98%); }
+.home-brand-logo--observ { max-width: 78%; }
+.home-brand-logo--brde { max-width: 60%; }
 .home-action-button { min-height: 56px; display: inline-flex; align-items: center; justify-content: center; gap: 11px; padding: 0 22px; border: 1px solid #d8e4ea; border-radius: 10px; background: rgba(255,255,255,.86); color: #0d5f61; text-decoration: none; font-size: 14px; font-weight: 850; box-shadow: 0 2px 7px rgba(20,34,50,.06); transition: transform .18s ease, border-color .18s ease, background-color .18s ease, color .18s ease; }
 .home-action-button svg:last-child { margin-left: 2px; }
 .home-action-button:hover { transform: translateY(-2px); border-color: rgba(13,126,122,.38); background: #f3fbfa; color: #006f70; }
