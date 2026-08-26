@@ -1,6 +1,7 @@
 import { Building2, CircleHelp, FileDown, Home, Map, Menu, Users, X } from 'lucide-react'
 import { useState } from 'react'
 import { NavLink } from 'react-router-dom'
+import municipalPerformanceReport from '../../assets/radar-municipal-desempenho-rs.pdf'
 import unisinosLogo from '../../assets/unisinos-logo-white.png'
 
 const navItems = [
@@ -45,16 +46,16 @@ export function TopNavigation() {
         </nav>
 
         <div className="topbar__actions">
-          <button
+          <a
             className="document-download-action"
-            type="button"
-            disabled
-            aria-label="Download do relatório em PDF indisponível"
-            title="Relatório em PDF indisponível"
+            href={municipalPerformanceReport}
+            download="radar-municipal-desempenho-rs.pdf"
+            aria-label="Baixar relatório Radar Municipal de Desempenho do RS em PDF"
+            title="Baixar relatório em PDF"
           >
             <FileDown size={19} strokeWidth={1.9} aria-hidden="true" />
             <span>Baixar Relatório</span>
-          </button>
+          </a>
           <a className="help-action" href="/#como-navegar">
             <CircleHelp size={18} strokeWidth={1.9} aria-hidden="true" />
             <span>Ajuda</span>
