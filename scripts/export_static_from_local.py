@@ -769,6 +769,7 @@ def build_catalog(
     ranking_2025: pd.DataFrame,
     segments: dict[str, Any],
     indicator_catalog: list[dict[str, Any]],
+    municipal_profile: dict[int, dict[str, Any]],
 ) -> dict[str, Any]:
     region_ids_sorted = sorted(segments["region_ids"], key=lambda r: int(r[2:]))
     regions_cat = [
@@ -795,12 +796,18 @@ def build_catalog(
         mname = str(r["municipio"]).strip()
         rid = str(r["regiao_funcional"]).strip()
         cname = str(r["corede"]).strip()
+        population_by_year = {
+            str(entry["year"]): entry["value"]
+            for entry in municipal_profile.get(int(mid), {}).get("populationEstimates", [])
+            if int(entry["year"]) in YEARS
+        }
         municipalities_cat.append({
             "id": mid,
             "name": mname,
             "searchName": _norm_name(mname),
             "regionId": rid,
             "coredeId": _slugify(cname),
+            "populationByYear": population_by_year,
         })
 
     dimensions_cat = [
@@ -1139,6 +1146,11 @@ def validate_output(manifest: dict[str, Any], catalog: dict[str, Any],
     _assert(len(catalog["regions"]) == 9, "catalog: 9 regioes")
     _assert(len(catalog["coredes"]) == 28, "catalog: 28 Coredes")
     _assert(len(catalog["municipalities"]) == 497, "catalog: 497 municipios")
+    for municipality in catalog["municipalities"]:
+        _assert(
+            set(municipality["populationByYear"]) == {str(year) for year in YEARS},
+            f"catalog: populacao incompleta para {municipality['id']}",
+        )
     _assert(len(catalog["dimensions"]) == 6, "catalog: 6 dimensoes")
     _assert(len(catalog["indicators"]) == 41, f"catalog: 41 indicadores ({len(catalog['indicators'])})")
     for indicator in catalog["indicators"]:
@@ -1375,7 +1387,7 @@ def main() -> int:
 
     # Construir catalog
     print("Construindo catalog...")
-    catalog = build_catalog(ranking_2025, segments, indicator_catalog)
+    catalog = build_catalog(ranking_2025, segments, indicator_catalog, municipal_profile)
 
     # Construir regions e rankings RF1-RF9 para todos os anos publicados.
     print("Construindo regions e rankings regionais...")

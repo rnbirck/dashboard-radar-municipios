@@ -9,8 +9,8 @@
   .brand { flex-basis: 184px; width: 184px; }
   .brand__logo { width: 166px; max-height: 48px; }
   .nav-link { gap: 8px; padding-inline: 12px; font-size: 13.25px; }
-  .global-filters { grid-template-columns: 100px 1.4fr 1fr; }
-  .filter-field--municipality { grid-column: 1 / 3; }
+  .global-filters { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .filter-field--population, .filter-field--municipality { grid-column: auto; }
   .clear-filters { grid-column: 3; }
   .home-workbench { grid-template-columns: 1fr; }
   .home-workbench__intro { grid-template-columns: minmax(0, 1fr) minmax(280px, 340px); gap: 24px; min-height: 420px; padding: 42px 34px 30px; }
@@ -64,7 +64,7 @@
   .global-filters__heading { align-items: flex-start; flex-direction: column; gap: 3px; }
   .global-filters__heading small { text-align: left; white-space: normal; }
   .global-filters__selection { margin-left: 0; }
-  .filter-field--region, .filter-field--municipality { grid-column: 1 / -1; }
+  .filter-field--region, .filter-field--population, .filter-field--municipality { grid-column: 1 / -1; }
   .clear-filters { grid-column: auto; }
   .context-panel { grid-template-columns: 1fr; }
   .context-panel__identity { min-height: 0; padding: 18px; }
@@ -187,8 +187,8 @@
   .filter-field { gap: 4px; }
   .filter-field label { font-size: 11px; }
   .filter-field select, .filter-field input { height: 42px; padding-left: 10px; font-size: 13.5px; }
-  .filter-field--region, .filter-field--municipality { grid-column: 1 / -1; }
-  .global-filters:not(.global-filters--compact) .clear-filters { grid-column: 2; grid-row: 4; justify-self: stretch; height: 42px; }
+  .filter-field--region, .filter-field--population, .filter-field--municipality { grid-column: 1 / -1; }
+  .global-filters:not(.global-filters--compact) .clear-filters { grid-column: 1 / -1; grid-row: auto; justify-self: stretch; height: 42px; }
   .dimension-selector-card { flex-basis: 166px; padding: 12px 11px 32px; }
   .dimension-selector-card__body strong { font-size: 23px; }
   .simple-chart, .radar-chart { height: var(--dashboard-chart-height); }

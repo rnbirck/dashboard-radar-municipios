@@ -233,8 +233,13 @@ function assertCatalogData(data: unknown, url: string): asserts data is CatalogD
 
   for (const mun of d['municipalities'] as unknown[]) {
     const m = mun as Record<string, unknown>
-    if (!isString(m.id) || !isString(m.name) || !isString(m.regionId) || !isString(m.coredeId)) {
+    if (!isString(m.id) || !isString(m.name) || !isString(m.regionId) || !isString(m.coredeId) || !isRecord(m.populationByYear)) {
       throw new DataContractError('catalog.municipalities: campos obrigatórios ausentes', url)
+    }
+    for (const [year, population] of Object.entries(m.populationByYear)) {
+      if (!/^\d{4}$/.test(year) || (population !== null && !isNumber(population))) {
+        throw new DataContractError(`catalog.municipalities: população inválida em "${String(m.id)}"`, url)
+      }
     }
   }
 
@@ -444,7 +449,8 @@ const ptBrCollator = new Intl.Collator('pt-BR', { sensitivity: 'base', numeric: 
 
 export async function listMunicipalities(year: number, regionId?: string): Promise<Municipality[]> {
   if (regionId) {
-    const ranking = await loadRegionalRanking(year, regionId)
+    const [ranking, catalog] = await Promise.all([loadRegionalRanking(year, regionId), loadCatalog()])
+    const populationByMunicipality = new Map(catalog.municipalities.map((entry) => [entry.id, entry.populationByYear]))
     return ranking.municipalities
       .map((entry) => ({
         id: entry.municipalityId,
@@ -452,6 +458,7 @@ export async function listMunicipalities(year: number, regionId?: string): Promi
         regionId: ranking.regionId,
         coredeId: entry.coredeId,
         coredeName: entry.coredeName,
+        populationByYear: populationByMunicipality.get(entry.municipalityId) ?? {},
       }))
       .sort((a, b) => ptBrCollator.compare(a.name, b.name))
   }
@@ -464,6 +471,7 @@ export async function listMunicipalities(year: number, regionId?: string): Promi
       regionId: entry.regionId,
       coredeId: entry.coredeId,
       coredeName: catalog.coredes.find((corede) => corede.id === entry.coredeId)?.name ?? '',
+      populationByYear: entry.populationByYear,
     }))
     .sort((a, b) => ptBrCollator.compare(a.name, b.name))
 }

@@ -11,6 +11,12 @@ import {
   listYears,
 } from '../../data/repository'
 import type { Municipality, Region } from '../../types/domain'
+import {
+  isPopulationFilterId,
+  matchesPopulationFilter,
+  POPULATION_FILTER_OPTIONS,
+  type PopulationFilterId,
+} from '../../features/municipalities/populationFilter'
 
 type GlobalFiltersProps = { compact?: boolean }
 
@@ -23,6 +29,11 @@ function readYearParam(params: URLSearchParams): number | null {
 
 function readStringParam(params: URLSearchParams, key: string): string {
   return params.get(key) ?? ''
+}
+
+function readPopulationFilterParam(params: URLSearchParams): PopulationFilterId | '' {
+  const value = readStringParam(params, 'populacao')
+  return isPopulationFilterId(value) ? value : ''
 }
 
 function normalizeSearchText(value: string): string {
@@ -66,6 +77,7 @@ export function GlobalFilters({ compact = false }: GlobalFiltersProps) {
   const [yearInput, setYearInput] = useState('')
   const [region, setRegion] = useState('')
   const [corede, setCorede] = useState('')
+  const [populationFilter, setPopulationFilter] = useState<PopulationFilterId | ''>('')
   const [municipality, setMunicipality] = useState('')
   const [municipalityQuery, setMunicipalityQuery] = useState('')
   const [isMunicipalityMenuOpen, setIsMunicipalityMenuOpen] = useState(false)
@@ -93,10 +105,12 @@ export function GlobalFilters({ compact = false }: GlobalFiltersProps) {
             : manifest.defaultYear
           const regionFromUrl = readStringParam(paramsFromInitialUrl, 'regiao')
           const coredeFromUrl = readStringParam(paramsFromInitialUrl, 'corede')
+          const populationFilterFromUrl = readPopulationFilterParam(paramsFromInitialUrl)
           const municipalityFromUrl = readStringParam(paramsFromInitialUrl, 'municipio')
           setYearInput(String(validYear))
           setRegion(regionFromUrl)
           setCorede(coredeFromUrl)
+          setPopulationFilter(populationFilterFromUrl)
           setMunicipality(municipalityFromUrl)
           // Garante um ano inicial canônico na URL sem derrubar outros params.
           if (!paramsFromInitialUrl.has('ano') || Number(paramsFromInitialUrl.get('ano')) !== validYear) {
@@ -127,10 +141,12 @@ export function GlobalFilters({ compact = false }: GlobalFiltersProps) {
     const nextYear = readYearParam(params)
     const nextRegion = readStringParam(params, 'regiao')
     const nextCorede = readStringParam(params, 'corede')
+    const nextPopulationFilter = readPopulationFilterParam(params)
     const nextMunicipality = readStringParam(params, 'municipio')
     if (nextYear !== null && String(nextYear) !== yearInput) setYearInput(String(nextYear))
     if (nextRegion !== region) setRegion(nextRegion)
     if (nextCorede !== corede) setCorede(nextCorede)
+    if (nextPopulationFilter !== populationFilter) setPopulationFilter(nextPopulationFilter)
     if (nextMunicipality !== municipality) {
       setMunicipality(nextMunicipality)
       if (nextMunicipality) {
@@ -139,7 +155,12 @@ export function GlobalFilters({ compact = false }: GlobalFiltersProps) {
         if (selected) setMunicipalityQuery(selected.name)
       }
     }
-  }, [params, yearInput, region, corede, municipality, municipalities])
+    if (!nextMunicipality && !isMunicipalityQueryDraft.current) {
+      replaceMunicipalityQueryOnNextKey.current = false
+      setIsMunicipalityMenuOpen(false)
+      setMunicipalityQuery('')
+    }
+  }, [params, yearInput, region, corede, populationFilter, municipality, municipalities])
 
   // Carrega regiões independentemente (sempre via regions/2025.json).
   useEffect(() => {
@@ -195,8 +216,9 @@ export function GlobalFilters({ compact = false }: GlobalFiltersProps) {
 
   const filteredMunicipalities = useMemo(() => municipalities.filter((item) => {
     if (region && item.regionId !== region) return false
-    return !corede || item.coredeId === corede
-  }), [municipalities, region, corede])
+    if (corede && item.coredeId !== corede) return false
+    return matchesPopulationFilter(item.populationByYear[yearInput], populationFilter)
+  }), [municipalities, region, corede, populationFilter, yearInput])
 
   const municipalitySuggestions = useMemo(() => {
     const normalizedQuery = normalizeSearchText(municipalityQuery)
@@ -228,9 +250,27 @@ export function GlobalFilters({ compact = false }: GlobalFiltersProps) {
   function handleYearChange(next: string) {
     setYearInput(next)
     const hasMunicipalitySelected = Boolean(municipality)
-    if (hasMunicipalitySelected) {
+    const selectedMunicipality = municipalities.find((item) => item.id === municipality)
+    const remainsInPopulationFilter = !populationFilter || matchesPopulationFilter(
+      selectedMunicipality?.populationByYear[next],
+      populationFilter,
+    )
+    if (hasMunicipalitySelected && remainsInPopulationFilter) {
       const nextParams = new URLSearchParams(params)
       nextParams.set('ano', next)
+      setParams(nextParams, { replace: false })
+      return
+    }
+
+    if (hasMunicipalitySelected) {
+      setMunicipality('')
+      isMunicipalityQueryDraft.current = false
+      replaceMunicipalityQueryOnNextKey.current = false
+      setIsMunicipalityMenuOpen(false)
+      setMunicipalityQuery('')
+      const nextParams = new URLSearchParams(params)
+      nextParams.set('ano', next)
+      nextParams.delete('municipio')
       setParams(nextParams, { replace: false })
       return
     }
@@ -281,6 +321,21 @@ export function GlobalFilters({ compact = false }: GlobalFiltersProps) {
     const nextParams = new URLSearchParams(params)
     if (next) nextParams.set('corede', next)
     else nextParams.delete('corede')
+    nextParams.delete('municipio')
+    setParams(nextParams, { replace: false })
+  }
+
+  function handlePopulationFilterChange(next: string) {
+    const validNext = isPopulationFilterId(next) ? next : ''
+    setPopulationFilter(validNext)
+    setMunicipality('')
+    isMunicipalityQueryDraft.current = false
+    replaceMunicipalityQueryOnNextKey.current = false
+    setIsMunicipalityMenuOpen(false)
+    setMunicipalityQuery('')
+    const nextParams = new URLSearchParams(params)
+    if (validNext) nextParams.set('populacao', validNext)
+    else nextParams.delete('populacao')
     nextParams.delete('municipio')
     setParams(nextParams, { replace: false })
   }
@@ -385,6 +440,7 @@ export function GlobalFilters({ compact = false }: GlobalFiltersProps) {
   function clearFilters() {
     setRegion('')
     setCorede('')
+    setPopulationFilter('')
     setMunicipality('')
     isMunicipalityQueryDraft.current = false
     replaceMunicipalityQueryOnNextKey.current = false
@@ -394,12 +450,13 @@ export function GlobalFilters({ compact = false }: GlobalFiltersProps) {
     next.set('ano', yearInput)
     next.delete('regiao')
     next.delete('corede')
+    next.delete('populacao')
     next.delete('municipio')
     setParams(next, { replace: false })
   }
 
   const yearsOptions = years.length ? years : (yearInput ? [Number(yearInput)] : [])
-  const activeFilterCount = [region, corede, municipality].filter(Boolean).length
+  const activeFilterCount = [region, corede, populationFilter, municipality].filter(Boolean).length
 
   return (
     <form
@@ -409,7 +466,7 @@ export function GlobalFilters({ compact = false }: GlobalFiltersProps) {
     >
       <div className="global-filters__heading">
         <span><SlidersHorizontal size={15} aria-hidden="true" /> Filtros de análise</span>
-        <small>{compact ? 'Escolha uma Região Funcional para abrir o ranking.' : 'Selecione ano, Região Funcional, Corede ou município.'}</small>
+        <small>{compact ? 'Escolha uma Região Funcional para abrir o ranking.' : 'Selecione ano, Região Funcional, Corede, porte populacional ou município.'}</small>
         {!compact ? (
           <strong className="global-filters__selection" aria-live="polite">
             {activeFilterCount === 0 ? 'Sem recorte territorial' : `${activeFilterCount} ${activeFilterCount === 1 ? 'filtro ativo' : 'filtros ativos'}`}
@@ -459,6 +516,22 @@ export function GlobalFilters({ compact = false }: GlobalFiltersProps) {
               >
                 <option value="">Todos os Coredes</option>
                 {coredes.map(([id, name]) => <option key={id} value={id}>{name}</option>)}
+              </select>
+              <ChevronDown size={17} aria-hidden="true" />
+            </div>
+          </div>
+          <div className="filter-field filter-field--population">
+            <label htmlFor="filter-population">Porte populacional</label>
+            <div className="filter-select">
+              <select
+                id="filter-population"
+                value={populationFilter}
+                onChange={(event) => handlePopulationFilterChange(event.target.value)}
+              >
+                <option value="">Todos os portes</option>
+                {POPULATION_FILTER_OPTIONS.map((option) => (
+                  <option key={option.value} value={option.value}>{option.label}</option>
+                ))}
               </select>
               <ChevronDown size={17} aria-hidden="true" />
             </div>

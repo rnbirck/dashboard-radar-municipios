@@ -18,6 +18,7 @@ import { RegionsExplorer } from '../regions/components/RegionsExplorer'
 import { MunicipalityDetail } from './components/MunicipalityDetail'
 import { MunicipalityRankingTable } from './components/MunicipalityRankingTable'
 import { DIMENSION_IDS } from './components/municipalityUi'
+import { isPopulationFilterId } from './populationFilter'
 
 type Status = 'idle' | 'loading' | 'ready' | 'partial' | 'error'
 
@@ -25,6 +26,8 @@ export function MunicipalitiesPage() {
   const [params] = useSearchParams()
   const regionId = params.get('regiao') ?? ''
   const coredeId = params.get('corede') ?? ''
+  const populationFilterParam = params.get('populacao') ?? ''
+  const populationFilter = isPopulationFilterId(populationFilterParam) ? populationFilterParam : ''
   const municipalityId = params.get('municipio') ?? ''
   const requestedYear = Number(params.get('ano'))
   const [catalog, setCatalog] = useState<CatalogData | null>(null)
@@ -96,7 +99,7 @@ export function MunicipalitiesPage() {
           showHint
         />
       ) : null}
-      {!municipalityId && ranking && catalog ? <MunicipalityRankingTable ranking={ranking} catalog={catalog} coredeId={coredeId} /> : null}
+      {!municipalityId && ranking && catalog ? <MunicipalityRankingTable ranking={ranking} catalog={catalog} coredeId={coredeId} populationFilter={populationFilter} /> : null}
       {municipalityId && summary && catalog && dimensions.length === DIMENSION_IDS.length ? <MunicipalityDetail summary={summary} dimensions={dimensions} catalog={catalog} selectedYear={displayYear ?? undefined} /> : null}
     </div>
   )

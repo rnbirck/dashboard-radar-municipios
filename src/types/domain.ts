@@ -77,6 +77,7 @@ type MunicipalityCatalogEntry = {
   searchName: string
   regionId: string
   coredeId: string
+  populationByYear: Record<string, number | null>
 }
 
 type DimensionCatalogEntry = {
@@ -297,4 +298,5 @@ export type Municipality = {
   regionId: string
   coredeId: string
   coredeName: string
+  populationByYear: Record<string, number | null>
 }

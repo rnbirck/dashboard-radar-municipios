@@ -84,7 +84,7 @@ function RankingReadingGuide() {
       <strong>{'Leitura do ranking'}</strong>
       <ul>
         <li>{'As posi\u00e7\u00f5es s\u00e3o calculadas dentro da Regi\u00e3o Funcional.'}</li>
-        <li>{'O filtro de Corede altera apenas os munic\u00edpios exibidos, n\u00e3o a regra do ranking.'}</li>
+        <li>{'Os filtros de Corede e porte populacional alteram apenas os munic\u00edpios exibidos, n\u00e3o a regra do ranking.'}</li>
       </ul>
       <div className="regional-ranking-color-key" aria-label="Legenda das cores">
         <span><i className="legend-dot legend-dot--good" />{'1\u00aa metade do ranking'}</span>
